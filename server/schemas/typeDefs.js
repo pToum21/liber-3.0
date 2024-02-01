@@ -1,4 +1,6 @@
-const typeDefs = `
+const gql = String.raw
+
+const typeDefs = gql`
 
 type User {
     _id: ID
