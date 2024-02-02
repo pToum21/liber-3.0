@@ -1,3 +1,11 @@
-TODO:
+TODO: work on saving single book to database, if successful, we can do it in for loop
 
 Notes (can leave notes here detailing what you did):
+I accessed necessary data and put them into variables. required mongoose and Book model to attempt to save single book to db. 
+That attempt is commented out; what is not commented out is for loop that we made last night along with the necessary data/variables
+
+
+
+extra code:
+
+  

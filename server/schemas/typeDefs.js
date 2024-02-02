@@ -14,6 +14,7 @@ type Book {
     # unsure if id will need to be a different property
     _id: ID
     title: String
+    bookId: Int
     authors: [String]
     image: String
     text: String
