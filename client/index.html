@@ -23,6 +23,19 @@
 
     axios.get(apiUrl)
       .then(response => {
+
+        // for (let i = 0; i <= 5; i++) {
+        // const bookId = response.data.results[i].id
+        // const txtUrl = `https://www.gutenberg.org/ebooks/84.txt.utf-8`
+        // axios.get(txtUrl)
+        //   .then(response => {
+
+        //     console.log(response)
+        //   })
+        // }
+
+
+
         console.log(`Data from page ${page}:`, response.data);
       })
       .catch(error => {
@@ -32,13 +45,24 @@
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <= 50; page++) {
+    for (let page = 1; page <= 10; page++) {
       fetchData(page);
     }
   }
 
+  function sjhlfs() {
+    const txtUrl = `https://www.gutenberg.org/cache/epub/84/pg84.txt`
+    axios.get(txtUrl)
+      .then(response => {
+
+        console.log(response)
+      })
+  }
+
+
   // Run the fetch cycle initially
   runGutFetchLoop();
+  sjhlfs();
 
   // Set up an interval to run the fetch cycle every 8 hours (in milliseconds)
   const intervalInMilliseconds = 8 * 60 * 60 * 1000;
