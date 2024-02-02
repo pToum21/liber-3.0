@@ -1,13 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + React</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- for test our api -->
+<script>
+  //  fetch using axios
+  function fetchData(page) {
+    const apiUrl = `https://gutendex.com/books/?page=${page}`;
+
+    axios.get(apiUrl)
+      .then(response => {
+        console.log(`Data from page ${page}:`, response.data);
+      })
+      .catch(error => {
+        console.error(`Error fetching data from page ${page}:`, error);
+      });
+  }
+
+  function runGutFetchLoop() {
+    // Fetch data from page 1 to page 50
+    for (let page = 1; page <= 50; page++) {
+      fetchData(page);
+    }
+  }
+
+  // Run the fetch cycle initially
+  runGutFetchLoop();
+
+  // Set up an interval to run the fetch cycle every 8 hours (in milliseconds)
+  const intervalInMilliseconds = 8 * 60 * 60 * 1000; // 8 hours
+  setInterval(runGutFetchLoop, intervalInMilliseconds);
+</script>
+
 </html>
