@@ -8,6 +8,27 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+const axios = require('axios');
+
+// Example Axios request
+async function fetchData() {
+  const url = 'https://www.gutenberg.org/cache/epub/84/pg84.txt';
+
+  try {
+    const response = await axios.get(url);
+
+    // Axios automatically throws an error for non-2xx responses
+    const data = response.data;
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+  }
+}
+
+// Call the function to fetch data
+fetchData();
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -15,10 +36,10 @@ const server = new ApolloServer({
 
 const startApolloServer = async () => {
   await server.start();
-  
+
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  
+
   app.use('/graphql', expressMiddleware(server));
 
   if (process.env.NODE_ENV === 'production') {
@@ -27,7 +48,7 @@ const startApolloServer = async () => {
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
-  } 
+  }
 
   db.once('open', () => {
     app.listen(PORT, () => {

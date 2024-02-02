@@ -1,0 +1,54 @@
+// "proxy": "node server/proxy.js"
+
+// const express = require('express');
+// const axios = require('axios');
+
+// const app = express();
+// const PORT = 3000;
+
+// // Enable CORS (you can install the 'cors' package for more options)
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     next();
+// });
+
+// // Proxy all requests
+// app.use('/proxy', async (req, res) => {
+//     try {
+//         // Extract the URL to proxy from the request query
+//         const targetUrl = req.query.url;
+
+//         // Make a request to the target URL
+//         const response = await axios.get(targetUrl);
+
+//         // Send the response from the target URL to the client
+//         res.send(response.data);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
+
+// app.listen(PORT, () => {
+//     console.log(`Proxy server is running on http://localhost:${PORT}`);
+// });
+
+
+// function sjhlfs() {
+//     const proxyUrl = 'http://localhost:3000/proxy?url=https://www.gutenberg.org/cache/epub/84/pg84.txt';
+  
+//     fetch(proxyUrl)
+//       .then(response => response.text())
+//       .then(data => {
+//         console.log(data);
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//   }
+
+// "axios": "^1.6.7"
+
+// "express": "^4.18.2",
