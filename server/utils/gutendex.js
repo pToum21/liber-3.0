@@ -8,7 +8,7 @@ module.exports = async function fetchData() {
     const apiUrl = `https://gutendex.com/books/?page=${page}`;
     // fetch 32 books from page
     axios.get(apiUrl)
-      .then(response => {
+      .then(async(response) => {
         // loop through the 32 books from the page to retrieve id of each book
         for (let i = 0; i <= 5; i++) {
           const bookId = response.data.results[i].id
