@@ -76,9 +76,9 @@ module.exports = async function fetchData() {
 
 
           //   // fetch and logs actual book text 
-          //   // [because the response is too long for temrinal, comment this .get() block of code to see the other logged data in terminal]
+          //   // [because the response is too long for terminal, comment this .get() block of code to see the other logged data in terminal]
           //   // response.data is actual book text
-          
+
           //   //COMMENT BACK IN TO SEE THE BOOK TEXT
           //   // axios.get(text)
           //   //   .then(response => {
