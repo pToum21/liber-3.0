@@ -15,24 +15,34 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<!-- for test our api -->
 <script>
-//  fetch using axios
-  function gutendexApiData() {
-    axios.get('https://gutendex.com/books/')
+  //  fetch using axios
+  function fetchData(page) {
+    const apiUrl = `https://gutendex.com/books/?page=${page}`;
+
+    axios.get(apiUrl)
       .then(response => {
-        console.log(response.data);
+        console.log(`Data from page ${page}:`, response.data);
       })
       .catch(error => {
-        console.error('Error fetching data:', error);
+        console.error(`Error fetching data from page ${page}:`, error);
       });
   }
 
-  // call gutendexApiData initially
-  gutendexApiData();
+  function runGutFetchLoop() {
+    // Fetch data from page 1 to page 50
+    for (let page = 1; page <= 50; page++) {
+      fetchData(page);
+    }
+  }
 
-  // Set up an interval to run gutendex Api Data every 8 hours (in milliseconds)
-  const intervalInMilliseconds = 8 * 60 * 60 * 1000;
-  setInterval(gutendexApiData, intervalInMilliseconds);
+  // Run the fetch cycle initially
+  runGutFetchLoop();
+
+  // Set up an interval to run the fetch cycle every 8 hours (in milliseconds)
+  const intervalInMilliseconds = 8 * 60 * 60 * 1000; // 8 hours
+  setInterval(runGutFetchLoop, intervalInMilliseconds);
 </script>
 
 </html>
