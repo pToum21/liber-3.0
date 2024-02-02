@@ -9,44 +9,38 @@ const { Book } = require('../models');
 module.exports = async function fetchData() {
   // page passed in from runGutFetchLoop()
   function fetchData(page) {
-    try { 
-    const apiUrl = `https://gutendex.com/books/?page=${page}`;
-    // fetch 32 books from page
-    axios.get(apiUrl)
-      .then(async (response) => {
+    try {
+      const apiUrl = `https://gutendex.com/books/?page=${page}`;
+      // fetch 32 books from page
+      axios.get(apiUrl)
+        .then(async (response) => {
+          for (let i = 0; i <= 32; i++) {
+            const bookData = response.data.results[i];
+            const bookId = bookData.id;
+            const title = bookData.title;
+            const authors = bookData.authors.map(author => author.name);
+            const image = bookData.formats['image/jpeg'];
+            const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
 
-        
+            try {
+              const newBook = await Book.create({
+                title: title,
+                bookId: bookId,
+                authors: bookData.authors,
+                image: image,
+                text: text
+              });
 
-        for (let i = 0; i <= 1; i++) {
-          const bookData = response.data.results[i];
-          const bookId = bookData.id;
-          const title = bookData.title;
-          const authors = bookData.authors.map(author => author.name);
-          const image = bookData.formats['image/jpeg'];
-          const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
-
-          try {
-            const newBook = await Book.create({
-              title: title,
-              bookId: bookId,
-              authors: bookData.authors,
-              image: image,
-              text: text
-            });
-
-            console.log("Book saved", newBook);
-          } catch (error) {
-            console.error("Error saving to book:", error);
-          }
-
-          console.log(bookId, title, authors, image, text);
-        } //closes for loop
-      }) // closes .then()
-      .catch(error => {
-        console.error(`Error fetching data from page ${page}:`, error);
-      });
-
-    
+              console.log("Book saved", newBook);
+            } catch (error) {
+              console.error("Error saving to book:", error);
+            }
+            console.log(bookId, title, authors, image, text);
+          } //closes for loop
+        }) // closes .then()
+        .catch(error => {
+          console.error(`Error fetching data from page ${page}:`, error);
+        });
     } catch (error) {
       console.error(`Error fetching and saving data from page ${page}:`, error);
     }
@@ -54,23 +48,15 @@ module.exports = async function fetchData() {
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <= 1; page++) {
+    for (let page = 1; page <= 25; page++) {
       fetchData(page);
     }
   }
-
   // Run the fetch cycle initially
   runGutFetchLoop();
 
   // Set up an interval to run the fetch cycle every 8 hours (in milliseconds)
   const intervalInMilliseconds = 8 * 60 * 60 * 1000;
   setInterval(runGutFetchLoop, intervalInMilliseconds);
-
-
-
-
-
-
 }
 
-// Call the function to fetch data
