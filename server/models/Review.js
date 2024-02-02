@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 
 const commentsSchema = new Schema({
-    comment: String
+    comments: String,
 })
 
 const reviewSchema = new Schema({
