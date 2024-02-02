@@ -1,14 +1,15 @@
 const { model, Schema } = require('mongoose')
+const mongoose = require('mongoose')
+
+const authorSchema = new Schema({
+  name: String
+})
 
 const bookSchema = new Schema({
     // id is auto-generated via mongoose
     title: String,
     bookId: Number,
-    authors: [
-        {
-          name: String,
-        },
-      ],
+    authors: [authorSchema],
     image: String,
     text: String
 })
