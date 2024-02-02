@@ -6,12 +6,12 @@ const authorSchema = new Schema({
 })
 
 const bookSchema = new Schema({
-    // id is auto-generated via mongoose
-    title: String,
-    bookId: Number,
-    authors: [authorSchema],
-    image: String,
-    text: String
+  // id is auto-generated via mongoose
+  title: String,
+  bookId: { type: Number, unique: true },
+  authors: [authorSchema],
+  image: String,
+  text: String
 })
 
 const Book = model('Book', bookSchema)
