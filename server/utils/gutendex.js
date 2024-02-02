@@ -8,23 +8,36 @@ module.exports = async function fetchData() {
     const apiUrl = `https://gutendex.com/books/?page=${page}`;
     // fetch 32 books from page
     axios.get(apiUrl)
-      .then(async(response) => {
+      .then(async (response) => {
+        // response is the 32 books from the page
         // loop through the 32 books from the page to retrieve id of each book
         for (let i = 0; i <= 5; i++) {
-          const bookId = response.data.results[i].id
+          const bookData = response.data.results[i];
+
+          const bookId = bookData.id;
+          const title = bookData.title;
+          const authors = bookData.authors;
+          const image = bookData.formats['image/jpeg'];
+          const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
+
+          console.log(bookId, title, authors, image, text);
 
           // insert id into book text's url structure
-          const txtUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
+         
 
-          // fetch actual book text
-          axios.get(txtUrl)
-            .then(response => {
+          // fetch and logs actual book text 
+          // [because the response is too long for temrinal, comment this .get() block of code to see the other logged data in terminal]
+          //COMMENT BACK IN TO SEE THE BOOK TEXT
 
-              console.log(response.data)
-            })
+          // axios.get(text)
+          //   .then(response => {
+          //     console.log(response.data)
+          //   })
         }
 
-        console.log(`Data from page ${page}:`, response.data);
+        // this logs each book from the page we are on
+        // console.log(`Data from page ${page}:`, response.data);
+
       })
       .catch(error => {
         console.error(`Error fetching data from page ${page}:`, error);
