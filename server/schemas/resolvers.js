@@ -1,7 +1,7 @@
 const { User, Book } = require('../models');
 const { AuthenticationError } = require('../utils/auth')
 
-module.exports = {
+const resolvers = {
     
     Query: {
         myLibrary: async (parent, args, context) => {
