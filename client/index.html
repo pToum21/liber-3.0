@@ -13,9 +13,10 @@
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
-<script>
-  const axios = require('axios');
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<script>
+ 
   function gutendexApiData() {
     axios.get('https://gutendex.com/books/')
       .then(response => {
