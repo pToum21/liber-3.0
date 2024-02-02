@@ -9,10 +9,10 @@ function gutendexApiData() {
         });
 }
 
-// Run gutendexApiData initially
+// call gutendex Api Data
 gutendexApiData();
 
-// Set up an interval to run gutendexApiData every 8 hours (in milliseconds)
-const intervalInMilliseconds = 8 * 60 * 60 * 1000; // 8 hours
+// Set up an interval to run gutendex Api every 8 hours
+const intervalInMilliseconds = 8 * 60 * 60 * 1000; 
 setInterval(gutendexApiData, intervalInMilliseconds);
 

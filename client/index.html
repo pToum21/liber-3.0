@@ -1,13 +1,37 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + React</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+<script>
+  const axios = require('axios');
+
+  function gutendexApiData() {
+    axios.get('https://gutendex.com/books/')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
+  // Run gutendexApiData initially
+  gutendexApiData();
+
+  // Set up an interval to run gutendexApiData every 8 hours (in milliseconds)
+  const intervalInMilliseconds = 8 * 60 * 60 * 1000; // 8 hours
+  setInterval(gutendexApiData, intervalInMilliseconds);
+</script>
+
 </html>
