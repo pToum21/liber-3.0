@@ -47,7 +47,7 @@ type Query {
 
 input KeepBookInput {
     title: String
-    authors: [Author]
+    authors: [String]
     image: String
     text: String
 }
