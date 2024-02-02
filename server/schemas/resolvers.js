@@ -2,7 +2,7 @@ const { User, Book } = require('../models');
 const { AuthenticationError } = require('../utils/auth')
 
 const resolvers = {
-    
+
     Query: {
         myLibrary: async (parent, args, context) => {
             if (context.user) {
@@ -14,23 +14,20 @@ const resolvers = {
         },
         getBooks: async (parents, args) => {
             const bookData = await Book.find(args);
-        
+
             console.log('Retrieved book data:', bookData);
-        
+
             return bookData;
         },
         getSingleBook: async (parent, { bookId }) => {
             return Book.findOne({ _id: bookId });
         }
     },
-    
-    
-    
-    
+
     Mutation: {
         createUser: async (parent, { email, password, username }) => {
             try {
-                const user = await User.create({email, password, username});
+                const user = await User.create({ email, password, username });
                 const token = signToken(user);
 
                 return { user, token };
@@ -60,8 +57,7 @@ const resolvers = {
         },
 
     },
-   
-}
 
+}
 
 module.exports = resolvers;
