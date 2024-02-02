@@ -12,6 +12,6 @@ const bookSchema = new Schema({
     text: String
 })
 
-const User = model('User', userSchema)
+const Book = model('Book', bookSchema)
 
-module.exports = User
+module.exports = Book
