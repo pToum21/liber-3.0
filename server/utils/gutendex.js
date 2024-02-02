@@ -61,48 +61,28 @@ module.exports = async function fetchData() {
         // i is a book. results is the array of books
 
         for (let i = 0; i <= 1; i++) {
-          // each book is put into variable so we dont have to repeat same line of code for each property we access
           const bookData = response.data.results[i];
-
           const bookId = bookData.id;
           const title = bookData.title;
           const authors = bookData.authors.map(author => author.name);
-          // image comes in form of url; problem is if that image no longer exists in gutdendex, we have no image. may want to fetch image? i tried it though, and when i console logged, it was funky looking. maybe its binary stuff? idk what i was looking at. - Ryan
           const image = bookData.formats['image/jpeg'];
-          // actual book text, bookId is inserted into url structure
           const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
 
-          const newBook = new Book({
-            title: title,
-            bookId: bookId,
-            authors: bookData.authors,
-            image: image,
-            text: text
-          });
           try {
-            await newBook.save()
-            console.log("Book saved", newBook)
+            const newBook = await Book.create({
+              title: title,
+              bookId: bookId,
+              authors: bookData.authors,
+              image: image,
+              text: text
+            });
+
+            console.log("Book saved", newBook);
           } catch (error) {
-            console.error("error saving to book:", error)
-            
+            console.error("Error saving to book:", error);
           }
+
           console.log(bookId, title, authors, image, text);
-
-
-          //   // fetch and logs actual book text 
-          //   // [because the response is too long for terminal, comment this .get() block of code to see the other logged data in terminal]
-          //   // response.data is actual book text
-
-          //   //COMMENT BACK IN TO SEE THE BOOK TEXT
-          //   // axios.get(text)
-          //   //   .then(response => {
-          //   //     console.log(response.data)
-          //   //   })
-          // }
-
-          // this logs each book from the page we are on
-          // console.log(`Data from page ${page}:`, response.data);
-
         } //closes for loop
       }) // closes .then()
       .catch(error => {
