@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
+const fetchData = require('./utils/gutendex')
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -9,25 +10,8 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const axios = require('axios');
-
-// Example Axios request
-async function fetchData() {
-  const url = 'https://www.gutenberg.org/cache/epub/84/pg84.txt';
-
-  try {
-    const response = await axios.get(url);
-
-    // Axios automatically throws an error for non-2xx responses
-    const data = response.data;
-    console.log(data);
-  } catch (error) {
-    console.error('Error fetching data:', error.message);
-  }
-}
-
-// Call the function to fetch data
 fetchData();
+
 
 const server = new ApolloServer({
   typeDefs,
