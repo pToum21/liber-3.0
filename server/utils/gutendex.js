@@ -31,11 +31,11 @@ module.exports = async function fetchData() {
                 text: text
               });
 
-              console.log("Book saved", newBook);
+              // console.log("Book saved", newBook);
             } catch (error) {
               console.error("Error saving to book:", error);
             }
-            console.log(bookId, title, authors, image, text);
+            // console.log(bookId, title, authors, image, text);
           } //closes for loop
         }) // closes .then()
         .catch(error => {
