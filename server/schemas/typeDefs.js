@@ -10,14 +10,30 @@ type User {
     role: String
 }
 
+type Author {
+    _id: ID
+    name: String
+}
+
+type Comments {
+    _id: ID
+    comments: String
+}
+
 type Book {
     # unsure if id will need to be a different property
     _id: ID
     title: String
     bookId: Int
-    authors: [String]
+    authors: [Author]
     image: String
     text: String
+}
+
+type Review {
+    _id: ID
+    comments: [Comments]
+    rating: Int
 }
 
 type Auth {
@@ -31,7 +47,7 @@ type Query {
 
 input KeepBookInput {
     title: String
-    authors: [String]
+    authors: [Author]
     image: String
     text: String
 }
