@@ -43,6 +43,8 @@ type Auth {
 
 type Query {
     myLibrary: User
+    getBooks: [Book]
+    getSingleBook(bookId: ID!): Book
 }
 
 input KeepBookInput {

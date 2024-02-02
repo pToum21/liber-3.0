@@ -12,6 +12,16 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+        getBooks: async (parents, args) => {
+            const bookData = await Book.find(args);
+        
+            console.log('Retrieved book data:', bookData);
+        
+            return bookData;
+        },
+        getSingleBook: async (parent, { bookId }) => {
+            return Book.findOne({ _id: bookId });
+        }
     },
     
     
