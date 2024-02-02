@@ -14,6 +14,9 @@ const bookSchema = new Schema({
   text: String
 })
 
+
+// Maybe we add comments schema here
+
 const Book = model('Book', bookSchema)
 
 module.exports = Book
