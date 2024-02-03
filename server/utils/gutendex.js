@@ -14,12 +14,15 @@ module.exports = async function fetchData() {
       // fetch 32 books from page
       axios.get(apiUrl)
         .then(async (response) => {
-          for (let i = 0; i < response.data.results.length; i++) {
+          for (let i = 0; i < 1; i++) {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
             const image = bookData.formats['image/jpeg'];
-            const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
+            const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
+            
+            const textResponse = await axios.get(textUrl);
+            const text= textResponse.data;
 
             try {
               const newBook = await Book.create({
@@ -29,6 +32,7 @@ module.exports = async function fetchData() {
                 image: image,
                 text: text
               });
+              // console.log('this is a new book:', newBook);
 
               // console.log("Book saved", newBook);
             } catch (error) {
@@ -47,7 +51,7 @@ module.exports = async function fetchData() {
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <= 25; page++) {
+    for (let page = 1; page <2; page++) {
       fetchData(page);
     }
   }
