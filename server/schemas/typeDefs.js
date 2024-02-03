@@ -26,7 +26,7 @@ type Book {
     # unsure if id will need to be a different property
     _id: ID
     title: String
-    bookId: Int
+    bookId: String
     authors: [Author]
     image: String
     text: String
@@ -57,7 +57,7 @@ input KeepBookInput {
     authors: [String]
     image: String
     text: String
-    bookId: Int
+    bookId: String
 }
 
 type Mutation {

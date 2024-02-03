@@ -6,7 +6,7 @@ const authorSchema = new Schema({
 
 const bookSchema = new Schema({
   title: String,
-  bookId: { type: Number, unique: true },
+  bookId: { type: String, unique: true },
   authors: [authorSchema],
   image: {
     data: Buffer,
@@ -15,7 +15,7 @@ const bookSchema = new Schema({
   text: String,
   reviews: [
     {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.Mixed,
       ref: 'Review'
     }
   ]
