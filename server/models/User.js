@@ -11,7 +11,7 @@ const userSchema = new Schema({
     password: String,
 
     keptBooks: [{
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.Mixed,
         ref: 'Book'
     }]
 });
