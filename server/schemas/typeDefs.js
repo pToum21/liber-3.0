@@ -18,6 +18,7 @@ type Author {
 
 type Comments {
     _id: ID
+    userId: ID
     comments: String
 }
 
@@ -62,7 +63,7 @@ type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     keepBook(input: KeepBookInput!): User
     removeBook(_id: ID): User
-    addReview(_id: ID): User
+    addReview(bookId: ID!, comments: String!): Book
 }
 
 `;
