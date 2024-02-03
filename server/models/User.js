@@ -1,5 +1,8 @@
 const { model, Schema } = require('mongoose');
 
+
+
+const {bookSchema}  = require('./Book')
 const userSchema = new Schema({
     role: {
         type: String,
@@ -10,10 +13,7 @@ const userSchema = new Schema({
     username: String,
     password: String,
 
-    keptBooks: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Book'
-    }]
+    keptBooks: [bookSchema]
 });
 
 const User = model('User', userSchema);

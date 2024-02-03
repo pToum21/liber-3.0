@@ -49,6 +49,7 @@ type Query {
 }
 
 input KeepBookInput {
+    _id: ID
     title: String
     authors: [String]
     image: String
