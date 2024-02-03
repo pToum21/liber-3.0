@@ -65,7 +65,7 @@ type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     keepBook(input: KeepBookInput!): User
     removeBook(_id: ID): User
-    addReview(bookId: ID!, comments: String!): Book
+    addReview(bookId: ID!, comments: String!, rating: Int!): Book
 }
 
 `;
