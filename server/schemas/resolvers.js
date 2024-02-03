@@ -1,4 +1,4 @@
-const { User, Book } = require('../models');
+const { User, Book, Review } = require('../models');
 const { AuthenticationError, signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -73,37 +73,33 @@ const resolvers = {
         addReview: async (parent, { bookId, comments }, context) => {
             if (context.user) {
                 try {
-                    // Find the user by their ID
                     const user = await User.findById(context.user._id);
-
-                    // Create a new comment with the user's ID
+                    
                     const newComment = {
                         userId: user._id,
                         comments,
                     };
 
-                    // Create a new review with the user's ID and comments
-                    const newReview = new Review({
-                        userId: user._id,
-                        comments: [newComment],
-                    });
+                    // const newReview = new Review({
+                    //     userId: user._id,
+                    //     comments: [newComment],
+                    // });
 
-                    // Find the book by its ID and update it with the new review
                     const updatedBook = await Book.findByIdAndUpdate(
-                        { _id: bookId },
-                        { $push: { reviews: newReview } },
+                        bookId,
+                        { $push: { reviews: Review } },
                         { new: true }
                     );
 
                     return updatedBook;
                 } catch (error) {
-                    console.error(error);
+                    console.error('Error adding review:', error);
                     throw new Error('Error adding review');
                 }
             }
 
             throw new AuthenticationError('User not logged in');
-        },
+        }
 
     },
 

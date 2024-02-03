@@ -36,7 +36,7 @@ module.exports = async function fetchData() {
 
               // console.log("Book saved", newBook);
             } catch (error) {
-              console.error("Error saving to book:", error);
+              // console.error("Error saving to book:", error);
             }
             // console.log(bookId, title, authors, image, text);
           } //closes for loop
