@@ -1,5 +1,8 @@
-* {
-
+#liber {
     font-family: 'Coventry Garden', sans-serif;
+}
 
+* {
+    font-family: 'Jim Nightshade', cursive, arial;
+    font-size: 1.5rem;
 }
