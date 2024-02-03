@@ -19,7 +19,10 @@ module.exports = async function fetchData() {
             const bookId = bookData.id;
             const title = bookData.title;
             const image = bookData.formats['image/jpeg'];
-            const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
+            const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
+            
+            const textResponse = await axios.get(textUrl);
+            const text= textResponse.data;
 
             try {
               const newBook = await Book.create({
@@ -29,6 +32,7 @@ module.exports = async function fetchData() {
                 image: image,
                 text: text
               });
+              console.log('this is a new book:', newBook);
 
               // console.log("Book saved", newBook);
             } catch (error) {
