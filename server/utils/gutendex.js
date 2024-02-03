@@ -9,25 +9,21 @@ module.exports = async function fetchData() {
   function fetchData(page) {
     try {
       const apiUrl = `https://gutendex.com/books/?page=${page}`;
-      // fetch 32 books from page
+      // fetch all (32) books from page
       axios.get(apiUrl)
         .then(async (response) => {
           for (let i = 0; i < response.data.results.length; i++) {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
+            // we dont need to make an authors line, because it comes back properly via authors schema in model
             const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
 
-            console.log(imageUrl);
-
-
             const imageResponse = await axios.get(imageUrl);
-              // console.log('this is an image:',imageResponse.data)
 
-            
             const textResponse = await axios.get(textUrl);
-            const text= textResponse.data;
+            const text = textResponse.data;
 
             try {
               const newBook = await Book.create({
@@ -41,12 +37,9 @@ module.exports = async function fetchData() {
                 text: text
               });
               console.log('this is a new book:', newBook);
-
-              // console.log("Book saved", newBook);
             } catch (error) {
               console.error("Error saving to book:", error);
             }
-            // console.log(bookId, title, authors, image, text);
           } //closes for loop
         }) // closes .then()
         .catch(error => {
