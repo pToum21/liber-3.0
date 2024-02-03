@@ -1,4 +1,4 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema } = require('mongoose');
 
 const userSchema = new Schema({
     role: {
@@ -8,9 +8,14 @@ const userSchema = new Schema({
     },
     email: String,
     username: String,
-    password: String
-})
+    password: String,
 
-const User = model('User', userSchema)
+    keptBooks: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Book'
+    }]
+});
 
-module.exports = User
+const User = model('User', userSchema);
+
+module.exports = User;

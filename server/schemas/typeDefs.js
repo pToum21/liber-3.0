@@ -8,6 +8,7 @@ type User {
     email: String
     password: String
     role: String
+    keptBooks: [Book]
 }
 
 type Author {
@@ -48,10 +49,12 @@ type Query {
 }
 
 input KeepBookInput {
+    _id: ID
     title: String
     authors: [String]
     image: String
     text: String
+    bookId: Int
 }
 
 type Mutation {
