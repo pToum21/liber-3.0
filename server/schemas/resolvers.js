@@ -71,85 +71,70 @@ const resolvers = {
 
             throw AuthenticationError;
         },
+      
+
+        
         addReview: async (parent, { bookId, comments }, context) => {
             if (context.user) {
                 try {
                     const user = await User.findById(context.user._id);
-
+        
                     const newComment = {
                         userId: user._id,
                         comments,
                     };
-
+        
                     const newReview = new Review({
                         userId: user._id,
                         comments: [newComment],
                     });
-
-                    // Find the book by its _id
+        
+                    // Save the new review to get a unique _id
+                    await newReview.save();
+        
+                    // Find the book by its _id and update it with the new review's _id
                     const updatedBook = await Book.findById(bookId);
-
-                    // Log the entire updatedBook for debugging
-                    console.log('Updated Book:', updatedBook);
-
-                    // Update the book with the new review
-                    updatedBook.reviews.push(newReview);
+                    updatedBook.reviews.push(newReview._id); // Push the review's _id
                     await updatedBook.save();
-
-                    // Log the structure of the reviews array in more detail
-                    console.log('Reviews Array:', updatedBook.reviews);
-
-                    // Log the user's _id to ensure it has a value
-                    console.log('User _id:', user._id);
-
-                    // Simplify the logic for finding the added review
-                    const matchingReviews = updatedBook.reviews.filter((review) => {
-                        return review.userId && review.userId.toString() === user._id.toString();
-                    });
-
-                    console.log('Matching Reviews:', matchingReviews);
-
-                    const addedReview = matchingReviews[0];
-
+        
+                    // Assuming you need to return the added review, fetch it back along with necessary book details
+                    // Since reviews are now referenced by ID, fetch the detailed review directly if needed
+                    const addedReview = await Review.findById(newReview._id);
+        
                     if (!addedReview) {
                         console.error('Review not found after update');
                         throw new Error('Review not found after update');
                     }
-
-                    // Include necessary fields and comments in the response
+        
+                    // Structure the response as needed, including the bookId
                     const responseData = {
                         _id: addedReview._id,
                         title: updatedBook.title,
-                        bookId: updatedBook.bookId,
+                        bookId: bookId, // Ensuring the bookId is included in the response
                         authors: updatedBook.authors,
                         image: updatedBook.image,
                         text: updatedBook.text,
                         reviews: [{
                             _id: addedReview._id,
-                            rating: addedReview.rating,  // Add rating if applicable
-                            comments: addedReview.comments && addedReview.comments.map(comment => ({
+                            comments: addedReview.comments.map(comment => ({
                                 _id: comment._id,
                                 userId: comment.userId,
                                 comments: comment.comments,
                             })),
                         }],
                     };
-
+        
                     return responseData;
-
+        
                 } catch (error) {
                     console.error('Error adding review:', error);
                     throw new Error('Error adding review');
                 }
+            } else {
+                throw new Error('Authentication Error'); // Adjust as per your error handling
             }
-
-            throw AuthenticationError;
         },
-
-
-
-
-
+        
 
 
 
