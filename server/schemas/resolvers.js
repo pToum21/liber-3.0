@@ -70,7 +70,6 @@ const resolvers = {
 
             throw AuthenticationError;
         },
-
         addReview: async (parent, { bookId, comments }, context) => {
             if (context.user) {
                 try {
@@ -100,7 +99,8 @@ const resolvers = {
             }
 
             throw new AuthenticationError('User not logged in');
-        }
+        },
+
         removeBook: async (parent, { _id }, context ) => {
             if (context.user) {
             return User.findOneAndUpdate({

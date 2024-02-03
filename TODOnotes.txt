@@ -9,3 +9,6 @@ That attempt is commented out; what is not commented out is for loop that we mad
 extra code:
 
   
+
+
+peyton - in user model.js i added bcrypt and a custom function to check if password is correct.  I plan to then use that check inside of resolvers.
