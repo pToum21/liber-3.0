@@ -1,3 +1,12 @@
+/* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
+
+@font-face {
+    font-family: 'Coventry Garden';
+    src: url('../../coventry-garden.regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 #liber {
     font-family: 'Coventry Garden', sans-serif;
 }
