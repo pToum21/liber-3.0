@@ -99,7 +99,7 @@ const resolvers = {
                 }
             }
 
-            throw new AuthenticationError('User not logged in');
+            throw AuthenticationError;
         },
 
         removeBook: async (parent, { _id }, context) => {
