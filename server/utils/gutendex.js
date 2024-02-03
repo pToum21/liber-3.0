@@ -14,7 +14,7 @@ module.exports = async function fetchData() {
       // fetch 32 books from page
       axios.get(apiUrl)
         .then(async (response) => {
-          for (let i = 0; i < 1; i++) {
+          for (let i = 0; i < response.data.results.length; i++) {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
@@ -32,7 +32,7 @@ module.exports = async function fetchData() {
                 image: image,
                 text: text
               });
-              // console.log('this is a new book:', newBook);
+              console.log('this is a new book:', newBook);
 
               // console.log("Book saved", newBook);
             } catch (error) {
@@ -51,7 +51,7 @@ module.exports = async function fetchData() {
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <2; page++) {
+    for (let page = 1; page <= 25; page++) {
       fetchData(page);
     }
   }
