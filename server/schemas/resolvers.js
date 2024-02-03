@@ -56,6 +56,20 @@ const resolvers = {
             return { token, user };
         },
 
+        keepBook: async (parent, { input }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedBooks: input } },
+                    { new: true }
+                );
+
+                return updatedUser;
+            }
+
+            throw AuthenticationError;
+        }
+
     },
 
 }
