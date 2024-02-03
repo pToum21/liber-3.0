@@ -74,7 +74,7 @@ const resolvers = {
       
 
         
-        addReview: async (parent, { bookId, comments }, context) => {
+        addReview: async (parent, { bookId, comments, rating }, context) => {
             if (context.user) {
                 try {
                     const user = await User.findById(context.user._id);
@@ -87,6 +87,7 @@ const resolvers = {
                     const newReview = new Review({
                         userId: user._id,
                         comments: [newComment],
+                        rating: rating,
                     });
         
                     // Save the new review to get a unique _id
@@ -121,6 +122,7 @@ const resolvers = {
                                 userId: comment.userId,
                                 comments: comment.comments,
                             })),
+                            rating: addedReview.rating, // Include the rating here
                         }],
                     };
         
