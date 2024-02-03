@@ -1,25 +1,26 @@
-const { model, Schema } = require('mongoose')
-const mongoose = require('mongoose')
+const { model, Schema } = require('mongoose');
 
 const authorSchema = new Schema({
   name: String
-})
+});
 
 const bookSchema = new Schema({
-  // id is auto-generated via mongoose
   title: String,
   bookId: { type: Number, unique: true },
   authors: [authorSchema],
-  image: { 
-    data: Buffer, 
-    contentType: String 
+  image: {
+    data: Buffer,
+    contentType: String
   },
-  text: String
-})
+  text: String,
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Review'
+    }
+  ]
+});
 
+const Book = model('Book', bookSchema);
 
-// Maybe we add comments schema here
-
-const Book = model('Book', bookSchema)
-
-module.exports = Book
+module.exports = Book;

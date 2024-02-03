@@ -86,13 +86,36 @@ const resolvers = {
                         comments: [newComment],
                     });
 
-                    const updatedBook = await Book.findByIdAndUpdate(
-                        bookId,
-                        { $push: { reviews: newReview } },
-                        { new: true }
+                    // Find the book by its _id
+                    const updatedBook = await Book.findById(bookId);
+
+                    // Update the book with the new review
+                    updatedBook.reviews.push(newReview);
+                    await updatedBook.save();
+
+                    // Find the added review from the updatedBook
+                    const addedReview = updatedBook.reviews.find(
+                        (review) => review.userId && review.userId.toString() === user._id.toString()
                     );
 
-                    return updatedBook;
+                    if (!addedReview) {
+                        console.error('Review not found after update');
+                        throw new Error('Review not found after update');
+                    }
+
+                    // Include necessary fields and comments in the response
+                    const responseData = {
+                        _id: addedReview._id,
+                        title: updatedBook.title,
+                        bookId: updatedBook.bookId,
+                        authors: updatedBook.authors,
+                        image: updatedBook.image,
+                        text: updatedBook.text,
+                        comments: addedReview.comments && addedReview.comments.map(comment => comment.comments),
+                    };
+
+                    return responseData;
+
                 } catch (error) {
                     console.error('Error adding review:', error);
                     throw new Error('Error adding review');
@@ -101,6 +124,18 @@ const resolvers = {
 
             throw AuthenticationError;
         },
+
+
+
+
+
+
+
+
+
+
+
+
 
         removeBook: async (parent, { _id }, context) => {
             if (context.user) {

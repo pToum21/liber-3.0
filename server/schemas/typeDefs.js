@@ -30,12 +30,14 @@ type Book {
     authors: [Author]
     image: String
     text: String
+    reviews: [Review]
 }
 
 type Review {
     _id: ID
     comments: [Comments]
     rating: Int
+    userId: User
 }
 
 type Auth {
