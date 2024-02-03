@@ -36,17 +36,17 @@ module.exports = async function fetchData() {
                 },
                 text: text
               });
-              console.log('this is a new book:', newBook);
+              // console.log('this is a new book:', newBook);
             } catch (error) {
-              console.error("Error saving to book:", error);
+              // console.error("Error saving to book:", error);
             }
           } //closes for loop
         }) // closes .then()
         .catch(error => {
-          console.error(`Error fetching data from page ${page}:`, error);
+          // console.error(`Error fetching data from page ${page}:`, error);
         });
     } catch (error) {
-      console.error(`Error fetching and saving data from page ${page}:`, error);
+      // console.error(`Error fetching and saving data from page ${page}:`, error);
     }
   }//ends function
 

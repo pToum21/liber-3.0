@@ -6,3 +6,6 @@ Notes (can leave notes here detailing what you did):
 extra code:
 
   
+
+
+peyton - in user model.js i added bcrypt and a custom function to check if password is correct.  I plan to then use that check inside of resolvers.
