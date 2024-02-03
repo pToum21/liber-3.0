@@ -1,8 +1,6 @@
 const { model, Schema } = require('mongoose')
 const mongoose = require('mongoose')
 
-
-
 const commentsSchema = new Schema({
     comments: String,
 })
