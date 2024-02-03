@@ -1,7 +1,5 @@
 // Use axios to fetch
 const axios = require('axios');
-// require mongoose to save to database
-const mongoose = require('mongoose');
 // book model so we can make a new book to save to database
 const { Book } = require('../models');
 
@@ -11,34 +9,37 @@ module.exports = async function fetchData() {
   function fetchData(page) {
     try {
       const apiUrl = `https://gutendex.com/books/?page=${page}`;
-      // fetch 32 books from page
+      // fetch all (32) books from page
       axios.get(apiUrl)
         .then(async (response) => {
           for (let i = 0; i < response.data.results.length; i++) {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
-            const image = bookData.formats['image/jpeg'];
+            // we dont need to make an authors line, because it comes back properly via authors schema in model
+            const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
-            
+
+            const imageResponse = await axios.get(imageUrl);
+
             const textResponse = await axios.get(textUrl);
-            const text= textResponse.data;
+            const text = textResponse.data;
 
             try {
               const newBook = await Book.create({
                 title: title,
                 bookId: bookId,
                 authors: bookData.authors,
-                image: image,
+                image: {
+                  data: imageResponse.data,
+                  contentType: 'image/jpeg',
+                },
                 text: text
               });
               console.log('this is a new book:', newBook);
-
-              // console.log("Book saved", newBook);
             } catch (error) {
               console.error("Error saving to book:", error);
             }
-            // console.log(bookId, title, authors, image, text);
           } //closes for loop
         }) // closes .then()
         .catch(error => {
