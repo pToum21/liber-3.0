@@ -46,9 +46,10 @@ const resolvers = {
             if (!user) {
                 throw AuthenticationError;
             }
-
+            // this is comming from the user model itself
             const correctPw = await user.isCorrectPassword(password);
 
+            // check if it is the correct hashed password
             if (!correctPw) {
                 throw AuthenticationError;
             }
