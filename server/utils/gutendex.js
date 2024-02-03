@@ -1,7 +1,5 @@
 // Use axios to fetch
 const axios = require('axios');
-// require mongoose to save to database
-const mongoose = require('mongoose');
 // book model so we can make a new book to save to database
 const { Book } = require('../models');
 
