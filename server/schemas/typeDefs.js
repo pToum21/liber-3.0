@@ -56,7 +56,7 @@ input KeepBookInput {
 
 type Mutation {
     login(email: String!, password: String!): Auth
-   createUser(username: String!, email: String!, password: String!): Auth
+    createUser(username: String!, email: String!, password: String!): Auth
     keepBook(input: KeepBookInput!): User
     removeBook(_id: ID): User
 }
