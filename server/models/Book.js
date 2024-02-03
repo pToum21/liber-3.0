@@ -10,7 +10,7 @@ const bookSchema = new Schema({
   title: String,
   bookId: { type: Number, unique: true },
   authors: [authorSchema],
-  image: String,
+  image: BLOB('tiny'),
   text: String
 })
 

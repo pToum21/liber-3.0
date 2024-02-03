@@ -21,8 +21,11 @@ module.exports = async function fetchData() {
             const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
 
+            console.log(imageUrl);
+
+
             const imageResponse = await axios.get(imageUrl);
-              console.log('this is an image:',imageResponse.data)
+              // console.log('this is an image:',imageResponse.data)
 
             
             const textResponse = await axios.get(textUrl);
