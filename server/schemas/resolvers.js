@@ -89,14 +89,27 @@ const resolvers = {
                     // Find the book by its _id
                     const updatedBook = await Book.findById(bookId);
 
+                    // Log the entire updatedBook for debugging
+                    console.log('Updated Book:', updatedBook);
+
                     // Update the book with the new review
                     updatedBook.reviews.push(newReview);
                     await updatedBook.save();
 
-                    // Find the added review from the updatedBook
-                    const addedReview = updatedBook.reviews.find(
-                        (review) => review.userId && review.userId.toString() === user._id.toString()
-                    );
+                    // Log the structure of the reviews array in more detail
+                    console.log('Reviews Array:', updatedBook.reviews);
+
+                    // Log the user's _id to ensure it has a value
+                    console.log('User _id:', user._id);
+
+                    // Simplify the logic for finding the added review
+                    const matchingReviews = updatedBook.reviews.filter((review) => {
+                        return review.userId && review.userId.toString() === user._id.toString();
+                    });
+
+                    console.log('Matching Reviews:', matchingReviews);
+
+                    const addedReview = matchingReviews[0];
 
                     if (!addedReview) {
                         console.error('Review not found after update');
@@ -111,7 +124,15 @@ const resolvers = {
                         authors: updatedBook.authors,
                         image: updatedBook.image,
                         text: updatedBook.text,
-                        comments: addedReview.comments && addedReview.comments.map(comment => comment.comments),
+                        reviews: [{
+                            _id: addedReview._id,
+                            rating: addedReview.rating,  // Add rating if applicable
+                            comments: addedReview.comments && addedReview.comments.map(comment => ({
+                                _id: comment._id,
+                                userId: comment.userId,
+                                comments: comment.comments,
+                            })),
+                        }],
                     };
 
                     return responseData;
@@ -124,6 +145,7 @@ const resolvers = {
 
             throw AuthenticationError;
         },
+
 
 
 
