@@ -36,10 +36,13 @@ module.exports = async function fetchData() {
                 title: title,
                 bookId: bookId,
                 authors: bookData.authors,
-                // image: image,
+                image: {
+                  data: imageResponse.data,
+                  contentType: 'image/jpeg',
+                },
                 text: text
               });
-              // console.log('this is a new book:', newBook);
+              console.log('this is a new book:', newBook);
 
               // console.log("Book saved", newBook);
             } catch (error) {
