@@ -1,4 +1,5 @@
-const { User, Book, Review } = require('../models');
+const { User, Book } = require('../models');
+const Review = require('../models/Review')
 const { AuthenticationError, signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -74,20 +75,20 @@ const resolvers = {
             if (context.user) {
                 try {
                     const user = await User.findById(context.user._id);
-                    
+
                     const newComment = {
                         userId: user._id,
                         comments,
                     };
 
-                    // const newReview = new Review({
-                    //     userId: user._id,
-                    //     comments: [newComment],
-                    // });
+                    const newReview = new Review({
+                        userId: user._id,
+                        comments: [newComment],
+                    });
 
                     const updatedBook = await Book.findByIdAndUpdate(
                         bookId,
-                        { $push: { reviews: Review } },
+                        { $push: { reviews: newReview } },
                         { new: true }
                     );
 
