@@ -18,8 +18,12 @@ module.exports = async function fetchData() {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
-            const image = bookData.formats['image/jpeg'];
+            const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
+
+            const imageResponse = await axios.get(imageUrl);
+              console.log('this is an image:',imageResponse.data)
+
             
             const textResponse = await axios.get(textUrl);
             const text= textResponse.data;
@@ -29,10 +33,10 @@ module.exports = async function fetchData() {
                 title: title,
                 bookId: bookId,
                 authors: bookData.authors,
-                image: image,
+                // image: image,
                 text: text
               });
-              console.log('this is a new book:', newBook);
+              // console.log('this is a new book:', newBook);
 
               // console.log("Book saved", newBook);
             } catch (error) {
