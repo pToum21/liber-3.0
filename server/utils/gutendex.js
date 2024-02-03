@@ -14,11 +14,10 @@ module.exports = async function fetchData() {
       // fetch 32 books from page
       axios.get(apiUrl)
         .then(async (response) => {
-          for (let i = 0; i <= 32; i++) {
+          for (let i = 0; i < response.data.results.length; i++) {
             const bookData = response.data.results[i];
             const bookId = bookData.id;
             const title = bookData.title;
-            const authors = bookData.authors.map(author => author.name);
             const image = bookData.formats['image/jpeg'];
             const text = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`
 
