@@ -1,30 +1,30 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import Hidden from '@mui/material/Hidden';
-import './navbar.css'
 
 const StyledAppBar = styled(AppBar)({
     backgroundColor: '#161520',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat',
 });
 
 const StyledIconButton = styled(IconButton)({
     marginRight: 2,
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat',
 });
 
 const TitleTypography = styled(Typography)({
     marginRight: '50px',
-    fontSize: '1.8rem'
+    fontSize: '1.8rem',
 });
 
 const StyledTypography = styled(Typography)({
     flexGrow: 1,
     display: 'flex',
     alignItems: 'center',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat',
 });
 
 const NavBar = () => {
@@ -47,30 +47,58 @@ const NavBar = () => {
                     </StyledIconButton>
                 </Hidden>
 
-                <TitleTypography id="liber" variant="h6">
+                <TitleTypography id="liber" variant="h6" sx={{background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px'}}>
                     Liber
                 </TitleTypography>
 
                 <StyledTypography variant="h6">
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>MyLibrary</Button>
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        MyLibrary
+                    </Button>
+                    <TextField
+                        variant="outlined"
+                        size="small"
+                        placeholder="Search"
+                        sx={{
+                            marginLeft: '10px',
+                            fontFamily: 'Montserrat',
+                            '& .MuiOutlinedInput-root': {
+                                borderRadius: 0,
+                                color: 'white', 
+                            },
+                            '& .MuiInputBase-input': {
+                                fontFamily: 'Montserrat',
+                                color: 'white', 
+                            },
+                        }}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton edge="end" color="inherit">
+                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)' }} />
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
                 </StyledTypography>
 
                 <Hidden mdDown>
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>Books</Button>
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        Books
+                    </Button>
                 </Hidden>
 
                 <Hidden mdDown>
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>Log in</Button>
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        Log in
+                    </Button>
                 </Hidden>
 
                 <Hidden lgUp>
-                    <Menu
-                        id="responsive-menu"
-                        anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
-                        onClose={handleMenuClose}
-                    >
+                    <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                         <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Genres</MenuItem>
                         <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
                     </Menu>
                 </Hidden>
