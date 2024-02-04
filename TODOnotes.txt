@@ -1,4 +1,7 @@
-TODO: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
+TODO: 
+figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
+
+
 
 NOTES (can leave notes here detailing what you did):
 
@@ -8,7 +11,7 @@ from Ryan:
     front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
     For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
     
-    I made query to get all books, single book, and made a mutation to create user
+    I made query to get all books, single book, and made a mutation to create user and to login. All queries and mutations i made, i successfully tested in Sandbox first.
 
 
 

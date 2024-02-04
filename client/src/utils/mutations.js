@@ -14,3 +14,17 @@ mutation CreateUser($username: String!, $email: String!, $password: String!) {
   }
 }
 `;
+
+// logs user in and returns _id, username, and email
+export const LOGIN = gql `
+mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    user {
+      _id
+      username
+      email
+    }
+  }
+}
+`;
