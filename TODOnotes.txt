@@ -5,6 +5,11 @@ NOTES (can leave notes here detailing what you did):
 from Ryan: 
     i did npm run develop to make books collection in db again. Got a few errors that say couldnt fetch a whole page (i saw page 15 and 24, surely a few more that i couldnt notice since the data moves so fast in terminal). i npm run developed again because I noticed that if we are getting the dup errors, that maybe means we are fetching all over again, so maybe the page errors could be corrected since less new data is being put in. It did not work, because in compass we are still only at 573 documents. Since we expected 800 books to be fetched, this means we are missing 227, meaning thats about 7 pages that were not fetched.
 
-    made query to get all books
+    front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
+    For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
+    
+    I made query to get all books, single book, and made a mutation to create user
+
+
 
 EXTRA CODE:
