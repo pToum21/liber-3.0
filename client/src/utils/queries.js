@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 
 // may need to refactor the reviews part, because we may be unnecessarily querying ids or user info
 export const QUERY_ALL_BOOKS = gql`
-query Query {
+query allBooks {
     getBooks {
       _id
       title
@@ -30,4 +30,36 @@ query Query {
       }
     }
   }
+`;
+
+export const QUERY_ONE_BOOK = gql`
+query oneBook($id: ID!) {
+  getSingleBook(_id: $id) {
+    _id
+    title
+    bookId
+    authors {
+      name
+    }
+    image {
+      data
+    }
+    text
+    reviews {
+      _id
+      comments {
+        _id
+        userId
+        comments
+      }
+      rating
+      userId {
+        _id
+        username
+        email
+        role
+      }
+    }
+  }
+}
 `;
