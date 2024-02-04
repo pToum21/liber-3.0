@@ -20,8 +20,8 @@ const resolvers = {
 
             return bookData;
         },
-        getSingleBook: async (parent, { bookId }) => {
-            return Book.findOne({ _id: bookId });
+        getSingleBook: async (parent, { _id }) => {
+            return Book.findOne({ _id});
         }
     },
 
