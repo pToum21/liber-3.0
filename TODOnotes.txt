@@ -13,6 +13,10 @@ from Ryan:
     
     I made query to get all books, single book, and made a mutation to create user and to login. All queries and mutations i made, i successfully tested in Sandbox first.
 
+    i refactored main.jsx to use createBrowserRouter, made Home page component and inserted Outlet into App.jsx along with comments for how the process works.
+
+    When i get back, i will work on rendering image.
+
 
 
 EXTRA CODE:
