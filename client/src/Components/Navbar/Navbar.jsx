@@ -1,97 +1,70 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom'; // Import Link from your routing library
+import React from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { styled } from '@mui/system';
+import Hidden from '@mui/material/Hidden';
 
-function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+const StyledAppBar = styled(AppBar)({
+  backgroundColor: '#2196f3', // You can customize the color
+});
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
+const StyledIconButton = styled(IconButton)({
+  marginRight: 2,
+});
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+const StyledTypography = styled(Typography)({
+  flexGrow: 1,
+});
 
-    return (
-        <AppBar position="static" sx={{ backgroundColor: '#161520' }}>
-            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography
-                    variant="h6"
-                    noWrap
-                    component="a"
-                    href="#app-bar-with-responsive-menu"
-                    id='liber'
-                    sx={{
-                        ml: 2, // Adjusted margin
-                        display: { xs: 'none', md: 'flex' },
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
-                    }}
-                >
-                    Liber
-                </Typography>
+const NavBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Button
-                        onClick={handleCloseNavMenu}
-                        sx={{ mr: 60, my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
-                    >
-                        myLibrary
-                    </Button>
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleOpenNavMenu}
-                        color="inherit"
-                    >
-                    </IconButton>
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorElNav}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        open={Boolean(anchorElNav)}
-                        onClose={handleCloseNavMenu}
-                        sx={{
-                            display: { xs: 'block', md: 'none' },
-                        }}
-                    >
-                    </Menu>
-                </Box>
+  return (
+    <StyledAppBar position="sticky">
+      <Toolbar>
+        <Hidden lgUp>
+          {/* Display the hamburger icon only on screens smaller than lg */}
+          <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
+            <MenuIcon />
+          </StyledIconButton>
+        </Hidden>
+        <StyledTypography variant="h6">
+          Book Reader
+        </StyledTypography>
 
-                {/* "Log In" Button */}
-                <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button
-                        onClick={handleCloseNavMenu}
-                        sx={{ mr: 2, my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
-                    >
-                        Log In
-                    </Button>
-                </Link>
-            </Toolbar>
-        </AppBar>
-    );
-}
+        <Hidden mdDown>
+          {/* Display these buttons on medium and larger screens */}
+          <Button color="inherit">Books</Button>
+          <Button color="inherit">Genres</Button>
+          <Button color="inherit">MyLibrary</Button>
+          <Button color="inherit">Log in</Button>
+        </Hidden>
 
-export default Navbar;
+        <Hidden lgUp>
+          {/* Display these buttons on large screens (lgUp) */}
+          <Menu
+            id="responsive-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Genres</MenuItem>
+            <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+          </Menu>
+        </Hidden>
+      </Toolbar>
+    </StyledAppBar>
+  );
+};
+
+export default NavBar;
