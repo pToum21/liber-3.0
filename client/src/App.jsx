@@ -1,9 +1,10 @@
+import Navbar from './Components/Navbar/Navbar';
 import './styles/main.css';
 
 function App() {
   return (
     <>
-      <h1 id="liber">Liber</h1>
+    <Navbar />
       <p>This is just a test. Looks nice, yes?</p>
     </>
   )
