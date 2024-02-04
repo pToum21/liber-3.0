@@ -1,11 +1,14 @@
+import { Outlet } from 'react-router-dom';
+// components used in App.jsx (and should carry over to other pages)
 import Navbar from './Components/Navbar/Navbar';
+// css
 import './styles/main.css';
 
 function App() {
   return (
     <>
-    <Navbar />
-      <p>This is just a test. Looks nice, yes?</p>
+      <Navbar />
+      <Outlet />
     </>
   )
 }
