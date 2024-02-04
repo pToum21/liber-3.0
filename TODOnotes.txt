@@ -1,4 +1,4 @@
-TODO: 
+TODO: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
 NOTES (can leave notes here detailing what you did):
 
