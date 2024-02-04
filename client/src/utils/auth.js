@@ -12,12 +12,12 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
-//   passes token into function
+  //   passes token into function
   isTokenExpired(token) {
     try {
-        // decodes token to get expiration time (because initially, it holds payload, secret, expiration)
+      // decodes token to get expiration time (because initially, it holds payload, secret, expiration)
       const decoded = decode(token);
-    //  /1000 returns time in seconds as opposed to milliseconds. decoded.exp is in seconds, so if it compares against milliseconds, 
+      //  /1000 returns time in seconds as opposed to milliseconds. decoded.exp is in seconds, so if it compares against milliseconds, it will always be expired
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
@@ -34,7 +34,7 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-
+    // assigns url back to root
     window.location.assign('/');
   }
 
