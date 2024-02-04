@@ -23,7 +23,9 @@ in the home component i am going to render a small carousel to go at the top to 
 under this we can contunie with the home page the way it was layed up with the 5 books and whatever else we think of, just thought this addition added a professionally look.
 i updated the nav bar to have a search bar and be responsive using material ui
 
-
+from Sal :
+added apollo code to main.jsx and app.jsx. Also put a temporary signup form on the signup page. Can be modified.
+started on bookReader page but figured we could wait until Ryan gets the images showing up because then the data should be the same also. Started to work on login/modal work
 EXTRA CODE:
 
 
