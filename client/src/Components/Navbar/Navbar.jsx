@@ -1,96 +1,123 @@
-// import './navbar.css';
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import { styled } from '@mui/system';
+import Hidden from '@mui/material/Hidden';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const StyledAppBar = styled(AppBar)({
+    backgroundColor: '#161520',
+    fontFamily: 'Montserrat',
+});
 
-function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+const StyledIconButton = styled(IconButton)({
+    marginRight: 2,
+    fontFamily: 'Montserrat',
+});
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+const TitleTypography = styled(Typography)({
+    marginRight: '50px',
+    fontSize: '1.8rem',
+});
+
+const StyledTypography = styled(Typography)({
+    flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: 'Montserrat',
+});
+
+const NavBar = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [showSearchBar, setShowSearchBar] = useState(false);
+
+    const handleMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleSearchButtonClick = () => {
+        setShowSearchBar(!showSearchBar);
+        handleMenuClose();
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#161520' }}>
-            <Box maxWidth="xl">
-                <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        id='liber'
-                        sx={{
-                            ml: 4,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Liber
-                    </Typography>
+        <StyledAppBar position="sticky">
+            <Toolbar>
+                <Hidden mdUp>
+                    <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
+                        <MenuIcon />
+                    </StyledIconButton>
+                </Hidden>
 
-                    <Box sx={{ flexGrow: 1 }} />
+                <TitleTypography id="liber" variant="h6">
+                    Liber
+                </TitleTypography>
 
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleOpenNavMenu}
-                        color="inherit"
-                    >
-                    </IconButton>
+                <StyledTypography variant="h6">
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        MyLibrary
+                    </Button>
 
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorElNav}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        open={Boolean(anchorElNav)}
-                        onClose={handleCloseNavMenu}
-                        sx={{
-                            display: { xs: 'block', md: 'none' },
-                        }}
-                    >
-                       
+                    <Hidden mdDown>
+                        <TextField
+                            variant="outlined"
+                            size="small"
+                            placeholder="Search"
+                            sx={{
+                                marginLeft: '10px',
+                                fontFamily: 'Montserrat',
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: 0,
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    fontFamily: 'Montserrat',
+                                    color: 'white',
+                                },
+                            }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton edge="end" color="inherit">
+                                            <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px' }} />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </Hidden>
+                </StyledTypography>
+
+                <Hidden mdDown>
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        Books
+                    </Button>
+                </Hidden>
+
+                <Hidden mdDown>
+                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                        Log in
+                    </Button>
+                </Hidden>
+
+                <Hidden lgUp>
+                    <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                        <MenuItem onClick={handleSearchButtonClick}>
+                            <IconButton color="inherit">
+                                <SearchIcon />
+                            </IconButton>
+                        </MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
                     </Menu>
-
-                    <Box sx={{ pr: 4 }}>
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
-                        
-                        >
-                            myLibrary
-                        </Button>
-                    </Box>
-
-                </Toolbar>
-            </Box>
-        </AppBar>
+                </Hidden>
+            </Toolbar>
+        </StyledAppBar>
     );
-}
+};
 
-export default Navbar;
+export default NavBar;
