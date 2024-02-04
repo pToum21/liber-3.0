@@ -1,5 +1,5 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
@@ -28,7 +28,8 @@ const StyledTypography = styled(Typography)({
 });
 
 const NavBar = () => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [showSearchBar, setShowSearchBar] = useState(false);
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -38,16 +39,21 @@ const NavBar = () => {
         setAnchorEl(null);
     };
 
+    const handleSearchButtonClick = () => {
+        setShowSearchBar(!showSearchBar);
+        handleMenuClose();
+    };
+
     return (
         <StyledAppBar position="sticky">
             <Toolbar>
-                <Hidden lgUp>
+                <Hidden mdUp>
                     <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
                         <MenuIcon />
                     </StyledIconButton>
                 </Hidden>
 
-                <TitleTypography id="liber" variant="h6" sx={{background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px'}}>
+                <TitleTypography id="liber" variant="h6">
                     Liber
                 </TitleTypography>
 
@@ -55,32 +61,35 @@ const NavBar = () => {
                     <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
                         MyLibrary
                     </Button>
-                    <TextField
-                        variant="outlined"
-                        size="small"
-                        placeholder="Search"
-                        sx={{
-                            marginLeft: '10px',
-                            fontFamily: 'Montserrat',
-                            '& .MuiOutlinedInput-root': {
-                                borderRadius: 0,
-                                color: 'white', 
-                            },
-                            '& .MuiInputBase-input': {
+
+                    <Hidden mdDown>
+                        <TextField
+                            variant="outlined"
+                            size="small"
+                            placeholder="Search"
+                            sx={{
+                                marginLeft: '10px',
                                 fontFamily: 'Montserrat',
-                                color: 'white', 
-                            },
-                        }}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton edge="end" color="inherit">
-                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)' }} />
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: 0,
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    fontFamily: 'Montserrat',
+                                    color: 'white',
+                                },
+                            }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton edge="end" color="inherit">
+                                            <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px' }} />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </Hidden>
                 </StyledTypography>
 
                 <Hidden mdDown>
@@ -98,7 +107,11 @@ const NavBar = () => {
                 <Hidden lgUp>
                     <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                         <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Genres</MenuItem>
+                        <MenuItem onClick={handleSearchButtonClick}>
+                            <IconButton color="inherit">
+                                <SearchIcon />
+                            </IconButton>
+                        </MenuItem>
                         <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
                     </Menu>
                 </Hidden>
