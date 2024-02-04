@@ -16,6 +16,7 @@ const resolvers = {
             const bookData = await Book.find(args);
 
             console.log('Retrieved book data:', bookData);
+            
 
             return bookData;
         },
@@ -70,42 +71,43 @@ const resolvers = {
 
             throw AuthenticationError;
         },
-      
 
-        
+
+
         addReview: async (parent, { bookId, comments, rating }, context) => {
             if (context.user) {
                 try {
                     const user = await User.findById(context.user._id);
-        
+
                     const newComment = {
                         userId: user._id,
                         comments,
                     };
-        
+
                     const newReview = new Review({
+                        // _id
                         userId: user._id,
                         comments: [newComment],
                         rating: rating,
                     });
-        
-                    // Save the new review to get a unique _id
+
+                    // saves document into database (conmpass)
                     await newReview.save();
-        
+
                     // Find the book by its _id and update it with the new review's _id
                     const updatedBook = await Book.findById(bookId);
                     updatedBook.reviews.push(newReview._id); // Push the review's _id
                     await updatedBook.save();
-        
+
                     // Assuming you need to return the added review, fetch it back along with necessary book details
                     // Since reviews are now referenced by ID, fetch the detailed review directly if needed
                     const addedReview = await Review.findById(newReview._id);
-        
+
                     if (!addedReview) {
                         console.error('Review not found after update');
                         throw new Error('Review not found after update');
                     }
-        
+
                     // Structure the response as needed, including the bookId
                     const responseData = {
                         _id: addedReview._id,
@@ -114,19 +116,21 @@ const resolvers = {
                         authors: updatedBook.authors,
                         image: updatedBook.image,
                         text: updatedBook.text,
-                        reviews: [{
-                            _id: addedReview._id,
-                            comments: addedReview.comments.map(comment => ({
-                                _id: comment._id,
-                                userId: comment.userId,
-                                comments: comment.comments,
-                            })),
-                            rating: addedReview.rating, // Include the rating here
-                        }],
+                        reviews: [
+                            {
+                                _id: addedReview._id,
+                                comments: addedReview.comments.map(comment => ({
+                                    _id: comment._id,
+                                    userId: comment.userId,
+                                    comments: comment.comments,
+                                })),
+                                rating: addedReview.rating, // Include the rating here
+                            }
+                        ],
                     };
-        
+
                     return responseData;
-        
+
                 } catch (error) {
                     console.error('Error adding review:', error);
                     throw new Error('Error adding review');
@@ -135,7 +139,7 @@ const resolvers = {
                 throw new Error('Authentication Error'); // Adjust as per your error handling
             }
         },
-        
+
         removeBook: async (parent, { _id }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate({

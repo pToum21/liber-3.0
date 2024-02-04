@@ -20,7 +20,8 @@ module.exports = async function fetchData() {
             const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
 
-            const imageResponse = await axios.get(imageUrl);
+            const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const imageData = Buffer.from(imageResponse.data).toString('base64');
 
             const textResponse = await axios.get(textUrl);
             const text = textResponse.data;
@@ -32,7 +33,7 @@ module.exports = async function fetchData() {
                 bookId: bookId,
                 authors: bookData.authors,
                 image: {
-                  data: imageResponse.data,
+                  data: imageData,
                   contentType: 'image/jpeg',
                 },
                 text: text
@@ -47,7 +48,7 @@ module.exports = async function fetchData() {
               };
 
               console.log('info about book minus image & text bc they are long:', newBookShortData)
-              
+
             } catch (error) {
               console.error(`Error making new book`, error);
             }
