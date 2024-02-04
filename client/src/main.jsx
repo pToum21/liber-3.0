@@ -14,6 +14,16 @@ const router = createBrowserRouter([
     // these will be the children components and paths that will be injected into Outlet
     children: [
       // include objects here. each object will be a (url) path and element <>
+      {
+        // this index: true means home will be the default path that matches App.jsx, other children objects should not have index:true.
+        index: true,
+        element: <Home />
+      },
+      {
+        // (this is an example, can refer to or use as template)
+        // path: '/page',
+        // element: <Page />
+      }
     ]
   }
 ]);
