@@ -1,5 +1,4 @@
-const { User, Book } = require('../models');
-const Review = require('../models/Review')
+const { User, Book, Review } = require('../models');
 const { AuthenticationError, signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -137,15 +136,6 @@ const resolvers = {
             }
         },
         
-
-
-
-
-
-
-
-
-
         removeBook: async (parent, { _id }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate({
