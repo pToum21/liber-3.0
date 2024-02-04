@@ -20,10 +20,12 @@ module.exports = async function fetchData() {
             const imageUrl = bookData.formats['image/jpeg'];
             const textUrl = `https://www.gutenberg.org/ebooks/${bookId}.txt.utf-8`;
 
-            const imageResponse = await axios.get(imageUrl);
+            const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const imageData = Buffer.from(imageResponse.data).toString('base64');
 
             const textResponse = await axios.get(textUrl);
             const text = textResponse.data;
+
 
             try {
               const newBook = await Book.create({
@@ -31,22 +33,32 @@ module.exports = async function fetchData() {
                 bookId: bookId,
                 authors: bookData.authors,
                 image: {
-                  data: imageResponse.data,
+                  data: imageData,
                   contentType: 'image/jpeg',
                 },
                 text: text
               });
               // console.log('this is a new book:', newBook);
+
+              // just so we see our code at work when we npm run the app:
+              const newBookShortData = {
+                title: newBook.title,
+                bookId: newBook.bookId,
+                authors: newBook.authors,
+              };
+
+              console.log('info about book minus image & text bc they are long:', newBookShortData)
+
             } catch (error) {
-              // console.error("Error saving to book:", error);
+              console.error(`Error making new book`, error);
             }
           } //closes for loop
         }) // closes .then()
         .catch(error => {
-          // console.error(`Error fetching data from page ${page}:`, error);
+          console.error(`Error fetching data from page ${page}:`, error);
         });
     } catch (error) {
-      // console.error(`Error fetching and saving data from page ${page}:`, error);
+      console.error(`Error fetching and saving data from page ${page}:`, error);
     }
   }//ends function
 

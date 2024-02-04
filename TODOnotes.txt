@@ -13,3 +13,6 @@ extra code:
 
 
 peyton - in user model.js i added bcrypt and a custom function to check if password is correct.  I plan to then use that check inside of resolvers.
+
+
+**removeBook, why by _id and not bookId?
