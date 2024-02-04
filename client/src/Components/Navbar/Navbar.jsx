@@ -106,12 +106,12 @@ const NavBar = () => {
 
                 <Hidden lgUp>
                     <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
                         <MenuItem onClick={handleSearchButtonClick}>
                             <IconButton color="inherit">
                                 <SearchIcon />
                             </IconButton>
                         </MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
                         <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
                     </Menu>
                 </Hidden>
