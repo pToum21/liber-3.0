@@ -2,19 +2,22 @@ import decode from 'jwt-decode';
 
 class AuthService {
   getProfile() {
-    
+    // returns decoded user content from token
     return decode(this.getToken());
   }
 
   loggedIn() {
-    // Checks if there is a saved token and it's still valid
+    // Checks if there is a saved token and it's still valid (not expired)
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
   }
 
+//   passes token into function
   isTokenExpired(token) {
     try {
+        // decodes token to get expiration time (because initially, it holds payload, secret, expiration)
       const decoded = decode(token);
+    //  /1000 returns time in seconds as opposed to milliseconds. decoded.exp is in seconds, so if it compares against milliseconds, 
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
