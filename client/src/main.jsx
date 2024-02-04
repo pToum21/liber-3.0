@@ -6,6 +6,10 @@ import Error from './pages/Error.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import pages to be used as children
 import Home from './pages/Home.jsx';
+import MyLibrary from './pages/MyLibrary.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
+import SingleBook from './pages/SingleBook.jsx';
 
 // this establishes pages component structure and their paths
 const router = createBrowserRouter([
@@ -22,10 +26,21 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        // (this is an example, can refer to or use as template)
-        // path: '/page',
-        // element: <Page />
+        path:'/myLibrary',
+        element: <MyLibrary />
       },
+      {
+        path:'/login',
+        element: <Login />
+      },
+      {
+        path:'/signup',
+        element: <Signup />
+      },
+      {
+        path:'/singleBook',
+        element: <SingleBook />
+      }
     ]
   }
 ]);
