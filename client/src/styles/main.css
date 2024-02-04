@@ -1,4 +1,5 @@
 /* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
 @font-face {
     font-family: 'Coventry Garden';
@@ -12,6 +13,10 @@
 }
 
 * {
-    font-family: 'Jim Nightshade', cursive, arial;
-    font-size: 1.5rem;
+    /* font-family: 'Jim Nightshade', cursive, arial;
+     */
+
+    font-size: 1.2rem;
+
+    font-family: 'Montserrat';
 }
