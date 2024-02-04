@@ -1,9 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
 import Error from './pages/Error.jsx';
 // for routing process
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import pages to be used as children
+import Home from './pages/Home.jsx';
 
 // this establishes pages component structure and their paths
 const router = createBrowserRouter([
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
         // (this is an example, can refer to or use as template)
         // path: '/page',
         // element: <Page />
-      }
+      },
     ]
   }
 ]);
