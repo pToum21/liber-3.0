@@ -1,18 +1,6 @@
-TODO: comment and review feature for books
+TODO: 
 
 Notes (can leave notes here detailing what you did):
- fixed addReview mutation code to identify and fix the issue where reviews were not being correctly added and retrieved. The solution involved saving the review as a separate document in the database, then referencing this review in the book's reviews array by its _id. I also ensured the bookId was included in the response to prevent it from returning as null. This approach aligns with best practices for handling document relationships in MongoDB, ensuring data integrity and simplifying retrieval logic.
 
-changed bookId to string due to causing problems
-
-we added rating to the addRating function and now properly fixed the rating 
 
 extra code:
-
-  
-
-
-peyton - in user model.js i added bcrypt and a custom function to check if password is correct.  I plan to then use that check inside of resolvers.
-
-
-**removeBook, why by _id and not bookId?
