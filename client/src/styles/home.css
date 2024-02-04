@@ -1,4 +1,3 @@
-/* Home.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
 .carousel-slide {
@@ -6,31 +5,49 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-  }
-  
-  .carousel-slide .overlay {
+}
+
+.carousel-slide .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
-  
-  .carousel-slide img {
+}
+
+.carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(5px); 
-  }
-  
-  .text-overlay {
+    filter: blur(5px);
+}
+
+.text-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white; 
+    color: white;
     text-align: center;
-    font-family: 'Montserrat';
-  }
-  
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-overlay h2 {
+    font-size: 2rem;
+}
+
+.text-overlay p {
+    font-size: 1.2rem;
+}
+
+/* Media queries for smaller screens */
+@media only screen and (max-width: 768px) {
+    .text-overlay h2 {
+        font-size: 1rem;
+    }
+
+    .text-overlay p {
+        font-size: 1rem;
+    }
+}
