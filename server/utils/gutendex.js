@@ -24,7 +24,7 @@ module.exports = async function fetchData() {
 
             const textResponse = await axios.get(textUrl);
             const text = textResponse.data;
-            
+
 
             try {
               const newBook = await Book.create({
@@ -38,6 +38,16 @@ module.exports = async function fetchData() {
                 text: text
               });
               // console.log('this is a new book:', newBook);
+
+              // just so we see our code at work when we npm run the app:
+              const newBookShortData = {
+                title: newBook.title,
+                bookId: newBook.bookId,
+                authors: newBook.authors,
+              };
+
+              console.log('info about book minus image & text bc they are long:', newBookShortData)
+              
             } catch (error) {
               console.error(`Error making new book`, error);
             }
