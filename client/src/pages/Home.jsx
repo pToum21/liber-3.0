@@ -7,7 +7,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import image1 from '../assets/firstcarousel.jpg';
-import image2 from '../assets/secondcarousel.jpg'
+import image2 from '../assets/secondcarousel.jpg';
+import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 
 function Home() {
@@ -42,7 +43,7 @@ function Home() {
                 </div>
                 <div className="carousel-slide">
                     <div className="overlay">
-                        <img src={image1} alt="" />
+                        <img src={image3} alt="" />
                         <div className="text-overlay">
                             <h2>MyLibrary</h2>
                             <p>Add books directly to the MyLibrary section.  Once a book is added you can come back and read it whenever you like.  To gain access to the feature Sign Up or Log In Now! </p>
