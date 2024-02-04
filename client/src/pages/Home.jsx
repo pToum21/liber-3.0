@@ -1,27 +1,42 @@
-// this is likely where we will put div with scrolling books displaying
+// Home.js
 
-// maybe even include bookshelf here, but when books are a dull/grey color, so then when user is signed in, they light up or become more vibrant and this will be their library?
 import React from 'react';
-import { Carousel, CarouselItem, Paper, Typography } from '@mui/material';
+import Slider from 'react-slick';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const images = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
-];
+import image1 from '../assets/firstcarousel.jpg';
+import '../styles/home.css'; // Import your CSS file for styling
 
 function Home() {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+
     return (
-        <Carousel>
-            {images.map((image, index) => (
-                <CarouselItem key={index}>
-                    <Paper>
-                        <img src={image} alt={`slide-${index}`} style={{ width: '100%' }} />
-                    </Paper>
-                </CarouselItem>
-            ))}
-        </Carousel>
+        <div>
+            <Slider {...settings}>
+                <div className="carousel-slide">
+                    <div className="overlay">
+                        <img src={image1} alt="" />
+                        <div className="text-overlay">
+                            <p>Libre</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>Slide 2</p>
+                </div>
+                <div>
+                    <p>Slide 3</p>
+                </div>
+            </Slider>
+        </div>
     );
 }
 

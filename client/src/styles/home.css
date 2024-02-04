@@ -1,0 +1,36 @@
+/* Home.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+
+.carousel-slide {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px); 
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    text-align: center;
+    font-family: 'Montserrat';
+  }
+  
