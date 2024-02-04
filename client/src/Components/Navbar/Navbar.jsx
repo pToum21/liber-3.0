@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
@@ -58,9 +58,17 @@ const NavBar = () => {
                 </TitleTypography>
 
                 <StyledTypography variant="h6">
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
-                        MyLibrary
-                    </Button>
+                    <Hidden mdUp>
+                        <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            MyLibrary
+                        </Button>
+                    </Hidden>
+
+                    <Hidden mdDown>
+                        <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            MyLibrary
+                        </Button>
+                    </Hidden>
 
                     <Hidden mdDown>
                         <TextField
@@ -110,6 +118,11 @@ const NavBar = () => {
                             <IconButton color="inherit">
                                 <SearchIcon />
                             </IconButton>
+                        </MenuItem>
+                        <MenuItem>
+                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                                MyLibrary
+                            </Button>
                         </MenuItem>
                         <MenuItem onClick={handleMenuClose}>Books</MenuItem>
                         <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
