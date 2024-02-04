@@ -6,9 +6,11 @@ import { useParams } from 'react-router-dom'
 function BookReader() {
     const { bookId } = useParams();
 
-    const { loading, data } = useQuery(QUERY_ONE_BOOK);
+    const { loading, data } = useQuery(QUERY_ONE_BOOK, {
+        variables: { id: bookId}
+    });
 
-    const book = data?.book || [];
+    const book = data?.book || {};
 
     console.log(book);
 

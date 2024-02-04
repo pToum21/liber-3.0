@@ -39,11 +39,11 @@ const router = createBrowserRouter([
         element: <Signup />
       },
       {
-        path:'/singleBook',
+        path:'/singleBook/:id',
         element: <SingleBook />
       }, 
       {
-        path:'/bookReader',
+        path:'/bookReader/:bookId',
         element: <BookReader />
       }
     ]
