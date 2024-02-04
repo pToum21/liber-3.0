@@ -1,3 +1,5 @@
+/* home.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
 .carousel-slide {
@@ -31,6 +33,7 @@
     color: white;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    z-index: 1;
 }
 
 .text-overlay h2 {
@@ -39,6 +42,20 @@
 
 .text-overlay p {
     font-size: 1.2rem;
+}
+
+/* Carousel dots styles */
+.slick-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 90%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+}
+
+.slick-dots li button {
+    font-size: 20px;
 }
 
 /* Media queries for smaller screens */
