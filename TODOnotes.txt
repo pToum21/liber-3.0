@@ -18,5 +18,11 @@ from Ryan:
     When i get back, i will work on rendering image.
 
 
+from Peyton : 
+in the home component i am going to render a small carousel to go at the top to display so images purley for look
+i updated the nav bar to have a search bar and be responsive using material ui
+
 
 EXTRA CODE:
+
+
