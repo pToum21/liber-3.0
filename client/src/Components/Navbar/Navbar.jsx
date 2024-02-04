@@ -29,7 +29,7 @@ function Navbar() {
                     href="#app-bar-with-responsive-menu"
                     id='liber'
                     sx={{
-                        ml: 4,
+                        ml: 2, // Adjusted margin
                         display: { xs: 'none', md: 'flex' },
                         fontFamily: 'monospace',
                         fontWeight: 700,
@@ -44,7 +44,7 @@ function Navbar() {
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Button
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
+                        sx={{ mr: 60, my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
                     >
                         myLibrary
                     </Button>
@@ -84,7 +84,7 @@ function Navbar() {
                 <Link to="/login" style={{ textDecoration: 'none' }}>
                     <Button
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
+                        sx={{ mr: 2, my: 2, color: 'white', fontFamily: 'Jim Nightshade', fontSize: '1.1rem' }}
                     >
                         Log In
                     </Button>
