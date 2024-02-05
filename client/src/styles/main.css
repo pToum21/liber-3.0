@@ -1,25 +1,26 @@
-body {
-    margin: 0
+/* main color scheme: dark purple is #161520, limegreen is #a7faa1, and also "antiquewhite"*/
+* {
+    /* use outline for testing */
+    /* outline: 1px solid red; */
+    font-size: 1.2rem;
+    font-family: 'Gruppo';
+    /* font-family: 'Montserrat'; */
+    color: antiquewhite;
 }
-
-
-/* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
 body {
     margin: 0;
     padding: 0;
+    background: linear-gradient(#201f2c, #161520, #000000);
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 p {
     margin: 0;
 }
 
-* {
-    /* outline: 1px solid red; */
-}
-
-
+/* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
 @font-face {
     font-family: 'Coventry Garden';
     src: url('../../coventry-garden.regular.ttf') format('truetype');
@@ -30,10 +31,4 @@ p {
 #liber {
     font-family: 'Coventry Garden', sans-serif;
     font-size: 2rem;
-}
-
-* {
-
-    font-size: 1.2rem;
-    font-family: 'Montserrat';
 }

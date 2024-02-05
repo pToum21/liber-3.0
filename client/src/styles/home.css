@@ -1,6 +1,11 @@
 /* home.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+/* in carousel, margins for text wasn't uniform; found out default for h2 added noticeable margins that made it off-balanced, forcefully removed them, added margin bottom to distance head of carousel text from rest of text */
+.text-title {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+    margin-bottom: 1em !important;
+}
 
 .carousel-slide {
     height: 275px;
@@ -56,6 +61,18 @@
 
 .slick-dots li button {
     font-size: 20px;
+}
+
+/* dot color before its slide comes up */
+.slick-dots li button:before {
+    opacity: 0.50 !important;
+    color: antiquewhite !important;
+}
+
+/* active slide dot */
+.slick-dots li.slick-active button:before {
+    opacity: 1 !important;
+    color: #a7faa1 !important;
 }
 
 /* Media queries for smaller screens */
