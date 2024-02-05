@@ -9,8 +9,6 @@ import image1 from '../assets/firstcarousel.jpg';
 import image2 from '../assets/secondcarousel.jpg';
 import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
-// mui components
-import Grid from "@mui/material/Grid";
 
 function Home() {
     const settings = {
