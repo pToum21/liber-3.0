@@ -94,9 +94,9 @@ const NavBar = () => {
                         size="small"
                         placeholder="Search"
                         sx={{
-                            // placeholder text
+                            // this is not placeholder text
                             '& .MuiOutlinedInput-root': {
-                                color: 'white',
+                                color: 'red',
                             },
                             // user input text
                             '& .MuiInputBase-input': {
@@ -111,7 +111,7 @@ const NavBar = () => {
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <IconButton edge="end" color="inherit">
-                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px' }} />
+                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #008080, #bdfbe7)', borderRadius: '10px', padding: '4px' }} />
                                     </IconButton>
                                 </InputAdornment>
                             ),
