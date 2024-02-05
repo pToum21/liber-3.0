@@ -12,17 +12,18 @@ const StyledIconButton = styled(IconButton)({
     fontFamily: 'Montserrat',
 });
 
+// Liber brand
 const TitleTypography = styled(Typography)({
     fontSize: '2.5rem',
 });
-
+// buttons pre-nav burger menu
 const StyledTypography = styled(Typography)({
     display: 'flex',
     marginLeft: '2rem',
     fontFamily: 'Montserrat',
-
 });
 
+// functionality for nav menu
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
@@ -54,8 +55,10 @@ const NavBar = () => {
         <>
             {/* parent */}
             <Grid container id="nav-parent" style={{ backgroundColor: "#161520", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
+
                 {/* child 1 */}
                 <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
+
                     {/* brand */}
                     <Hidden mdUp>
                         <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
@@ -84,7 +87,7 @@ const NavBar = () => {
                     </StyledTypography>
                 </Grid>
 
-                {/* search bar */}
+                {/* child 2 / search bar */}
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right" }}>
                     <TextField
                         variant="outlined"
