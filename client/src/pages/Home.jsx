@@ -11,6 +11,11 @@ import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 // import mui
 import { Grid } from '@mui/material';
+// hooks from apollo
+import { useQuery } from '@apollo/client';
+// import any queries and mutations
+import { QUERY_ALL_BOOKS } from '../utils/queries';
+
 
 function Home() {
     const settings = {
@@ -24,9 +29,31 @@ function Home() {
         autoplaySpeed: 7000,
     };
 
+    // using our query to get data from db
+    const { loading, data } = useQuery(QUERY_ALL_BOOKS);
+
+    // data under the method of getBooks is an array of 589(currently) elements, and all 589 are grouped into sub arrays; each subarray holds 100 books.
+
+    // this log works, shows all the books
+    console.log(data);
+
+    // TODO: put this logic into books div, probs via props, otherwise whole page will say loading; only commented out for now so loading thing doesnt take up the page while others code.
+    // if (loading) {
+    //     return <p>Loading...</p>;
+    // };
+
+    // if (!data || !data.getBooks) {
+    //     // Data or getBooks is undefined, we handle accordingly (e.g., show an error message)
+    //     return <p>Error loading data</p>;
+    // };
+
+    // this is returning undefined
+    // console.log(data.getBooks[0][0]);
+
+
+
     return (
         <>
-   
             {/* Slick carousel */}
             <div>
                 <Slider {...settings}>
@@ -61,7 +88,11 @@ function Home() {
             </div>
 
             {/* all books div*/}
-            <Grid container></Grid>
+            <Grid container>
+                <div>
+
+                </div>
+            </Grid>
 
 
         </>
