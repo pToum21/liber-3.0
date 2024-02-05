@@ -109,6 +109,10 @@ const NavBar = () => {
                             '& .MuiInputBase-input': {
                                 color: 'white',
                             },
+                            // outlined input outline
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: 'white',
+                            },
                         }}
                         InputProps={{
                             endAdornment: (
@@ -120,7 +124,16 @@ const NavBar = () => {
                             ),
                         }}
                     />
+                    <Hidden lgUp>
+                        <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                            <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+                        </Menu>
+                    </Hidden>
                 </Grid>
+                {/* hamburger menu items */}
+
                 <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
                     <div>
                         <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
@@ -130,15 +143,6 @@ const NavBar = () => {
             </Grid>
         </>
 
-        //         <Hidden lgUp>
-        //             <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-        //                 
-        //                 <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-        //                 <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
-        //             </Menu>
-        //         </Hidden>
-        //     </Toolbar>
-        // </StyledAppBar>
     );
 };
 

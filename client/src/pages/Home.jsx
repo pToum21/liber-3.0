@@ -9,8 +9,6 @@ import image1 from '../assets/firstcarousel.jpg';
 import image2 from '../assets/secondcarousel.jpg';
 import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
-// mui components
-import Grid from "@mui/material/Grid";
 
 function Home() {
     const settings = {
@@ -57,19 +55,6 @@ function Home() {
                     </div>
                 </Slider>
             </div>
-
-            <Grid container space={2}>
-                {/* scroll books */}
-                <Grid item xs={12}>
-                    {/* content */}
-                    hooo
-                    hiiii
-                </Grid>
-                {/* 3d book and shelf */}
-                <Grid item xs={12}>
-                    {/* content */}
-                </Grid>
-            </Grid>
         </>
     );
 }

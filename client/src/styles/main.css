@@ -1,3 +1,8 @@
+body {
+    margin: 0
+}
+
+
 /* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
@@ -24,6 +29,7 @@ p {
 
 #liber {
     font-family: 'Coventry Garden', sans-serif;
+    font-size: 2rem;
 }
 
 * {
