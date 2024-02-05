@@ -1,22 +1,30 @@
 /* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+
 @font-face {
     font-family: 'Coventry Garden';
     src: url('../../coventry-garden.regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+}
 
 #liber {
     font-family: 'Coventry Garden', sans-serif;
 }
 
 * {
-    /* font-family: 'Jim Nightshade', cursive, arial;
-     */
 
     font-size: 1.2rem;
-
     font-family: 'Montserrat';
 }

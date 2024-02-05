@@ -16,15 +16,17 @@ const StyledIconButton = styled(IconButton)({
 });
 
 const TitleTypography = styled(Typography)({
-    marginRight: '50px',
-    fontSize: '1.8rem',
+    marginLeft: '2rem',
+    fontSize: '2.5rem',
+    // maginRight: '', 
+    flex: 1
 });
 
 const StyledTypography = styled(Typography)({
-    flexGrow: 1,
     display: 'flex',
-    alignItems: 'center',
+    // marginLeft: '-25%',
     fontFamily: 'Montserrat',
+    flex: 4
 });
 
 const NavBar = () => {
@@ -45,37 +47,52 @@ const NavBar = () => {
     };
 
     return (
-        <StyledAppBar position="sticky">
-            <Toolbar>
-                <Hidden mdUp>
+        <>
+            {/* parent */}
+            <div id="Nav" style={{ backgroundColor: "#78ffdb", display: "flex", justifyContent: "space-between" }}>
+
+                {/* brand */}
+                <Hidden smUp>
                     <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
                         <MenuIcon />
                     </StyledIconButton>
                 </Hidden>
-
                 <TitleTypography id="liber" variant="h6">
                     Liber
                 </TitleTypography>
 
+                {/* nav buttons*/}
                 <StyledTypography variant="h6">
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
-                        MyLibrary
-                    </Button>
+                    <Hidden smDown>
+                        <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            MyLibrary
+                        </Button>
 
-                    <Hidden mdDown>
+                        <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            Books
+                        </Button>
+
+                        <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            Log in
+                        </Button>
+                    </Hidden>
+                </StyledTypography>
+
+                {/* search bar */}
+                <Hidden mdDown >
+                    <div style={{ display: "flex", alignItems: "center", marginRight: "2rem", flex: "4", justifyContent: "right" }}>
                         <TextField
+                       
                             variant="outlined"
                             size="small"
                             placeholder="Search"
                             sx={{
-                                marginLeft: '10px',
-                                fontFamily: 'Montserrat',
+                                // placeholder text
                                 '& .MuiOutlinedInput-root': {
-                                    borderRadius: 0,
                                     color: 'white',
                                 },
+                                // user input text
                                 '& .MuiInputBase-input': {
-                                    fontFamily: 'Montserrat',
                                     color: 'white',
                                 },
                             }}
@@ -89,34 +106,32 @@ const NavBar = () => {
                                 ),
                             }}
                         />
-                    </Hidden>
-                </StyledTypography>
-
-                <Hidden mdDown>
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
-                        Books
-                    </Button>
+                    </div>
                 </Hidden>
 
-                <Hidden mdDown>
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
-                        Log in
-                    </Button>
-                </Hidden>
+            </div>
+        </>
 
-                <Hidden lgUp>
-                    <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                        <MenuItem onClick={handleSearchButtonClick}>
-                            <IconButton color="inherit">
-                                <SearchIcon />
-                            </IconButton>
-                        </MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
-                    </Menu>
-                </Hidden>
-            </Toolbar>
-        </StyledAppBar>
+        //  
+
+
+
+
+
+
+        //         </StyledTypography>
+
+        //        
+
+        //         <Hidden lgUp>
+        //             <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+        //                 
+        //                 <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+        //                 <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+        //             </Menu>
+        //         </Hidden>
+        //     </Toolbar>
+        // </StyledAppBar>
     );
 };
 
