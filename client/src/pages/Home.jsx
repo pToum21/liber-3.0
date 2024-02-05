@@ -30,7 +30,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image2} alt="" />
                             <div className="text-overlay">
-                                <h2>LOTS OF EBOOKS. 100 % FREE</h2>
+                                <h2 className="text-title">LOTS OF EBOOKS. 100 % FREE</h2>
                                 <p>Welcome to your friendly neighborhood library. We have more than 50,000 free ebooks waiting to be discovered.</p>
                             </div>
                         </div>
@@ -39,7 +39,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <h2>FREE AND DISCOUNTED BESTSELLERS</h2>
+                                <h2 className="text-title">FREE AND DISCOUNTED BESTSELLERS</h2>
                                 <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. </p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <h2>MyLibrary</h2>
+                                <h2 className="text-title">MyLibrary</h2>
                                 <p>Add books directly to the MyLibrary section.  Once a book is added you can come back and read it whenever you like.  To gain access to the feature Sign Up or Log In Now! </p>
                             </div>
                         </div>

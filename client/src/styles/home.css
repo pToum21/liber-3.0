@@ -1,5 +1,12 @@
 /* home.css */
 
+/* in carousel, margins for text wasn't uniform; found out default for h2 added noticeable margins that made it off-balanced, forcefully removed them, added margin bottom to distance head of carousel text from rest of text */
+.text-title {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+    margin-bottom: 1em !important;
+}
+
 .carousel-slide {
     height: 275px;
     width: 100%;
