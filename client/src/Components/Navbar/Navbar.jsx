@@ -20,7 +20,7 @@ const StyledIconButton = styled(IconButton)({
 });
 
 const TitleTypography = styled(Typography)({
-  
+
     fontSize: '2.5rem',
     // maginRight: '', 
 
@@ -121,20 +121,17 @@ const NavBar = () => {
                         }}
                     />
                 </Grid>
-
+                <Hidden lgUp>
+                    <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                        <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+                    </Menu>
+                </Hidden>
 
             </Grid>
-        </>   
+        </>
 
-        //         <Hidden lgUp>
-        //             <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-        //                 
-        //                 <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-        //                 <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
-        //             </Menu>
-        //         </Hidden>
-        //     </Toolbar>
-        // </StyledAppBar>
     );
 };
 
