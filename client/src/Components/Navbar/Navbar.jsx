@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, Grid } from '@mui/material';
+import { AppBar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
@@ -8,22 +8,12 @@ import { Modal } from '@mui/material';
 import Login from '../../pages/Login';
 import './navbar.css';
 
-
-const StyledAppBar = styled(AppBar)({
-    backgroundColor: '#161520',
-    fontFamily: 'Montserrat',
-});
-
 const StyledIconButton = styled(IconButton)({
-    // marginRight: 2,
     fontFamily: 'Montserrat',
 });
 
 const TitleTypography = styled(Typography)({
-
     fontSize: '2.5rem',
-    // maginRight: '', 
-
 });
 
 const StyledTypography = styled(Typography)({
@@ -93,8 +83,8 @@ const NavBar = () => {
                         </Hidden>
                     </StyledTypography>
                 </Grid>
-                {/* search bar */}
 
+                {/* search bar */}
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right" }}>
                     <TextField
                         variant="outlined"
@@ -124,6 +114,8 @@ const NavBar = () => {
                             ),
                         }}
                     />
+
+                    {/* hamburger menu items */}
                     <Hidden lgUp>
                         <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                             <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
@@ -132,7 +124,6 @@ const NavBar = () => {
                         </Menu>
                     </Hidden>
                 </Grid>
-                {/* hamburger menu items */}
 
                 <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
                     <div>
