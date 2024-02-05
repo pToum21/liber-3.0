@@ -1,22 +1,29 @@
 TODO: 
-figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
+- CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
+- FIGURE OUT FETCH SO WE GET ALL 800 BOOKS: Got a few errors that say couldnt fetch a whole page (i saw page 15 and 24, surely a few more that i couldnt notice since the data moves so fast in terminal). i npm run developed again because I noticed that if we are getting the dup errors, that maybe means we are fetching all over again, so maybe the page errors could be corrected since less new data is being put in. It did not work, because in compass we are still only at 573 documents in the books collection. Since we expected 800 books to be fetched, this means we are missing 227, meaning thats about 7 pages that were not fetched.
+
+- NAV MENU - change background color of dropdown menu to a slightly lighter than dark purple we have for color scheme; make the nav menu button's background color also slightly lighter than the dark purple we have been using
+
+=============================================
 
 NOTES (can leave notes here detailing what you did):
 
-from Ryan: 
-    i did npm run develop to make books collection in db again. Got a few errors that say couldnt fetch a whole page (i saw page 15 and 24, surely a few more that i couldnt notice since the data moves so fast in terminal). i npm run developed again because I noticed that if we are getting the dup errors, that maybe means we are fetching all over again, so maybe the page errors could be corrected since less new data is being put in. It did not work, because in compass we are still only at 573 documents in the books collection. Since we expected 800 books to be fetched, this means we are missing 227, meaning thats about 7 pages that were not fetched.
+General notes: 
+
+    always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
     front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
     For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
+
+    ===================================================
+
+from Ryan: 
+    2/4- just made minor changes to clean up code by deleting unused/unnecessary comments and imports, changed colors and fonts and fixed spacing details via margins and paddings, etc.
+
+    2/5- adjusted minor styles in navbar, worked on useQuery in Home to work on rendering data. console logging data works, but still unable to console log one element from data; keeps coming back as undefined.
     
-    I made query to get all books, single book, and made a mutation to create user and to login. All queries and mutations i made, i successfully tested in Sandbox first.
-
-    i refactored main.jsx to use createBrowserRouter, made Home page component and inserted Outlet into App.jsx along with comments for how the process works.
-
-    When i get back, i will work on rendering image.
-
 
 from Peyton : 
         in the home component i am going to render a small carousel to go at the top to display so images purley for look

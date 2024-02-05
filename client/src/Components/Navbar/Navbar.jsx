@@ -1,38 +1,22 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, Grid } from '@mui/material';
+import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import Hidden from '@mui/material/Hidden';
-import { Modal } from '@mui/material';
 import Login from '../../pages/Login';
 import './navbar.css';
 
-
-const StyledAppBar = styled(AppBar)({
-    backgroundColor: '#161520',
-    fontFamily: 'Montserrat',
-});
-
-const StyledIconButton = styled(IconButton)({
-    // marginRight: 2,
-    fontFamily: 'Montserrat',
-});
-
+// Liber brand
 const TitleTypography = styled(Typography)({
-
     fontSize: '2.5rem',
-    // maginRight: '', 
-
 });
-
+// buttons pre-nav burger menu
 const StyledTypography = styled(Typography)({
     display: 'flex',
     marginLeft: '2rem',
-    fontFamily: 'Montserrat',
-
 });
 
+// functionality for nav menu
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
@@ -63,67 +47,73 @@ const NavBar = () => {
     return (
         <>
             {/* parent */}
-            <Grid container id="nav-parent" style={{ backgroundColor: "#161520", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
+            <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
+
                 {/* child 1 */}
                 <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
-                    {/* brand */}
+
+                    {/* nav menu, which will replace StyledTypography */}
                     <Hidden mdUp>
-                        <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
                             <MenuIcon />
-                        </StyledIconButton>
+                        </IconButton>
                     </Hidden>
+                     {/* brand */}
                     <TitleTypography id="liber" variant="h6">
-                        Liber
+                        {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                     </TitleTypography>
 
                     {/* nav buttons*/}
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
                                 MyLibrary
                             </Button>
 
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
                                 Books
                             </Button>
 
-                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Gruppo' }}>
                                 Login
                             </Button>
                         </Hidden>
                     </StyledTypography>
                 </Grid>
-                {/* search bar */}
 
+                {/* child 2 / search bar */}
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right" }}>
                     <TextField
                         variant="outlined"
                         size="small"
                         placeholder="Search"
                         sx={{
-                            // placeholder text
+                            // this is not placeholder text, idk what it is
                             '& .MuiOutlinedInput-root': {
                                 color: 'white',
                             },
-                            // user input text
+                            // this is placeholder text and user input text
                             '& .MuiInputBase-input': {
-                                color: 'white',
+                                color: '#78ffdb',
+                                fontFamily: 'Gruppo'
                             },
                             // outlined input outline
                             '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'white',
+                                borderColor: 'antiquewhite',
                             },
                         }}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <IconButton edge="end" color="inherit">
-                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #ff9966, #ff5e62)', borderRadius: '10px' }} />
+                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #008080, #bdfbe7)', borderRadius: '10px', padding: '4px' }} />
                                     </IconButton>
                                 </InputAdornment>
                             ),
                         }}
                     />
+
+                    {/* hamburger menu items */}
                     <Hidden lgUp>
                         <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                             <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
@@ -132,7 +122,6 @@ const NavBar = () => {
                         </Menu>
                     </Hidden>
                 </Grid>
-                {/* hamburger menu items */}
 
                 <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
                     <div>
