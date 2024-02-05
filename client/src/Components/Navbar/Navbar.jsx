@@ -94,17 +94,17 @@ const NavBar = () => {
                         size="small"
                         placeholder="Search"
                         sx={{
-                            // this is not placeholder text
+                            // this is not placeholder text, idk what it is
                             '& .MuiOutlinedInput-root': {
-                                color: 'red',
-                            },
-                            // user input text
-                            '& .MuiInputBase-input': {
                                 color: 'white',
+                            },
+                            // this is placeholder text and user input text
+                            '& .MuiInputBase-input': {
+                                color: '#78ffdb',
                             },
                             // outlined input outline
                             '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'white',
+                                borderColor: 'antiquewhite',
                             },
                         }}
                         InputProps={{
