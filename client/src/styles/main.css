@@ -1,6 +1,6 @@
 /* use outline for testing */
 * {
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
     font-size: 1.2rem;
     font-family: 'Montserrat';
 }
@@ -8,7 +8,9 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(#242424, #1e1e1e, #111111, #000000);
+    background: linear-gradient(#201f2c, #161520, #000000);
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 p {
