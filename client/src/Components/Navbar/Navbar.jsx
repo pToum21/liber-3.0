@@ -6,6 +6,7 @@ import { styled } from '@mui/system';
 import Hidden from '@mui/material/Hidden';
 import { Modal } from '@mui/material';
 import Login from '../../pages/Login'
+import { Link } from 'react-router-dom';
 
 
 const StyledAppBar = styled(AppBar)({
@@ -66,8 +67,11 @@ const NavBar = () => {
                     </StyledIconButton>
                 </Hidden>
 
-                <TitleTypography id="liber" variant="h6">
-                    Liber
+                <TitleTypography  variant="h6">
+                    <Link to='/' id="liber" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        Liber
+                    </Link>
+
                 </TitleTypography>
 
                 <StyledTypography variant="h6">
