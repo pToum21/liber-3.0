@@ -1,1 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+
+@media (max-width: 505px) {
+    #nav-parent {
+        justify-content: center !important
+    }
+
+    #searchbar {
+        margin-right: 0 
+    }
+}
+
