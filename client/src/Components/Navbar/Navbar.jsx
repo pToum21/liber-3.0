@@ -72,15 +72,15 @@ const NavBar = () => {
                     {/* nav buttons*/}
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
                                 MyLibrary
                             </Button>
 
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
                                 Books
                             </Button>
 
-                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Gruppo' }}>
                                 Login
                             </Button>
                         </Hidden>
