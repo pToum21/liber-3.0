@@ -9,6 +9,10 @@ const Login = ({ open, onClose }) => {
     const avatarStyle = { backgroundColor: '#1bbd7e' };
     const btnStyle = { margin: '8px 0' };
 
+    const handleSignUpModalClose = () => {
+        setSignUpModalOpen(false);
+    };
+
 
     const textFieldStyle = { marginBottom: '16px' };
 
@@ -51,7 +55,7 @@ const Login = ({ open, onClose }) => {
                         </Link>
                     </Typography>
                     <Typography> Do you have an account?
-                        <Link component={RouterLink} to="/signup">
+                        <Link component={RouterLink} to="/signup" onClick={handleSignUpModalClose}>
                             Sign Up
                         </Link>
                     </Typography>
