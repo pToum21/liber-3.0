@@ -109,6 +109,10 @@ const NavBar = () => {
                             '& .MuiInputBase-input': {
                                 color: 'white',
                             },
+                            // outlined input outline
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: 'white',
+                            },
                         }}
                         InputProps={{
                             endAdornment: (
