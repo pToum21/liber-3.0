@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import Hidden from '@mui/material/Hidden';
+import { Modal } from '@mui/material';
+import Login from '../../pages/Login'
+
 
 const StyledAppBar = styled(AppBar)({
     backgroundColor: '#161520',
@@ -32,6 +35,7 @@ const StyledTypography = styled(Typography)({
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -44,6 +48,15 @@ const NavBar = () => {
     const handleSearchButtonClick = () => {
         setShowSearchBar(!showSearchBar);
         handleMenuClose();
+    };
+
+    const handleLoginClick = () => {
+        setLoginModalOpen(true);
+        handleMenuClose();
+    };
+
+    const handleLoginModalClose = () => {
+        setLoginModalOpen(false);
     };
 
     return (
@@ -111,12 +124,6 @@ const NavBar = () => {
 
             </div>
         </>
-
-        //  
-
-
-
-
 
 
         //         </StyledTypography>
