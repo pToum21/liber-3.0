@@ -121,6 +121,7 @@ const NavBar = () => {
                         }}
                     />
                 </Grid>
+                {/* hamburger menu items */}
                 <Hidden lgUp>
                     <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                         <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
