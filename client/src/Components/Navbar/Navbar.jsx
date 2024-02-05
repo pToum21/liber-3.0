@@ -54,7 +54,7 @@ const NavBar = () => {
     return (
         <>
             {/* parent */}
-            <Grid container id="nav-parent" style={{ backgroundColor: "#161520", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
+            <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
 
                 {/* child 1 */}
                 <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
@@ -101,6 +101,7 @@ const NavBar = () => {
                             // this is placeholder text and user input text
                             '& .MuiInputBase-input': {
                                 color: '#78ffdb',
+                                fontFamily: 'Gruppo'
                             },
                             // outlined input outline
                             '& .MuiOutlinedInput-notchedOutline': {
