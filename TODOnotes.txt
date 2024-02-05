@@ -12,7 +12,7 @@ General notes:
     For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
 
 from Ryan: 
-    i did npm run develop to make books collection in db again. 
+    
 
 from Peyton : 
         in the home component i am going to render a small carousel to go at the top to display so images purley for look
