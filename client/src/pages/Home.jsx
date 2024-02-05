@@ -57,19 +57,6 @@ function Home() {
                     </div>
                 </Slider>
             </div>
-
-            <Grid container space={2}>
-                {/* scroll books */}
-                <Grid item xs={12}>
-                    {/* content */}
-                    hooo
-                    hiiii
-                </Grid>
-                {/* 3d book and shelf */}
-                <Grid item xs={12}>
-                    {/* content */}
-                </Grid>
-            </Grid>
         </>
     );
 }
