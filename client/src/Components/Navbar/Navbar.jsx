@@ -87,7 +87,7 @@ const NavBar = () => {
                                 Books
                             </Button>
 
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Montserrat' }}>
                                 Login
                             </Button>
                         </Hidden>
@@ -124,15 +124,21 @@ const NavBar = () => {
                             ),
                         }}
                     />
+                    <Hidden lgUp>
+                        <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                            <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>Books</MenuItem>
+                            <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+                        </Menu>
+                    </Hidden>
                 </Grid>
                 {/* hamburger menu items */}
-                <Hidden lgUp>
-                    <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                        <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
-                    </Menu>
-                </Hidden>
+
+                <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                    <div>
+                        <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+                    </div>
+                </Modal>
 
             </Grid>
         </>
