@@ -20,10 +20,6 @@ function Home() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 7000,
-        customPaging: function (i) {
-            // You can customize the dot appearance here
-            return <div style={{ width: '5px', height: '5px', background: i === 0 ? '#78ffdb' : 'white', borderRadius: '5px' }} />;
-        },
     };
 
     return (
@@ -61,6 +57,6 @@ function Home() {
             </div>
         </>
     );
-};
+}
 
 export default Home;
