@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link, FormControlLabel, Checkbox } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link as RouterLink } from 'react-router-dom';
 import { Modal } from '@mui/material';
 
-const Login = ({open, onClose}) => {
+const Login = ({ open, onClose }) => {
     const paperStyle = { padding: 20, height: '70vh', width: 400, margin: "20px auto" };
     const avatarStyle = { backgroundColor: '#1bbd7e' };
     const btnStyle = { margin: '8px 0' };
@@ -51,7 +51,7 @@ const Login = ({open, onClose}) => {
                         </Link>
                     </Typography>
                     <Typography> Do you have an account?
-                        <Link href="#">
+                        <Link component={RouterLink} to="/signup">
                             Sign Up
                         </Link>
                     </Typography>
@@ -63,5 +63,3 @@ const Login = ({open, onClose}) => {
 };
 
 export default Login;
-
-

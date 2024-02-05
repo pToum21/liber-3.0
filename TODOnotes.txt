@@ -19,9 +19,13 @@ from Ryan:
 
 
 from Peyton : 
-in the home component i am going to render a small carousel to go at the top to display so images purley for look
-under this we can contunie with the home page the way it was layed up with the 5 books and whatever else we think of, just thought this addition added a professionally look.
-i updated the nav bar to have a search bar and be responsive using material ui
+        in the home component i am going to render a small carousel to go at the top to display so images purley for look
+
+        under this we can contunie with the home page the way it was layed up with the 5 books and whatever else we think of, just thought this addition added a professionally look.
+
+        i updated the nav bar to have a search bar and be responsive using material ui
+
+        inside of the signup that pasha made i set up so if the user clicks sign up they will now be taken to the signup sal created
 
 from Sal :
 added apollo code to main.jsx and app.jsx. Also put a temporary signup form on the signup page. Can be modified.
