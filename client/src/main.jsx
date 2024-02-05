@@ -12,6 +12,7 @@ import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
 import BookReader from './pages/BookReader.jsx'
 
+
 // this establishes pages component structure and their paths
 const router = createBrowserRouter([
   {
@@ -27,24 +28,26 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path:'/myLibrary',
+        path: '/myLibrary',
         element: <MyLibrary />
       },
       {
-        path:'/login',
+        path: '/login',
         element: <Login />
       },
       {
-        path:'/signup',
+        path: '/signup',
         element: <Signup />
       },
       {
-        path:'/singleBook/:id',
+        path: '/singleBook/:id',
         element: <SingleBook />
-      }, 
+      },
       {
-        path:'/bookReader/:bookId',
+        path: '/bookReader/:bookId',
         element: <BookReader />
+          
+
       }
     ]
   }

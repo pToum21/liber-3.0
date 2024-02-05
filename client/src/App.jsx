@@ -4,8 +4,10 @@ import { Outlet } from 'react-router-dom';
 import NavBar from './Components/Navbar/Navbar';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { Canvas } from '@react-three/fiber'
 // css
 import './styles/main.css';
+import Experience from './Components/Three/Experience';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -22,6 +24,14 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+function Light({ brightness, color }) {
+  <rectAreaLight
+    width={5}
+    height={5}
+    color={color}
+    intensity={brightness}
+  />
+}
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
@@ -34,6 +44,10 @@ function App() {
       <ApolloProvider client={client}>
         <NavBar />
         <Outlet />
+        {/* <Canvas>
+          <Light brightness={20} color={'#ff0000'} />
+          <Experience />
+        </Canvas> */}
       </ApolloProvider>
     </>
   )
