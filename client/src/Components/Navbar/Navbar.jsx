@@ -20,7 +20,7 @@ const StyledIconButton = styled(IconButton)({
 });
 
 const TitleTypography = styled(Typography)({
-  
+
     fontSize: '2.5rem',
     // maginRight: '', 
 
@@ -87,7 +87,7 @@ const NavBar = () => {
                                 Books
                             </Button>
 
-                            <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Montserrat' }}>
                                 Login
                             </Button>
                         </Hidden>
@@ -121,10 +121,14 @@ const NavBar = () => {
                         }}
                     />
                 </Grid>
-
+                <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                    <div>
+                        <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+                    </div>
+                </Modal>
 
             </Grid>
-        </>   
+        </>
 
         //         <Hidden lgUp>
         //             <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
