@@ -57,7 +57,6 @@
     position: absolute;
     bottom: 20px;
     z-index: 2;
-    color: teal;
 }
 
 .slick-dots li button {
@@ -66,14 +65,14 @@
 
 /* dot color before its slide comes up */
 .slick-dots li button:before {
-    opacity: 0.75 !important;
-    color: teal !important;
+    opacity: 0.50 !important;
+    color: antiquewhite !important;
 }
 
 /* active slide dot */
 .slick-dots li.slick-active button:before {
     opacity: 1 !important;
-    color: rgb(167, 250, 161) !important;
+    color: #a7faa1 !important;
 }
 
 /* Media queries for smaller screens */

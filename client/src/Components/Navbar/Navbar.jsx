@@ -66,7 +66,7 @@ const NavBar = () => {
                         </StyledIconButton>
                     </Hidden>
                     <TitleTypography id="liber" variant="h6">
-                        Liber
+                        {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                     </TitleTypography>
 
                     {/* nav buttons*/}
