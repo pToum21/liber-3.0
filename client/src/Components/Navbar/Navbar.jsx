@@ -4,6 +4,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import Hidden from '@mui/material/Hidden';
+import { Modal } from '@mui/material';
+import Login from '../../pages/Login'
+
 
 const StyledAppBar = styled(AppBar)({
     backgroundColor: '#161520',
@@ -30,6 +33,7 @@ const StyledTypography = styled(Typography)({
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,6 +46,15 @@ const NavBar = () => {
     const handleSearchButtonClick = () => {
         setShowSearchBar(!showSearchBar);
         handleMenuClose();
+    };
+
+    const handleLoginClick = () => {
+        setLoginModalOpen(true);
+        handleMenuClose();
+    };
+
+    const handleLoginModalClose = () => {
+        setLoginModalOpen(false);
     };
 
     return (
@@ -99,7 +112,7 @@ const NavBar = () => {
                 </Hidden>
 
                 <Hidden mdDown>
-                    <Button color="inherit" sx={{ fontFamily: 'Montserrat' }}>
+                    <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Montserrat' }} >
                         Log in
                     </Button>
                 </Hidden>
@@ -116,7 +129,13 @@ const NavBar = () => {
                     </Menu>
                 </Hidden>
             </Toolbar>
+            <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                <div>
+                    <Login open={isLoginModalOpen} onClose={() => setLoginModalOpen(false)} />
+                </div>
+            </Modal>
         </StyledAppBar>
+
     );
 };
 
