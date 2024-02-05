@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { Typography, Button, IconButton, Menu, MenuItem, TextField, InputAdornment, Grid } from '@mui/material';
+import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
-import Hidden from '@mui/material/Hidden';
-import { Modal } from '@mui/material';
 import Login from '../../pages/Login';
 import './navbar.css';
-
-const StyledIconButton = styled(IconButton)({
-    fontFamily: 'Montserrat',
-});
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -20,7 +14,6 @@ const TitleTypography = styled(Typography)({
 const StyledTypography = styled(Typography)({
     display: 'flex',
     marginLeft: '2rem',
-    fontFamily: 'Montserrat',
 });
 
 // functionality for nav menu
@@ -59,12 +52,13 @@ const NavBar = () => {
                 {/* child 1 */}
                 <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
 
-                    {/* brand */}
+                    {/* nav menu, which will replace StyledTypography */}
                     <Hidden mdUp>
-                        <StyledIconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuOpen}>
                             <MenuIcon />
-                        </StyledIconButton>
+                        </IconButton>
                     </Hidden>
+                     {/* brand */}
                     <TitleTypography id="liber" variant="h6">
                         {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                     </TitleTypography>

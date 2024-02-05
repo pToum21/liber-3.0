@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
 
-@media (max-width: 505px) {
+@media (max-width: 655px) {
     #nav-parent {
         justify-content: center !important
     }

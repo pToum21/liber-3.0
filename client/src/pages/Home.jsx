@@ -9,6 +9,8 @@ import image1 from '../assets/firstcarousel.jpg';
 import image2 from '../assets/secondcarousel.jpg';
 import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
+// import mui
+import { Grid } from '@mui/material';
 
 function Home() {
     const settings = {
@@ -24,6 +26,8 @@ function Home() {
 
     return (
         <>
+   
+            {/* Slick carousel */}
             <div>
                 <Slider {...settings}>
                     <div className="carousel-slide">
@@ -55,6 +59,11 @@ function Home() {
                     </div>
                 </Slider>
             </div>
+
+            {/* all books div*/}
+            <Grid container></Grid>
+
+
         </>
     );
 }
