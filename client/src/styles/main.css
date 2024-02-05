@@ -1,3 +1,10 @@
+/* use outline for testing */
+* {
+    /* outline: 1px solid red; */
+    font-size: 1.2rem;
+    font-family: 'Montserrat';
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,11 +13,6 @@ body {
 
 p {
     margin: 0;
-}
-
-/* use outline for testing */
-* {
-    /* outline: 1px solid red; */
 }
 
 /* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
@@ -24,10 +26,4 @@ p {
 #liber {
     font-family: 'Coventry Garden', sans-serif;
     font-size: 2rem;
-}
-
-* {
-
-    font-size: 1.2rem;
-    font-family: 'Montserrat';
 }
