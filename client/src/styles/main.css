@@ -1,25 +1,19 @@
 body {
-    margin: 0
-}
-
-
-/* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
-
-body {
     margin: 0;
     padding: 0;
+    background: linear-gradient(#242424, #1e1e1e, #111111, #000000);
 }
 
 p {
     margin: 0;
 }
 
+/* use outline for testing */
 * {
     /* outline: 1px solid red; */
 }
 
-
+/* had to explicitly declare the coventry garden font to the browser, because otherwise, dummy dafari cant recognize it */
 @font-face {
     font-family: 'Coventry Garden';
     src: url('../../coventry-garden.regular.ttf') format('truetype');
