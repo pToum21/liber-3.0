@@ -8,48 +8,15 @@ import { useGLTF } from '@react-three/drei'
 
 const GrassPlain = (props) => {
   const { nodes, materials } = useGLTF('/3dModels/grassplain.glb')
+
+  const scale = 325;
+  const position = [-40, -100, -50];
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} scale={[scale, scale, scale]} position={position}>
       <mesh geometry={nodes.Grass_Patch_1.geometry} material={materials.SM_Env_GrassPatch_01_PolygonPirates_Material_01_A} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch.geometry} material={materials['Material.001']} position={[-0.457, 0.043, 0.16]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch001.geometry} material={materials['Material.002']} position={[-0.332, 0.051, 0.112]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch002.geometry} material={materials['Material.003']} position={[-0.135, 0.102, 0.112]} rotation={[0, 0, -0.201]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch003.geometry} material={materials['Material.004']} position={[0.343, 0.124, 0.112]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch004.geometry} material={materials['Material.005']} position={[0.417, 0.102, -0.351]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch005.geometry} material={materials['Material.006']} position={[0.561, 0.089, -0.135]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch006.geometry} material={materials['Material.007']} position={[0.561, 0.07, 0.371]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch007.geometry} material={materials['Material.008']} position={[0.731, 0.111, 0.644]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch008.geometry} material={materials['Material.009']} position={[0.675, 0.115, 0.466]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch009.geometry} material={materials['Material.010']} position={[0.207, 0.089, 0.466]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch010.geometry} material={materials['Material.011']} position={[0.333, 0.083, 0.466]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch011.geometry} material={materials['Material.012']} position={[0.053, 0.087, -0.116]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch012.geometry} material={materials['Material.013']} position={[0.226, 0.143, -0.193]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch013.geometry} material={materials['Material.014']} position={[-0.369, 0.132, 0.201]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch014.geometry} material={materials['Material.015']} position={[-0.329, 0.077, -0.119]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch015.geometry} material={materials['Material.016']} position={[0.003, 0.044, -0.184]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch016.geometry} material={materials['Material.017']} position={[-0.001, 0.076, 0.285]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch017.geometry} material={materials['Material.018']} position={[-0.037, 0.062, 0.439]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch018.geometry} material={materials['Material.019']} position={[-0.129, -0.032, 0.019]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch019.geometry} material={materials['Material.020']} position={[-0.092, -0.019, -0.134]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch020.geometry} material={materials['Material.021']} position={[-0.089, -0.05, -0.603]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch021.geometry} material={materials['Material.022']} position={[-0.421, -0.017, -0.538]} rotation={[0.377, -0.382, -0.095]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch022.geometry} material={materials['Material.023']} position={[-0.461, 0.038, -0.219]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch023.geometry} material={materials['Material.024']} position={[0.135, 0.049, -0.613]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch024.geometry} material={materials['Material.025']} position={[-0.038, -0.007, -0.535]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch025.geometry} material={materials['Material.026']} position={[0.242, -0.011, 0.047]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch026.geometry} material={materials['Material.027']} position={[0.115, -0.005, 0.047]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch027.geometry} material={materials['Material.028']} position={[0.584, 0.021, 0.047]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch028.geometry} material={materials['Material.029']} position={[0.64, 0.017, 0.224]} rotation={[0.419, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch029.geometry} material={materials['Material.030']} position={[0.47, -0.024, -0.048]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch030.geometry} material={materials['Material.031']} position={[0.47, -0.005, -0.555]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch032.geometry} material={materials['Material.033']} position={[0.251, 0.029, -0.308]} rotation={[0, 0, 0.373]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch033.geometry} material={materials['Material.034']} position={[-0.227, 0.008, -0.308]} rotation={[0, 0, -0.201]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch034.geometry} material={materials['Material.035']} position={[-0.423, -0.043, -0.308]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch035.geometry} material={materials['Material.036']} position={[-0.548, -0.051, -0.259]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch031.geometry} material={materials['Material.037']} position={[0.9, 0.035, 0.38]} rotation={[-0.283, 0.723, 0.288]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch036.geometry} material={materials['Material.038']} position={[0.86, 0.051, 0.085]} rotation={[-0.283, 0.723, 0.288]} scale={0.007} />
-      <mesh geometry={nodes.Low_Poly_Grass_Patch037.geometry} material={materials['Material.039']} position={[0.594, 0.036, -0.288]} rotation={[-0.283, 0.723, 0.288]} scale={0.007} />
-      <mesh geometry={nodes.Purple_Flower_Patch.geometry} material={materials.Material_47} position={[0.886, -0.004, 0.48]} scale={0.042} />
+      
+      <mesh geometry={nodes.Purple_Flower_Patch.geometry} material={materials.Material_47} position={[0.886, -0.004, 0.78]} scale={0.03} />
       <mesh geometry={nodes.Purple_Flower_Patch001.geometry} material={materials['Material_47.001']} position={[-0.696, -0.066, 0.615]} rotation={[0.064, -0.162, 0.344]} scale={0.042} />
     </group>
   )

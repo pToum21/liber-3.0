@@ -1,5 +1,6 @@
 import { OrbitControls } from '@react-three/drei'
 import BookShelf from './Bookshelf'
+import GrassPlain from './Grassplain'
 
 
 
@@ -10,7 +11,7 @@ const Experience = () => {
             <OrbitControls />
             <ambientLight />
             <BookShelf />
-
+            <GrassPlain />
 
         </>
 
