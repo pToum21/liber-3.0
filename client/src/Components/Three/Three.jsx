@@ -2,6 +2,7 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import Experience from './Experience';
 
+
 function Light({ brightness, color, position }) {
     return (
         <rectAreaLight
@@ -17,6 +18,7 @@ function Light({ brightness, color, position }) {
 const Three = () => {
     return (
         <>
+            
             <div style={{
                 position: 'absolute',
                 marginTop: '5%',
@@ -25,7 +27,7 @@ const Three = () => {
                 background: 'rgba(255, 255, 255, 0.7)',
                 borderRadius: '10px',
                 maxWidth: '300px',
-                zIndex: '1', 
+                zIndex: '1',
             }}>
                 <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>Game Instructions</h1>
                 <p style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '16px', lineHeight: '1.5' }}>
@@ -37,6 +39,7 @@ const Three = () => {
             </div>
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                 <Canvas style={{ width: '100%', height: '100%', zIndex: '0' }}>
+                
                     <Light brightness={40} color={'yellow'} position={[100, 200, 300]} />
                     <Experience />
                 </Canvas>
