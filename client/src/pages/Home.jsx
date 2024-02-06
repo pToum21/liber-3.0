@@ -9,6 +9,8 @@ import image1 from '../assets/firstcarousel.jpg';
 import image2 from '../assets/secondcarousel.jpg';
 import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
+// useState, Effect
+import { useState, useEffect } from 'react';
 // import mui
 import { Grid, Pagination } from '@mui/material';
 // hooks from apollo
@@ -30,9 +32,15 @@ function Home() {
     };
 
     // using our query to get data from db
-    const { loading, data } = useQuery(QUERY_ALL_BOOKS);
-    // const [books, setBooks] = useState(null);
+    const { loading, data, refetch } = useQuery(QUERY_ALL_BOOKS);
+    //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks || [];
+    // useState for page number
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const changePage = (event, page) => {
+        setCurrentPage(page)
+    }
 
     // data under the method of getBooks is an array of 589(currently) elements.
 
@@ -47,6 +55,14 @@ function Home() {
     //     console.log('One Book:', oneBook.image.data);
     // }
 
+    // logic to sift through pages of books
+    useEffect(() => {
+        const skip = (currentPage - 1) * 5;
+        console.log(skip)
+        refetch({ skip });
+    }, [currentPage, refetch]);
+
+
 
     return (
         <>
@@ -57,7 +73,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image2} alt="" />
                             <div className="text-overlay">
-                                <p className="text-title">PLETHORA OF BOOKS, COMPLETELY FREE</p>
+                                <p className="text-title">Plethora of free books, completely free </p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
                                 <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
@@ -67,7 +83,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <p className="text-title">INTERACT WITH YOUR E-READS</p>
+                                <p className="text-title">Interact with your e-reads</p>
                                 <p>Join our fellow readers!<br /> Find and add free classics directly to your Bookshelf for ease of reading.<br /> Rate and discuss your favorite books! </p>
                             </div>
                         </div>
@@ -76,7 +92,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <p className="text-title">MYBOOKSHELF</p>
+                                <p className="text-title">MyBookshelf</p>
                                 <p>Add books directly to the MyBookshelf section.<br />Once a book is added, you can come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
@@ -86,7 +102,6 @@ function Home() {
 
             {/* all books div*/}
             <Grid container>
-                {/* in this container, if books is null, it renders loading message, otherwise, we can render data in a new div! */}
                 {loading ?
                     (
                         <p>Loading...</p>
@@ -109,7 +124,12 @@ function Home() {
                             </Grid>
                             <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
-                                <Pagination count={10} variant="outlined" color="success" />
+                                <Pagination
+                                    count={160}
+                                    page={currentPage}
+                                    onChange={changePage}
+                                    variant="outlined"
+                                    color="success" />
 
                             </Grid>
 
