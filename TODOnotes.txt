@@ -37,6 +37,11 @@ from Peyton :
 from Sal :
 added apollo code to main.jsx and app.jsx. Also put a temporary signup form on the signup page. Can be modified.
 started on bookReader page but figured we could wait until Ryan gets the images showing up because then the data should be the same also. Started to work on login/modal work
+
+-Added createUser code on signup.jsx to save users to database it is currently working and saving users to database. Login still shows when logged in so that will need to be updated.
+
+
+
 EXTRA CODE:
 
 
