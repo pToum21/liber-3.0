@@ -21,6 +21,7 @@ const Login = ({ open, onClose }) => {
     }
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(formState)
         try {
             const { data } = await login({
                 variables: { ...formState },
@@ -70,6 +71,7 @@ const Login = ({ open, onClose }) => {
                     </Grid>
                     <TextField
                         label='Email'
+                        name= 'email'
                         placeholder='Enter Email'
                         variant="outlined"
                         fullWidth
@@ -79,6 +81,7 @@ const Login = ({ open, onClose }) => {
                     />
                     <TextField
                         label='Password'
+                        name='password'
                         placeholder='Enter password'
                         type='password'
                         variant="outlined"
