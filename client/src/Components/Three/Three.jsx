@@ -13,6 +13,9 @@ function Light({ brightness, color, position }) {
 const Skybox = () => {
     const gltf = useLoader(GLTFLoader, '/3dModels/skybox.glb'); // Replace with the actual path to your GLB file
 
+    // Adjust the position of the skybox
+    gltf.scene.position.set(-150, 200, 200); // Replace with your desired coordinates
+
     return <primitive object={gltf.scene} />;
 };
 
@@ -50,13 +53,8 @@ const Three = () => {
                     height: '100vh',
                 }}
             >
-                <Canvas
-                    style={{ width: '100%', height: '100%', zIndex: '0' }}
-                    // camera={{ position: [0, 0, 5], fov: 50 }}
-                >
-                    {/* Add custom environment map using GLB file */}
+                <Canvas style={{ width: '100%', height: '100%', zIndex: '0' }}>
                     <Skybox />
-
                     {/* Your light and experience components */}
                     <Light brightness={40} color={'yellow'} position={[100, 200, 300]} />
                     {/* Add your Experience component here */}
