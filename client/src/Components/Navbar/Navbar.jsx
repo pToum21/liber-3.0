@@ -6,6 +6,7 @@ import { styled } from '@mui/system';
 import Login from '../../pages/Login';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import Auth from '../../utils/auth'
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -24,6 +25,11 @@ const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    }
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -63,9 +69,9 @@ const NavBar = () => {
                     </Hidden>
                     {/* brand */}
                     {/* <Link style={{textDecoration: 'none'}}to="/"> */}
-                        <TitleTypography id="liber" sx={{whiteSpace: 'nowrap', display: 'flex', alignItems: 'center'}}>
-                            {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
-                        </TitleTypography>
+                    <TitleTypography id="liber" sx={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
+                        {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
+                    </TitleTypography>
                     {/* </ Link> */}
 
 
@@ -82,6 +88,10 @@ const NavBar = () => {
 
                             <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
                                 Login
+                            </Button>
+
+                            <Button className="navlinks" color="inherit" onClick={logout}>
+                                Logout
                             </Button>
                         </Hidden>
                     </StyledTypography>

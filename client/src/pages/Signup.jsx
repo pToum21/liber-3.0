@@ -85,10 +85,10 @@ export default function SignUp() {
               <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
-                  name="userName"
+                  name="username"
                   required
                   fullWidth
-                  id="userName"
+                  id="username"
                   label="User Name"
                   autoFocus
                   onChange={handleChange}
