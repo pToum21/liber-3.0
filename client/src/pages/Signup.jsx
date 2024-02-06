@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useMutation } from '@apollo/client'
 import { CREATE_USER } from '../utils/mutations'
+import { useState } from 'react'
 import Auth from '../utils/auth'
 
 function Copyright(props) {
@@ -33,15 +34,34 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const [ formState, setFormstate] = useState({
+    username: '',
+    email: '',
+    password:''
+  })
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
+    setFormstate({
+      ...formState,
+      [name]: value,
+    })
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState)
+
+    try {
+      const { data } = await createUser({
+        variables: { ...formState},
+      })
+      Auth.login(data.createUser.token)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -71,6 +91,7 @@ export default function SignUp() {
                   id="userName"
                   label="User Name"
                   autoFocus
+                  onChange={handleChange}
                 />
               </Grid>
               
@@ -82,6 +103,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -93,6 +115,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={handleChange}
                 />
               </Grid>
               
