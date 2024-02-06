@@ -17,6 +17,8 @@ General notes:
 
     always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
+    MyLibrary: is user's profile; MyBookshelf: will be saved books
+
     front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
     For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
 
@@ -29,19 +31,9 @@ from Ryan:
     
 
 from Peyton : 
-        in the home component i am going to render a small carousel to go at the top to display so images purley for look
 
-        under this we can contunie with the home page the way it was layed up with the 5 books and whatever else we think of, just thought this addition added a professionally look.
-
-        i updated the nav bar to have a search bar and be responsive using material ui
-
-        inside of the signup that pasha made i set up so if the user clicks sign up they will now be taken to the signup sal created
 
 from Sal :
-added apollo code to main.jsx and app.jsx. Also put a temporary signup form on the signup page. Can be modified.
-started on bookReader page but figured we could wait until Ryan gets the images showing up because then the data should be the same also. Started to work on login/modal work
-
--Added createUser code on signup.jsx to save users to database it is currently working and saving users to database. Login still shows when logged in so that will need to be updated.
 
 
 

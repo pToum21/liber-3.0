@@ -59,7 +59,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image2} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">LOTS OF EBOOKS. 100 % FREE</h2>
+                                <h2 className="text-title">Plethora of books, completely free</h2>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
                                 <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
@@ -69,8 +69,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">FREE BESTSELLERS</h2>
-                                <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. Rate and discuss your favorite books! </p>
+                                <h2 className="text-title">Interact with your e-reads</h2>
+                                <p>Join our fellow readers! Find and add free classics directly to your Bookshelf for ease of reading. Rate and discuss your favorite books! </p>
                             </div>
                         </div>
                     </div>
@@ -78,8 +78,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">MyLibrary</h2>
-                                <p>Add books directly to the MyLibrary section.  Once a book is added, you can come back and read it whenever you like.  To gain access to the feature, sign up or log in Now! </p>
+                                <h2 className="text-title">MyBookshelf</h2>
+                                <p>Add books directly to the MyBookshelf section.  Once a book is added, you can come back and read it whenever you like.  To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
                     </div>
@@ -99,9 +99,9 @@ function Home() {
                             
                             {/* each book will be in its own div */}
                             {books.map((book) => (
-                                <Grid item key={book._id}>
+                                <Grid item key={book._id} xs={2.3}>
                                    
-                                    <img src={`data:image/jpg;base64,${book.image.data}`} />
+                                    <img style={{width:'100%'}} src={`data:image/jpg;base64,${book.image.data}`} />
                                      {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
 
                                 </Grid>
@@ -109,7 +109,6 @@ function Home() {
 
                         </Grid>
                     )
-
                 }
             </Grid>
 

@@ -52,8 +52,8 @@ const NavBar = () => {
             {/* parent */}
             <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
 
-                {/* child 1 */}
-                <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
+                {/* child 1 (nav and brand)*/}
+                <Grid id="child-1" item sx={{ display: "flex", marginLeft: '2rem' }}>
 
                     {/* nav menu, which will replace StyledTypography */}
                     <Hidden mdUp>
@@ -63,7 +63,7 @@ const NavBar = () => {
                     </Hidden>
                     {/* brand */}
                     {/* <Link style={{textDecoration: 'none'}}to="/"> */}
-                        <TitleTypography id="liber" variant="h6">
+                        <TitleTypography id="liber" sx={{whiteSpace: 'nowrap', display: 'flex', alignItems: 'center'}}>
                             {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                         </TitleTypography>
                     {/* </ Link> */}
