@@ -23,7 +23,7 @@ General notes:
     ===================================================
 
 from Ryan: 
-    2/6 - 
+    2/6 - able to render images, need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic
     
 
 from Peyton : 
