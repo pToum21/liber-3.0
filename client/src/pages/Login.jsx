@@ -3,8 +3,38 @@ import { Grid, Paper, Avatar, TextField, Button, Typography, Link, FormControlLa
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
+import { useMutation } from '@apollo/client'
+import { LOGIN } from '../utils/mutations'
+import { useState } from 'react';
+import Auth from '../utils/auth'
 
 const Login = ({ open, onClose }) => {
+    const [formState, setFormState] = useState({ email: '', password: ''})
+    const [ login, { error, data }] = useMutation(LOGIN);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        })
+    }
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const { data } = await login({
+                variables: { ...formState },
+            })
+            Auth.login(data.login.token)
+        } catch (error) {
+            console.error(error);
+        }
+        setFormState({
+            email: '',
+            password: '',
+        });
+    };
+
     const paperStyle = {
         padding: 20,
         height: '70vh',
@@ -19,6 +49,7 @@ const Login = ({ open, onClose }) => {
 
     return (
         <Modal open={open} onClose={onClose}>
+            <form onSubmit={handleFormSubmit}>
             <Grid container justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
                 <Paper elevation={10} style={paperStyle}>
                     <IconButton
@@ -44,6 +75,7 @@ const Login = ({ open, onClose }) => {
                         fullWidth
                         required
                         style={textFieldStyle}
+                        onChange={handleChange}
                     />
                     <TextField
                         label='Password'
@@ -53,6 +85,7 @@ const Login = ({ open, onClose }) => {
                         fullWidth
                         required
                         style={textFieldStyle}
+                        onChange={handleChange}
                     />
                     <FormControlLabel
                         control={<Checkbox name="checkedB" />}
@@ -73,6 +106,7 @@ const Login = ({ open, onClose }) => {
                     </Typography>
                 </Paper>
             </Grid>
+            </form>
         </Modal>
     );
 };
