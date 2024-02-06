@@ -17,7 +17,7 @@ function Light({ brightness, color, position }) {
 
 const Three = () => {
     return (
-        <>
+        <div style={{backgroundColor: '#161520'}}> 
             
             <div style={{
                 position: 'absolute',
@@ -44,7 +44,7 @@ const Three = () => {
                     <Experience />
                 </Canvas>
             </div>
-        </>
+        </div>
     );
 };
 
