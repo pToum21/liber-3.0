@@ -64,7 +64,7 @@ module.exports = async function fetchData() {
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <= 25; page++) {
+    for (let page = 1; page <= 51; page++) {
       fetchData(page);
     }
   }

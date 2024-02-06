@@ -54,7 +54,7 @@ type Auth {
 
 type Query {
     myLibrary: User
-    getBooks: [Book]
+    getBooks(skip: Int): [Book]
     getSingleBook(_id: ID!): Book
 }
 

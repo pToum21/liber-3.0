@@ -11,6 +11,8 @@ import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 // import mui
 import { Grid } from '@mui/material';
+//hooks from react
+import { useState, useEffect } from 'react';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -31,38 +33,35 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data } = useQuery(QUERY_ALL_BOOKS);
+    // const [books, setBooks] = useState(null);
+    const books = data?.getBooks || [];
 
-    // data under the method of getBooks is an array of 589(currently) elements, and all 589 are grouped into sub arrays; each subarray holds 100 books.
+    // data under the method of getBooks is an array of 589(currently) elements.
 
-    // this log works, shows all the books
-    console.log(data);
-
-    // TODO: put this logic into books div, probs via props, otherwise whole page will say loading; only commented out for now so loading thing doesnt take up the page while others code.
+    // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
     // if (loading) {
-    //     return <p>Loading...</p>;
-    // };
-
-    // if (!data || !data.getBooks) {
-    //     // Data or getBooks is undefined, we handle accordingly (e.g., show an error message)
-    //     return <p>Error loading data</p>;
-    // };
-
-    // this is returning undefined
-    // console.log(data.getBooks[0][0]);
-
+    //     console.log('Loading...');
+    // } else {
+    //     // Once data is available, accesses and logs single book and corresponding properties on the book object
+    //     console.log(data);
+    //     //change number in index for a different single book
+    //     const oneBook = data?.getBooks[588];
+    //     console.log('One Book:', oneBook.image.data);
+    // }
 
 
     return (
         <>
             {/* Slick carousel */}
-            <div>
+            <div style={{marginBottom: '2rem'}}>
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
                             <img src={image2} alt="" />
                             <div className="text-overlay">
                                 <h2 className="text-title">LOTS OF EBOOKS. 100 % FREE</h2>
-                                <p>Welcome to your friendly neighborhood library. We have more than 50,000 free ebooks waiting to be discovered.</p>
+                                {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
+                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -70,8 +69,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">FREE AND DISCOUNTED BESTSELLERS</h2>
-                                <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. </p>
+                                <h2 className="text-title">FREE BESTSELLERS</h2>
+                                <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. Rate and discuss your favorite books! </p>
                             </div>
                         </div>
                     </div>
@@ -80,7 +79,7 @@ function Home() {
                             <img src={image3} alt="" />
                             <div className="text-overlay">
                                 <h2 className="text-title">MyLibrary</h2>
-                                <p>Add books directly to the MyLibrary section.  Once a book is added you can come back and read it whenever you like.  To gain access to the feature Sign Up or Log In Now! </p>
+                                <p>Add books directly to the MyLibrary section.  Once a book is added, you can come back and read it whenever you like.  To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
                     </div>
@@ -89,9 +88,29 @@ function Home() {
 
             {/* all books div*/}
             <Grid container>
-                <div>
+                {/* in this container, if books is null, it renders loading message, otherwise, we can render data in a new div! */}
+                {loading ?
+                    (
+                        <p>Loading...</p>
+                    ) :
+                    (
+                        // parent div holding books
+                        <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            
+                            {/* each book will be in its own div */}
+                            {books.map((book) => (
+                                <Grid item key={book._id}>
+                                   
+                                    <img src={`data:image/jpg;base64,${book.image.data}`} />
+                                     {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
 
-                </div>
+                                </Grid>
+                            ))}
+
+                        </Grid>
+                    )
+
+                }
             </Grid>
 
 
