@@ -33,11 +33,11 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data } = useQuery(QUERY_ALL_BOOKS);
-    const [oneBook, setOneBook] = useState(null);
+    const [books, setBooks] = useState(null);
 
     // data under the method of getBooks is an array of 589(currently) elements.
 
-    // // IF YOU WANT TO SEE BOOK DATA LOGGED
+    // // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
     // if (loading) {
     //     console.log('Loading...');
     // } else {
@@ -50,9 +50,9 @@ function Home() {
 
     // We use this effect to conditionally render content in books div.
     useEffect(() => {
-        // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setOneBook()) from null to a book's data!
+        // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setBooks()) from null to a book's data!
         if (!loading && data && data.getBooks && data.getBooks.length > 0) {
-            setOneBook(data.getBooks[0]);
+            setBooks(data.getBooks);
         }
     }, [loading, data]);
 
@@ -67,7 +67,8 @@ function Home() {
                             <img src={image2} alt="" />
                             <div className="text-overlay">
                                 <h2 className="text-title">LOTS OF EBOOKS. 100 % FREE</h2>
-                                <p>Welcome to <span style={{fontFamily: 'Coventry Garden', whiteSpace: 'nowrap'}}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
+                                {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
+                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -94,14 +95,19 @@ function Home() {
 
             {/* all books div*/}
             <Grid container>
-                {/* in this container, if oneBook is null, it renders loading message, otherwise, we can render data in a new div! */}
-                {!oneBook ?
+                {/* in this container, if books is null, it renders loading message, otherwise, we can render data in a new div! */}
+                {!books ?
                     (
                         <p>Loading...</p>
                     ) :
-                    <div>
-                        <p> The title of this book is {oneBook.title}</p>
-                    </div>
+                    (
+                        books.map((book) => (
+                            <div key={book._id}>
+                                <p> The title of this book is {book.title}</p>
+                            </div>
+                        ))
+                    )
+
                 }
             </Grid>
 
