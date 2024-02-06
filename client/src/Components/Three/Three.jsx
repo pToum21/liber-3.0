@@ -29,7 +29,7 @@ const Three = () => {
                 maxWidth: '300px',
                 zIndex: '1',
             }}>
-                <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>Game Instructions</h1>
+                <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>Library Instructions</h1>
                 <p style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '16px', lineHeight: '1.5' }}>
                     Press <span style={{ color: '#ff0000' }}>Left Click</span> anywhere to sit at the desk and read.
                 </p>
