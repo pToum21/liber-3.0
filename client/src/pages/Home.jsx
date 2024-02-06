@@ -35,36 +35,26 @@ function Home() {
     const { loading, data } = useQuery(QUERY_ALL_BOOKS);
     const [oneBook, setOneBook] = useState(null);
 
-    // data under the method of getBooks is an array of 589(currently) elements, and all 589 are grouped into sub arrays; each subarray holds 100 books.
+    // data under the method of getBooks is an array of 589(currently) elements.
 
-    // this log works, shows all the books
-    // console.log(data);
-
-    // // to handle loading in console
+    // // IF YOU WANT TO SEE BOOK DATA LOGGED
     // if (loading) {
     //     console.log('Loading...');
     // } else {
     //     // Once data is available, accesses and logs single book and corresponding properties on the book object
+    //     console.log(data);
+    //     //change number in index for a different single book
     //     const oneBook = data.getBooks[588];
     //     console.log('One Book:', oneBook.image);
     // }
 
-    // TODO: put this logic into books div, probs via props, otherwise whole page will say loading; only commented out for now so loading thing doesnt take up the page while others code.
+    // We use this effect to conditionally render content in books div.
     useEffect(() => {
+        // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setOneBook()) from null to a book's data!
         if (!loading && data && data.getBooks && data.getBooks.length > 0) {
             setOneBook(data.getBooks[0]);
         }
     }, [loading, data]);
-
-
-    // if (!data || !data.getBooks) {
-    //     // Data or getBooks is undefined, we handle accordingly (e.g., show an error message)
-    //     return <p>Error loading data</p>;
-    // };
-
-    // this is returning undefined
-    // console.log(data.getBooks[0][0]);
-
 
 
     return (
@@ -77,7 +67,7 @@ function Home() {
                             <img src={image2} alt="" />
                             <div className="text-overlay">
                                 <h2 className="text-title">LOTS OF EBOOKS. 100 % FREE</h2>
-                                <p>Welcome to your friendly neighborhood library. We have more than 50,000 free ebooks waiting to be discovered.</p>
+                                <p>Welcome to <span style={{fontFamily: 'Coventry Garden', whiteSpace: 'nowrap'}}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -85,8 +75,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">FREE AND DISCOUNTED BESTSELLERS</h2>
-                                <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. </p>
+                                <h2 className="text-title">FREE BESTSELLERS</h2>
+                                <p>Join our fellow readers! Find free and discounted bestsellers and add them directly to your Library for ease of reading. Rate and discuss your favorite books! </p>
                             </div>
                         </div>
                     </div>
@@ -95,7 +85,7 @@ function Home() {
                             <img src={image3} alt="" />
                             <div className="text-overlay">
                                 <h2 className="text-title">MyLibrary</h2>
-                                <p>Add books directly to the MyLibrary section.  Once a book is added you can come back and read it whenever you like.  To gain access to the feature Sign Up or Log In Now! </p>
+                                <p>Add books directly to the MyLibrary section.  Once a book is added, you can come back and read it whenever you like.  To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
                     </div>
@@ -104,6 +94,7 @@ function Home() {
 
             {/* all books div*/}
             <Grid container>
+                {/* in this container, if oneBook is null, it renders loading message, otherwise, we can render data in a new div! */}
                 {!oneBook ?
                     (
                         <p>Loading...</p>
