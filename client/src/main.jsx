@@ -10,7 +10,10 @@ import MyLibrary from './pages/MyLibrary.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
-import BookReader from './pages/BookReader.jsx'
+// import BookReader from './pages/BookReader.jsx'
+
+import Three from './Components/Three/Three.jsx';
+
 
 // this establishes pages component structure and their paths
 const router = createBrowserRouter([
@@ -26,24 +29,24 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path:'/myLibrary',
+        path: '/myLibrary',
         element: <MyLibrary />
       },
       {
-        path:'/login',
+        path: '/login',
         element: <Login />
       },
       {
-        path:'/signup',
+        path: '/signup',
         element: <Signup />
       },
       {
-        path:'/singleBook/:id',
+        path: '/singleBook/:id',
         element: <SingleBook />
-      }, 
+      },
       {
-        path:'/bookReader/:bookId',
-        element: <BookReader />
+        path: '/bookReader/:bookId',
+        element: <Three />
       }
     ]
   }

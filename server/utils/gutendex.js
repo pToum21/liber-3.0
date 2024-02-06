@@ -50,15 +50,15 @@ module.exports = async function fetchData() {
               console.log('info about book minus image & text bc they are long:', newBookShortData)
 
             } catch (error) {
-              console.error(`Error making new book`, error);
+              // console.error(`Error making new book`, error);
             }
           } //closes for loop
         }) // closes .then()
         .catch(error => {
-          console.error(`Error fetching data from page ${page}:`, error);
+          // console.error(`Error fetching data from page ${page}:`, error);
         });
     } catch (error) {
-      console.error(`Error fetching and saving data from page ${page}:`, error);
+      // console.error(`Error fetching and saving data from page ${page}:`, error);
     }
   }//ends function
 
