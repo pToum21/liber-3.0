@@ -11,8 +11,17 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
 import BookReader from './pages/BookReader.jsx'
+import { Canvas } from '@react-three/fiber';
+import Experience from './Components/Three/Experience.jsx';
 
-
+function Light({ brightness, color }) {
+  <rectAreaLight
+    width={5}
+    height={5}
+    color={color}
+    intensity={brightness}
+  />
+}
 // this establishes pages component structure and their paths
 const router = createBrowserRouter([
   {
@@ -42,12 +51,20 @@ const router = createBrowserRouter([
         path: '/singleBook/:id',
         element: <SingleBook />
       },
-      {
-        path: '/bookReader/:bookId',
-        element: <BookReader />
-          
+      // {
+      //   path: '/bookReader/:bookId',
+      //   element: (
+      //     <>
+      //       <Canvas>
 
-      }
+      //         <Light brightness={20} color={'#ff0000'} />
+      //         <Experience />
+      //       </Canvas>
+      //     </>
+      //   )
+
+
+      // }
     ]
   }
 ]);
