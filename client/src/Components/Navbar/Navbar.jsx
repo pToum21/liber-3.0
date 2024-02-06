@@ -4,11 +4,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import Login from '../../pages/Login';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
     fontSize: '2.5rem',
+    cursor: 'pointer',
 });
 // buttons pre-nav burger menu
 const StyledTypography = styled(Typography)({
@@ -58,10 +60,13 @@ const NavBar = () => {
                             <MenuIcon />
                         </IconButton>
                     </Hidden>
-                     {/* brand */}
-                    <TitleTypography id="liber" variant="h6">
-                        {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
-                    </TitleTypography>
+                    {/* brand */}
+                    <Link to="/">
+                        <TitleTypography id="liber" variant="h6">
+                            {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
+                        </TitleTypography>
+                    </Link>
+
 
                     {/* nav buttons*/}
                     <StyledTypography variant="h6">
