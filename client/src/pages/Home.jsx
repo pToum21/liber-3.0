@@ -11,8 +11,6 @@ import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 // import mui
 import { Grid, Pagination } from '@mui/material';
-//hooks from react
-import { useState, useEffect } from 'react';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -111,7 +109,7 @@ function Home() {
                             </Grid>
                             <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
-                                <Pagination count={10} variant="outlined" color="primary" />
+                                <Pagination count={10} variant="outlined" color="success" />
 
                             </Grid>
 

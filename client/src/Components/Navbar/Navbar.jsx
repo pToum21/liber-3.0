@@ -50,7 +50,7 @@ const NavBar = () => {
     return (
         <>
             {/* parent */}
-            <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
+            <Grid container py={2} id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
 
                 {/* child 1 (nav and brand)*/}
                 <Grid id="child-1" item sx={{ display: "flex", marginLeft: '2rem' }}>
@@ -72,15 +72,15 @@ const NavBar = () => {
                     {/* nav buttons*/}
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
+                            <Button className="navlinks" color="inherit">
                                 MyLibrary
                             </Button>
 
-                            <Button color="inherit" sx={{ fontFamily: 'Gruppo' }}>
+                            <Button className="navlinks" color="inherit">
                                 Books
                             </Button>
 
-                            <Button color="inherit" onClick={handleLoginClick} sx={{ fontFamily: 'Gruppo' }}>
+                            <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
                                 Login
                             </Button>
                         </Hidden>
@@ -100,19 +100,19 @@ const NavBar = () => {
                             },
                             // this is placeholder text and user input text
                             '& .MuiInputBase-input': {
-                                color: '#78ffdb',
-                                fontFamily: 'Gruppo'
+                                color: 'black',
+                                fontFamily: 'Lato'
                             },
                             // outlined input outline
                             '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'antiquewhite',
+                                borderColor: 'black',
                             },
                         }}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <IconButton edge="end" color="inherit">
-                                        <SearchIcon sx={{ color: 'white', background: 'linear-gradient(to right, #008080, #bdfbe7)', borderRadius: '10px', padding: '4px' }} />
+                                        <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
                                     </IconButton>
                                 </InputAdornment>
                             ),
