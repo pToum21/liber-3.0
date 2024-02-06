@@ -11,10 +11,11 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(#201f2c, #161520, #000000);
+    /* background: linear-gradient(#201f2c, #161520, #000000); */
+    background-color:#f3f3ec;
     background-repeat: no-repeat;
     min-height: 100vh;
-    color: antiquewhite;
+    color: black;
 }
 
 p {
@@ -27,13 +28,4 @@ p {
     src: url('../../coventry-garden.regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
-
-#liber {
-    font-family: 'Coventry Garden', sans-serif;
-    font-size: 2rem;
-}
-
-.close {
-    color: black !important;
 }
