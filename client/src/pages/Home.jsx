@@ -35,7 +35,16 @@ function Home() {
     // data under the method of getBooks is an array of 589(currently) elements, and all 589 are grouped into sub arrays; each subarray holds 100 books.
 
     // this log works, shows all the books
-    console.log(data);
+    // console.log(data);
+
+    // to handle loading in console
+    if (loading) {
+        console.log('Loading...');
+      } else {
+        // Once data is available, accesses and logs single book and corresponding properties on the book object
+        const oneBook = data.getBooks[588];
+        console.log('One Book:', oneBook.image);
+      }
 
     // TODO: put this logic into books div, probs via props, otherwise whole page will say loading; only commented out for now so loading thing doesnt take up the page while others code.
     // if (loading) {
