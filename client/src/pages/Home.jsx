@@ -37,16 +37,16 @@ function Home() {
 
     // data under the method of getBooks is an array of 589(currently) elements.
 
-    // // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
-    // if (loading) {
-    //     console.log('Loading...');
-    // } else {
-    //     // Once data is available, accesses and logs single book and corresponding properties on the book object
-    //     console.log(data);
-    //     //change number in index for a different single book
-    //     const oneBook = data.getBooks[588];
-    //     console.log('One Book:', oneBook.image);
-    // }
+    // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
+    if (loading) {
+        console.log('Loading...');
+    } else {
+        // Once data is available, accesses and logs single book and corresponding properties on the book object
+        console.log(data);
+        //change number in index for a different single book
+        const oneBook = data.getBooks[588];
+        console.log('One Book:', oneBook.image);
+    }
 
     // We use this effect to conditionally render content in books div.
     useEffect(() => {
@@ -103,7 +103,9 @@ function Home() {
                     (
                         books.map((book) => (
                             <div key={book._id}>
-                                <p> The title of this book is {book.title}</p>
+                                {/* <p> The title of this book is {book.title}</p> */}
+                                <img src={`data:image/jpg;base64,${book.image.data}`} />
+
                             </div>
                         ))
                     )
