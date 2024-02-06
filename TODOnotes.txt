@@ -20,9 +20,6 @@ General notes:
     ===================================================
 
 from Ryan: 
-    2/4- just made minor changes to clean up code by deleting unused/unnecessary comments and imports, changed colors and fonts and fixed spacing details via margins and paddings, etc.
-
-    2/5- adjusted minor styles in navbar, worked on useQuery in Home to work on rendering data. console logging data works, but still unable to console log one element from data; keeps coming back as undefined.
     
 
 from Peyton : 

@@ -11,6 +11,8 @@ import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 // import mui
 import { Grid } from '@mui/material';
+//hooks from react
+import { useState, useEffect } from 'react';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -31,25 +33,29 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data } = useQuery(QUERY_ALL_BOOKS);
+    const [oneBook, setOneBook] = useState(null);
 
     // data under the method of getBooks is an array of 589(currently) elements, and all 589 are grouped into sub arrays; each subarray holds 100 books.
 
     // this log works, shows all the books
     // console.log(data);
 
-    // to handle loading in console
-    if (loading) {
-        console.log('Loading...');
-      } else {
-        // Once data is available, accesses and logs single book and corresponding properties on the book object
-        const oneBook = data.getBooks[588];
-        console.log('One Book:', oneBook.image);
-      }
+    // // to handle loading in console
+    // if (loading) {
+    //     console.log('Loading...');
+    // } else {
+    //     // Once data is available, accesses and logs single book and corresponding properties on the book object
+    //     const oneBook = data.getBooks[588];
+    //     console.log('One Book:', oneBook.image);
+    // }
 
     // TODO: put this logic into books div, probs via props, otherwise whole page will say loading; only commented out for now so loading thing doesnt take up the page while others code.
-    // if (loading) {
-    //     return <p>Loading...</p>;
-    // };
+    useEffect(() => {
+        if (!loading && data && data.getBooks && data.getBooks.length > 0) {
+            setOneBook(data.getBooks[0]);
+        }
+    }, [loading, data]);
+
 
     // if (!data || !data.getBooks) {
     //     // Data or getBooks is undefined, we handle accordingly (e.g., show an error message)
@@ -98,9 +104,14 @@ function Home() {
 
             {/* all books div*/}
             <Grid container>
-                <div>
-
-                </div>
+                {!oneBook ?
+                    (
+                        <p>Loading...</p>
+                    ) :
+                    <div>
+                        <p> The title of this book is {oneBook.title}</p>
+                    </div>
+                }
             </Grid>
 
 
