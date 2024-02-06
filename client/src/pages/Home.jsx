@@ -49,19 +49,11 @@ function Home() {
     //     console.log('One Book:', oneBook.image.data);
     // }
 
-    // We use this effect to conditionally render content in books div.
-    // useEffect(() => {
-    //     // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setBooks()) from null to a book's data!
-    //     if (!loading && data && data.getBooks && data.getBooks.length > 0) {
-    //         setBooks(data.getBooks);
-    //     }
-    // }, [loading, data]);
-
 
     return (
         <>
             {/* Slick carousel */}
-            <div>
+            <div style={{marginBottom: '2rem'}}>
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
@@ -102,13 +94,20 @@ function Home() {
                         <p>Loading...</p>
                     ) :
                     (
-                        books.map((book) => (
-                            <div key={book._id}>
-                                {/* <p> The title of this book is {book.title}</p> */}
-                                <img src={`data:image/jpg;base64,${book.image.data}`} />
+                        // parent div holding books
+                        <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            
+                            {/* each book will be in its own div */}
+                            {books.map((book) => (
+                                <Grid item key={book._id}>
+                                   
+                                    <img src={`data:image/jpg;base64,${book.image.data}`} />
+                                     {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
 
-                            </div>
-                        ))
+                                </Grid>
+                            ))}
+
+                        </Grid>
                     )
 
                 }

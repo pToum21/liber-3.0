@@ -1,16 +1,17 @@
 TODO: 
+- BUILD UP SEARCH FEATURE LOGIC: so when user types in search bar, they can search a book by title or author
+
+- MAKE A RATING: have a user be able to rate a book
+
+- COMMENT: have a user be able to comment on a book
 
 - CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
-
-- FIGURE OUT FETCH SO WE GET ALL 800 BOOKS: Got a few errors that say couldnt fetch a whole page (i saw page 15 and 24, surely a few more that i couldnt notice since the data moves so fast in terminal). i npm run developed again because I noticed that if we are getting the dup errors, that maybe means we are fetching all over again, so maybe the page errors could be corrected since less new data is being put in. It did not work, because in compass we are still only at 573 documents in the books collection. Since we expected 800 books to be fetched, this means we are missing 227, meaning thats about 7 pages that were not fetched.
 
 - NAV MENU - change background color of dropdown menu to a slightly lighter than dark purple we have for color scheme; make the nav menu button's background color also slightly lighter than the dark purple we have been using
 
 =============================================
 
 NOTES (can leave notes here detailing what you did):
-
-useLazyQuery useState is pageNumber, setPageNumber {function to render next set of books}
 
 General notes: 
 
@@ -23,7 +24,8 @@ General notes:
     ===================================================
 
 from Ryan: 
-    2/6 - able to render images, need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic
+    2/6 - able to render book images, styled books div on home page, adjusted dots
+    need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic.
     
 
 from Peyton : 
