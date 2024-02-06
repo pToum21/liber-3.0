@@ -11,6 +11,7 @@ import './navbar.css';
 const TitleTypography = styled(Typography)({
     fontSize: '2.5rem',
     cursor: 'pointer',
+
 });
 // buttons pre-nav burger menu
 const StyledTypography = styled(Typography)({
@@ -49,7 +50,7 @@ const NavBar = () => {
     return (
         <>
             {/* parent */}
-            <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap", color: "white" }}>
+            <Grid container id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
 
                 {/* child 1 */}
                 <Grid item sx={{ display: "flex", marginLeft: '2rem', }}>
@@ -61,11 +62,11 @@ const NavBar = () => {
                         </IconButton>
                     </Hidden>
                     {/* brand */}
-                    <Link to="/">
+                    {/* <Link style={{textDecoration: 'none'}}to="/"> */}
                         <TitleTypography id="liber" variant="h6">
                             {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                         </TitleTypography>
-                    </Link>
+                    {/* </ Link> */}
 
 
                     {/* nav buttons*/}
