@@ -10,7 +10,7 @@ import image2 from '../assets/secondcarousel.jpg';
 import image3 from '../assets/thirdcarousel.jpg'
 import '../styles/home.css';
 // import mui
-import { Grid } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 //hooks from react
 import { useState, useEffect } from 'react';
 // hooks from apollo
@@ -53,7 +53,7 @@ function Home() {
     return (
         <>
             {/* Slick carousel */}
-            <div style={{marginBottom: '2rem'}}>
+            <div style={{ marginBottom: '2rem' }}>
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
@@ -94,20 +94,28 @@ function Home() {
                         <p>Loading...</p>
                     ) :
                     (
-                        // parent div holding books
-                        <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                            
-                            {/* each book will be in its own div */}
-                            {books.map((book) => (
-                                <Grid item key={book._id} xs={2.3}>
-                                   
-                                    <img style={{width:'100%'}} src={`data:image/jpg;base64,${book.image.data}`} />
-                                     {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
+                        <>
+                            {/* // parent div holding books */}
+                            <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw' }}>
 
-                                </Grid>
-                            ))}
+                                {/* each book will be in its own div */}
+                                {books.map((book) => (
+                                    <Grid item key={book._id} xs={2.3}>
 
-                        </Grid>
+                                        <img style={{ width: '100%' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                        {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
+
+                                    </Grid>
+                                ))}
+
+                            </Grid>
+                            <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+
+                                <Pagination count={10} variant="outlined" color="primary" />
+
+                            </Grid>
+
+                        </>
                     )
                 }
             </Grid>

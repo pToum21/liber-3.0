@@ -13,30 +13,32 @@ TODO:
 
 NOTES (can leave notes here detailing what you did):
 
-General notes: 
+    General notes: 
 
-    always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
+        always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
-    MyLibrary: is user's profile; MyBookshelf: will be saved books
+        MyLibrary: is user's profile; MyBookshelf: will be saved books
 
-    front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
-    For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
+        front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
+        For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
 
 
     ===================================================
 
-from Ryan: 
-    2/6 - able to render book images, styled books div on home page, adjusted dots
-    need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic.
+    from Ryan: 
+        2/6 - able to render book images, styled books div on home page, adjusted dots
+        need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic.
+        edited carousel text, positioned books in div correctly and responsively, adjusted responsiveness of navbar (via both inline styling and css)
     
 
-from Peyton : 
+    from Peyton : 
 
 
-from Sal :
+    from Sal :
 
 
 
+=============================================
 EXTRA CODE:
 
 

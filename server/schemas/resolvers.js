@@ -13,7 +13,7 @@ const resolvers = {
             throw AuthenticationError;
         },
         getBooks: async (parents, args) => {
-            const bookData = await Book.find().skip(args.skip).limit(10);
+            const bookData = await Book.find().skip(args.skip).limit(5);
 
             console.log('Retrieved book data:', bookData);
             
