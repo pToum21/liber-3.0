@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const BookShelf = (props) => {
-  const { nodes, materials } = useGLTF('./3dModels/bookshelf.glb')
+  const { nodes, materials } = useGLTF('/3dModels/bookshelf.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Object_2.geometry} material={materials.Light} rotation={[-1.574, 0, 0]} />
@@ -37,4 +37,4 @@ const BookShelf = (props) => {
 
 export default BookShelf
 
-useGLTF.preload('./3dModels/bookshelf.glb')
+useGLTF.preload('/3dModels/bookshelf.glb')
