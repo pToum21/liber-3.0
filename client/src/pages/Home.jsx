@@ -33,28 +33,29 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data } = useQuery(QUERY_ALL_BOOKS);
-    const [books, setBooks] = useState(null);
+    // const [books, setBooks] = useState(null);
+    const books = data?.getBooks || [];
 
     // data under the method of getBooks is an array of 589(currently) elements.
 
     // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
-    if (loading) {
-        console.log('Loading...');
-    } else {
-        // Once data is available, accesses and logs single book and corresponding properties on the book object
-        console.log(data);
-        //change number in index for a different single book
-        const oneBook = data.getBooks[588];
-        console.log('One Book:', oneBook.image);
-    }
+    // if (loading) {
+    //     console.log('Loading...');
+    // } else {
+    //     // Once data is available, accesses and logs single book and corresponding properties on the book object
+    //     console.log(data);
+    //     //change number in index for a different single book
+    //     const oneBook = data?.getBooks[588];
+    //     console.log('One Book:', oneBook.image.data);
+    // }
 
     // We use this effect to conditionally render content in books div.
-    useEffect(() => {
-        // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setBooks()) from null to a book's data!
-        if (!loading && data && data.getBooks && data.getBooks.length > 0) {
-            setBooks(data.getBooks);
-        }
-    }, [loading, data]);
+    // useEffect(() => {
+    //     // if data is not loading, and data exists, if our books data exists, if there is more than 0 elements in this data, we change state/value of oneBook (using setBooks()) from null to a book's data!
+    //     if (!loading && data && data.getBooks && data.getBooks.length > 0) {
+    //         setBooks(data.getBooks);
+    //     }
+    // }, [loading, data]);
 
 
     return (
@@ -96,7 +97,7 @@ function Home() {
             {/* all books div*/}
             <Grid container>
                 {/* in this container, if books is null, it renders loading message, otherwise, we can render data in a new div! */}
-                {!books ?
+                {loading ?
                     (
                         <p>Loading...</p>
                     ) :

@@ -10,12 +10,15 @@ TODO:
 
 NOTES (can leave notes here detailing what you did):
 
+useLazyQuery useState is pageNumber, setPageNumber {function to render next set of books}
+
 General notes: 
 
     always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
     front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
     For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
+
 
     ===================================================
 
