@@ -28,7 +28,8 @@ NOTES (can leave notes here detailing what you did):
     from Ryan: 
         2/6 - able to render book images, styled books div on home page, adjusted dots
         need to work on limiting/paginating the books. also working on changing styling of page to be clean/naturistic.
-        edited carousel text, positioned books in div correctly and responsively, adjusted responsiveness of navbar (via both inline styling and css)
+        edited carousel text, positioned books in div correctly and responsively, adjusted responsiveness of navbar (via both inline styling and css),
+        changed color scheme to clean/naturistic
     
 
     from Peyton : 

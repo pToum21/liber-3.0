@@ -57,9 +57,9 @@ function Home() {
                         <div className="overlay">
                             <img src={image2} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">Plethora of books, completely free</h2>
+                                <p className="text-title">PLETHORA OF BOOKS, COMPLETELY FREE</p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
-                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>. Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
+                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image1} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">Interact with your e-reads</h2>
-                                <p>Join our fellow readers! Find and add free classics directly to your Bookshelf for ease of reading. Rate and discuss your favorite books! </p>
+                                <p className="text-title">INTERACT WITH YOUR E-READS</p>
+                                <p>Join our fellow readers!<br /> Find and add free classics directly to your Bookshelf for ease of reading.<br /> Rate and discuss your favorite books! </p>
                             </div>
                         </div>
                     </div>
@@ -76,8 +76,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <h2 className="text-title">MyBookshelf</h2>
-                                <p>Add books directly to the MyBookshelf section.  Once a book is added, you can come back and read it whenever you like.  To gain access to the feature, sign up or log in Now! </p>
+                                <p className="text-title">MYBOOKSHELF</p>
+                                <p>Add books directly to the MyBookshelf section.<br />Once a book is added, you can come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
                     </div>
