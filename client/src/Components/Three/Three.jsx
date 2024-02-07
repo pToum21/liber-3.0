@@ -26,7 +26,7 @@ const Three = () => {
     const [isCanvasClicked, setIsCanvasClicked] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLoading, setIsLoading] = useState(true); // New state for loading animation
-    const audioRef = useRef(new Audio('/forestsounds.mp3'));
+    const audioRef = useRef(new Audio('/3dModels/forestsounds.mp3'));
 
     useEffect(() => {
         
