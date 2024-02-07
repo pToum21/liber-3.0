@@ -126,7 +126,9 @@ function Home() {
                                         <Grid item key={book._id} xs={2.3}>
 
                                             <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                            {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
+                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap'}}> 
+                                            {book.title}
+                                            </p>
 
                                         </Grid>
                                     ))}
