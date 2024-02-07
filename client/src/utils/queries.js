@@ -26,7 +26,6 @@ query getBooks($skip: Int) {
     bookCount
   }
 }
-
 `;
 
 // queries a single book
@@ -57,6 +56,18 @@ query oneBook($id: ID!) {
         email
         role
       }
+    }
+  }
+}
+`;
+
+export const QUERY_SEARCH_ALL_BOOKS = gql`
+query Query {
+  searchAllBooks {
+    _id
+    title
+    authors {
+      name
     }
   }
 }

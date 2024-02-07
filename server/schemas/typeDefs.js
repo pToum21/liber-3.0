@@ -60,6 +60,7 @@ type BookAndCount {
 
 type Query {
     myLibrary: User
+    searchAllBooks: [Book]
     getBooks(skip: Int): BookAndCount
     getSingleBook(_id: ID!): Book
 }
