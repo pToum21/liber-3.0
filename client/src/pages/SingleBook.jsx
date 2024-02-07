@@ -17,6 +17,8 @@ function SingleBook() {
     }
 
     const book = data?.getSingleBook || [];
+    const reviews = book.reviews || [];
+    console.log(book)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
@@ -35,7 +37,23 @@ function SingleBook() {
             </div>
             <div>
                 <div>
-                    
+                    <div>
+                        <p>Comments:</p>
+                        <ul>
+                            {reviews.map(review => (
+                                <li key={review._id}>
+                                    <strong>{review.userId?.username || 'Anonymous'}:</strong>
+                                    {review.comments ? (
+                                        review.comments.map(comment => (
+                                            <p key={comment._id}>{comment.comments}</p>
+                                        ))
+                                    ) : (
+                                        <p>No comments available.</p>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
             <CommentForm bookId={book._id} />

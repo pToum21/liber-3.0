@@ -15,6 +15,10 @@ const reviewSchema = new Schema({
         ref: 'User',
         required: true,
     },
+    bookId: {
+        type:Schema.Types.ObjectId,
+        ref: 'Book'
+    },
     rating: { type: Number, min: 0, max: 5, default: 0 },
     comments: [commentsSchema],
 });

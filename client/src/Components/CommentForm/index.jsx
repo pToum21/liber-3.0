@@ -21,7 +21,7 @@ const CommentForm = ({ bookId }) => {
             })
             setCommentText('');
             setRating(0);
-            console.log(data)
+            console.log(commentText)
         } catch (error) {
             console.error(error)
         }
@@ -45,7 +45,7 @@ const CommentForm = ({ bookId }) => {
               <label htmlFor="comments">Comments:</label>
               <textarea
                 id="comments"
-                name= "commentText"
+                name= "comments"
                 value={commentText}
                 onChange={handleComment}
                 required
