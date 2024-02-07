@@ -6,25 +6,24 @@ import { gql } from '@apollo/client';
 export const QUERY_ALL_BOOKS = gql`
 query getBooks($skip: Int) {
   getBooks(skip: $skip) {
-    _id
-    title
-    text
-    reviews {
-      rating
-      comments {
-        comments
+    books {
+      _id
+      title
+      bookId
+      authors {
+        name
       }
-      userId {
-        username
+      image {
+        data
+      }
+      text
+      reviews {
+        userId {
+          username
+        }
       }
     }
-    image {
-      data
-    }
-    bookId
-    authors {
-      name
-    }
+    bookCount
   }
 }
 
