@@ -2,6 +2,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import CommentForm from '../Components/CommentForm';
+
 
 function SingleBook() {
     const { id } = useParams();
@@ -32,6 +34,7 @@ function SingleBook() {
                 </Link>
 
             </div>
+            <CommentForm />
         </div>
     );
 }
