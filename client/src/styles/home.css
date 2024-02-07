@@ -117,15 +117,15 @@
 }
 
 
-@keyframes fade-left {
+@keyframes fade-in {
     0% {
         opacity: 0;
-        transform: translateX(120px);
+        /* transform: translateX(120px); */
     }
 
     100% {
         opacity: 1;
-        transform: translateX(0px); 
+        /* transform: translateX(0px);  */
     }
 }
 
@@ -162,7 +162,8 @@
 }
 
 .ind-book {
-    animation: fade-left 1s ease-in
+    opacity: 0;
+    animation: fade-in 1s ease-in forwards
 }
 
 .home-book-titles {
