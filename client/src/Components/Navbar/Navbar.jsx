@@ -105,7 +105,7 @@ const NavBar = () => {
                             sx={{
                                 '& .MuiMenu-paper': {
                                     marginTop: '10%',
-                                    width: '100vw',
+                                    width: '100%',
                                     height: '100vh',
                                     transformOrigin: 'top center',
                                     transform: 'translateX(0%) translateY(0%)',
@@ -120,7 +120,6 @@ const NavBar = () => {
                                     fontSize: '2rem',
                                     padding: '1rem',
                                     transition: 'color 0.3s ease',
-                                    fontWeight: 'bold', // Make the text bold
                                     '&:hover': {
                                         color: '#8abbb1',
                                     },
