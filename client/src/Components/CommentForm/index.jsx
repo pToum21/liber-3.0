@@ -1,75 +1,81 @@
-import { useState } from 'react'
-import { useMutation } from '@apollo/client'
-import { ADD_REVIEW } from '../../utils/mutations'
-
-import Auth from '../../utils/auth'
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_REVIEW } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+import Box from '@mui/material/Box';
 
 const CommentForm = ({ bookId }) => {
-    const [commentText, setCommentText] = useState('');
-    const [addReview, { error }] = useMutation(ADD_REVIEW);
-    const [rating, setRating ] = useState(0);
+  const [commentText, setCommentText] = useState('');
+  const [addReview, { error }] = useMutation(ADD_REVIEW);
+  const [rating, setRating] = useState(0);
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const { data } = await addReview({
-                variables: {
-                    bookId,
-                    content: commentText,
-                    rating:parseInt(rating),
-                }
-            })
-            setCommentText('');
-            setRating(0);
-            console.log(commentText)
-        } catch (error) {
-            console.error(error)
-        }
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addReview({
+        variables: {
+          bookId,
+          content: commentText,
+          rating: parseInt(rating),
+        },
+      });
+      setCommentText('');
+      setRating(0);
+      console.log(commentText);
+    } catch (error) {
+      console.error(error);
     }
-    const handleComment = (event) => {
-        const { name, value } = event.target;
+  };
 
-        setCommentText(value)
-    }
-    const handleRatingChange = (event) => {
-        setRating((event.target.value));
-      };
+  const handleComment = (event) => {
+    const { value } = event.target;
+    setCommentText(value);
+  };
 
+  const handleRatingChange = (event, newRating) => {
+    setRating(newRating);
+  };
 
-
-      return (
-        <div>
-          <h2>Add Review</h2>
-          <form onSubmit={handleFormSubmit}>
-            <div>
-              <label htmlFor="comments">Comments:</label>
-              <textarea
-                id="comments"
-                name= "content"
-                value={commentText}
-                onChange={handleComment}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="rating">Rating:</label>
-              <input
-                type="number"
-                id="rating"
-                value={rating}
-                onChange={handleRatingChange}
-                min="0"
-                max="5"
-                required
-              />
-            </div>
-            <button type="submit">
-              Add Review
-            </button>
-          </form>
-          {error && <p>Error: {error.message}</p>}
-        </div>
-      );  
-}
+  return (
+    <div style={{ maxWidth: '60%', marginLeft: '10%' }}>
+      <h2>Add Review</h2>
+      <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+        <Box display="flex" alignItems="center" marginBottom={2}>
+          <TextField
+            id="comments"
+            name="content"
+            value={commentText}
+            onChange={handleComment}
+            label="Add a comment..."
+            variant="outlined"
+            multiline
+            rows={3}
+            required
+            fullWidth
+          />
+          <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '10px' }}>
+            Post
+          </Button>
+        </Box>
+        <Box marginBottom={2}>
+          <label htmlFor="rating" style={{ marginRight: '3rem',}}>
+            Rating:
+          </label>
+          <Rating
+            id="rating"
+            value={rating}
+            onChange={handleRatingChange}
+            max={5}
+            precision={0.5}
+          />
+        </Box>
+      </form>
+      {error && <p>Error: {error.message}</p>}
+    </div>
+  );
+};
 
 export default CommentForm;
