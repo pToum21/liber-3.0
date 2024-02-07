@@ -3,8 +3,7 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { Environment, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import Experience from './Experience';
-
-
+import BookFlipper from '../BookFlipper/BookFlipper';
 
 function Light({ brightness, color, position }) {
     return (
@@ -23,11 +22,11 @@ const Skybox = () => {
 
 const Three = () => {
     return (
-        <div style={{ backgroundColor: '#161520' }}>
+        <div style={{ backgroundColor: '#161520', position: 'relative', height: '100vh' }}>
             <div
                 style={{
                     position: 'absolute',
-                    marginTop: '5%',
+                    top: '5%',
                     left: '5%',
                     padding: '20px',
                     background: 'rgba(255, 255, 255, 0.7)',
@@ -48,24 +47,21 @@ const Three = () => {
             </div>
             <div
                 style={{
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: '2',
                 }}
             >
-               
-                <Canvas style={{ width: '100%', height: '100%', zIndex: '0' }}>
-                    <Skybox />
-                    {/* Your light and experience components */}
-                    <Light brightness={40} color={'yellow'} position={[100, 200, 300]} />
-                    {/* Add your Experience component here */}
-                    <Experience />
-                    {/* Camera and controls for navigation */}
-                    <OrbitControls />
-                </Canvas>
+                <BookFlipper style={{ width: '200px', height: '300px' }} />
             </div>
+            <Canvas style={{ width: '100%', height: '100%', zIndex: '0' }}>
+                <Skybox />
+                <Light brightness={40} color={'yellow'} position={[100, 200, 300]} />
+                <Experience />
+                <OrbitControls />
+            </Canvas>
         </div>
     );
 };
