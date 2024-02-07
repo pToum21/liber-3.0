@@ -4,33 +4,30 @@ import { gql } from '@apollo/client';
 // queries all books
 // may need to refactor the reviews part, because we may be unnecessarily querying ids or user info
 export const QUERY_ALL_BOOKS = gql`
-query allBooks {
-    getBooks {
-      _id
-      title
-      bookId
-      authors {
-        name
+query getBooks($skip: Int) {
+  getBooks(skip: $skip) {
+    _id
+    title
+    text
+    reviews {
+      rating
+      comments {
+        comments
       }
-      image {
-        data
-      }
-      text
-      reviews {
-        _id
-        comments {
-          _id
-          comments
-          userId
-        }
-        rating
-        userId {
-          username
-          _id
-        }
+      userId {
+        username
       }
     }
+    image {
+      data
+    }
+    bookId
+    authors {
+      name
+    }
   }
+}
+
 `;
 
 // queries a single book
