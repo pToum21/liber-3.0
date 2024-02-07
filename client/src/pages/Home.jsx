@@ -12,7 +12,7 @@ import '../styles/home.css';
 // useState, Effect
 import { useState, useEffect } from 'react';
 // import mui
-import { Grid, Pagination } from '@mui/material';
+import { Grid, Pagination, Typography } from '@mui/material';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -33,8 +33,16 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data, refetch } = useQuery(QUERY_ALL_BOOKS);
+// console.log(data);
+
     //   puts data into variable (it's an array), can access its properties from there
-    const books = data?.getBooks || [];
+    const books = data?.getBooks.books || [];
+    // console.log(books);
+    const bookCount = data?.getBooks.bookCount || 0;
+    // console.log(bookCount);
+    const totalPages = (bookCount/5);
+
+
     // useState for page number
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -109,14 +117,15 @@ function Home() {
                     ) :
                     (
                         <>
+                        
                             {/* // parent div holding books */}
-                            <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw' }}>
+                            <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 2px #cae4df', marginLeft: '5rem', marginRight: '5rem' }}>
 
                                 {/* each book will be in its own div */}
                                 {books.map((book) => (
                                     <Grid item key={book._id} xs={2.3}>
 
-                                        <img style={{ width: '100%' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                        <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                         {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
 
                                     </Grid>
@@ -126,7 +135,7 @@ function Home() {
                             <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
                                 <Pagination
-                                    count={159}
+                                    count={totalPages}
                                     page={currentPage}
                                     onChange={changePage}
                                     variant="outlined"

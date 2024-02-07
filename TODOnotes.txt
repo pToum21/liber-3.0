@@ -1,4 +1,7 @@
 TODO: 
+- MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
+    their MyBookshelf (saved books), and perhaps all their ratings and comments?
+    
 - BUILD UP SEARCH FEATURE LOGIC: so when user types in search bar, they can search a book by title or author
 
 - MAKE A RATING: have a user be able to rate a book
@@ -14,6 +17,11 @@ TODO:
 NOTES (can leave notes here detailing what you did):
 
     General notes: 
+
+        color scheme: 
+            offwhite: #f3f3ec
+            forest green: #8abbb1
+            black: #000000 or 'black'
 
         always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
