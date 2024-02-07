@@ -96,3 +96,14 @@
         font-size: .8rem;
     }
 }
+
+#view-all-books {
+    /* transform: rotate(-90deg);
+    transform-origin: 75% 100%;
+    white-space: nowrap;
+    height: min-content;
+    display: flex;
+    flex: 1; */
+    font-size: 2rem;
+}
+
