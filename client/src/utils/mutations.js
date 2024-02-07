@@ -40,6 +40,7 @@ mutation AddReview($bookId: ID!, $comments: String!, $rating: Int!) {
       }
       rating
     }
+    bookId
   }
 }
 `;
