@@ -105,6 +105,7 @@ const NavBar = () => {
                             sx={{
                                 '& .MuiMenu-paper': {
                                     marginTop: '10%',
+                                    
                                     width: '100vw',
                                     height: '100vh',
                                     transformOrigin: 'top center',
@@ -127,7 +128,7 @@ const NavBar = () => {
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit', }}>
                                     MyLibrary
                                 </Link>
                             </MenuItem>
