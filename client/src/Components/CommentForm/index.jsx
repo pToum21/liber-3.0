@@ -15,7 +15,7 @@ const CommentForm = ({ bookId }) => {
             const { data } = await addReview({
                 variables: {
                     bookId,
-                    comments: commentText,
+                    content: commentText,
                     rating:parseInt(rating),
                 }
             })
@@ -45,7 +45,7 @@ const CommentForm = ({ bookId }) => {
               <label htmlFor="comments">Comments:</label>
               <textarea
                 id="comments"
-                name= "comments"
+                name= "content"
                 value={commentText}
                 onChange={handleComment}
                 required

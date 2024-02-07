@@ -30,33 +30,30 @@ query getBooks($skip: Int) {
 
 // queries a single book
 export const QUERY_ONE_BOOK = gql`
-query oneBook($id: ID!) {
+query getSingleBook($id: ID!) {
   getSingleBook(_id: $id) {
     _id
     title
     bookId
     authors {
+      _id
       name
     }
     image {
       data
+      contentType
     }
-    text
     reviews {
       _id
+      rating
+      content
       comments {
         _id
         userId
-        comments
-      }
-      rating
-      userId {
-        _id
-        username
-        email
-        role
+        content
       }
     }
+    text
   }
 }
 `;
