@@ -68,11 +68,11 @@ const NavBar = () => {
                         </IconButton>
                     </Hidden>
                     {/* brand */}
-                    {/* <Link style={{textDecoration: 'none'}}to="/"> */}
+                    <Link style={{textDecoration: 'none', color: 'black'}}to="/">
                     <TitleTypography id="liber" sx={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
                         {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
                     </TitleTypography>
-                    {/* </ Link> */}
+                    </ Link>
 
 
                     {/* nav buttons*/}
