@@ -64,15 +64,17 @@ const NavBar = () => {
     // logic for search feature
     const { loading, data, refetch } = useQuery(QUERY_SEARCH_ALL_BOOKS);
     const [searchInput, setSearchInput] = useState('');
+// make loading scenario
+    console.log(data?.searchAllBooks);
 
-    const handleSearch = async (event) => {
-        event.preventDefault();
+    // const handleSearch = async (event) => {
+    //     event.preventDefault();
 
-        if (!searchInput) {
-            return false;
-        }
+    //     if (!searchInput) {
+    //         return false;
+    //     }
 
-    }
+    // }
 
     return (
         <>
