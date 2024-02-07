@@ -41,7 +41,7 @@ mutation addReview($bookId: ID!, $comments: String!, $rating: Int!) {
       rating
       comments {
         _id
-        
+        comments
         userId
       }
     }
