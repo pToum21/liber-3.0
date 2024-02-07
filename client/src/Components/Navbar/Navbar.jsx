@@ -1,12 +1,18 @@
+// import useHooks
 import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
+// import mui
 import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import Login from '../../pages/Login';
+// to link to other pages
 import { Link } from 'react-router-dom';
+// our files
 import './navbar.css';
 import Auth from '../../utils/auth'
+import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -20,8 +26,9 @@ const StyledTypography = styled(Typography)({
     marginLeft: '2rem',
 });
 
-// functionality for nav menu
+
 const NavBar = () => {
+    // functionality for nav menu
     const [anchorEl, setAnchorEl] = useState(null);
     const [showSearchBar, setShowSearchBar] = useState(false);
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -52,6 +59,20 @@ const NavBar = () => {
     const handleLoginModalClose = () => {
         setLoginModalOpen(false);
     };
+
+
+    // logic for search feature
+    const { loading, data, refetch } = useQuery(QUERY_SEARCH_ALL_BOOKS);
+    const [searchInput, setSearchInput] = useState('');
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
+
+        if (!searchInput) {
+            return false;
+        }
+
+    }
 
     return (
         <>
