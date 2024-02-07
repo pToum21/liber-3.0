@@ -32,7 +32,11 @@ function SingleBook() {
                 <Link to={`/bookReader/${id}`}>
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">Read Now</Button>
                 </Link>
-
+            </div>
+            <div>
+                <div>
+                    
+                </div>
             </div>
             <CommentForm />
         </div>

@@ -16,7 +16,7 @@ mutation CreateUser($username: String!, $email: String!, $password: String!) {
 `;
 
 // logs user in and returns _id, username, and email
-export const LOGIN = gql `
+export const LOGIN = gql`
 mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
@@ -25,6 +25,22 @@ mutation Login($email: String!, $password: String!) {
       username
       email
     }
+  }
+}
+`;
+
+// reviews and comment mutation
+export const ADD_REVIEW = gql`
+mutation AddReview($bookId: ID!, $comments: String!, $rating: Int!) {
+  addReview(bookId: $bookId, comments: $comments, rating: $rating) {
+    reviews {
+      comments {
+        comments
+        userId
+      }
+      rating
+    }
+    bookId
   }
 }
 `;
