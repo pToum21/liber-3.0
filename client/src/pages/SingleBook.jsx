@@ -14,17 +14,17 @@ function SingleBook() {
         return <div>Loading....</div>;
     }
 
-    const book = data?.getBooks || [];
+    const book = data?.getSingleBook || [];
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
-            <h3>Title: {data.getSingleBook.title}</h3>
+            <h3>Title: {book.title}</h3>
             <h4>
-                Authors: {data.getSingleBook.authors.map((author, index) => (
+                Authors: {book.authors.map((author, index) => (
                     <span key={index}>{author.name}</span>
                 ))}
             </h4>
-            <img src={`data:image/jpg;base64,${data.getSingleBook.image.data}`} alt={data.getSingleBook.title} style={{ maxWidth: '100%', height: 'auto' }} />
+            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">MyLibrary</Button>
                 <Link to={`/bookReader/${id}`}>
