@@ -1,12 +1,14 @@
 TODO: 
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
-    their MyBookshelf (saved books), and perhaps all their ratings and comments?
+    their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
     
 - BUILD UP SEARCH FEATURE LOGIC: so when user types in search bar, they can search a book by title or author
 
 - MAKE A RATING: have a user be able to rate a book
 
 - COMMENT: have a user be able to comment on a book
+
+- LOGOUT: should be hidden if user is not logged in
 
 - CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
@@ -34,7 +36,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/6 - able to have all books render via pagination on home
+        2/6 - finished styling home, just need to link individual books, then will move on to search feature
     
 
     from Peyton : 
