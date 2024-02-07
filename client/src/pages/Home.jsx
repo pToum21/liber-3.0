@@ -137,6 +137,7 @@ function Home() {
                                 <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
                                     <Pagination
+                                    sx={{button:{color: '#8abbb1'}}}
                                         count={totalPages}
                                         page={currentPage}
                                         onChange={changePage}
