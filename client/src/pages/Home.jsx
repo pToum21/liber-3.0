@@ -131,12 +131,6 @@ function Home() {
                                             <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
                                                 {book.title}
                                             </p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#8abbb1" width="64px" height="64px">
-
-  <path d="M17 2H7c-.553 0-1 .447-1 1v18c0 .553.447 1 1 1h10c.553 0 1-.447 1-1V3c0-.553-.447-1-1-1zM8 4h7v16H8V4zm10 18H9v-3h9v3zm0-5H9V5h9v12z"/>
-
-  <rect x="9" y="6" width="6" height="14" fill="#fff"/>
-</svg>
 
                                         </Grid>
                                     ))}
