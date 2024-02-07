@@ -48,3 +48,16 @@ mutation addReview($bookId: ID!, $comments: String!, $rating: Int!) {
   }
 }
 `;
+
+export const ADD_COMMENT = gql`
+mutation addComment($reviewId: ID!, $content: String) {
+  addComment(reviewId: $reviewId, content: $content) {
+    _id
+    comments {
+      content
+      userId
+      _id
+    }
+  }
+}
+`

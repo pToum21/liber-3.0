@@ -6,7 +6,7 @@ const commentsSchema = new Schema({
         ref: 'User',
         required: true,
     },
-    comments: String,
+    content: String,
 });
 
 const reviewSchema = new Schema({
@@ -17,9 +17,10 @@ const reviewSchema = new Schema({
     },
     bookId: {
         type:Schema.Types.ObjectId,
-        ref: 'Book'
+        ref: 'Book',
     },
     rating: { type: Number, min: 0, max: 5, default: 0 },
+    content: String,
     comments: [commentsSchema],
 });
 
