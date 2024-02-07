@@ -1,6 +1,6 @@
 TODO: 
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
-    their MyBookshelf (saved books), and perhaps all their ratings and comments?
+    their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
     
 - BUILD UP SEARCH FEATURE LOGIC: so when user types in search bar, they can search a book by title or author
 

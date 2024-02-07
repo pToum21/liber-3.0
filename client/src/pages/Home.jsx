@@ -33,14 +33,14 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data, refetch } = useQuery(QUERY_ALL_BOOKS);
-// console.log(data);
+    // console.log(data);
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
     // console.log(books);
     const bookCount = data?.getBooks.bookCount || 0;
     // console.log(bookCount);
-    const totalPages = Math.ceil(bookCount/5);
+    const totalPages = Math.ceil(bookCount / 5);
 
 
     // useState for page number
@@ -117,30 +117,31 @@ function Home() {
                     ) :
                     (
                         <>
-                        
-                            {/* // parent div holding books */}
-                            <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 2px #cae4df', marginLeft: '5rem', marginRight: '5rem' }}>
+                            <Grid container className="bottom-home-div">
+                                {/* // parent div holding books */}
+                                <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
-                                {/* each book will be in its own div */}
-                                {books.map((book) => (
-                                    <Grid item key={book._id} xs={2.3}>
+                                    {/* each book will be in its own div */}
+                                    {books.map((book) => (
+                                        <Grid item key={book._id} xs={2.3}>
 
-                                        <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                        {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
+                                            <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                            {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
 
-                                    </Grid>
-                                ))}
+                                        </Grid>
+                                    ))}
 
-                            </Grid>
-                            <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+                                </Grid>
+                                <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
-                                <Pagination
-                                    count={totalPages}
-                                    page={currentPage}
-                                    onChange={changePage}
-                                    variant="outlined"
-                                    color="success" />
+                                    <Pagination
+                                        count={totalPages}
+                                        page={currentPage}
+                                        onChange={changePage}
+                                        variant="outlined"
+                                        color="success" />
 
+                                </Grid>
                             </Grid>
 
                         </>
