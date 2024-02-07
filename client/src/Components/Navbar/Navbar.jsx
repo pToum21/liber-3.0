@@ -12,8 +12,8 @@ import Auth from '../../utils/auth'
 const TitleTypography = styled(Typography)({
     fontSize: '2.5rem',
     cursor: 'pointer',
-
 });
+
 // buttons pre-nav burger menu
 const StyledTypography = styled(Typography)({
     display: 'flex',
@@ -33,6 +33,9 @@ const NavBar = () => {
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
+        // Set the menu anchor position to the top left corner
+        document.getElementById('responsive-menu').style.top = '0';
+        document.getElementById('responsive-menu').style.left = '0';
     };
 
     const handleMenuClose = () => {
@@ -68,12 +71,11 @@ const NavBar = () => {
                         </IconButton>
                     </Hidden>
                     {/* brand */}
-                    <Link style={{textDecoration: 'none', color: 'black'}}to="/">
-                    <TitleTypography id="liber" sx={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
-                        {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
-                    </TitleTypography>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+                        <TitleTypography id="liber" sx={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
+                            {'{'}&nbsp;&nbsp;L i b e r&nbsp;&nbsp;{'}'}
+                        </TitleTypography>
                     </ Link>
-
 
                     {/* nav buttons*/}
                     <StyledTypography variant="h6">
@@ -131,10 +133,39 @@ const NavBar = () => {
 
                     {/* hamburger menu items */}
                     <Hidden lgUp>
-                        <Menu id="responsive-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                            <MenuItem onClick={handleMenuClose}>MyLibrary</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Books</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+                        <Menu
+                            id="responsive-menu"
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleMenuClose}
+                            sx={{
+                                '& .MuiMenu-paper': {
+                                    width: '100%',
+                                    height: '100%',
+                                    transformOrigin: 'top center',
+                                    transform: 'translateX(0%) translateY(0%)',
+                                },
+                                '& .MuiMenuItem-root': {
+                                    fontSize: '1.5rem', // Adjust the font size as needed
+                                    padding: '1rem', // Adjust the padding as needed
+                                },
+                            }}
+                        >
+                            <MenuItem onClick={handleMenuClose}>
+                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    MyLibrary
+                                </Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleMenuClose}>
+                                <Link to="/books" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    Books
+                                </Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleMenuClose}>
+                                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    Log in
+                                </Link>
+                            </MenuItem>
                         </Menu>
                     </Hidden>
                 </Grid>
@@ -147,7 +178,6 @@ const NavBar = () => {
 
             </Grid>
         </>
-
     );
 };
 
