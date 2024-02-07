@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { Environment, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
@@ -7,6 +7,7 @@ import BookFlipper from '../BookFlipper/BookFlipper';
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
+import './three.css'; 
 
 function Light({ brightness, color, position }) {
     return (
@@ -24,7 +25,18 @@ const Skybox = () => {
 const Three = () => {
     const [isCanvasClicked, setIsCanvasClicked] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); // New state for loading animation
     const audioRef = useRef(new Audio('/public/forestsounds.mp3'));
+
+    useEffect(() => {
+        
+        const fakeLoadingTimeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 300); 
+
+        
+        return () => clearTimeout(fakeLoadingTimeout);
+    }, []);
 
     const handleCanvasClick = () => {
         setIsCanvasClicked(true);
@@ -40,7 +52,12 @@ const Three = () => {
     };
 
     return (
-        <div style={{ backgroundColor: '#161520', position: 'relative', height: '100vh' }}>
+        <div className={`fade-in ${isLoading ? 'loading' : 'loaded'}`} style={{ backgroundColor: 'transparent', position: 'relative', height: '100vh' }}>
+            {isLoading && (
+                <div className="loading-overlay">
+                    <p>Loading...</p>
+                </div>
+            )}
             <div style={{
                 position: 'absolute',
                 top: '5%',
@@ -68,10 +85,10 @@ const Three = () => {
                     fontSize: '16px',
                     lineHeight: '1.5'
                 }}>
-                    Press <span style={{ color: '#8abbb1' }}>Right Click</span> to grab and pan around the room.
+                    Press <span style={{ color: '#004c00' }}>Right Click</span> to grab and pan around the room.
                 </p>
-                <IconButton onClick={toggleAudio}>
-                   Hear the Sounds of The Forest {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+                <IconButton onClick={toggleAudio} style={{ fontSize: '16px' }}>
+                    <p style={{ color: '#8abbb1' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                 </IconButton>
             </div>
             {isCanvasClicked && (
