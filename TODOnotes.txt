@@ -34,7 +34,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/6 - able to have all books render via pagination on home
+        2/6 - finished styling home, just need to link individual books, then will move on to search feature
     
 
     from Peyton : 
