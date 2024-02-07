@@ -78,70 +78,22 @@ const resolvers = {
 
 
 
-        addReview: async (parent, { bookId, comments, rating }, context) => {
+        addReview: async (parent, { bookId, content, rating }, context) => {
             if (context.user) {
-                try {
-                    const user = await User.findById(context.user._id);
-
-                    const newComment = {
-                        userId: user._id,
-                        comments,
-                    };
-
-                    const newReview = new Review({
-                        // _id
-                        userId: user._id,
-                        comments: [newComment],
-                        rating: rating,
-                    });
-
-                    // saves document into database (conmpass)
-                    await newReview.save();
-
-                    // Find the book by its _id and update it with the new review's _id
-                    const updatedBook = await Book.findById(bookId);
-                    updatedBook.reviews.push(newReview._id); // Push the review's _id
-                    await updatedBook.save();
-
-                    // Assuming you need to return the added review, fetch it back along with necessary book details
-                    // Since reviews are now referenced by ID, fetch the detailed review directly if needed
-                    const addedReview = await Review.findById(newReview._id);
-
-                    if (!addedReview) {
-                        console.error('Review not found after update');
-                        throw new Error('Review not found after update');
+                const review = await Review.create({
+                    userId: context.user._id,
+                    bookId: bookId,
+                    rating: rating,
+                    content: content
+                })
+                const book = await Book.findByIdAndUpdate(bookId, {
+                    $push: {
+                        reviews: review._id
                     }
-
-                    // Structure the response as needed, including the bookId
-                    const responseData = {
-                        _id: addedReview._id,
-                        title: updatedBook.title,
-                        bookId: bookId, // Ensuring the bookId is included in the response
-                        authors: updatedBook.authors,
-                        image: updatedBook.image,
-                        text: updatedBook.text,
-                        reviews: [
-                            {
-                                _id: addedReview._id,
-                                comments: addedReview.comments.map(comment => ({
-                                    _id: comment._id,
-                                    userId: comment.userId,
-                                    comments: comment.comments,
-                                })),
-                                rating: addedReview.rating, // Include the rating here
-                            }
-                        ],
-                    };
-
-                    return responseData;
-
-                } catch (error) {
-                    console.error('Error adding review:', error);
-                    throw new Error('Error adding review');
-                }
-            } else {
-                throw new Error('Authentication Error'); // Adjust as per your error handling
+                }, { new: true })
+                return book
             }
+            throw AuthenticationError
         },
 
         removeBook: async (parent, { _id }, context) => {
@@ -156,6 +108,21 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+
+        addComment: async (parent, args, context) => {
+            if (context.user) {
+                const review = await Review.findByIdAndUpdate(args.reviewId, {
+                    $push: {
+                        comments: {
+                            userId: context.user._id,
+                            content: args.content
+                        }
+                    }
+                }, {new: true})
+
+                return review;
+            } throw AuthenticationError
+        }
 
     },
 

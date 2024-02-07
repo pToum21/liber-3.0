@@ -2,6 +2,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import CommentForm from '../Components/CommentForm';
+
 
 function SingleBook() {
     const { id } = useParams();
@@ -14,17 +16,19 @@ function SingleBook() {
         return <div>Loading....</div>;
     }
 
-    const book = data?.getBooks || [];
+    const book = data?.getSingleBook || [];
+    const reviews = book.reviews || [];
+    console.log(book)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
-            <h3>Title: {data.getSingleBook.title}</h3>
+            <h3>Title: {book.title}</h3>
             <h4>
-                Authors: {data.getSingleBook.authors.map((author, index) => (
+                Authors: {book.authors.map((author, index) => (
                     <span key={index}>{author.name}</span>
                 ))}
             </h4>
-            <img src={`data:image/jpg;base64,${data.getSingleBook.image.data}`} alt={data.getSingleBook.title} style={{ maxWidth: '100%', height: 'auto' }} />
+            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">MyLibrary</Button>
                 <Link to={`/bookReader/${id}`}>
@@ -33,9 +37,26 @@ function SingleBook() {
             </div>
             <div>
                 <div>
-                    
+                    <div>
+                        <p>Comments:</p>
+                        <ul>
+                            {reviews.map(review => (
+                                <li key={review._id}>
+                                    <strong>{review.userId?.username || 'Anonymous'}:</strong>
+                                    {review.comments ? (
+                                        review.comments.map(comment => (
+                                            <p key={comment._id}>{comment.comments}</p>
+                                        ))
+                                    ) : (
+                                        <p>No comments available.</p>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <CommentForm bookId={book._id} />
         </div>
     );
 }

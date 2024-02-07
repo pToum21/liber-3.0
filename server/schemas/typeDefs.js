@@ -18,7 +18,7 @@ type Author {
 type Comments {
     _id: ID
     userId: ID
-    comments: String
+    content: String
 }
 
 # image in type Book must be the same data type as in model; it is not a string. it is an object containing strings.
@@ -44,6 +44,7 @@ type Review {
     _id: ID
     comments: [Comments]
     rating: Int
+    content: String
     userId: User
 }
 
@@ -78,7 +79,8 @@ type Mutation {
     createUser(username: String!, email: String!, password: String!): Auth
     keepBook(input: KeepBookInput!): User
     removeBook(_id: ID): User
-    addReview(bookId: ID!, comments: String!, rating: Int!): Book
+    addReview(bookId: ID!, content: String, rating: Int!): Book
+    addComment( reviewId: ID!, content: String): Review
 }
 
 `;

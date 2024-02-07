@@ -31,16 +31,33 @@ mutation Login($email: String!, $password: String!) {
 
 // reviews and comment mutation
 export const ADD_REVIEW = gql`
-mutation AddReview($bookId: ID!, $comments: String!, $rating: Int!) {
+mutation addReview($bookId: ID!, $comments: String!, $rating: Int!) {
   addReview(bookId: $bookId, comments: $comments, rating: $rating) {
+    _id
+    title
+    bookId
     reviews {
+      _id
+      rating
       comments {
+        _id
         comments
         userId
       }
-      rating
     }
-    bookId
   }
 }
 `;
+
+export const ADD_COMMENT = gql`
+mutation addComment($reviewId: ID!, $content: String) {
+  addComment(reviewId: $reviewId, content: $content) {
+    _id
+    comments {
+      content
+      userId
+      _id
+    }
+  }
+}
+`
