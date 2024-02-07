@@ -128,6 +128,22 @@
     }
 }
 
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+.top-home-div {
+    animation: fade-down 0.5s ease-in
+}
+
 .bottom-home-div {
     animation: fade-up 0.5s ease-in
 }

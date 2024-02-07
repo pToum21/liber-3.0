@@ -76,7 +76,7 @@ function Home() {
     return (
         <>
             {/* Slick carousel */}
-            <div style={{ marginBottom: '2rem' }}>
+            <div className="top-home-div" style={{ marginBottom: '2rem' }}>
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
