@@ -92,7 +92,7 @@ const NavBar = () => {
                         </Hidden>
                     </StyledTypography>
                 </Grid>
-                <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right" }}>
+                <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
                     <Hidden lgUp>
                         <Menu
                             id="responsive-menu"
@@ -101,14 +101,20 @@ const NavBar = () => {
                             anchorPosition={{ top: 0, left: 0 }}
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
+                            disablePortal // Add this prop
                             sx={{
                                 '& .MuiMenu-paper': {
-                                    marginTop: '15%',
+                                    marginTop: '10%',
                                     width: '100vw',
                                     height: '100vh',
                                     transformOrigin: 'top center',
                                     transform: 'translateX(0%) translateY(0%)',
                                     backgroundColor: '#f3f3ec',
+                                    boxShadow: 'none',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
                                 },
                                 '& .MuiMenuItem-root': {
                                     fontSize: '2rem',
