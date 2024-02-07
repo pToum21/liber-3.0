@@ -1,6 +1,7 @@
 // Home.js
 import React from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 // must npm i for react slick
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -33,15 +34,14 @@ function Home() {
 
     // using our query to get data from db
     const { loading, data, refetch } = useQuery(QUERY_ALL_BOOKS);
-// console.log(data);
+    // console.log(data);
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
     // console.log(books);
     const bookCount = data?.getBooks.bookCount || 0;
     // console.log(bookCount);
-    const totalPages = Math.ceil(bookCount/5);
-
+    const totalPages = Math.ceil(bookCount / 5);
 
     // useState for page number
     const [currentPage, setCurrentPage] = useState(1);
@@ -76,7 +76,7 @@ function Home() {
     return (
         <>
             {/* Slick carousel */}
-            <div style={{ marginBottom: '2rem' }}>
+            <div className="top-home-div" style={{ marginBottom: '2rem' }}>
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
@@ -110,7 +110,7 @@ function Home() {
             </div>
 
             {/* all books div*/}
-            <Grid container>
+            <Grid container sx={{display: 'flex', justifyContent: 'center'}}>
                 {loading ?
                     (
                         <p>Loading...</p>
@@ -118,29 +118,40 @@ function Home() {
                     (
                         <>
                         
-                            {/* // parent div holding books */}
-                            <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 2px #cae4df', marginLeft: '5rem', marginRight: '5rem' }}>
+                            <Grid container className="bottom-home-div">
+                                {/* // parent div holding books */}
+                                <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
-                                {/* each book will be in its own div */}
-                                {books.map((book) => (
-                                    <Grid item key={book._id} xs={2.3}>
+                                    {/* each book will be in its own div */}
+                                    {books.map((book, index) => (
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
+                                            <Link to={`/singleBook/${book._id}`}>
+                                                <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                            </Link>
+                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
+                                                {book.title}
+                                            </p>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#8abbb1" width="64px" height="64px">
 
-                                        <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                        {/* <p style={{ fontSize: '.5rem', textWrap: 'wrap'}}> {book.title}</p> */}
+  <path d="M17 2H7c-.553 0-1 .447-1 1v18c0 .553.447 1 1 1h10c.553 0 1-.447 1-1V3c0-.553-.447-1-1-1zM8 4h7v16H8V4zm10 18H9v-3h9v3zm0-5H9V5h9v12z"/>
 
-                                    </Grid>
-                                ))}
+  <rect x="9" y="6" width="6" height="14" fill="#fff"/>
+</svg>
 
-                            </Grid>
-                            <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                                <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
-                                <Pagination
-                                    count={totalPages}
-                                    page={currentPage}
-                                    onChange={changePage}
-                                    variant="outlined"
-                                    color="success" />
+                                    <Pagination
+                                        sx={{ button: { color: '#8abbb1' } }}
+                                        count={totalPages}
+                                        page={currentPage}
+                                        onChange={changePage}
+                                        variant="outlined"
+                                        color="success" />
 
+                                </Grid>
                             </Grid>
 
                         </>

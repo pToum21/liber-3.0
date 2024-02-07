@@ -14,7 +14,7 @@ body {
     /* background: linear-gradient(#201f2c, #161520, #000000); */
     background-color:#f3f3ec;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     color: black;
 }
 
