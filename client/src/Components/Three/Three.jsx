@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { Environment, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import Experience from './Experience';
 import BookFlipper from '../BookFlipper/BookFlipper';
+import IconButton from '@mui/material/IconButton';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 function Light({ brightness, color, position }) {
     return (
@@ -20,34 +23,56 @@ const Skybox = () => {
 
 const Three = () => {
     const [isCanvasClicked, setIsCanvasClicked] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef(new Audio('/public/forestsounds.mp3'));
 
     const handleCanvasClick = () => {
         setIsCanvasClicked(true);
     };
 
+    const toggleAudio = () => {
+        if (isPlaying) {
+            audioRef.current.pause();
+        } else {
+            audioRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+
     return (
         <div style={{ backgroundColor: '#161520', position: 'relative', height: '100vh' }}>
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '5%',
-                    left: '5%',
-                    padding: '20px',
-                    background: 'rgba(255, 255, 255, 0.7)',
-                    borderRadius: '10px',
-                    maxWidth: '300px',
-                    zIndex: '1',
-                }}
-            >
+            <div style={{
+                position: 'absolute',
+                top: '5%',
+                left: '5%',
+                padding: '20px',
+                background: 'rgba(255, 255, 255, 0.7)',
+                borderRadius: '10px',
+                maxWidth: '300px',
+                zIndex: '1',
+            }}>
                 <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
                     Library Instructions
                 </h1>
-                <p style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '16px', lineHeight: '1.5' }}>
+                <p style={{
+                    color: 'black',
+                    fontFamily: 'Press Start 2P',
+                    fontSize: '16px',
+                    lineHeight: '1.5'
+                }}>
                     Press <span style={{ color: '#ff0000' }}>Left Click</span> anywhere to sit at the desk and read your selected Book.
                 </p>
-                <p style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '16px', lineHeight: '1.5' }}>
-                    Press <span style={{ color: '#00ff00' }}>Right Click</span> to grab and pan around the room.
+                <p style={{
+                    color: 'black',
+                    fontFamily: 'Press Start 2P',
+                    fontSize: '16px',
+                    lineHeight: '1.5'
+                }}>
+                    Press <span style={{ color: '#8abbb1' }}>Right Click</span> to grab and pan around the room.
                 </p>
+                <IconButton onClick={toggleAudio}>
+                   Hear the Sounds of The Forest {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+                </IconButton>
             </div>
             {isCanvasClicked && (
                 <div
