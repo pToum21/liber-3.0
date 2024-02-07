@@ -30,7 +30,7 @@ mutation Login($email: String!, $password: String!) {
 `;
 
 // reviews and comment mutation
-export const Review = gql`
+export const ADD_REVIEW = gql`
 mutation AddReview($bookId: ID!, $comments: String!, $rating: Int!) {
   addReview(bookId: $bookId, comments: $comments, rating: $rating) {
     reviews {
@@ -42,4 +42,4 @@ mutation AddReview($bookId: ID!, $comments: String!, $rating: Int!) {
     }
   }
 }
-`
+`;
