@@ -6,6 +6,7 @@ import { styled } from '@mui/system';
 import Login from '../../pages/Login';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import SearchIcon from '@mui/icons-material/Search';
 import Auth from '../../utils/auth';
 
 // Liber brand
@@ -93,6 +94,37 @@ const NavBar = () => {
                     </StyledTypography>
                 </Grid>
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
+
+                    <TextField
+                        variant="outlined"
+                        size="small"
+                        placeholder="Search"
+                        sx={{
+                            // this is not placeholder text, idk what it is
+                            '& .MuiOutlinedInput-root': {
+                                color: 'white',
+                            },
+                            // this is placeholder text and user input text
+                            '& .MuiInputBase-input': {
+                                color: 'black',
+                                fontFamily: 'Lato'
+                            },
+                            // outlined input outline
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: 'black',
+                            },
+                        }}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton edge="end" color="inherit">
+                                        <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+
                     <Hidden lgUp>
                         <Menu
                             id="responsive-menu"
