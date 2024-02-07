@@ -40,7 +40,7 @@ function Home() {
     // console.log(books);
     const bookCount = data?.getBooks.bookCount || 0;
     // console.log(bookCount);
-    const totalPages = (bookCount/5);
+    const totalPages = Math.ceil(bookCount/5);
 
 
     // useState for page number
@@ -119,7 +119,7 @@ function Home() {
                         <>
                         
                             {/* // parent div holding books */}
-                            <Grid container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 2px #cae4df', marginLeft: '5rem', marginRight: '5rem' }}>
+                            <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 2px #cae4df', marginLeft: '5rem', marginRight: '5rem' }}>
 
                                 {/* each book will be in its own div */}
                                 {books.map((book) => (
