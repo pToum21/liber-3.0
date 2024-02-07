@@ -105,7 +105,6 @@ const NavBar = () => {
                             sx={{
                                 '& .MuiMenu-paper': {
                                     marginTop: '10%',
-                                    
                                     width: '100vw',
                                     height: '100vh',
                                     transformOrigin: 'top center',
@@ -115,12 +114,13 @@ const NavBar = () => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
                                 },
                                 '& .MuiMenuItem-root': {
                                     fontSize: '2rem',
                                     padding: '1rem',
                                     transition: 'color 0.3s ease',
+                                    fontWeight: 'bold', // Make the text bold
                                     '&:hover': {
                                         color: '#8abbb1',
                                     },
@@ -128,18 +128,18 @@ const NavBar = () => {
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit', }}>
-                                    MyLibrary
+                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    MyLibrary &gt;
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
                                 <Link to="/books" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    Books
+                                    Books &gt;
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
                                 <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    Log in
+                                    Log in &gt;
                                 </Link>
                             </MenuItem>
                         </Menu>
