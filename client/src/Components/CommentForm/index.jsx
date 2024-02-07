@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { useMutation } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
 import { ADD_REVIEW } from '../../utils/mutations'
+
+import Auth from '../../utils/auth'
 
 const CommentForm = ({ bookId }) => {
     const [commentText, setCommentText] = useState('');
@@ -13,9 +15,8 @@ const CommentForm = ({ bookId }) => {
             const { data } = await addReview({
                 variables: {
                     bookId,
-                    commentText,
-                    rating,
-                    userId: Auth.getProfile().data.username,
+                    comments: commentText,
+                    rating:parseInt(rating),
                 }
             })
             setCommentText('');
@@ -31,7 +32,7 @@ const CommentForm = ({ bookId }) => {
         setCommentText(value)
     }
     const handleRatingChange = (event) => {
-        setRating(Number(event.target.value));
+        setRating((event.target.value));
       };
 
 
@@ -44,7 +45,8 @@ const CommentForm = ({ bookId }) => {
               <label htmlFor="comments">Comments:</label>
               <textarea
                 id="comments"
-                value={comments}
+                name= "commentText"
+                value={commentText}
                 onChange={handleComment}
                 required
               />
@@ -61,7 +63,7 @@ const CommentForm = ({ bookId }) => {
                 required
               />
             </div>
-            <button type="submit" disabled={loading}>
+            <button type="submit">
               Add Review
             </button>
           </form>

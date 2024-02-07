@@ -38,7 +38,7 @@ function SingleBook() {
                     
                 </div>
             </div>
-            <CommentForm />
+            <CommentForm bookId={book._id} />
         </div>
     );
 }
