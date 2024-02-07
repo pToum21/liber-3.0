@@ -116,6 +116,19 @@
     }
 }
 
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px); 
+    }
+}
+
 @keyframes fade-up {
     0% {
         opacity: 0;
@@ -146,6 +159,10 @@
 
 .bottom-home-div {
     animation: fade-up 1s ease-in
+}
+
+.ind-book {
+    animation: fade-in 1s ease-in
 }
 
 .home-book-titles {

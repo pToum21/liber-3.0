@@ -123,7 +123,7 @@ function Home() {
 
                                     {/* each book will be in its own div */}
                                     {books.map((book) => (
-                                        <Grid item key={book._id} xs={2.3}>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3}>
 
                                             <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                             <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap'}}> 
