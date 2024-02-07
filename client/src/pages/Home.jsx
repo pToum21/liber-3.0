@@ -42,6 +42,7 @@ function Home() {
         setCurrentPage(page)
     }
 
+
     // data under the method of getBooks is an array of 589(currently) elements.
 
     // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
@@ -125,7 +126,7 @@ function Home() {
                             <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
                                 <Pagination
-                                    count={160}
+                                    count={159}
                                     page={currentPage}
                                     onChange={changePage}
                                     variant="outlined"
