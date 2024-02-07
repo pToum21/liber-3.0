@@ -19,6 +19,7 @@ const resolvers = {
             const searchData = await Book.find({
                 // or operator to match docs from either title or author
                 $or: [
+                    // using regex to make it so search works with case-insensitivity
                     { title: { $regex: searchTerm, $options: 'i' } },
                     { 'authors.name': { $regex: searchTerm, $options: 'i' }  }
                 ]
