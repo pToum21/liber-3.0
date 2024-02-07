@@ -110,7 +110,7 @@ function Home() {
             </div>
 
             {/* all books div*/}
-            <Grid container>
+            <Grid container sx={{display: 'flex', justifyContent: 'center'}}>
                 {loading ?
                     (
                         <p>Loading...</p>
