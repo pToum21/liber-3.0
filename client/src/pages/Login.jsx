@@ -1,6 +1,6 @@
+import MenuBook from '@mui/icons-material/MenuBook';
 import React from 'react';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link, FormControlLabel, Checkbox, IconButton, Modal } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { useMutation } from '@apollo/client'
@@ -42,10 +42,11 @@ const Login = ({ open, onClose }) => {
         width: 400,
         margin: "20px auto",
         position: 'relative',
-        overflow: 'auto'
+        overflow: 'auto',
+        backgroundColor: '#f3f3ec'
     };
     const avatarStyle = { backgroundColor: '#1bbd7e' };
-    const btnStyle = { margin: '8px 0' };
+    const btnStyle = { margin: '8px 0' , backgroundColor: '#8abbb1'};
     const textFieldStyle = { marginBottom: '16px' };
 
     return (
@@ -61,8 +62,8 @@ const Login = ({ open, onClose }) => {
                         <CloseIcon color="action" className='close' sx={{ color: 'black' }} />
                     </IconButton>
                     <Grid align='center'>
-                        <Avatar style={avatarStyle}>
-                            <LockOutlinedIcon />
+                        <Avatar style={{ backgroundColor: '#8abbb1' }}>
+                            <MenuBook style={{ color: 'black' }} />
                         </Avatar>
                         <Typography variant="h5" sx={{ color: 'darkslategray', margin: '8px 0' }}>
                             Sign In
