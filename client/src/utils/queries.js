@@ -63,8 +63,15 @@ query searchAllBooks($searchTerm: String!) {
   searchAllBooks(searchTerm: $searchTerm) {
     _id
     title
+    bookId
     authors {
       name
+    }
+    image {
+      data
+    }
+    reviews {
+      rating
     }
   }
 }
