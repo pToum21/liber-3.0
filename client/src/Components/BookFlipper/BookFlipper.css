@@ -1,4 +1,4 @@
-/* BookComponent.css */
+/* BookFlipper.css */
 
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Petemoss&display=swap");
 
@@ -8,7 +8,8 @@
 }
 
 .unique-book-class {
-    --book-height: 100vh;
+    --book-height: 45vh;
+    /* Adjust the height as needed */
     --book-ratio: 1.4;
 }
 
@@ -34,7 +35,6 @@
         linear-gradient(315deg, black 25%, transparent 25%),
         linear-gradient(45deg, black 25%, transparent 25%);
     background-size: 2em 2em;
-   
     color: white;
     transition: transform 2s;
 }
