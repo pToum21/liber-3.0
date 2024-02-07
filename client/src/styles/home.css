@@ -117,10 +117,10 @@
 }
 
 
-@keyframes fade-in {
+@keyframes fade-left {
     0% {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(120px);
     }
 
     100% {
@@ -162,7 +162,7 @@
 }
 
 .ind-book {
-    animation: fade-in 1s ease-in
+    animation: fade-left 1s ease-in
 }
 
 .home-book-titles {

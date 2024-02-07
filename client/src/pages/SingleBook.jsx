@@ -14,7 +14,7 @@ function SingleBook() {
         return <div>Loading....</div>;
     }
 
-    const book = data?.getBooks || [];
+
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>

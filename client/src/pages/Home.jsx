@@ -1,6 +1,7 @@
 // Home.js
 import React from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 // must npm i for react slick
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -41,7 +42,6 @@ function Home() {
     const bookCount = data?.getBooks.bookCount || 0;
     // console.log(bookCount);
     const totalPages = Math.ceil(bookCount / 5);
-
 
     // useState for page number
     const [currentPage, setCurrentPage] = useState(1);
@@ -124,20 +124,19 @@ function Home() {
                                     {/* each book will be in its own div */}
                                     {books.map((book) => (
                                         <Grid className="ind-book" item key={book._id} xs={2.3}>
-
-                                            <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap'}}> 
-                                            {book.title}
+                                            <Link to={`/singleBook/${book._id}`}>
+                                                <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                            </Link>
+                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
+                                                {book.title}
                                             </p>
-
                                         </Grid>
                                     ))}
-
                                 </Grid>
                                 <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
 
                                     <Pagination
-                                    sx={{button:{color: '#8abbb1'}}}
+                                        sx={{ button: { color: '#8abbb1' } }}
                                         count={totalPages}
                                         page={currentPage}
                                         onChange={changePage}
