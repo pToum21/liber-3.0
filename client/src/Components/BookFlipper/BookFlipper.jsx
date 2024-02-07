@@ -1,19 +1,36 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { QUERY_ONE_BOOK } from '../../utils/queries'; // Import your queries from the file
+
 import './BookFlipper.css';
 
 const BookFlipper = () => {
+    const { bookId } = useParams(); // Get the bookId from the URL
+    const { loading, error, data } = useQuery(QUERY_ONE_BOOK, {
+        variables: { id: bookId }, // Pass the bookId as a variable to the query
+    });
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    const { title, authors, text } = data.getSingleBook;
+
     return (
         <main className="unique-main-class">
             <div className="book unique-book-class">
                 <div className="book-cover unique-book-cover-class">
                     <div className="unique-cover-div-class">
-                        <h1 className="unique-h1-class">Mrs. Dalloway</h1>
+                        {/* title */}
+                        <h1 className="unique-h1-class">{title}</h1>
                         <div className="separator unique-separator-class"></div>
-                        <h2 className="unique-h2-class">by Virginia Woolf</h2>
+                        {/* authors */}
+                        <h2 className="unique-h2-class">by {authors.map(author => author.name).join(', ')}</h2>
                     </div>
                 </div>
                 <div className="book-content unique-book-content-class">
-                    <h3 className="unique-h3-class">An Excerpt from Chapter One</h3>
+                    {/* the actual text from the book */}
+                    <p className="unique-paragraph-class">{text}</p>
                 </div>
             </div>
         </main>

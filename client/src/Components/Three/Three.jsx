@@ -26,13 +26,13 @@ const Three = () => {
     const [isCanvasClicked, setIsCanvasClicked] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLoading, setIsLoading] = useState(true); // New state for loading animation
-    const audioRef = useRef(new Audio('/public/forestsounds.mp3'));
+    const audioRef = useRef(new Audio('/forestsounds.mp3'));
 
     useEffect(() => {
         
         const fakeLoadingTimeout = setTimeout(() => {
             setIsLoading(false);
-        }, 300); 
+        }, 500); 
 
         
         return () => clearTimeout(fakeLoadingTimeout);
