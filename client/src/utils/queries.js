@@ -6,28 +6,26 @@ import { gql } from '@apollo/client';
 export const QUERY_ALL_BOOKS = gql`
 query getBooks($skip: Int) {
   getBooks(skip: $skip) {
-    _id
-    title
-    text
-    reviews {
-      rating
-      comments {
-        comments
+    books {
+      _id
+      title
+      bookId
+      authors {
+        name
       }
-      userId {
-        username
+      image {
+        data
+      }
+      text
+      reviews {
+        userId {
+          username
+        }
       }
     }
-    image {
-      data
-    }
-    bookId
-    authors {
-      name
-    }
+    bookCount
   }
 }
-
 `;
 
 // queries a single book
@@ -58,6 +56,18 @@ query oneBook($id: ID!) {
         email
         role
       }
+    }
+  }
+}
+`;
+
+export const QUERY_SEARCH_ALL_BOOKS = gql`
+query Query {
+  searchAllBooks {
+    _id
+    title
+    authors {
+      name
     }
   }
 }

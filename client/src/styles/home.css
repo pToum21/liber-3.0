@@ -96,3 +96,34 @@
         font-size: .8rem;
     }
 }
+
+#view-all-books {
+    /* transform: rotate(-90deg);
+    transform-origin: 75% 100%;
+    white-space: nowrap;
+    height: min-content;
+    display: flex;
+    flex: 1; */
+    font-size: 2rem;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .books-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}

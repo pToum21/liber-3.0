@@ -4,6 +4,8 @@ import { Environment, PerspectiveCamera, OrbitControls } from '@react-three/drei
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import Experience from './Experience';
 
+
+
 function Light({ brightness, color, position }) {
     return (
         <rectAreaLight width={100} height={100} color={color} intensity={brightness} position={position} />
@@ -53,6 +55,7 @@ const Three = () => {
                     height: '100vh',
                 }}
             >
+               
                 <Canvas style={{ width: '100%', height: '100%', zIndex: '0' }}>
                     <Skybox />
                     {/* Your light and experience components */}

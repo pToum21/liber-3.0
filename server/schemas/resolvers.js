@@ -12,16 +12,20 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+
+        searchAllBooks: async (parents) => {
+            const allBooksData = await Book.find()
+            return allBooksData;
+        },
+
         getBooks: async (parents, args) => {
             const bookData = await Book.find().skip(args.skip).limit(5);
+            const bookCount = await Book.count();
 
-            console.log('Retrieved book data:', bookData);
-            
-
-            return bookData;
+            return { books: bookData, bookCount: bookCount };
         },
         getSingleBook: async (parent, { _id }) => {
-            return Book.findOne({ _id});
+            return Book.findOne({ _id });
         }
     },
 
