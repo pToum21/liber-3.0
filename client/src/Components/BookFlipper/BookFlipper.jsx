@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { QUERY_ONE_BOOK } from '../../utils/queries'; 
+import { QUERY_ONE_BOOK } from '../../utils/queries';
 
 import './BookFlipper.css';
 
@@ -30,7 +30,13 @@ const BookFlipper = () => {
                 </div>
                 <div className="book-content unique-book-content-class">
                     {/* the actual text from the book */}
-                    <p className="unique-p-class">{text}</p>
+                    <p className="unique-p-class">{text.split('\n').map((line, index) => (
+                        <React.Fragment key={index}>
+                            {line}
+                            <br />
+                        </React.Fragment>
+                    ))}</p>
+                    {console.log(text)}
                 </div>
             </div>
         </main>

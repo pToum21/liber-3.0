@@ -17,7 +17,7 @@
     height: var(--book-height);
     width: calc(var(--book-height) / var(--book-ratio));
     overflow: auto;
-    background-color: #0a0a0a;
+    background-color: #8abbb1;
     transform: scale(0.9);
     border-radius: 6px;
     transform-origin: left;
@@ -30,10 +30,10 @@
     position: absolute;
     z-index: 9;
     text-align: center;
-    background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
-        linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
-        linear-gradient(315deg, black 25%, transparent 25%),
-        linear-gradient(45deg, black 25%, transparent 25%);
+    background: linear-gradient(135deg, #8abbb1 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, #8abbb1 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, #8abbb1 25%, transparent 25%),
+        linear-gradient(45deg, #8abbb1 25%, transparent 25%);
     background-size: 2em 2em;
     color: white;
     transition: transform 2s;
@@ -46,14 +46,14 @@
     right: 20px;
     top: 0;
     bottom: 0;
-    background-color: #b11509;
+    background-color: black;
 }
 
 .unique-h1-class {
     font-family: "Petemoss", cursive;
     font-size: 98px;
     font-weight: 300;
-    color: #dbd75d;
+    color: #f3f3ec;
 }
 
 .unique-h2-class {
@@ -64,7 +64,7 @@
     --separator-size: 8px;
     width: var(--separator-size);
     height: var(--separator-size);
-    background-color: #dbd75d;
+    background-color: #f3f3ec;
     margin: 50px auto 60px auto;
     border-radius: 50%;
     position: relative;
