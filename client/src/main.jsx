@@ -10,8 +10,8 @@ import MyLibrary from './pages/MyLibrary.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
+import SearchResults from './pages/SearchResults.jsx';
 // import BookReader from './pages/BookReader.jsx'
-
 import Three from './Components/Three/Three.jsx';
 
 
@@ -47,7 +47,11 @@ const router = createBrowserRouter([
       {
         path: '/bookReader/:bookId',
         element: <Three />
-      }
+      },
+      {
+        path: '/searchresults',
+        element: <SearchResults />
+      },
     ]
   }
 ]);
