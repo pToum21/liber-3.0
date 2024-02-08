@@ -36,6 +36,8 @@ const NavBar = () => {
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
 
+    const isLoggedIn = Auth.loggedIn();
+
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -115,12 +117,20 @@ const NavBar = () => {
                             <Button className="navlinks" color="inherit">
                                 Books
                             </Button>
-                            <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
-                                Login
-                            </Button>
-                            <Button className="navlinks" color="inherit" onClick={logout}>
-                                Logout
-                            </Button>
+                            {/* Conditionally render login/logout buttons */}
+                            {isLoggedIn ? (
+                                <>
+                                    <Button className="navlinks" color="inherit" onClick={logout}>
+                                        Logout
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
+                                        Login
+                                    </Button>
+                                </>
+                            )}
                         </Hidden>
                     </StyledTypography>
                 </Grid>

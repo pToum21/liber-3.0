@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { QUERY_ONE_BOOK } from '../../utils/queries'; 
+import { QUERY_ONE_BOOK } from '../../utils/queries';
 
 import './BookFlipper.css';
 
@@ -15,6 +15,24 @@ const BookFlipper = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     const { title, authors, text } = data.getSingleBook;
+
+    // Function to remove introductory sentences
+    const cleanText = (originalText) => {
+        // Split the text based on the specified pattern
+        const splitText = originalText.split(/Gutenberg eBook.*?www.gutenberg.org\./gs);
+
+        // Join the parts after the pattern to get the cleaned text
+        const cleanedText = splitText.slice(1).join('').trim();
+
+        // Remove the additional sentences
+        const finalCleanedText = cleanedText
+            .replace(/If you are not located in the United States,[^]*?before using this eBook\./gs, '')
+            .replace(/\*\*\* START OF THE PROJECT GUTENBERG EBOOK[^]*?\*\*\*/g, '');
+
+        return finalCleanedText.trim();
+    };
+
+    const cleanedText = cleanText(text);
 
     return (
         <main className="unique-main-class">
@@ -30,7 +48,12 @@ const BookFlipper = () => {
                 </div>
                 <div className="book-content unique-book-content-class">
                     {/* the actual text from the book */}
-                    <p className="unique-p-class">{text}</p>
+                    <p className="unique-p-class">{cleanedText.split('\n').map((line, index) => (
+                        <React.Fragment key={index}>
+                            {line}
+                            <br />
+                        </React.Fragment>
+                    ))}</p>
                 </div>
             </div>
         </main>

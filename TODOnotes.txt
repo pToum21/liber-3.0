@@ -39,7 +39,7 @@ NOTES (can leave notes here detailing what you did):
     
 
     from Peyton : working on 3d > for text styling, console log the book title in gutendex at a proper point (better to console log one specific book),
-    see if it had style coding in the text  (like \n), if it does, check graphql and retrieve that same book's text.
+    see if it had stodinyle cg in the text  (like \n), if it does, check graphql and retrieve that same book's text.
     If it does not have style coding in it, at some point in the back end, text is losing its styling. Goal is to prevent text from losing that.
 
 
