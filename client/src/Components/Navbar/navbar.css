@@ -7,11 +7,11 @@
     }
 
     #searchbar {
-        margin-right: 0 
+        margin-right: 0
     }
 
     #child-1 {
-        margin-left: 0 
+        margin-left: 0
     }
 
 }
@@ -31,12 +31,21 @@
     #liber {
         font-size: 1rem;
     }
-    
+
 }
 
 .navlinks {
     font-family: 'Lato' !important;
-    
+
 }
 
+.search-input {
 
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #f3f3ec inset !important;
+        font-family: 'Lato';
+    }
+}
