@@ -16,8 +16,6 @@ const BookFlipper = () => {
 
     const { title, authors, text } = data.getSingleBook;
 
-    console.log(data)
-
     // Function to remove introductory sentences
     const cleanText = (originalText) => {
         // Split the text based on the specified pattern
