@@ -42,7 +42,6 @@ type Book {
 
 type Review {
     _id: ID
-    comments: [Comments]
     rating: Int
     content: String
     userId: User
