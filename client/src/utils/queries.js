@@ -35,6 +35,7 @@ query Query($id: ID!) {
     _id
     title
     bookId
+    text
     authors {
       _id
       name
