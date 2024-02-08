@@ -107,19 +107,19 @@ const NavBar = () => {
                     </Link>
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            
-                                <Button className="navlinks" color="inherit">
-                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
-                                    MyLibrary
-                                    </Link>
-                                </Button>
-                            
 
-                            
+                            <Button className="navlinks" color="inherit">
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
+                                    MyLibrary
+                                </Link>
+                            </Button>
+
+
+
                             <Button className="navlinks" color="inherit">
                                 Books
                             </Button>
-                            
+
                             {/* Conditionally render login/logout buttons */}
                             {isLoggedIn ? (
                                 <>
@@ -226,9 +226,19 @@ const NavBar = () => {
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    Log in &gt;
-                                </Link>
+                                {isLoggedIn ? (
+                                    <>
+                                        <a className="navlinks" color="inherit" onClick={logout}>
+                                            Logout &gt;
+                                        </a>
+                                    </>
+                                ) : (
+                                    <>
+                                        <a className="navlinks" color="inherit" onClick={handleLoginClick}>
+                                            Login &gt;
+                                        </a>
+                                    </>
+                                )}
                             </MenuItem>
                         </Menu>
                     </Hidden>
