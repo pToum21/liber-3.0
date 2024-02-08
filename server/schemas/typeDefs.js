@@ -59,7 +59,7 @@ type BookAndCount {
 
 type Query {
     myLibrary: User
-    searchAllBooks: [Book]
+    searchAllBooks(searchTerm: String!): [Book]
     getBooks(skip: Int): BookAndCount
     getSingleBook(_id: ID!): Book
 }

@@ -120,7 +120,7 @@ function Home() {
                         
                             <Grid container className="bottom-home-div">
                                 {/* // parent div holding books */}
-                                <Grid className="books-container" container spacing={1} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
+                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (

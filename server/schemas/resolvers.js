@@ -14,9 +14,18 @@ const resolvers = {
             throw AuthenticationError;
         },
 
-        searchAllBooks: async (parents) => {
-            const allBooksData = await Book.find()
-            return allBooksData;
+        searchAllBooks: async (parents, { searchTerm }) => {
+            // destructured searchTerm from args because otherwise, MongoDB will look up {searchTerm:'title'} rather than 'title'
+            const searchData = await Book.find({
+                // or operator to match docs from either title or author
+                $or: [
+                    // using regex to make it so search works with case-insensitivity
+                    { title: { $regex: searchTerm, $options: 'i' } },
+                    { 'authors.name': { $regex: searchTerm, $options: 'i' }  }
+                ]
+            })
+
+            return searchData;
         },
 
         getBooks: async (parents, args) => {

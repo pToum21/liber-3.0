@@ -59,12 +59,19 @@ query getSingleBook($id: ID!) {
 `;
 
 export const QUERY_SEARCH_ALL_BOOKS = gql`
-query Query {
-  searchAllBooks {
+query searchAllBooks($searchTerm: String!) {
+  searchAllBooks(searchTerm: $searchTerm) {
     _id
     title
+    bookId
     authors {
       name
+    }
+    image {
+      data
+    }
+    reviews {
+      rating
     }
   }
 }
