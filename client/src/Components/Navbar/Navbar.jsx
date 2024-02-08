@@ -107,12 +107,19 @@ const NavBar = () => {
                     </Link>
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            <Button className="navlinks" color="inherit">
-                                MyLibrary
-                            </Button>
+                            
+                                <Button className="navlinks" color="inherit">
+                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
+                                    MyLibrary
+                                    </Link>
+                                </Button>
+                            
+
+                            
                             <Button className="navlinks" color="inherit">
                                 Books
                             </Button>
+                            
                             {/* Conditionally render login/logout buttons */}
                             {isLoggedIn ? (
                                 <>
@@ -133,7 +140,7 @@ const NavBar = () => {
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
 
                     <TextField
-                    className="search-input"
+                        className="search-input"
                         variant="outlined"
                         size="small"
                         placeholder="Search"
@@ -209,7 +216,7 @@ const NavBar = () => {
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Link to="/mylibrary" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     MyLibrary &gt;
                                 </Link>
                             </MenuItem>
