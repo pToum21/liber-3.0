@@ -15,15 +15,24 @@ const resolvers = {
         },
 
         searchAllBooks: async (parents, { searchTerm }) => {
-            // destructured searchTerm from args because otherwise, MongoDB will look up {searchTerm:'title'} rather than 'title'
+            // Split the search term into individual words
+            const searchWords = searchTerm.trim().split(/\s+/);
+
+            // Make an array of custom regex patterns for each search word
+            const regexPatterns = searchWords.map(word => new RegExp(word, 'i'));
+
+            // Perform the search for each word in both title and author fields
             const searchData = await Book.find({
-                // or operator to match docs from either title or author
+                // or operator for title or author search
                 $or: [
-                    // using regex to make it so search works with case-insensitivity
-                    { title: { $regex: searchTerm, $options: 'i' } },
-                    { 'authors.name': { $regex: searchTerm, $options: 'i' }  }
+                    // or expects an array, since we are mapping arrays inside here, we use spread oeprator to empty elements out
+                    // map through each element (the regex pattern that we applied to each word searched), and we apply that individual searched word and its regex option to be searched in the title and author fields
+                    // Search for each word in the title field
+                    ...regexPatterns.map(pattern => ({ title: { $regex: pattern } })),
+                    // Search for each word in the author field
+                    ...regexPatterns.map(pattern => ({ 'authors.name': { $regex: pattern } }))
                 ]
-            })
+            });
 
             return searchData;
         },
@@ -35,7 +44,7 @@ const resolvers = {
             return { books: bookData, bookCount: bookCount };
         },
         getSingleBook: async (parent, { _id }) => {
-            return Book.findOne({ _id }).populate({path:"reviews", populate:{path:"userId"}})
+            return Book.findOne({ _id }).populate({ path: "reviews", populate: { path: "userId" } })
         }
     },
 
@@ -128,7 +137,7 @@ const resolvers = {
                             content: args.content
                         }
                     }
-                }, {new: true})
+                }, { new: true })
 
                 return review;
             } throw AuthenticationError
