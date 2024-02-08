@@ -94,6 +94,5 @@ query MyLibrary {
     }
   }
 }
-
-`
+`;
 
