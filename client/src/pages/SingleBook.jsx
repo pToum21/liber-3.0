@@ -3,6 +3,7 @@ import { QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CommentForm from '../Components/CommentForm';
+import CommentList from '../Components/Commentslist'
 
 
 function SingleBook() {
@@ -17,16 +18,15 @@ function SingleBook() {
     }
 
     const book = data?.getSingleBook || [];
-    console.log(data)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
             <h3>Title: {book.title}</h3>
-            {/* <h4>
+            <h4>
                 Authors: {book.authors.map((author, index) => (
                     <span key={index}>{author.name}</span>
                 ))}
-            </h4> */}
+            </h4>
             <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">MyLibrary</Button>
@@ -37,8 +37,8 @@ function SingleBook() {
             <div>
                 <div>
                     <div>
-                        <p>Comments:</p>
                         
+                        <CommentList reviews={book.reviews} />
                     </div>
                 </div>
             </div>
