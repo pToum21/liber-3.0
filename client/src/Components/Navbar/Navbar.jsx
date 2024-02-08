@@ -1,6 +1,7 @@
 // import useHooks
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
+import { useNavigate, useLocation } from 'react-router-dom';
 // import mui
 import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,6 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
+
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -67,19 +69,25 @@ const NavBar = () => {
 
 
     // logic for search feature
-    const { loading, data, refetch } = useQuery(QUERY_SEARCH_ALL_BOOKS);
-    const [searchInput, setSearchInput] = useState('');
-    // make loading scenario
-    console.log(data?.searchAllBooks);
+    // useQuery happens immediately, and you cannot store values in array like this, so use Lazy
+    const [searchAllBooks, { loading, data, refetch }] = useLazyQuery(QUERY_SEARCH_ALL_BOOKS);
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
 
-    // const handleSearch = async (event) => {
-    //     event.preventDefault();
 
-    //     if (!searchInput) {
-    //         return false;
-    //     }
+    const handleSearch = async (event) => {
+        event.preventDefault();
 
-    // }
+        localStorage.setItem('searchTerm', searchTerm)
+
+        if (location.pathname !== '/searchresults') {
+        navigate('/searchresults');
+        } else {
+            window.location.reload(); //maybe figure out refetch instead
+        }
+    };
+
+
 
     return (
         <>
@@ -132,6 +140,15 @@ const NavBar = () => {
                         variant="outlined"
                         size="small"
                         placeholder="Search"
+                        value={searchTerm}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value)
+                        }}
+                        onKeyUp={(event) => {
+                            if (event.key === 'Enter') {
+                                handleSearch(event); // Call handleSearch when Enter key is pressed
+                            }
+                        }}
                         sx={{
                             // this is not placeholder text, idk what it is
                             '& .MuiOutlinedInput-root': {
@@ -150,7 +167,7 @@ const NavBar = () => {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton edge="end" color="inherit">
+                                    <IconButton edge="end" color="inherit" onClick={handleSearch}>
                                         <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
                                     </IconButton>
                                 </InputAdornment>
