@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 const CommentForm = ({ bookId }) => {
   const [commentText, setCommentText] = useState('');
@@ -73,7 +74,7 @@ const CommentForm = ({ bookId }) => {
           />
         </Box>
       </form>
-      {error && <p>Error: {error.message}</p>}
+      {error && <p>Error: Please <Link className="no-text-dec" to="/login">log in</Link> to add a comment.</p>}
     </div>
   );
 };
