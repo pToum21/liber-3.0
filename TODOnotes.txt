@@ -11,11 +11,7 @@ TODO:
 
 - COMMENT: have a user be able to comment on a book
 
-- LOGOUT: should be hidden if user is not logged in
-
 - CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
-
-- NAV MENU - change background color of dropdown menu to a slightly lighter than dark purple we have for color scheme; make the nav menu button's background color also slightly lighter than the dark purple we have been using
 
 - HIGHEST RATED BOOK - show on homepage
 

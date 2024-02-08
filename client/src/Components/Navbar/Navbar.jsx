@@ -1,7 +1,7 @@
 // import useHooks
 import React, { useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 // import mui
 import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -15,7 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-import SearchResults from '../../pages/SearchResults';
+
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -70,8 +70,6 @@ const NavBar = () => {
     // useQuery happens immediately, and you cannot store values in array like this, so use Lazy
     const [searchAllBooks, { loading, data, refetch }] = useLazyQuery(QUERY_SEARCH_ALL_BOOKS);
     const [searchTerm, setSearchTerm] = useState('');
-    // make loading scenario
-    // console.log(data?.searchAllBooks);
     const navigate = useNavigate();
 
 
@@ -80,24 +78,11 @@ const NavBar = () => {
 
         localStorage.setItem('searchTerm', searchTerm)
 
-
-
-        // if (!searchTerm) {
-        //     return false;
-        // };
+        if (location.pathname !== '/searchresults') {
         navigate('/searchresults');
-        // try {
-        //     console.log(searchTerm);
-        //     searchAllBooks({ variables: { searchTerm } });
-        //     setSearchTerm('');
-        //     // navigate('/searchresults');
-          
-
-
-        // } catch {
-        //     console.error('Error searching books:', error.message);
-        // }
-
+        } else {
+            window.location.reload(); //maybe figure out refetch instead
+        }
     };
 
 
@@ -148,6 +133,11 @@ const NavBar = () => {
                         value={searchTerm}
                         onChange={(event) => {
                             setSearchTerm(event.target.value)
+                        }}
+                        onKeyUp={(event) => {
+                            if (event.key === 'Enter') {
+                                handleSearch(event); // Call handleSearch when Enter key is pressed
+                            }
                         }}
                         sx={{
                             // this is not placeholder text, idk what it is
