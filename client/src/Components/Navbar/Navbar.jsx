@@ -15,6 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
+import SearchResults from '../../pages/SearchResults';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -71,31 +72,35 @@ const NavBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
     // make loading scenario
     // console.log(data?.searchAllBooks);
-    
+    const navigate = useNavigate();
+
 
     const handleSearch = async (event) => {
         event.preventDefault();
 
-        const navigate = useNavigate();
+        localStorage.setItem('searchTerm', searchTerm)
 
-        if (!searchTerm) {
-            return false;
-        };
 
-        try {
-            console.log(searchTerm);
-            searchAllBooks({ variables: { searchTerm } });
-            setSearchTerm('');
-            navigate('/searchresults');
 
-            
-            
-        } catch {
-            console.error('Error searching books:', error.message);
-        }
+        // if (!searchTerm) {
+        //     return false;
+        // };
+        navigate('/searchresults');
+        // try {
+        //     console.log(searchTerm);
+        //     searchAllBooks({ variables: { searchTerm } });
+        //     setSearchTerm('');
+        //     // navigate('/searchresults');
+          
 
-       
+
+        // } catch {
+        //     console.error('Error searching books:', error.message);
+        // }
+
     };
+
+
 
     return (
         <>

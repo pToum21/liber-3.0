@@ -17,6 +17,8 @@ TODO:
 
 - NAV MENU - change background color of dropdown menu to a slightly lighter than dark purple we have for color scheme; make the nav menu button's background color also slightly lighter than the dark purple we have been using
 
+- HIGHEST RATED BOOK - show on homepage
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):
