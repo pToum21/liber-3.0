@@ -25,7 +25,8 @@ const CommentList = ({ reviews = [] }) => {
                       on {review.createdAt}
                     </span>
                   </h5>
-                  <p className="card-body">{review.commentText}</p>
+                  <p>rating: {review.rating} stars</p>
+                  <p className="card-body">{review.content}</p>
                 </div>
               </div>
             ))}
