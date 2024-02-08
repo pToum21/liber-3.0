@@ -58,39 +58,7 @@ const Three = () => {
                     <p>Loading...</p>
                 </div>
             )}
-            <div style={{
-                position: 'absolute',
-                top: '5%',
-                left: '5%',
-                padding: '20px',
-                background: 'rgba(255, 255, 255, 0.7)',
-                borderRadius: '10px',
-                maxWidth: '300px',
-                zIndex: '1',
-            }}>
-                <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
-                    Library Instructions
-                </h1>
-                <p style={{
-                    color: 'black',
-                    fontFamily: 'Press Start 2P',
-                    fontSize: '16px',
-                    lineHeight: '1.5'
-                }}>
-                    Press <span style={{ color: '#ff0000' }}>Left Click</span> anywhere to sit at the desk and read your selected Book.
-                </p>
-                <p style={{
-                    color: 'black',
-                    fontFamily: 'Press Start 2P',
-                    fontSize: '16px',
-                    lineHeight: '1.5'
-                }}>
-                    Press <span style={{ color: '#004c00' }}>Right Click</span> to grab and pan around the room.
-                </p>
-                <IconButton onClick={toggleAudio} style={{ fontSize: '16px' }}>
-                    <p style={{ color: '#8abbb1' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-                </IconButton>
-            </div>
+
             {isCanvasClicked && (
                 <div
                     style={{
@@ -106,6 +74,44 @@ const Three = () => {
                     <BookFlipper />
                 </div>
             )}
+
+            {!isCanvasClicked && (
+                <div style={{
+                    position: 'absolute',
+                    top: '5%',
+                    left: '5%',
+                    padding: '13px',
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    borderRadius: '10px',
+                    maxWidth: '70rem',
+                    maxHeight: '9rem',
+                    zIndex: '1',
+                }}>
+                    <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
+                        Library Instructions
+                    </h1>
+                    <p style={{
+                        color: 'black',
+                        fontFamily: 'Press Start 2P',
+                        fontSize: '1rem',
+                        lineHeight: '1.5'
+                    }}>
+                        Press <span style={{ color: '#ff0000' }}>Left Click</span> anywhere to sit at the desk and read your selected Book.
+                    </p>
+                    <p style={{
+                        color: 'black',
+                        fontFamily: 'Press Start 2P',
+                        fontSize: '1rem',
+                        lineHeight: '1.5'
+                    }}>
+                        Press <span style={{ color: '#004c00' }}>Right Click</span> to grab and pan around the room.
+                    </p>
+                    <IconButton onClick={toggleAudio} style={{ fontSize: '16px' }}>
+                        <p style={{ color: 'black' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+                    </IconButton>
+                </div>
+            )}
+
             <Canvas
                 style={{ width: '100%', height: '100%', zIndex: '0' }}
                 onClick={handleCanvasClick}
