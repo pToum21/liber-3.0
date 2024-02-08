@@ -13,7 +13,7 @@ import '../styles/home.css';
 // useState, Effect
 import { useState, useEffect } from 'react';
 // import mui
-import { Grid, Pagination, Typography } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -38,9 +38,9 @@ function Home() {
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
-    // console.log(books);
+
+    //   dynamic number of pages of books we have
     const bookCount = data?.getBooks.bookCount || 0;
-    // console.log(bookCount);
     const totalPages = Math.ceil(bookCount / 5);
 
     // useState for page number
@@ -50,10 +50,7 @@ function Home() {
         setCurrentPage(page)
     }
 
-
-    // data under the method of getBooks is an array of 589(currently) elements.
-
-    // IF YOU WANT TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
+    // TO SEE BOOK DATA LOGGED, UNCOMMENT BELOW
     // if (loading) {
     //     console.log('Loading...');
     // } else {
@@ -70,8 +67,6 @@ function Home() {
         console.log(skip)
         refetch({ skip });
     }, [currentPage, refetch]);
-
-
 
     return (
         <>
@@ -152,8 +147,6 @@ function Home() {
                     )
                 }
             </Grid>
-
-
         </>
     );
 }

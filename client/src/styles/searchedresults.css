@@ -1,0 +1,24 @@
+.searched-book {
+    opacity: 0;
+    animation: fade-up 1s ease-in forwards
+}
+
+@keyframes from-left {
+    0% {
+        opacity: 0;
+        width: 0%;
+        background: linear-gradient(to right, #8abbb1, #8abbb1, #8abbb1, #8abbb1);
+    }
+
+    100% {
+        opacity: 1;
+        width: 100%;
+        background: linear-gradient(to right, #8abbb1, #8abbb1, #8abbb1, #f3f3ec);
+    }
+}
+
+.slide-from-left {
+    width: 0;
+    text-wrap:nowrap;
+    animation: from-left 1.6s ease-in forwards
+}

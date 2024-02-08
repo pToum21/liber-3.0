@@ -132,7 +132,7 @@
 @keyframes fade-up {
     0% {
         opacity: 0;
-        transform: translateY(30px) scale(0.9);
+        transform: translateY(70px) scale(0.9);
     }
 
     100% {

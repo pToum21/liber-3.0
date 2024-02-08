@@ -53,11 +53,6 @@ const NavBar = () => {
         setMenuOpen(false);
     };
 
-    const handleSearchButtonClick = () => {
-        setShowSearchBar(!showSearchBar);
-        handleMenuClose();
-    };
-
     const handleLoginClick = () => {
         setLoginModalOpen(true);
         handleMenuClose();
