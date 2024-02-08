@@ -18,7 +18,6 @@ function SingleBook() {
     }
 
     const book = data?.getSingleBook || [];
-    console.log(data)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
@@ -38,6 +37,7 @@ function SingleBook() {
             <div>
                 <div>
                     <div>
+                        
                         <CommentList reviews={book.reviews} />
                     </div>
                 </div>
