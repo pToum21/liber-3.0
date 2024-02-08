@@ -77,3 +77,23 @@ query searchAllBooks($searchTerm: String!) {
 }
 `;
 
+export const QUERY_MY_LIBRARY = gql`
+query MyLibrary {
+  myLibrary {
+    username
+    _id
+    keptBooks {
+      title
+      image {
+        data
+      }
+      authors {
+        name
+      }
+      bookId
+    }
+  }
+}
+
+`
+
