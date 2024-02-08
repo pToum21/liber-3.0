@@ -1,11 +1,9 @@
 TODO: 
 
-- KEEP BOOK: allow user to save book to their MyBookshelf
-
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
     their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
-    
-- BUILD UP SEARCH FEATURE LOGIC: so when user types in search bar, they can search a book by title or author
+
+- KEEP BOOK: allow user to save book to their MyBookshelf
 
 - MAKE A RATING: have a user be able to rate a book
 
@@ -37,7 +35,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/7: worked out the typeDefs and resolver and front end query for searching, will work on front end later
+        2/7: search feature is done, just need to style
     
 
     from Peyton : working on 3d > for text styling, console log the book title in gutendex at a proper point (better to console log one specific book),
