@@ -16,6 +16,24 @@ const BookFlipper = () => {
 
     const { title, authors, text } = data.getSingleBook;
 
+    // Function to remove introductory sentences
+    const cleanText = (originalText) => {
+        // Split the text based on the specified pattern
+        const splitText = originalText.split(/Gutenberg eBook.*?www.gutenberg.org\./gs);
+
+        // Join the parts after the pattern to get the cleaned text
+        const cleanedText = splitText.slice(1).join('').trim();
+
+        // Remove the additional sentences
+        const finalCleanedText = cleanedText
+            .replace(/If you are not located in the United States,[^]*?before using this eBook\./gs, '')
+            .replace(/\*\*\* START OF THE PROJECT GUTENBERG EBOOK[^]*?\*\*\*/g, '');
+
+        return finalCleanedText.trim();
+    };
+
+    const cleanedText = cleanText(text);
+
     return (
         <main className="unique-main-class">
             <div className="book unique-book-class">
@@ -30,13 +48,13 @@ const BookFlipper = () => {
                 </div>
                 <div className="book-content unique-book-content-class">
                     {/* the actual text from the book */}
-                    <p className="unique-p-class">{text.split('\n').map((line, index) => (
+                    <p className="unique-p-class">{cleanedText.split('\n').map((line, index) => (
                         <React.Fragment key={index}>
                             {line}
                             <br />
                         </React.Fragment>
                     ))}</p>
-                    {console.log(text)}
+                    {console.log(cleanedText)}
                 </div>
             </div>
         </main>

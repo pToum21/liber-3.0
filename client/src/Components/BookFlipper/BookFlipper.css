@@ -54,6 +54,7 @@
     font-size: 98px;
     font-weight: 300;
     color: #f3f3ec;
+    
 }
 
 .unique-h2-class {
@@ -106,9 +107,8 @@
 
 .unique-p-class {
     padding: 0px 30px 10px 30px;
-    /* width: 100%; */
     text-align: justify;
-    font-size: 14px;
+    font-size: 16px;
     overflow-x: hidden;
 }
 
