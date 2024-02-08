@@ -33,10 +33,10 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [ formState, setFormstate] = useState({
+  const [formState, setFormstate] = useState({
     username: '',
     email: '',
-    password:''
+    password: ''
   })
   const [createUser, { error, data }] = useMutation(CREATE_USER);
   const handleChange = (event) => {
@@ -53,23 +53,23 @@ export default function SignUp() {
 
     try {
       const { data } = await createUser({
-        variables: { ...formState},
+        variables: { ...formState },
       })
       Auth.login(data.createUser.token)
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   const theme = createTheme({
     palette: {
       background: {
         default: '#f3f3ec'
       },
     },
-   
+
   });
-  
+
   return (
     <ThemeProvider theme={theme} >
       <Container component="main" maxWidth="xs" sx={{ bgcolor: '#f3f3ec' }} >
@@ -83,7 +83,7 @@ export default function SignUp() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: '#8abbb1' }}>
-          <MenuBook style={{ color: 'black' }} />
+            <MenuBook style={{ color: 'black' }} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
@@ -102,7 +102,7 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
-              
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -126,13 +126,13 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
-              
+
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: '#8abbb1'  }}
+              sx={{ mt: 3, mb: 2, bgcolor: '#8abbb1' }}
             >
               Sign Up
             </Button>

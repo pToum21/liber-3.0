@@ -35,7 +35,7 @@ const resolvers = {
             return { books: bookData, bookCount: bookCount };
         },
         getSingleBook: async (parent, { _id }) => {
-            return Book.findOne({ _id });
+            return Book.findOne({ _id }).populate({path:"reviews", populate:{path:"userId"}})
         }
     },
 
@@ -101,7 +101,7 @@ const resolvers = {
                         reviews: review._id
                     }
                 }, { new: true })
-                return book
+                return book.populate("reviews")
             }
             throw AuthenticationError
         },
