@@ -49,7 +49,7 @@ const CommentForm = ({ bookId }) => {
             name="content"
             value={commentText}
             onChange={handleComment}
-            label="Add a comment..."
+            placeholder="Add a comment..."
             variant="outlined"
             multiline
             rows={3}
