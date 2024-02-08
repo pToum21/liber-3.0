@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function SingleBook() {
@@ -19,6 +19,19 @@ function SingleBook() {
 
     const [bookAdded, setBookAdded] = useState(false)
 
+    function isBookAlreadyAdded(data, bookId) {
+        // Assuming userData contains the user's library information
+        const userLibrary = data?.myLibrary?.keptBooks || [];
+
+        // Check if the bookId is present in the user's library
+        return userLibrary.some((book) => book.bookId === bookId);
+    }
+
+    useEffect(() => {
+        // Check if the book is already added to the user's library
+        const alreadyAdded = isBookAlreadyAdded(data, id);
+        setBookAdded(alreadyAdded);
+    }, [data, id]);
 
     const handleKeepBook = async () => {
         try {
@@ -26,6 +39,7 @@ function SingleBook() {
                 variables: { input: { bookId: id } },
             });
 
+            // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
 
         } catch (error) {
@@ -33,7 +47,7 @@ function SingleBook() {
         }
     };
 
-    handleKeepBook ? setBookAdded : true
+    
 
     if (loading) {
         return <div>Loading....</div>;
@@ -54,9 +68,9 @@ function SingleBook() {
             <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 {bookAdded ? (
-                    <Button sx={{ backgroundColor: 'grey' }}  disabled={true} variant="contained" onClick={handleKeepBook}>
-                    Book Saved
-                </Button>
+                    <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
+                        Book Saved
+                    </Button>
                 ) : (
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained" onClick={handleKeepBook}>
                         MyLibrary

@@ -1,26 +1,30 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
+import { QUERY_MY_LIBRARY } from '../../utils/queries'
+
 
 const SavedBooks = () => {
     // Execute the query using useQuery hook
     const { loading, error, data } = useQuery(QUERY_MY_LIBRARY);
+const myLibrary = data?.myLibrary
+
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
-    // Extract the relevant data from the query response
-    const { myLibrary } = data;
+
+    console.log(data)
+    
 
     return (
         <div>
             <h2>Your Saved Books</h2>
             <ul>
-                {myLibrary.keptBooks.map((book) => (
-                    <li key={book.bookId}>
-                        <h3>{book.title}</h3>
-                        <p>Authors: {book.authors.map((author) => author.name).join(', ')}</p>
-                        <img src={`data:image/jpeg;base64,${book.image.data}`} alt={book.title} />
+                {myLibrary.keptBooks.map((myLibrary) => (
+                    <li key={myLibrary.bookId}>
+                        <h3>{myLibrary.title}</h3>
+                        {/* <p>Authors: {book.authors.map((author) => author.name).join(', ')}</p> */}
+                        <img src={`data:image/jpeg;base64,${myLibrary.image}`} alt={myLibrary.title} />
                     </li>
                 ))}
             </ul>
