@@ -54,7 +54,6 @@ const BookFlipper = () => {
                             <br />
                         </React.Fragment>
                     ))}</p>
-                    {console.log(cleanedText)}
                 </div>
             </div>
         </main>

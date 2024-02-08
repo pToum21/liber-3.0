@@ -7,7 +7,7 @@ import BookFlipper from '../BookFlipper/BookFlipper';
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import './three.css'; 
+import './three.css';
 
 function Light({ brightness, color, position }) {
     return (
@@ -25,21 +25,21 @@ const Skybox = () => {
 const Three = () => {
     const [isCanvasClicked, setIsCanvasClicked] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // New state for loading animation
+    const [isLoading, setIsLoading] = useState(true);
+    const [fadeIn, setFadeIn] = useState(false); // State for fade-in effect
     const audioRef = useRef(new Audio('/3dModels/forestsounds.mp3'));
 
     useEffect(() => {
-        
         const fakeLoadingTimeout = setTimeout(() => {
             setIsLoading(false);
-        }, 500); 
+        }, 500);
 
-        
         return () => clearTimeout(fakeLoadingTimeout);
     }, []);
 
     const handleCanvasClick = () => {
         setIsCanvasClicked(true);
+        setFadeIn(true); // Trigger fade-in effect
     };
 
     const toggleAudio = () => {
@@ -52,7 +52,7 @@ const Three = () => {
     };
 
     return (
-        <div className={`fade-in ${isLoading ? 'loading' : 'loaded'}`} style={{ backgroundColor: 'transparent', position: 'relative', height: '100vh' }}>
+        <div className={`${isLoading ? 'loading' : 'loaded'}`} style={{ backgroundColor: 'transparent', position: 'relative', height: '100vh' }}>
             {isLoading && (
                 <div className="loading-overlay">
                     <p>Loading...</p>
@@ -99,6 +99,8 @@ const Three = () => {
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         zIndex: '2',
+                        opacity: fadeIn ? 1 : 0,
+                        transition: 'opacity 1s ease-in-out',
                     }}
                 >
                     <BookFlipper />
