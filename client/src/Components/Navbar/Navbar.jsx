@@ -1,6 +1,7 @@
 // import useHooks
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 // import mui
 import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidden, InputAdornment, Grid } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -65,19 +66,36 @@ const NavBar = () => {
 
 
     // logic for search feature
-    const { loading, data, refetch } = useQuery(QUERY_SEARCH_ALL_BOOKS);
-    const [searchInput, setSearchInput] = useState('');
-// make loading scenario
-    console.log(data?.searchAllBooks);
+    // useQuery happens immediately, and you cannot store values in array like this, so use Lazy
+    const [searchAllBooks, { loading, data, refetch }] = useLazyQuery(QUERY_SEARCH_ALL_BOOKS);
+    const [searchTerm, setSearchTerm] = useState('');
+    // make loading scenario
+    // console.log(data?.searchAllBooks);
+    
 
-    // const handleSearch = async (event) => {
-    //     event.preventDefault();
+    const handleSearch = async (event) => {
+        event.preventDefault();
 
-    //     if (!searchInput) {
-    //         return false;
-    //     }
+        const navigate = useNavigate();
 
-    // }
+        if (!searchTerm) {
+            return false;
+        };
+
+        try {
+            console.log(searchTerm);
+            searchAllBooks({ variables: { searchTerm } });
+            setSearchTerm('');
+            navigate('/searchresults');
+
+            
+            
+        } catch {
+            console.error('Error searching books:', error.message);
+        }
+
+       
+    };
 
     return (
         <>
@@ -122,6 +140,10 @@ const NavBar = () => {
                         variant="outlined"
                         size="small"
                         placeholder="Search"
+                        value={searchTerm}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value)
+                        }}
                         sx={{
                             // this is not placeholder text, idk what it is
                             '& .MuiOutlinedInput-root': {
@@ -140,7 +162,7 @@ const NavBar = () => {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton edge="end" color="inherit">
+                                    <IconButton edge="end" color="inherit" onClick={handleSearch}>
                                         <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
                                     </IconButton>
                                 </InputAdornment>
