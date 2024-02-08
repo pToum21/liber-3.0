@@ -1,9 +1,13 @@
-import { Grid } from '@mui/material'
+// importing react/apollo
 import { useQuery } from '@apollo/client';
-import { QUERY_SEARCH_ALL_BOOKS } from '../utils/queries';
 import { Link } from 'react-router-dom';
-import CircularProgress from '@mui/material/CircularProgress';
+// import our files
+import { QUERY_SEARCH_ALL_BOOKS } from '../utils/queries';
 import '../styles/searchedresults.css';
+// import mui
+import { Grid } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 

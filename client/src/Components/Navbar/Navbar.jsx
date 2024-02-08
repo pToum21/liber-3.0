@@ -68,6 +68,7 @@ const NavBar = () => {
     const [searchAllBooks, { loading, data, refetch }] = useLazyQuery(QUERY_SEARCH_ALL_BOOKS);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
 
 
     const handleSearch = async (event) => {
@@ -76,7 +77,7 @@ const NavBar = () => {
         localStorage.setItem('searchTerm', searchTerm)
 
         if (location.pathname !== '/searchresults') {
-        navigate('/searchresults');
+            navigate('/searchresults');
         } else {
             window.location.reload(); //maybe figure out refetch instead
         }
@@ -132,6 +133,7 @@ const NavBar = () => {
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
 
                     <TextField
+                    className="search-input"
                         variant="outlined"
                         size="small"
                         placeholder="Search"
@@ -158,6 +160,9 @@ const NavBar = () => {
                             '& .MuiOutlinedInput-notchedOutline': {
                                 borderColor: 'black',
                             },
+                            color: 'black !important', // Set text color to black
+                            fontFamily: 'Lato !important', // Set font family
+
                         }}
                         InputProps={{
                             endAdornment: (
