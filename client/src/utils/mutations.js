@@ -79,3 +79,22 @@ mutation addComment($reviewId: ID!, $content: String) {
   }
 }
 `
+
+export const KEEP_BOOK = gql`
+mutation KeepBook($input: KeepBookInput!) {
+  keepBook(input: $input) {
+    _id
+    keptBooks {
+      authors {
+        name
+      }
+      bookId
+      image {
+        data
+      }
+      title
+      _id
+    }
+  }
+}
+`

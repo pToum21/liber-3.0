@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.7",
     "@mui/lab": "^5.0.0-alpha.163",
-    "@mui/material": "^5.15.7",
+    "@mui/material": "^5.15.9",
     "@react-three/drei": "^9.97.1",
     "@react-three/fiber": "^8.15.16",
     "graphql": "^16.6.0",

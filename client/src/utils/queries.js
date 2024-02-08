@@ -35,6 +35,7 @@ query Query($id: ID!) {
     _id
     title
     bookId
+    text
     authors {
       _id
       name
@@ -71,6 +72,25 @@ query searchAllBooks($searchTerm: String!) {
     }
     reviews {
       rating
+    }
+  }
+}
+`;
+
+export const QUERY_MY_LIBRARY = gql`
+query MyLibrary {
+  myLibrary {
+    username
+    _id
+    keptBooks {
+      title
+      image {
+        data
+      }
+      authors {
+        name
+      }
+      bookId
     }
   }
 }
