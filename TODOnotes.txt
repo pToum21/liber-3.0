@@ -3,12 +3,6 @@ TODO:
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
     their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
 
-- KEEP BOOK: allow user to save book to their MyBookshelf
-
-- MAKE A RATING: have a user be able to rate a book
-
-- COMMENT: have a user be able to comment on a book
-
 - CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
 - HIGHEST RATED BOOK - show on homepage
