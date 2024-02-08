@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
+import { useState } from 'react';
 
 
 function SingleBook() {
@@ -16,17 +17,23 @@ function SingleBook() {
 
     const [keepBookMutation] = useMutation(KEEP_BOOK);
 
+    const [bookAdded, setBookAdded] = useState(false)
+
+
     const handleKeepBook = async () => {
         try {
             await keepBookMutation({
                 variables: { input: { bookId: id } },
             });
 
-            console.log('Book added to MyLibrary');
+            setBookAdded(true);
+
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }
     };
+
+    handleKeepBook ? setBookAdded : true
 
     if (loading) {
         return <div>Loading....</div>;
@@ -46,10 +53,15 @@ function SingleBook() {
             </h4>
             <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                    
-
-                <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained" onClick={handleKeepBook}>MyLibrary</Button>
-
+                {bookAdded ? (
+                    <Button sx={{ backgroundColor: 'grey' }}  disabled={true} variant="contained" onClick={handleKeepBook}>
+                    Book Saved
+                </Button>
+                ) : (
+                    <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained" onClick={handleKeepBook}>
+                        MyLibrary
+                    </Button>
+                )}
                 <Link to={`/bookReader/${id}`}>
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">Read Now</Button>
                 </Link>
