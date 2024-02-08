@@ -34,6 +34,8 @@ const NavBar = () => {
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
 
+    const isLoggedIn = Auth.loggedIn();
+
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -67,7 +69,7 @@ const NavBar = () => {
     // logic for search feature
     const { loading, data, refetch } = useQuery(QUERY_SEARCH_ALL_BOOKS);
     const [searchInput, setSearchInput] = useState('');
-// make loading scenario
+    // make loading scenario
     console.log(data?.searchAllBooks);
 
     // const handleSearch = async (event) => {
@@ -107,12 +109,20 @@ const NavBar = () => {
                             <Button className="navlinks" color="inherit">
                                 Books
                             </Button>
-                            <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
-                                Login
-                            </Button>
-                            <Button className="navlinks" color="inherit" onClick={logout}>
-                                Logout
-                            </Button>
+                            {/* Conditionally render login/logout buttons */}
+                            {isLoggedIn ? (
+                                <>
+                                    <Button className="navlinks" color="inherit" onClick={logout}>
+                                        Logout
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
+                                        Login
+                                    </Button>
+                                </>
+                            )}
                         </Hidden>
                     </StyledTypography>
                 </Grid>
