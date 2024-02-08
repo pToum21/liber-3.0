@@ -79,7 +79,8 @@ const NavBar = () => {
         if (location.pathname !== '/searchresults') {
             navigate('/searchresults');
         } else {
-            window.location.reload(); //maybe figure out refetch instead
+            // window.location.reload(); //maybe figure out refetch instead
+            await refetch({ searchTerm });
         }
     };
 
