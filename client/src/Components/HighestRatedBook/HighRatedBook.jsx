@@ -31,7 +31,7 @@ const HighestRatedBook = () => {
         <>
             <Grid container className="from-left-white spotlight-header" style={{ display: 'flex', textAlign: 'left', width: '100%', paddingLeft: '2rem', marginBottom: '1rem' }}>
                 <p style={{ fontSize: '2rem', color: '#505050' }} >
-                    Most-Discussed Book
+                    Spotlight Read
                 </p>
             </Grid>
 
