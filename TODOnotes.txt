@@ -17,6 +17,10 @@ TODO:
     )
     but make your own random string of letters and numbers
 
+- Prompt user to log in if they click mylibrary and not logged in
+
+- Link buttons in highest rated book
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):

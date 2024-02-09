@@ -3,51 +3,28 @@ import { useQuery } from '@apollo/client';
 import { styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
-    margin: '2rem',
-    boxSizing: 'border-box',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#8abbb1',
-    padding: '3rem',
-    flexDirection: 'row',
-    
+    // margin: '2rem',
+
+
     '@media (max-width: 600px)': {
         flexDirection: 'column',
     },
 });
 
-const LeftSide = styled('div')({
-    flex: 1,
-    textAlign: 'left',
-});
-
-const RightSide = styled('div')({
-    flex: 1,
-    textAlign: 'center',   
-});
-
-const BookInfo = styled('div')({
-    textAlign: 'center',
-});
-
-const BookImage = styled('img')({
-    // maxWidth: '100%',
-    // maxHeight: '70vh',  
-});
-
-const ButtonContainer = styled('div')({
-    
-});
-
 const HighestRatedBook = () => {
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
-
     if (loading) {
-        return <p>Loading...</p>;
+
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress color="success" />
+            </div>
+        )
     }
 
     if (error) {
@@ -55,49 +32,69 @@ const HighestRatedBook = () => {
         return <p>Error fetching the highest-rated book</p>;
     }
 
-    const highestRatedBook = data.highestRatedBook;
+    const highestRatedBook = data?.highestRatedBook;
+
 
     return (
-        <div style={{ height: '60vh', marginTop: '10rem' }}>
-            <p style={{fontSize: '2rem'}} >
-                Highest Rated Book
-            </p>
-            <Container>
-                {highestRatedBook ? (
-                    <>
-                        <LeftSide>
-                            <Typography variant="body1">
-                                The highest Rated book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
-                            </Typography>
-                        </LeftSide>
-                        <RightSide>
-                            <BookInfo>
-                                <Typography variant="h6" gutterBottom>
-                                    {highestRatedBook.title}
-                                </Typography>
-                                <Typography variant="body1" gutterBottom>
-                                    Written By {highestRatedBook.authors.map((author) => author.name).join(', ')}
-                                </Typography>
-                                <BookImage
+        <>
+            <Grid container className="from-left-white" style={{ display: 'flex', textAlign: 'left', width: '100%', paddingLeft: '2rem', marginBottom: '1rem' }}>
+                <p style={{ fontSize: '2rem', color: '#505050' }} >
+                    Most-Discussed Book
+                </p>
+            </Grid>
+
+            {highestRatedBook ? (
+                <>
+                    <Grid container spacing={1} className="bottom-home-div" sx={{
+                        marginBottom: '3rem',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#8abbb1',
+                        padding: '3rem',
+                        flexDirection: 'row',
+                    }}>
+                        {/* Left */}
+                        <Grid item xs={12} sm={6} sx={{ padding: '2rem !important', backgroundColor:'#8ebfb5', borderRadius:'10px'}}>
+                            <p style={{ fontSize: '2rem', color: '#f3f3ec' }}>
+                                The current most-popular book is <em>{highestRatedBook.title}</em>. <br />Take a chance to read this book, and enjoy it with our other users by reading now or saving it for later. Feel free to leave ratings on your favorite book. It may have a chance to be spotlighted here on <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.
+                            </p>
+                        </Grid>
+                        {/* Right */}
+                        <Grid item xs={12} sm={6} sx={{  textAlign: 'center'}}>
+                            <div style={{ display: 'block'}}>
+                                <div>
+                                <img
                                     src={`data:image/jpg;base64,${highestRatedBook.image.data}`}
                                     alt="highest rated book"
+                                    style={{outline: '6px double #f3f3ec', padding: '2rem', marginBottom:'1rem'}}
                                 />
-                                <ButtonContainer>
-                                    <Button variant="contained" color="primary" onClick={() => console.log('Save button clicked')}>
-                                        MyLibrary
+                                </div>
+                                 <p style={{ fontSize: '1.3rem', color: '#f3f3ec' }} >
+                                    {highestRatedBook.title}
+                                </p>
+                                <p style={{marginBottom: '1rem', color: '#f3f3ec'}}>
+                                    Author: {highestRatedBook.authors.map((author) => author.name).join(', ')}
+                                </p>
+                                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+                                    <Button variant="contained" sx={{backgroundColor:'#f3f3ec', color: '#8abbb1'}} onClick={() => console.log('Save button clicked')}>
+                                        Keep Book
                                     </Button>
-                                    <Button variant="contained" color="primary" onClick={() => console.log('Read button clicked')}>
+                                    <Button variant="contained" sx={{backgroundColor:'#f3f3ec', color: '#8abbb1'}} onClick={() => console.log('Read button clicked')}>
                                         Read Now
                                     </Button>
-                                </ButtonContainer>
-                            </BookInfo>
-                        </RightSide>
-                    </>
-                ) : (
-                    <Typography variant="body1">No highest-rated book found</Typography>
-                )}
-            </Container>
-        </div>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </>
+            ) : (
+                <Grid container className="bottom-home-div" style={{ display: 'flex', textAlign: 'left', width: '100%', paddingLeft: '2rem', marginBottom: '1rem' }}>
+                    <p style={{ fontSize: '2rem', color: '#505050' }} >No books have been rated yet!</p>
+                </Grid>
+            )}
+        </>
 
     );
 };

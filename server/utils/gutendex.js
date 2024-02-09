@@ -27,7 +27,7 @@ module.exports = async function fetchData() {
             const text = textResponse.data;
 
 
-            console.log(bookData.authors)
+            // console.log(bookData.authors)
             
             try {
               const newBook = await Book.create({
@@ -49,7 +49,7 @@ module.exports = async function fetchData() {
                 authors: newBook.authors,
               };
 
-              console.log('info about book minus image & text bc they are long:', newBookShortData)
+              // console.log('info about book minus image & text bc they are long:', newBookShortData)
 
             } catch (error) {
               // console.error(`Error making new book`, error);
