@@ -6,14 +6,12 @@ import Button from '@mui/material/Button';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
-    width: '100%',
-    height: '40vh',
     boxSizing: 'border-box',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#8abbb1',
-    padding: theme => theme.spacing(2),
+    padding: '100px',
     flexDirection: 'row',
     '@media (max-width: 600px)': {
         flexDirection: 'column',
@@ -23,13 +21,11 @@ const Container = styled('div')({
 const LeftSide = styled('div')({
     flex: 1,
     textAlign: 'left',
-    padding: theme => theme.spacing(2),
 });
 
 const RightSide = styled('div')({
     flex: 1,
-    textAlign: 'center',
-    padding: theme => theme.spacing(2),
+    textAlign: 'center',   
 });
 
 const BookInfo = styled('div')({
@@ -38,12 +34,11 @@ const BookInfo = styled('div')({
 
 const BookImage = styled('img')({
     maxWidth: '100%',
-    maxHeight: '70vh',
-    marginTop: theme => theme.spacing(2),
+    maxHeight: '70vh',  
 });
 
 const ButtonContainer = styled('div')({
-    marginTop: theme => theme.spacing(2),
+    
 });
 
 const HighestRatedBook = () => {
