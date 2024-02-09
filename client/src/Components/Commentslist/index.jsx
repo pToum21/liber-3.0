@@ -1,7 +1,7 @@
 // everything called comment should be changed to review
 
 
-const CommentList = ({ reviews = [] }) => {
+const CommentList = ({ reviews }) => {
     if (!reviews.length) {
       return <h3>No Comments Yet</h3>;
     }

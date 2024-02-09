@@ -141,7 +141,7 @@ const resolvers = {
                         reviews: review._id
                     }
                 }, { new: true })
-                return book.populate("reviews")
+                return await book.populate({ path: "reviews", populate: { path: "userId" } })
             }
             throw AuthenticationError
         },
