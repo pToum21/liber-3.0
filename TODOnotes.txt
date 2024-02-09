@@ -5,8 +5,6 @@ TODO:
 
 - CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
 
-- HIGHEST RATED BOOK - show on homepage
-
 =============================================
 
 NOTES (can leave notes here detailing what you did):
