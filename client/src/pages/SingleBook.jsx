@@ -82,7 +82,7 @@ function SingleBook() {
                     </Button>
                 ) : (
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained" onClick={handleKeepBook}>
-                        MyLibrary
+                        Keep Book
                     </Button>
                 )}
                 <Link to={`/bookReader/${id}`}>

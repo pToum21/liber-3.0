@@ -9,7 +9,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { useMutation } from '@apollo/client'
 import { CREATE_USER } from '../utils/mutations'
 import { useState } from 'react'
@@ -19,18 +20,14 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+ 
+        Liber&nbsp;
+    
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [formState, setFormstate] = useState({
@@ -70,6 +67,76 @@ export default function SignUp() {
 
   });
 
+  // modify outline of textfield
+  const customTheme = (outerTheme) =>
+    createTheme({
+      palette: {
+        mode: outerTheme.palette.mode,
+      },
+      components: {
+        MuiTextField: {
+          styleOverrides: {
+            root: {
+              '--TextField-brandBorderColor': '#E0E3E7',
+              '--TextField-brandBorderHoverColor': '#B2BAC2',
+              '--TextField-brandBorderFocusedColor': '#6F7E8C',
+              '& label.Mui-focused': {
+                color: 'var(--TextField-brandBorderFocusedColor)',
+              },
+            },
+          },
+        },
+        MuiOutlinedInput: {
+          styleOverrides: {
+            notchedOutline: {
+              borderColor: 'var(--TextField-brandBorderColor)',
+            },
+            root: {
+              [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+                borderColor: 'var(--TextField-brandBorderHoverColor)',
+              },
+              [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
+                borderColor: 'var(--TextField-brandBorderFocusedColor)',
+              },
+            },
+          },
+        },
+        MuiFilledInput: {
+          styleOverrides: {
+            root: {
+              '&::before, &::after': {
+                borderBottom: '2px solid var(--TextField-brandBorderColor)',
+              },
+              '&:hover:not(.Mui-disabled, .Mui-error):before': {
+                borderBottom: '2px solid var(--TextField-brandBorderHoverColor)',
+              },
+              '&.Mui-focused:after': {
+                borderBottom: '2px solid var(--TextField-brandBorderFocusedColor)',
+              },
+            },
+          },
+        },
+        MuiInput: {
+          styleOverrides: {
+            root: {
+              '&::before': {
+                borderBottom: '2px solid var(--TextField-brandBorderColor)',
+              },
+              '&:hover:not(.Mui-disabled, .Mui-error):before': {
+                borderBottom: '2px solid var(--TextField-brandBorderHoverColor)',
+              },
+              '&.Mui-focused:after': {
+                borderBottom: '2px solid var(--TextField-brandBorderFocusedColor)',
+              },
+            },
+          },
+        },
+      },
+    });
+
+  const outerTheme = useTheme();
+
+
   return (
     <ThemeProvider theme={theme} >
       <Container component="main" maxWidth="xs" sx={{ bgcolor: '#f3f3ec' }} >
@@ -90,43 +157,46 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} >
-                <TextField
-                  autoComplete="given-name"
-                  name="username"
-                  required
-                  fullWidth
-                  id="username"
-                  label="User Name"
-                  autoFocus
-                  onChange={handleChange}
-                />
-              </Grid>
+              <ThemeProvider theme={customTheme(outerTheme)}>
+                <Grid item xs={12} >
 
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  onChange={handleChange}
-                />
-              </Grid>
+                  <TextField
+                    autoComplete="given-name"
+                    name="username"
+                    required
+                    fullWidth
+                    id="username"
+                    label="User Name"
+                    autoFocus
+                    onChange={handleChange}
+                  />
+                </Grid>
 
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    onChange={handleChange}
+                  />
+
+                </Grid>
+              </ThemeProvider>
             </Grid>
             <Button
               type="submit"
@@ -138,7 +208,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" sx={{color: '#8abbb1', textDecoration: 'none'}}>
                   Already have an account? Sign in
                 </Link>
               </Grid>

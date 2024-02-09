@@ -64,7 +64,7 @@ function SearchResults() {
                         )
                         :
                         (
-                            <Grid container>
+                            <Grid container sx={{marginBottom: '2rem'}}>
                                 {/* child two */}
                                 <Grid container mx={2} spacing={2} sx={{ display: 'flex' }}>
                                     {/* each book will be in its own div */}

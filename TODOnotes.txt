@@ -5,7 +5,7 @@ TODO:
 
 - allow user to delete book from saved books
 
-- adjust ratings system / highest rated book
+- adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
 
 - show comment date
 
@@ -16,6 +16,16 @@ TODO:
     SECRET=rvh8uvnufvhe8rvr
     )
     but make your own random string of letters and numbers
+
+- Prompt user to log in if they click mylibrary and not logged in
+
+- Link buttons in highest rated book
+
+- fix size of nav menu to be full width and height on mobile
+
+- add regex to email and password for login and signup
+
+- for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 
 =============================================
 
@@ -39,12 +49,10 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/7: search feature is done, just need to style
+        2/7: readded secret, styled login and signup
     
 
-    from Peyton : working on 3d > for text styling, console log the book title in gutendex at a proper point (better to console log one specific book),
-    see if it had stodinyle cg in the text  (like \n), if it does, check graphql and retrieve that same book's text.
-    If it does not have style coding in it, at some point in the back end, text is losing its styling. Goal is to prevent text from losing that.
+    from Peyton : 
 
 
     from Sal :
