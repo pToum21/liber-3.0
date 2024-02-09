@@ -14,6 +14,7 @@ import '../styles/home.css';
 import { useState, useEffect } from 'react';
 // import mui
 import { Grid, Pagination } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -106,14 +107,16 @@ function Home() {
             </div>
 
             {/* all books div*/}
-            <Grid container sx={{display: 'flex', justifyContent: 'center'}}>
+            <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
                 {loading ?
                     (
-                        <p>Loading...</p>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <CircularProgress color="success" />
+                        </div>
                     ) :
                     (
                         <>
-                        
+
                             <Grid container className="bottom-home-div">
                                 {/* // parent div holding books */}
                                 <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
@@ -143,7 +146,6 @@ function Home() {
 
                                 </Grid>
                             </Grid>
-
                         </>
                     )
                 }

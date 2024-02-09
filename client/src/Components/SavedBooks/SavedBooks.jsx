@@ -6,7 +6,13 @@ import { QUERY_MY_LIBRARY } from '../../utils/queries'
 const SavedBooks = () => {
     // Execute the query using useQuery hook
     const { loading, error, data } = useQuery(QUERY_MY_LIBRARY);
-const myLibrary = data?.myLibrary
+    console.log(data);
+    if (loading) {
+        console.log('loading')
+    } else {
+    console.log(data.myLibrary.keptBooks);
+    }
+const myBooks = data?.myLibrary.keptBooks;
 
 
     if (loading) return <p>Loading...</p>;
@@ -18,13 +24,13 @@ const myLibrary = data?.myLibrary
 
     return (
         <div>
-            <h2>Your Saved Books</h2>
+            <h2>MyBookshelf</h2>
             <ul>
-                {myLibrary.keptBooks.map((myLibrary) => (
-                    <li key={myLibrary.bookId}>
-                        <h3>{myLibrary.title}</h3>
+                {myBooks.map((myBook) => (
+                    <li key={myBook.bookId}>
+                        <h3>{myBook.title}</h3>
                         {/* <p>Authors: {book.authors.map((author) => author.name).join(', ')}</p> */}
-                        <img src={`data:image/jpeg;base64,${myLibrary.image}`} alt={myLibrary.title} />
+                        <img src={`data:image/jpeg;base64,${myBook.image.data}`} alt={myBook.title} />
                     </li>
                 ))}
             </ul>

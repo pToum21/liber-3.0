@@ -30,3 +30,7 @@ p {
     font-style: normal;
 }
 
+.no-text-dec {
+    text-decoration: none;
+    color: #8abbb1;
+}

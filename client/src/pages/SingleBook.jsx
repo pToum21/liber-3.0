@@ -15,6 +15,15 @@ function SingleBook() {
         variables: { id: id }
     });
 
+    if (loading) {
+        console.log(loading)
+    } else {
+        console.log(data.getSingleBook.image.data);
+    }
+
+    const thisBook = data?.getSingleBook;
+
+
     const [keepBookMutation] = useMutation(KEEP_BOOK);
 
     const [bookAdded, setBookAdded] = useState(false)
@@ -36,7 +45,7 @@ function SingleBook() {
     const handleKeepBook = async () => {
         try {
             await keepBookMutation({
-                variables: { input: { bookId: id } },
+                variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data }   } },
             });
 
             // Set bookAdded to true when the book is successfully added
@@ -47,7 +56,7 @@ function SingleBook() {
         }
     };
 
-    
+
 
     if (loading) {
         return <div>Loading....</div>;
