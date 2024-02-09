@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
-    width: '100vw',
-    height: '40vh',
+    // width: '100vw',
+    // height: '40vh',
     boxSizing: 'border-box',
     display: 'flex',
     justifyContent: 'center',
