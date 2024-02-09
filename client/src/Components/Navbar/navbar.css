@@ -11,9 +11,8 @@
     }
 
     #child-1 {
-        margin-left: 0
+        margin-left: 20px
     }
-
 }
 
 
@@ -29,14 +28,14 @@
     }
 
     #liber {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
 }
 
 .navlinks {
     font-family: 'Lato' !important;
-color: #8ebfb5;
+    color: #8ebfb5;
 }
 
 .search-input {
