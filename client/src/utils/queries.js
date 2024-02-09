@@ -112,3 +112,13 @@ query HighestRatedBook {
   }
 }
 `
+export const QUERY_ALL_USERS = gql`
+query Query {
+  getAllUsers {
+    _id
+    username
+    email
+    role
+  }
+}
+`

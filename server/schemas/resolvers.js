@@ -16,10 +16,7 @@ const resolvers = {
 
         bookDetails: async (_, { bookId }) => {
             return await Book.findOne({ bookId });
-          },
-        
-
-
+        },
 
         searchAllBooks: async (parents, { searchTerm }) => {
             // Split the search term into individual words
@@ -84,6 +81,16 @@ const resolvers = {
                 throw new Error('Failed to fetch the highest-rated book.');
             }
         },
+
+        getAllUsers: async (parent, args, context) => {
+            // gotta make sure user exists for role to try to be read; otherwise it will crash
+            if (context.user && context.user.role === 'admin') {
+                return await User.find();
+            }
+
+            throw AuthenticationError;
+        }
+
     },
 
     Mutation: {

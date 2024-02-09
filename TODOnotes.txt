@@ -3,7 +3,19 @@ TODO:
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
     their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
 
-- CREATE A USER THAT IS AN ADMIN: figure out how to create a user that is an admin instead of user, from there, probably need to build functionality exclusive to admins only (probably by queries and mutations)
+- allow user to delete book from saved books
+
+- adjust ratings system / highest rated book
+
+- show comment date
+
+- fix author name on book
+
+-MAKE YOUR OWN .ENV SECRET
+    (in .env file:
+    SECRET=rvh8uvnufvhe8rvr
+    )
+    but make your own random string of letters and numbers
 
 =============================================
 
