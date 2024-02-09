@@ -14,7 +14,7 @@ const SavedBooks = () => {
     return (
         <div>
             <h2>My Bookshelf</h2>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
                 {myBooks.map((myBook) => (
                     <Box
                         key={myBook.bookId}
@@ -40,7 +40,7 @@ const SavedBooks = () => {
                                 alt={myBook.title}
                                 style={{ width: '100%', height: '20rem', borderRadius: '8px' }}
                             />
-                            <div className="titleOverlay" style={{ position: 'absolute', top: '0', left: '0', width: '100%', background: 'rgba(0, 0, 0, 0.7)', padding: '8px', boxSizing: 'border-box', color: '#fff', opacity: 0, transition: 'opacity 0.3s' }}>
+                            <div className="titleOverlay" style={{ position: 'absolute', top: '0', left: '0', width: '100%', background: 'rgba(0, 0, 0, 0.7)', boxSizing: 'border-box', color: '#fff', opacity: 0, transition: 'opacity 0.3s' }}>
                                 <h3 style={{ fontSize: '12px', margin: '0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {myBook.title}
                                 </h3>

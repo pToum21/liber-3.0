@@ -5,7 +5,7 @@ const MyLibrary = () =>{
 return (
     <>
     <SavedBooks />
-    <h1>My Library</h1>
+    
     </>
 )
 }
