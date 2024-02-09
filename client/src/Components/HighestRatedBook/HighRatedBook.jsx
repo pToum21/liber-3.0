@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
-    width: '100vw',
+    width: '100%',
     height: '40vh',
     boxSizing: 'border-box',
     display: 'flex',
@@ -55,7 +55,7 @@ const HighestRatedBook = () => {
 
     if (error) {
         console.error(error);
-        return <p>Error fetching the Most Popular book</p>;
+        return <p>Error fetching the highest-rated book</p>;
     }
 
     const highestRatedBook = data.highestRatedBook;
@@ -63,14 +63,14 @@ const HighestRatedBook = () => {
     return (
         <div style={{ height: '60vh', marginTop: '10rem' }}>
             <Typography variant="h4" gutterBottom>
-                Most Popular Book
+                Highest Rated Book
             </Typography>
             <Container>
                 {highestRatedBook ? (
                     <>
                         <LeftSide>
                             <Typography variant="body1">
-                                The Most popular book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
+                                The highest Rated book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
                             </Typography>
                         </LeftSide>
                         <RightSide>
@@ -97,7 +97,7 @@ const HighestRatedBook = () => {
                         </RightSide>
                     </>
                 ) : (
-                    <Typography variant="body1">No Popular Books found</Typography>
+                    <Typography variant="body1">No highest-rated book found</Typography>
                 )}
             </Container>
         </div>
