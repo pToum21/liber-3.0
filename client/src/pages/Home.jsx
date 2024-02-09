@@ -14,6 +14,7 @@ import '../styles/home.css';
 import { useState, useEffect } from 'react';
 // import mui
 import { Grid, Pagination } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -144,7 +145,6 @@ function Home() {
 
                                 </Grid>
                             </Grid>
-
                         </>
                     )
                 }
