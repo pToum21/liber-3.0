@@ -7,15 +7,6 @@ import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
-const Container = styled('div')({
-    // margin: '2rem',
-
-
-    '@media (max-width: 600px)': {
-        flexDirection: 'column',
-    },
-});
-
 const HighestRatedBook = () => {
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
     if (loading) {
