@@ -55,7 +55,7 @@ const HighestRatedBook = () => {
 
     if (error) {
         console.error(error);
-        return <p>Error fetching the highest-rated book</p>;
+        return <p>Error fetching the Most Popular book</p>;
     }
 
     const highestRatedBook = data.highestRatedBook;
@@ -70,7 +70,7 @@ const HighestRatedBook = () => {
                     <>
                         <LeftSide>
                             <Typography variant="body1">
-                                The highest Rated book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
+                                The Most popular book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
                             </Typography>
                         </LeftSide>
                         <RightSide>
@@ -97,7 +97,7 @@ const HighestRatedBook = () => {
                         </RightSide>
                     </>
                 ) : (
-                    <Typography variant="body1">No highest-rated book found</Typography>
+                    <Typography variant="body1">No Popular Books found</Typography>
                 )}
             </Container>
         </div>
