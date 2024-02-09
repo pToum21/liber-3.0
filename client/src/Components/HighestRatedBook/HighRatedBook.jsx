@@ -63,7 +63,7 @@ const HighestRatedBook = () => {
     return (
         <div style={{ height: '60vh', marginTop: '10rem' }}>
             <Typography variant="h4" gutterBottom>
-                Highest Rated Book
+                Most Popular Book
             </Typography>
             <Container>
                 {highestRatedBook ? (
