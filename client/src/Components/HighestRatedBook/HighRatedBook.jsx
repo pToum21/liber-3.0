@@ -14,9 +14,9 @@ const Container = styled('div')({
     alignItems: 'center',
     backgroundColor: '#8abbb1',
     padding: theme => theme.spacing(2),
-    flexDirection: 'row', // default direction
+    flexDirection: 'row',
     '@media (max-width: 600px)': {
-        flexDirection: 'column', // switch to column on smaller screens
+        flexDirection: 'column',
     },
 });
 
