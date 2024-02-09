@@ -62,21 +62,19 @@ const HighestRatedBook = () => {
 
     return (
         <div style={{ height: '60vh', marginTop: '10rem' }}>
-
             <Typography variant="h4" gutterBottom>
                 Highest Rated Book
             </Typography>
             <Container>
-
-                <LeftSide>
-                    <Typography variant="body1">
-                        The highest Rated book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
-                    </Typography>
-                </LeftSide>
-                <RightSide>
-                    <BookInfo>
-                        {highestRatedBook ? (
-                            <>
+                {highestRatedBook ? (
+                    <>
+                        <LeftSide>
+                            <Typography variant="body1">
+                                The highest Rated book of the day is, {highestRatedBook.title} take a chance to read this book and enjoy it with our other users by reading now or save it for later. Feel free to leave ratings on your favorite book to have it added to the spotlight
+                            </Typography>
+                        </LeftSide>
+                        <RightSide>
+                            <BookInfo>
                                 <Typography variant="h6" gutterBottom>
                                     {highestRatedBook.title}
                                 </Typography>
@@ -95,14 +93,13 @@ const HighestRatedBook = () => {
                                         Read Now
                                     </Button>
                                 </ButtonContainer>
-                            </>
-                        ) : (
-                            <Typography variant="body1">No highest-rated book found</Typography>
-                        )}
-                    </BookInfo>
-                </RightSide>
+                            </BookInfo>
+                        </RightSide>
+                    </>
+                ) : (
+                    <Typography variant="body1">No highest-rated book found</Typography>
+                )}
             </Container>
-
         </div>
 
     );
