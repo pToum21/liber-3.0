@@ -65,6 +65,7 @@ type Query {
     getSingleBook(_id: ID!): Book
     highestRatedBook: Book
     bookDetails(bookId: ID!): Book
+    getAllUsers: [User]
 }
 
 input ImageInput {
