@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
@@ -41,6 +42,10 @@ const BookImage = styled('img')({
     marginTop: theme => theme.spacing(2),
 });
 
+const ButtonContainer = styled('div')({
+    marginTop: theme => theme.spacing(2),
+});
+
 const HighestRatedBook = () => {
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
 
@@ -73,7 +78,7 @@ const HighestRatedBook = () => {
                         {highestRatedBook ? (
                             <>
                                 <Typography variant="h6" gutterBottom>
-                                     {highestRatedBook.title}
+                                    {highestRatedBook.title}
                                 </Typography>
                                 <Typography variant="body1" gutterBottom>
                                     Written By {highestRatedBook.authors.map((author) => author.name).join(', ')}
@@ -82,6 +87,14 @@ const HighestRatedBook = () => {
                                     src={`data:image/jpg;base64,${highestRatedBook.image.data}`}
                                     alt="highest rated book"
                                 />
+                                <ButtonContainer>
+                                    <Button variant="contained" color="primary" onClick={() => console.log('Save button clicked')}>
+                                        MyLibrary
+                                    </Button>
+                                    <Button variant="contained" color="primary" onClick={() => console.log('Read button clicked')}>
+                                        Read Now
+                                    </Button>
+                                </ButtonContainer>
                             </>
                         ) : (
                             <Typography variant="body1">No highest-rated book found</Typography>
