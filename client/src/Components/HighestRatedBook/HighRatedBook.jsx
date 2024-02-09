@@ -6,13 +6,15 @@ import Button from '@mui/material/Button';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
+    margin: '2rem',
     boxSizing: 'border-box',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#8abbb1',
-    padding: '8rem',
+    padding: '3rem',
     flexDirection: 'row',
+    
     '@media (max-width: 600px)': {
         flexDirection: 'column',
     },
@@ -33,8 +35,8 @@ const BookInfo = styled('div')({
 });
 
 const BookImage = styled('img')({
-    maxWidth: '100%',
-    maxHeight: '70vh',  
+    // maxWidth: '100%',
+    // maxHeight: '70vh',  
 });
 
 const ButtonContainer = styled('div')({
@@ -57,9 +59,9 @@ const HighestRatedBook = () => {
 
     return (
         <div style={{ height: '60vh', marginTop: '10rem' }}>
-            <Typography variant="h4" gutterBottom>
+            <p style={{fontSize: '2rem'}} >
                 Highest Rated Book
-            </Typography>
+            </p>
             <Container>
                 {highestRatedBook ? (
                     <>

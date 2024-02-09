@@ -146,12 +146,12 @@ function Home() {
 
                                 </Grid>
                             </Grid>
+
+                            <HighestRatedBook />
                         </>
                     )
                 }
             </Grid>
-
-            <HighestRatedBook />
         </>
     );
 }
