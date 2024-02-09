@@ -14,6 +14,13 @@ const resolvers = {
             throw AuthenticationError;
         },
 
+        bookDetails: async (_, { bookId }) => {
+            return await Book.findOne({ bookId });
+          },
+        
+
+
+
         searchAllBooks: async (parents, { searchTerm }) => {
             // Split the search term into individual words
             const searchWords = searchTerm.trim().split(/\s+/);

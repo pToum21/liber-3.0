@@ -63,6 +63,7 @@ type Query {
     getBooks(skip: Int): BookAndCount
     getSingleBook(_id: ID!): Book
     highestRatedBook: Book
+    bookDetails(bookId: ID!): Book
 }
 
 input ImageInput {
