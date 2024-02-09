@@ -40,7 +40,7 @@ const BookFlipper = () => {
                 <div className="book-cover unique-book-cover-class">
                     <div className="unique-cover-div-class">
                         {/* title */}
-                        <h1 className="unique-h1-class">{title}</h1>
+                        <h1 className="unique-h1-class home-book-titles">{title}</h1>
                         <div className="separator unique-separator-class"></div>
                         {/* authors */}
                         <h2 className="unique-h2-class">by {authors.map(author => author.name).join(', ')}</h2>
