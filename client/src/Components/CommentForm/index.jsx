@@ -22,6 +22,7 @@ const CommentForm = ({ bookId }) => {
           content: commentText,
           rating: parseInt(rating),
         },
+        refetchQueries: ['getSingleBook']
       });
       setCommentText('');
       setRating(0);
