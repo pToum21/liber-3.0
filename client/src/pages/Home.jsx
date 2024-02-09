@@ -19,6 +19,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
 import { QUERY_ALL_BOOKS } from '../utils/queries';
+import HighestRatedBook from '../Components/HighestRatedBook/HighRatedBook';
 
 
 function Home() {
@@ -149,6 +150,8 @@ function Home() {
                     )
                 }
             </Grid>
+
+            <HighestRatedBook />
         </>
     );
 }

@@ -94,3 +94,21 @@ query MyLibrary {
 }
 `;
 
+export const QUERY_HIGHEST_RATED_BOOK = gql`
+query HighestRatedBook {
+  highestRatedBook {
+    _id
+    authors {
+      name
+    }
+    bookId
+    image {
+      data
+    }
+    reviews {
+      rating
+    }
+    title
+  }
+}
+`
