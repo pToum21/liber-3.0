@@ -6,7 +6,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 // css
 import './styles/main.css';
-import Footer from './Components/Footer/Footer';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -34,7 +34,7 @@ function App() {
       <ApolloProvider client={client}>
         <NavBar />
         <Outlet />
-        <Footer />
+        
       </ApolloProvider>
     </>
   )
