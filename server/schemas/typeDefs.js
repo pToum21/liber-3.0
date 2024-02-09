@@ -65,11 +65,16 @@ type Query {
     highestRatedBook: Book
 }
 
+input ImageInput {
+    data: String
+    contentType: String
+}
+
 input KeepBookInput {
     _id: ID
     title: String
     authors: [String]
-    image: String
+    image: ImageInput
     text: String
     bookId: String
 }
