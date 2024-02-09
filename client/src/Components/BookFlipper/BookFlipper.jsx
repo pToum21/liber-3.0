@@ -16,6 +16,7 @@ const BookFlipper = () => {
 
     const { title, authors, text } = data.getSingleBook;
 
+
     // Function to remove introductory sentences
     const cleanText = (originalText) => {
         // Split the text based on the specified pattern
@@ -43,7 +44,11 @@ const BookFlipper = () => {
                         <h1 className="unique-h1-class home-book-titles">{title}</h1>
                         <div className="separator unique-separator-class"></div>
                         {/* authors */}
-                        <h2 className="unique-h2-class">by {authors.map(author => author.name).join(', ')}</h2>
+                        <h2 className="unique-h2-class">by {authors.map(author => {
+                            const nameParts = author.name.split(' ');
+                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                        }).join(', ')}
+                        </h2>
                     </div>
                 </div>
                 <div className="book-content unique-book-content-class">
