@@ -6,7 +6,7 @@ import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 
 const Container = styled('div')({
     width: '100vw',
-    height: '60vh',
+    height: '40vh',
     boxSizing: 'border-box',
     display: 'flex',
     justifyContent: 'center',
@@ -56,7 +56,7 @@ const HighestRatedBook = () => {
     const highestRatedBook = data.highestRatedBook;
 
     return (
-        <>
+        <div style={{ height: '60vh', marginTop: '10rem' }}>
 
             <Typography variant="h4" gutterBottom>
                 Highest Rated Book
@@ -73,10 +73,10 @@ const HighestRatedBook = () => {
                         {highestRatedBook ? (
                             <>
                                 <Typography variant="h6" gutterBottom>
-                                    Title: {highestRatedBook.title}
+                                     {highestRatedBook.title}
                                 </Typography>
                                 <Typography variant="body1" gutterBottom>
-                                    Authors: {highestRatedBook.authors.map((author) => author.name).join(', ')}
+                                    Written By {highestRatedBook.authors.map((author) => author.name).join(', ')}
                                 </Typography>
                                 <BookImage
                                     src={`data:image/jpg;base64,${highestRatedBook.image.data}`}
@@ -90,7 +90,7 @@ const HighestRatedBook = () => {
                 </RightSide>
             </Container>
 
-        </>
+        </div>
 
     );
 };
