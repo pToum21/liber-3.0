@@ -11,7 +11,7 @@ const Container = styled('div')({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#8abbb1',
-    padding: '100px',
+    padding: '8rem',
     flexDirection: 'row',
     '@media (max-width: 600px)': {
         flexDirection: 'column',
