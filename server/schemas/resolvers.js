@@ -45,7 +45,38 @@ const resolvers = {
         },
         getSingleBook: async (parent, { _id }) => {
             return Book.findOne({ _id }).populate({ path: "reviews", populate: { path: "userId" } })
-        }
+        },
+
+        highestRatedBook: async () => {
+            try {
+                const result = await Book.aggregate([
+                    { $unwind: '$reviews' },
+                    {
+                        $group: {
+                            _id: '$_id',
+                            title: { $first: '$title' },
+                            bookId: { $first: '$bookId' },
+                            authors: { $first: '$authors' },
+                            image: { $first: '$image' },
+                            text: { $first: '$text' },
+                            reviews: { $push: '$reviews' },
+                            highestRating: { $max: '$reviews.rating' },
+                        },
+                    },
+                    { $sort: { highestRating: -1 } },
+                    { $limit: 1 },
+                ]);
+
+                if (result.length > 0) {
+                    return result[0];
+                } else {
+                    return null;
+                }
+            } catch (error) {
+                console.error(error);
+                throw new Error('Failed to fetch the highest-rated book.');
+            }
+        },
     },
 
     Mutation: {
