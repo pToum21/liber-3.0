@@ -45,6 +45,7 @@ type Review {
     rating: Int
     content: String
     userId: User
+    createdAt: String
 }
 
 type Auth {

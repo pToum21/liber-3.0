@@ -16,12 +16,14 @@ const reviewSchema = new Schema({
         required: true,
     },
     bookId: {
-        type:Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Book',
     },
     rating: { type: Number, min: 0, max: 5, default: 0 },
     content: String,
-    
+
+}, {
+    timestamps: true
 });
 
 const Review = model('Review', reviewSchema);
