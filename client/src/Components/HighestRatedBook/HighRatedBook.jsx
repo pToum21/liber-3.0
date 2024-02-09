@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
+import './spotlightbook.css';
 
 const HighestRatedBook = () => {
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
@@ -28,7 +29,7 @@ const HighestRatedBook = () => {
 
     return (
         <>
-            <Grid container className="from-left-white" style={{ display: 'flex', textAlign: 'left', width: '100%', paddingLeft: '2rem', marginBottom: '1rem' }}>
+            <Grid container className="from-left-white spotlight-header" style={{ display: 'flex', textAlign: 'left', width: '100%', paddingLeft: '2rem', marginBottom: '1rem' }}>
                 <p style={{ fontSize: '2rem', color: '#505050' }} >
                     Most-Discussed Book
                 </p>
@@ -48,7 +49,7 @@ const HighestRatedBook = () => {
                     }}>
                         {/* Left */}
                         <Grid item xs={12} sm={6} sx={{ padding: '2rem !important', backgroundColor:'#8ebfb5', borderRadius:'10px'}}>
-                            <p style={{ fontSize: '2rem', color: '#f3f3ec' }}>
+                            <p className="spotlight-book-text" style={{ fontSize: '2rem', color: '#f3f3ec' }}>
                                 The current most-popular book is <em>{highestRatedBook.title}</em>. <br />Take a chance to read this book, and enjoy it with our other users by reading now or saving it for later. Feel free to leave ratings on your favorite book. It may have a chance to be spotlighted here on <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.
                             </p>
                         </Grid>

@@ -21,6 +21,8 @@ TODO:
 
 - Link buttons in highest rated book
 
+- fix size of nav menu to be full width and height on mobile
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):
