@@ -18,7 +18,7 @@ function SingleBook() {
     if (loading) {
         console.log(loading)
     } else {
-        console.log(data.getSingleBook.image.data);
+        // console.log(data.getSingleBook.image.data);
     }
 
     const thisBook = data?.getSingleBook;
