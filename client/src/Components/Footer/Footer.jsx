@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Container, Grid } from "@mui/material";
 import gif from "../../../public/3dModels/output-onlinegiftools.gif";
+import logo from "../../assets/footerlogo.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ export const Footer = () => {
         <Grid container alignItems="center">
           <Grid item xs={12} sm={6}>
             
-            <img src={gif} alt="3d book gif" style={{ width: "18%", height: "auto" }} />
+            <img src={logo} alt="3d book gif" style={{ width: "20vw", height: "auto" }} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Grid
