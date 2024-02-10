@@ -11,9 +11,10 @@ import { Link, useParams } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
 
 const HighestRatedBook = () => {
-    const { id } = useParams();
 
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
+
+    console.log(data)
 
     const [bookAdded, setBookAdded] = useState(false);
 
@@ -102,7 +103,7 @@ const HighestRatedBook = () => {
                                         {bookAdded ? 'Book Saved' : 'Keep Book'}
                                     </Button>
 
-                                    <Link to={`/bookReader/${id}`}>
+                                    <Link to={`/bookReader/${highestRatedBook._id}`}>
                                         <Button sx={{ backgroundColor: '#8abbb1', color: '#f3f3ec' }} variant="contained">
                                             Read Now
                                         </Button>
