@@ -84,14 +84,13 @@ const HighestRatedBook = () => {
                         }}
                     >
                         {/* Left */}
-                        <Grid item xs={12} sm={6} sx={{ padding: '2rem !important', backgroundColor: '#8ebfb5', borderRadius: '10px' }}>
+                        <Grid item xs={12} md={6} sx={{ padding: '2rem !important', backgroundColor: '#8ebfb5', borderRadius: '10px' }}>
                             <p className="spotlight-book-text" style={{ fontSize: '2rem', color: '#f3f3ec' }}>
-                                The current most-popular book is <em>{highestRatedBook.title}</em>. <br />Take a chance to read this book, and enjoy it with our other users by reading now or saving it for later. Feel free to leave ratings on your favorite book. It may have a chance to be spotlighted here on{' '}
-                                <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.
+                                The current most-popular book is <em>{highestRatedBook.title}</em>. People are buzzing about it. Whether they like or they hate it, they are discussing this classic. Take part in the conversation or take a chance and read this book! Enjoy it with our bookworm community or save it to your MyLibrary for later. Feel free to comment and leave ratings on your favorite book. It may have a chance to be spotlighted here on <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.
                             </p>
                         </Grid>
                         {/* Right */}
-                        <Grid item xs={12} sm={6} sx={{ textAlign: 'center' }}>
+                        <Grid item xs={12} md={6} sx={{ textAlign: 'center' }}>
                             <div style={{ display: 'block' }}>
                                 <div>
                                     <img src={`data:image/jpg;base64,${highestRatedBook.image.data}`} alt="highest rated book" style={{ outline: '6px double #f3f3ec', padding: '2rem', marginBottom: '1rem' }} />

@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // images for slick carousel
-import image1 from '../assets/firstcarousel.jpg';
+import image1 from '../assets/firstcarousel.avif';
 import image2 from '../assets/secondcarousel.jpg';
-import image3 from '../assets/thirdcarousel.jpg'
+import image3 from '../assets/thirdcarousel.webp'
 import '../styles/home.css';
 // useState, Effect
 import { useState, useEffect } from 'react';
@@ -82,7 +82,7 @@ function Home() {
                             <div className="text-overlay">
                                 <p className="text-title">Plethora of free books, completely free </p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
-                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
+                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of over 1,000 free, classic novels and reads<br /> are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ function Home() {
                             <img src={image1} alt="" />
                             <div className="text-overlay">
                                 <p className="text-title">Interact with your e-reads</p>
-                                <p>Join our fellow readers!<br /> Find and add free classics directly to your Bookshelf for ease of reading.<br /> Rate and discuss your favorite books! </p>
+                                <p>Join our fellow readers!<br /> Rate and discuss your favorite books! <br /> Try not to be toxic with your writing though. You're a reader for a reason. </p>
                             </div>
                         </div>
                     </div>
@@ -99,8 +99,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <p className="text-title">MyBookshelf</p>
-                                <p>Add books directly to the MyBookshelf section.<br />Once a book is added, you can come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
+                                <p className="text-title">MyLibrary</p>
+                                <p>Keep books in the MyLibrary section.<br />Once a book is kept, you can easily come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
                             </div>
                         </div>
                     </div>

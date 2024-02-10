@@ -67,6 +67,7 @@ const CommentForm = ({ bookId }) => {
         <h2>Add Review</h2>
         <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <Box display="flex" alignItems="center" marginBottom={2}>
+          {error && <p>Error: Please <button className="no-text-dec" onClick={handleLoginClick}>log in</button> to add a comment.</p>}
             <TextField
               id="comments"
               name="content"
@@ -96,7 +97,7 @@ const CommentForm = ({ bookId }) => {
             />
           </Box>
         </form>
-        {error && <p>Error: Please <button className="no-text-dec" onClick={handleLoginClick}>log in</button> to add a comment.</p>}
+      
       </div>
 
       <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>

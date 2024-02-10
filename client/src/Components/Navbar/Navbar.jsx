@@ -87,7 +87,7 @@ const NavBar = () => {
 
     return (
         <>
-            <Grid container py={2} id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
+            <Grid container py={3} id="nav-parent" style={{ backgroundColor: "transparent", display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
                 <Grid id="child-1" item sx={{ display: "flex", marginLeft: '2rem' }}>
                     <Hidden mdUp>
                         <IconButton

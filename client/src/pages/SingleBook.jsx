@@ -56,9 +56,9 @@ function SingleBook() {
             totalRating += book.rating
         })
 
-        avgRating = (totalRating/ratingCount).toFixed(2);
+        avgRating = (totalRating / ratingCount).toFixed(2);
         setAvgRating(avgRating);
-        
+
         console.log(avgRating);
 
     }, [data, id]);
@@ -71,7 +71,7 @@ function SingleBook() {
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
-           
+
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }
@@ -95,7 +95,7 @@ function SingleBook() {
                     <span key={index}>{author.name}</span>
                 ))}
             </h4>
-            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br/>
+            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
             {/* <p> Rating: {avgRating}</p> */}
             <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
 
@@ -113,14 +113,14 @@ function SingleBook() {
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">Read Now</Button>
                 </Link>
             </div>
-            <div>
-                <div>
-                    <div>
 
-                        <CommentList reviews={book.reviews} />
-                    </div>
-                </div>
+
+            <div>
+
+                <CommentList reviews={book.reviews} />
             </div>
+
+
             <CommentForm bookId={book._id} />
         </div>
     );
