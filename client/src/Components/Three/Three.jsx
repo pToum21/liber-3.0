@@ -65,7 +65,7 @@ const Three = () => {
                 <div
                     style={{
                         position: 'absolute',
-                        top: '55%',
+                        top: '60%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         zIndex: '2',
@@ -89,15 +89,25 @@ const Three = () => {
                 maxHeight: '9rem',
                 zIndex: '1',
             }}>
-                <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
+                {/* <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
                     Library Instructions
-                    <Link to={`/`}>
+                   
+
+                </h1> */}
+                 <p style={{
+                    color: 'black',
+                    fontFamily: 'Press Start 2P',
+                    fontSize: '1rem',
+                    lineHeight: '1.5'
+                }}>
+                    {/* Press */} <strong>CLICK HOME</strong>
+                
+                <Link to={`/`}>
                         <IconButton style={{ fontSize: '16px' }}>
                             <HomeIcon style={{ color: 'black' }} />
                         </IconButton>
                     </Link>
-
-                </h1>
+                    </p>
 
                 <p style={{
                     color: 'black',
@@ -105,7 +115,7 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    Press <span style={{ color: '#ff0000' }}>Left Click</span> anywhere to sit at the desk and read your selected Book.
+                    {/* Press */} <strong>LEFT CLICK</strong>: read book{/*anywhere to sit at the desk and read your selected Book.*/} 
                 </p>
                 <p style={{
                     color: 'black',
@@ -113,7 +123,7 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    Press <span style={{ color: '#004c00' }}>Right Click</span> to grab and pan around the room.
+                    {/* Press */} <strong>RIGHT CLICK HOLD</strong>: look around {/*to grab and pan around the room.*/}
                 </p>
 
 

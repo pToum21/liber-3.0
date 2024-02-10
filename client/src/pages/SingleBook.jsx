@@ -1,7 +1,13 @@
+// hooks etc from react
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
+// mui
 import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+import CircularProgress from '@mui/material/CircularProgress';
+
+// our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
@@ -51,9 +57,9 @@ function SingleBook() {
             totalRating += book.rating
         })
 
-        avgRating = (totalRating/ratingCount).toFixed(2);
+        avgRating = (totalRating / ratingCount).toFixed(2);
         setAvgRating(avgRating);
-        
+
         console.log(avgRating);
 
     }, [data, id]);
@@ -66,7 +72,7 @@ function SingleBook() {
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
-           
+
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }
@@ -75,7 +81,11 @@ function SingleBook() {
 
 
     if (loading) {
-        return <div>Loading....</div>;
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress color="success" />
+            </div>
+        )
     }
 
     const book = data?.getSingleBook || [];
@@ -90,8 +100,10 @@ function SingleBook() {
                     <span key={index}>{author.name}</span>
                 ))}
             </h4>
-            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br/>
-            <p> Rating: {avgRating}</p>
+            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
+            {/* <p> Rating: {avgRating}</p> */}
+            <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 {bookAdded ? (
                     <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
@@ -106,14 +118,14 @@ function SingleBook() {
                     <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">Read Now</Button>
                 </Link>
             </div>
-            <div>
-                <div>
-                    <div>
 
-                        <CommentList reviews={book.reviews} />
-                    </div>
-                </div>
+
+            <div>
+
+                <CommentList reviews={book.reviews} />
             </div>
+
+
             <CommentForm bookId={book._id} />
         </div>
     );

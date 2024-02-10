@@ -16,11 +16,8 @@ query getBooks($skip: Int) {
       image {
         data
       }
-      text
       reviews {
-        userId {
-          username
-        }
+        rating
       }
     }
     bookCount

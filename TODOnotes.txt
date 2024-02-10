@@ -1,13 +1,7 @@
 TODO: 
 
 
-
-
-
 - adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
-
-
-
 
 
 -MAKE YOUR OWN .ENV SECRET
@@ -16,7 +10,7 @@ TODO:
     )
     but make your own random string of letters and numbers
 
-- Prompt user to log in if they click mylibrary and not logged in
+- prevent user from adding duplicate to saved books from the spotlight read section
 
 
 
@@ -27,6 +21,10 @@ TODO:
 - for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 
 - add login check for everything that needs a login requirement
+
+-change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
+
+- got ovrall ratings to show for each book in home, but sometimes data isnt fetched, and a book's rating will be 0 incorrectly. also, need to style the star rating. spacing is inconsistent with titles
 
 =============================================
 

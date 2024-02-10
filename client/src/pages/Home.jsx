@@ -6,15 +6,17 @@ import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // images for slick carousel
-import image1 from '../assets/firstcarousel.jpg';
+import image1 from '../assets/firstcarousel.avif';
 import image2 from '../assets/secondcarousel.jpg';
-import image3 from '../assets/thirdcarousel.jpg'
+import image3 from '../assets/thirdcarousel.webp'
 import '../styles/home.css';
 // useState, Effect
 import { useState, useEffect } from 'react';
 // import mui
 import { Grid, Pagination } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -41,6 +43,7 @@ function Home() {
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
+    console.log(books)
 
     //   dynamic number of pages of books we have
     const bookCount = data?.getBooks.bookCount || 0;
@@ -48,6 +51,8 @@ function Home() {
 
     // useState for page number
     const [currentPage, setCurrentPage] = useState(1);
+
+    let [avgRating, setAvgRating] = useState([]);
 
     const changePage = (event, page) => {
         setCurrentPage(page)
@@ -69,7 +74,24 @@ function Home() {
         const skip = (currentPage - 1) * 5;
         console.log(skip)
         refetch({ skip });
-    }, [currentPage, refetch]);
+
+
+        if (!loading && books.length > 0) {
+            const avgRating = books.map(book => {
+                let totalRating = 0;
+                const ratingCount = book.reviews.length;
+                book.reviews.forEach(review => {
+                    totalRating += review.rating;
+                });
+                // toFixed returns string; + changes it back to number
+                return +(totalRating / ratingCount).toFixed(2);
+            });
+            setAvgRating(avgRating);
+        }
+
+
+    }, [currentPage, loading, refetch, books]);
+
 
     return (
         <>
@@ -82,7 +104,7 @@ function Home() {
                             <div className="text-overlay">
                                 <p className="text-title">Plethora of free books, completely free </p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
-                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of free, classic novels and reads are digitized and waiting to be discovered.</p>
+                                <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of over 1,000 free, classic novels and reads<br /> are digitized and waiting to be discovered.</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +113,7 @@ function Home() {
                             <img src={image1} alt="" />
                             <div className="text-overlay">
                                 <p className="text-title">Interact with your e-reads</p>
-                                <p>Join our fellow readers!<br /> Find and add free classics directly to your Bookshelf for ease of reading.<br /> Rate and discuss your favorite books! </p>
+                                <p>Join our fellow readers!<br /> Rate and discuss your favorite books! <br /> Try not to be toxic with your writing though. You're a reader for a reason. </p>
                             </div>
                         </div>
                     </div>
@@ -99,8 +121,8 @@ function Home() {
                         <div className="overlay">
                             <img src={image3} alt="" />
                             <div className="text-overlay">
-                                <p className="text-title">MyBookshelf</p>
-                                <p>Add books directly to the MyBookshelf section.<br />Once a book is added, you can come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
+                                <p className="text-title">MyLibrary</p>
+                                <p>Keep books in the MyLibrary section.<br />Once a book is kept, you can easily come back and read it whenever you like.<br />To gain access to the feature, sign up or log in now! </p>
                             </div>
                         </div>
                     </div>
@@ -120,17 +142,35 @@ function Home() {
 
                             <Grid container className="bottom-home-div">
                                 {/* // parent div holding books */}
-                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
+                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', alignItems:'stretch', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (
-                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
-                                            <Link to={`/singleBook/${book._id}`}>
-                                                <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                            </Link>
-                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
-                                                {book.title}
-                                            </p>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`}}>
+                                            {/* image */}
+                                            <div style={{ width: '100%' }}>
+                                                <Link to={`/singleBook/${book._id}`}>
+                                                    <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                                </Link>
+                                            </div>
+                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }}>
+                                                {avgRating[index] !== undefined ? (
+                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                                ) : null}
+                                            </div>
+                                            <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }}>
+                                                {avgRating[index] !== undefined ? (
+                                                    <p>{avgRating[index]} <StarIcon /></p>
+                                                ) : null}
+                                            </div>
+
+                                            {/* title */}
+                                            <div style={{ width: '100%' }}>
+                                                <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
+                                                    {book.title}
+                                                </p>
+                                            </div>
+
 
                                         </Grid>
                                     ))}
