@@ -122,3 +122,26 @@ query Query {
   }
 }
 `
+export const GET_ALL_BOOKS_WITH_PAGINATION = gql`
+query GetAllBooks($page: Int, $itemsPerPage: Int) {
+  getAllBooks(page: $page, itemsPerPage: $itemsPerPage) {
+    books {
+      _id
+      title
+      bookId
+      image {
+        data
+        contentType
+      }
+      title
+    }
+    paginationInfo {
+      totalPages
+      totalItems
+      currentPage
+      itemsPerPage
+    }
+  }
+}
+`;
+
