@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Grid } from "@mui/material";
-import gif from "../../../public/3dModels/output-onlinegiftools.gif";
+import gif from "/3dModels/output-onlinegiftools.gif";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

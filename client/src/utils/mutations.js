@@ -78,7 +78,7 @@ mutation addComment($reviewId: ID!, $content: String) {
     }
   }
 }
-`
+`;
 
 export const KEEP_BOOK = gql`
 mutation KeepBook($input: KeepBookInput!) {
@@ -97,4 +97,20 @@ mutation KeepBook($input: KeepBookInput!) {
     }
   }
 }
-`
+`;
+
+
+export const REMOVE_BOOK = gql`
+mutation RemoveBook($bookId: ID) {
+  removeBook(bookId: $bookId) {
+    email
+    username
+    keptBooks {
+      title
+      
+      bookId
+      _id
+    }
+  }
+}
+`;

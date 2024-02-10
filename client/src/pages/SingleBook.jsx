@@ -45,12 +45,12 @@ function SingleBook() {
     const handleKeepBook = async () => {
         try {
             await keepBookMutation({
-                variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data }   } },
+                variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data } } },
             });
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
-
+           
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }
