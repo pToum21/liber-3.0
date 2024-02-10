@@ -222,9 +222,12 @@ const NavBar = () => {
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
+                            {isLoggedIn ? 
                                 <Link to="/mylibrary" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     MyLibrary &gt;
-                                </Link>
+                                </Link>: <Link to="/" onClick={handleLoginClick} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    MyLibrary &gt;
+                                </Link>}
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
                                 <Link to= "/allbooks" style={{ textDecoration: 'none', color: 'inherit' }}>
