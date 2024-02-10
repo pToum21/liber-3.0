@@ -3,13 +3,8 @@ TODO:
 - MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
     their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
 
-- allow user to delete book from saved books
-
 - adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
 
-- show comment date
-
-- fix author name on book
 
 -MAKE YOUR OWN .ENV SECRET
     (in .env file:
@@ -17,7 +12,7 @@ TODO:
     )
     but make your own random string of letters and numbers
 
-- Prompt user to log in if they click mylibrary and not logged in
+- prevent user from adding duplicate to saved books from the spotlight read section
 
 - Link buttons in highest rated book
 
