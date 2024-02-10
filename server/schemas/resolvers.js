@@ -179,17 +179,21 @@ const resolvers = {
             throw AuthenticationError
         },
 
-        removeBook: async (parent, { _id }, context) => {
-            if (context.user) {
-                return User.findOneAndUpdate({
-                    _id: context.user._id
-                },
-                    {
-                        $pull: { keptBooks: { _id } }
-                    },
-                    { new: true })
+        removeBook: async (parent, { bookId }, context) => {
+            try {
+                if (context.user) {
+                    return await User.findOneAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: { keptBooks: { bookId } } },
+                        { new: true }
+                    );
+                } else {
+                    throw new AuthenticationError('User not authenticated');
+                }
+            } catch (error) {
+                console.error("Error removing book:", error);
+                throw error; // rethrow the error for further handling
             }
-            throw AuthenticationError;
         },
 
         addComment: async (parent, args, context) => {
