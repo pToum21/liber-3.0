@@ -48,6 +48,7 @@ query Query($id: ID!) {
       _id
       rating
       content
+      createdAt
       userId {
         _id
         username

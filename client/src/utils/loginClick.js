@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Auth from "./auth";
 
 const useLoginClick = () => {
-
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [showSearchBar, setShowSearchBar] = useState(false);
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
 
