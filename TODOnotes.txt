@@ -24,6 +24,8 @@ TODO:
 
 - add login check for everything that needs a login requirement
 
+-change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):
