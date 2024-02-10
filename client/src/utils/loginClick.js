@@ -51,7 +51,15 @@ const useLoginClick = () => {
 export default useLoginClick;
 
 // anywhere we need login modal to pop up, import these:
+
 // import useLoginClick from '../../utils/loginClick';
 // import { useEffect } from 'react';
 // import { Modal } from '@mui/material';
 // import Login from '../../pages/Login';
+
+// include this modal block of code at end of file 
+{/* <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+    <div>
+        <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+    </div>
+</Modal> */}
