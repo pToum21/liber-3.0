@@ -48,6 +48,7 @@ query Query($id: ID!) {
       _id
       rating
       content
+      createdAt
       userId {
         _id
         username
@@ -112,6 +113,7 @@ query HighestRatedBook {
   }
 }
 `
+// admin
 export const QUERY_ALL_USERS = gql`
 query Query {
   getAllUsers {

@@ -5,6 +5,8 @@ const CommentList = ({ reviews }) => {
     if (!reviews.length) {
       return <h3>No Comments Yet</h3>;
     }
+
+    console.log(reviews);
   
     return (
       <>
@@ -22,7 +24,7 @@ const CommentList = ({ reviews }) => {
                   <h5 className="card-header">
                     {review.userId.username} commented{' '}
                     <span style={{ fontSize: '0.825rem' }}>
-                      on {review.createdAt}
+                      on  {new Date(parseInt(review.createdAt)).toLocaleString()}
                     </span>
                   </h5>
                   <p>rating: {review.rating} stars</p>

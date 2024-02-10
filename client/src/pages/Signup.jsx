@@ -35,6 +35,7 @@ export default function SignUp() {
     email: '',
     password: ''
   })
+  const[formValid, setFormValid] = useState(true)
   const [createUser, { error, data }] = useMutation(CREATE_USER);
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -47,6 +48,22 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formState)
+
+    if (!formState.username || !formState.email || !formState.password) {
+      setFormValid(false)
+      return;
+    }
+
+    const usernameRegex = /^[a-zA-Z0-9]+$/;
+    if (!usernameRegex.test(formState.username)) {
+      setFormValid(false);
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formState.email)) {
+      setFormValid(false);
+      return;
+    }
 
     try {
       const { data } = await createUser({
@@ -156,6 +173,12 @@ export default function SignUp() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            {/* Display error message if form is invalid */}
+        {!formValid && (
+          <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
+            Please fill in all required fields and ensure valid formats for username and email.
+          </Typography>
+        )}
             <Grid container spacing={2}>
               <ThemeProvider theme={customTheme(outerTheme)}>
                 <Grid item xs={12} >

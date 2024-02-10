@@ -1,11 +1,8 @@
 import SavedBooks from "../Components/SavedBooks/SavedBooks";
-
-
 const MyLibrary = () =>{
 return (
     <>
-    <SavedBooks />
-    <h1>My Library</h1>
+    <SavedBooks className="hundred-vh" />
     </>
 )
 }

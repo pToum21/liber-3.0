@@ -22,6 +22,7 @@ import { QUERY_ALL_BOOKS } from '../utils/queries';
 import HighestRatedBook from '../Components/HighestRatedBook/HighRatedBook';
 
 
+
 function Home() {
     const settings = {
         dots: true,
@@ -125,7 +126,7 @@ function Home() {
                                     {books.map((book, index) => (
                                         <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
                                             <Link to={`/singleBook/${book._id}`}>
-                                                <img style={{ width: '100%', height: '25vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                                <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                             </Link>
                                             <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
                                                 {book.title}

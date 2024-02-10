@@ -107,12 +107,16 @@ const NavBar = () => {
                     </Link>
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-
+                            {isLoggedIn ? 
                             <Button className="navlinks" color="inherit">
                                 <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
                                     MyLibrary
                                 </Link>
-                            </Button>
+                            </Button>: <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+                                    MyLibrary
+                                </Link>
+                            </Button>}
 
 
 

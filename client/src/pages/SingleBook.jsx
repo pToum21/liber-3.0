@@ -18,7 +18,7 @@ function SingleBook() {
     if (loading) {
         console.log(loading)
     } else {
-        console.log(data.getSingleBook.image.data);
+        // console.log(data.getSingleBook.image.data);
     }
 
     const thisBook = data?.getSingleBook;
@@ -27,6 +27,8 @@ function SingleBook() {
     const [keepBookMutation] = useMutation(KEEP_BOOK);
 
     const [bookAdded, setBookAdded] = useState(false)
+
+    let [avgRating, setAvgRating] = useState(0);
 
     function isBookAlreadyAdded(data, bookId) {
         // Assuming userData contains the user's library information
@@ -40,12 +42,26 @@ function SingleBook() {
         // Check if the book is already added to the user's library
         const alreadyAdded = isBookAlreadyAdded(data, id);
         setBookAdded(alreadyAdded);
+
+        // calculates average rating
+        const ratingCount = data?.getSingleBook.reviews.length;
+        let totalRating = 0;
+        data?.getSingleBook.reviews.map((book) => {
+            // console.log(book.rating);
+            totalRating += book.rating
+        })
+
+        avgRating = (totalRating/ratingCount).toFixed(2);
+        setAvgRating(avgRating);
+        
+        console.log(avgRating);
+
     }, [data, id]);
 
     const handleKeepBook = async () => {
         try {
             await keepBookMutation({
-                variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data }   } },
+                variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data } } },
             });
 
             // Set bookAdded to true when the book is successfully added
@@ -74,7 +90,8 @@ function SingleBook() {
                     <span key={index}>{author.name}</span>
                 ))}
             </h4>
-            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} />
+            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br/>
+            <p> Rating: {avgRating}</p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 {bookAdded ? (
                     <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
