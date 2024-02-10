@@ -80,7 +80,11 @@ function SingleBook() {
 
 
     if (loading) {
-        return <div>Loading....</div>;
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress color="success" />
+            </div>
+        )
     }
 
     const book = data?.getSingleBook || [];
