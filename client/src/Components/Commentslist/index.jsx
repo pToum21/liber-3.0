@@ -5,6 +5,8 @@ const CommentList = ({ reviews }) => {
     if (!reviews.length) {
       return <h3>No Comments Yet</h3>;
     }
+
+    console.log(reviews);
   
     return (
       <>

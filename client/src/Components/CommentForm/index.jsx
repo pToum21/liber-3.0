@@ -7,11 +7,23 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import useLoginClick from '../../utils/loginClick';
 
 const CommentForm = ({ bookId }) => {
   const [commentText, setCommentText] = useState('');
   const [addReview, { error }] = useMutation(ADD_REVIEW);
   const [rating, setRating] = useState(0);
+
+  const {
+    isLoginModalOpen,
+    isMenuOpen,
+    isLoggedIn,
+    logout,
+    handleMenuOpen,
+    handleMenuClose,
+    handleLoginClick,
+    handleLoginModalClose
+} = useLoginClick();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -63,7 +75,7 @@ const CommentForm = ({ bookId }) => {
           </Button>
         </Box>
         <Box marginBottom={2}>
-          <label htmlFor="rating" style={{ marginRight: '3rem',}}>
+          <label htmlFor="rating" style={{ marginRight: '3rem', }}>
             Rating:
           </label>
           <Rating
@@ -75,7 +87,7 @@ const CommentForm = ({ bookId }) => {
           />
         </Box>
       </form>
-      {error && <p>Error: Please <Link className="no-text-dec" to="/login">log in</Link> to add a comment.</p>}
+      {error && <p>Error: Please <a className="no-text-dec" onClick={handleLoginClick}>log in</a> to add a comment.</p>}
     </div>
   );
 };
