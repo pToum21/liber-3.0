@@ -121,8 +121,14 @@ const resolvers = {
                 return { user, token };
 
             } catch (error) {
-                console.log(error);
-                throw new Error(error);
+                if (error.code === 11000) {
+                    // Duplicate key error
+                    throw new Error('Email or username already exists', 'DUPLICATE_USER');
+                } else {
+                    // Other errors
+                    console.log(error);
+                    throw new ApolloError('Error creating user', 'UNKNOWN_ERROR');
+                }
             }
         },
 
