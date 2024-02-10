@@ -1,15 +1,14 @@
 TODO: 
 
-- MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
-    their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
 
-- allow user to delete book from saved books
+
+
 
 - adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
 
-- show comment date
 
-- fix author name on book
+
+
 
 -MAKE YOUR OWN .ENV SECRET
     (in .env file:
@@ -19,11 +18,11 @@ TODO:
 
 - Prompt user to log in if they click mylibrary and not logged in
 
-- Link buttons in highest rated book
+
 
 - fix size of nav menu to be full width and height on mobile
 
-- add regex to email and password for login and signup
+
 
 - for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 
