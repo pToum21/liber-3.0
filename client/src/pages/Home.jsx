@@ -142,11 +142,11 @@ function Home() {
 
                             <Grid container className="bottom-home-div">
                                 {/* // parent div holding books */}
-                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
+                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', alignItems:'stretch', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (
-                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`, display: 'flex', flexWrap: 'wrap', margin: '0' }}>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`}}>
                                             {/* image */}
                                             <div style={{ width: '100%' }}>
                                                 <Link to={`/singleBook/${book._id}`}>

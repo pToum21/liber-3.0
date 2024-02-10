@@ -164,6 +164,8 @@
 .ind-book {
     opacity: 0;
     animation: fade-in 1s ease-in forwards;
+    flex: 1 0 auto;
+ 
 }
 
 .home-book-titles {
