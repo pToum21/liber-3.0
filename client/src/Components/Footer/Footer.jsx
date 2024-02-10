@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container, Grid } from "@mui/material";
-import gif from "../../../public/3dModels/output-onlinegiftools.gif";
 import logo from "../../assets/footerlogo.png";
 
 export const Footer = () => {

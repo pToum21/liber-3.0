@@ -15,7 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-
+import AllBooks from '../allBooks/allBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -121,7 +121,9 @@ const NavBar = () => {
 
 
                             <Button className="navlinks" color="inherit">
-                                Books
+                            <Link style={{ textDecoration: 'none', color: 'black' }} to="/allbooks">
+                                    Books
+                                </Link>
                             </Button>
 
                             {/* Conditionally render login/logout buttons */}
@@ -225,7 +227,7 @@ const NavBar = () => {
                                 </Link>
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to="/books" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Link to= "/allbooks" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     Books &gt;
                                 </Link>
                             </MenuItem>

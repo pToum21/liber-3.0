@@ -50,7 +50,26 @@ const resolvers = {
         getSingleBook: async (parent, { _id }) => {
             return Book.findOne({ _id }).populate({ path: "reviews", populate: { path: "userId" } })
         },
-
+      
+      
+        getAllBooks: async (_, { page = 1, itemsPerPage = 50 }) => {
+            const totalCount = await Book.countDocuments();
+            const totalPages = Math.ceil(totalCount / itemsPerPage);
+            const books = await Book.find()
+                .skip((page - 1) * itemsPerPage)
+                .limit(itemsPerPage);
+        
+            return {
+                books,
+                paginationInfo: {
+                    totalPages,
+                    totalItems: totalCount,
+                    currentPage: page,
+                    itemsPerPage
+                }
+            };
+        },
+       
         highestRatedBook: async () => {
             try {
                 const result = await Book.aggregate([
