@@ -1,36 +1,33 @@
 TODO: 
 
-
-- adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
-
-
--MAKE YOUR OWN .ENV SECRET
-    (in .env file:
-    SECRET=rvh8uvnufvhe8rvr
-    )
-    but make your own random string of letters and numbers
+- prevent duplicate users from being made (email and/or username must be unique)
+- limit ratings to one? (so user cannot overinflate ratings)
 
 - prevent user from adding duplicate to saved books from the spotlight read section
 
-
-
 - fix size of nav menu to be full width and height on mobile
-
-
-
-- for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 
 - add login check for everything that needs a login requirement
 
 -change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
 
-- got ovrall ratings to show for each book in home, but sometimes data isnt fetched, and a book's rating will be 0 incorrectly. also, need to style the star rating. spacing is inconsistent with titles
 
 =============================================
 
 NOTES (can leave notes here detailing what you did):
 
     General notes: 
+    
+     -MAKE YOUR OWN .ENV SECRET
+        (in .env file:
+        SECRET=rvh8uvnufvhe8rvr
+        )
+        but make your own random string of letters and numbers
+
+
+        To make an admin, change default to admin in User model (then change it back to user one you made one)
+
+        Made it so you cannot make duplicate users anymore (unique email and username); to see this work, you must drop your old users collection in db first.
 
         color scheme: 
             offwhite: #f3f3ec
@@ -39,7 +36,7 @@ NOTES (can leave notes here detailing what you did):
 
         always git pull origin main when you get on and before you code to avoid git conflicts as much as possible
 
-        MyLibrary: is user's profile; MyBookshelf: will be saved books
+    
 
         front end: when making queries and mutations, dont just select all fields. Pay attention to what information you will be returning, because some are unnecessary.
         For example, when making the CREATE_USER mutation, i didn't select keptBooks, because they won't have any, so we don't need to retrieve or return that field for this mutation.
@@ -48,7 +45,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/7: readded secret, styled login and signup
+        2/10: styled ratings and fixed logic for ratings in home, made typedef and mutation for admin to delete user, made it so you cannot create dupe users
     
 
     from Peyton : 

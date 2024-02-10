@@ -42,7 +42,7 @@ const resolvers = {
         },
 
         getBooks: async (parents, args) => {
-            const bookData = await Book.find().populate({ path: "reviews"}).skip(args.skip).limit(5);
+            const bookData = await Book.find().populate({ path: "reviews" }).skip(args.skip).limit(5);
             const bookCount = await Book.count();
 
             return { books: bookData, bookCount: bookCount };
@@ -50,15 +50,15 @@ const resolvers = {
         getSingleBook: async (parent, { _id }) => {
             return Book.findOne({ _id }).populate({ path: "reviews", populate: { path: "userId" } })
         },
-      
-    //   this is for the books page/link in nav
+
+        //   this is for the books page/link in nav
         getAllBooks: async (_, { page = 1, itemsPerPage = 50 }) => {
             const totalCount = await Book.countDocuments();
             const totalPages = Math.ceil(totalCount / itemsPerPage);
             const books = await Book.find()
                 .skip((page - 1) * itemsPerPage)
                 .limit(itemsPerPage);
-        
+
             return {
                 books,
                 paginationInfo: {
@@ -69,7 +69,7 @@ const resolvers = {
                 }
             };
         },
-       
+
         highestRatedBook: async () => {
             try {
                 const result = await Book.aggregate([
@@ -123,6 +123,18 @@ const resolvers = {
             } catch (error) {
                 console.log(error);
                 throw new Error(error);
+            }
+        },
+
+        removeUser: async (parent, { _id }, context) => {
+            if (context.user && context.user.role === 'admin') {
+                try {
+                    const user = await User.deleteOne({ _id });
+                    console.log(user);
+                } catch (error) {
+                    console.log(error);
+                    throw new Error(error);
+                }
             }
         },
 
