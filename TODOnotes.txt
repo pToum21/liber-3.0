@@ -6,6 +6,8 @@ TODO:
 
 -change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
 
+-fix the siving of the rating stars on the home page when viewing on mobile
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):
