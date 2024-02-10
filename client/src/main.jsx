@@ -13,6 +13,8 @@ import SingleBook from './pages/SingleBook.jsx';
 import SearchResults from './pages/SearchResults.jsx';
 // import BookReader from './pages/BookReader.jsx'
 import Three from './Components/Three/Three.jsx';
+import AllBooks from './Components/allBooks/allBooks.jsx';
+
 
 
 // this establishes pages component structure and their paths
@@ -52,6 +54,11 @@ const router = createBrowserRouter([
         path: '/searchresults',
         element: <SearchResults />
       },
+      {
+        path: '/allbooks',
+        element: <AllBooks />
+      }
+      
     ]
   }
 ]);
