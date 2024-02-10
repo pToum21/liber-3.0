@@ -52,6 +52,8 @@ function Home() {
     // useState for page number
     const [currentPage, setCurrentPage] = useState(1);
 
+    let [avgRating, setAvgRating] = useState([]);
+
     const changePage = (event, page) => {
         setCurrentPage(page)
     }
@@ -72,24 +74,23 @@ function Home() {
         const skip = (currentPage - 1) * 5;
         console.log(skip)
         refetch({ skip });
-    }, [currentPage, loading, refetch]);
 
-    // calculates average rating
-    let avgRating = []; // Initialize avgRating array
 
-    if (!loading && books.length > 0) {
-        avgRating = books.map(book => {
-            let totalRating = 0;
-            const ratingCount = book.reviews.length;
-            book.reviews.forEach(review => {
-                totalRating += review.rating;
+        if (!loading && books.length > 0) {
+            const avgRating = books.map(book => {
+                let totalRating = 0;
+                const ratingCount = book.reviews.length;
+                book.reviews.forEach(review => {
+                    totalRating += review.rating;
+                });
+                // toFixed returns string; + changes it back to number
+                return +(totalRating / ratingCount).toFixed(2);
             });
-            return (totalRating / ratingCount).toFixed(2);
-        });
-    }
+            setAvgRating(avgRating);
+        }
 
-    //   setAvgRating(avgRating);
 
+    }, [currentPage, loading, refetch, books]);
 
 
     return (
@@ -145,29 +146,31 @@ function Home() {
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (
-                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`, display: 'flex', flexWrap: 'wrap', margin:'0' }}>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`, display: 'flex', flexWrap: 'wrap', margin: '0' }}>
                                             {/* image */}
-                                            <div style={{width: '100%'}}>
+                                            <div style={{ width: '100%' }}>
                                                 <Link to={`/singleBook/${book._id}`}>
                                                     <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                                 </Link>
                                             </div>
-                                            {/* rating */}
-                                            <div className="fullrating" style={{display: 'flex', width: '100%', margin:'0' }}>
-                                                <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }}>
+                                                {avgRating[index] !== undefined ? (
+                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                                ) : null}
                                             </div>
-                                            <div className="mobilerating" style={{display: 'none', width: '100%', margin:'0' }}>
-                                                <p>{avgRating[index]} <StarIcon /></p>
+                                            <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }}>
+                                                {avgRating[index] !== undefined ? (
+                                                    <p>{avgRating[index]} <StarIcon /></p>
+                                                ) : null}
                                             </div>
-                                            {/* <p>rating: {avgRating[index]}</p> */}
 
                                             {/* title */}
-                                            <div style={{width: '100%'}}>
+                                            <div style={{ width: '100%' }}>
                                                 <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
                                                     {book.title}
                                                 </p>
                                             </div>
-                                            
+
 
                                         </Grid>
                                     ))}
