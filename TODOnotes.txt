@@ -1,8 +1,9 @@
 TODO: 
 
+- 
 - limit ratings to one? (so user cannot overinflate ratings)
 
-- prevent user from adding duplicate to saved books from the spotlight read section
+- 
 
 - fix size of nav menu to be full width and height on mobile
 
