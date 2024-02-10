@@ -29,6 +29,7 @@
     height: 100%;
     object-fit: cover;
     filter: blur(4px) sepia(200%) brightness(100%) hue-rotate(132deg);
+    /* hue was 84 deg */
 }
 
 .text-overlay {
