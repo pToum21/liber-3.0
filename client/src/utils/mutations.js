@@ -31,11 +31,12 @@ mutation Login($email: String!, $password: String!) {
 
 // reviews and comment mutation
 export const ADD_REVIEW = gql`
-mutation AddReview($bookId: ID!, $rating: Int!, $content: String) {
+mutation addReview($bookId: ID!, $rating: Int!, $content: String) {
   addReview(bookId: $bookId, rating: $rating, content: $content) {
     _id
     title
     bookId
+    text
     authors {
       _id
       name
@@ -44,12 +45,11 @@ mutation AddReview($bookId: ID!, $rating: Int!, $content: String) {
       data
       contentType
     }
-    text
     reviews {
       _id
-      
       rating
       content
+      createdAt
       userId {
         _id
         username
