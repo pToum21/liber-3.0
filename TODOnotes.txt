@@ -24,6 +24,8 @@ TODO:
 
 -change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
 
+- got ovrall ratings to show for each book in home, but sometimes data isnt fetched, and a book's rating will be 0 incorrectly. also, need to style the star rating. spacing is inconsistent with titles
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):

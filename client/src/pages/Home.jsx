@@ -15,6 +15,8 @@ import { useState, useEffect } from 'react';
 // import mui
 import { Grid, Pagination } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 // hooks from apollo
 import { useQuery } from '@apollo/client';
 // import any queries and mutations
@@ -41,6 +43,7 @@ function Home() {
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
+    console.log(books)
 
     //   dynamic number of pages of books we have
     const bookCount = data?.getBooks.bookCount || 0;
@@ -69,7 +72,25 @@ function Home() {
         const skip = (currentPage - 1) * 5;
         console.log(skip)
         refetch({ skip });
-    }, [currentPage, refetch]);
+    }, [currentPage, loading, refetch]);
+
+    // calculates average rating
+    let avgRating = []; // Initialize avgRating array
+
+    if (!loading && books.length > 0) {
+        avgRating = books.map(book => {
+            let totalRating = 0;
+            const ratingCount = book.reviews.length;
+            book.reviews.forEach(review => {
+                totalRating += review.rating;
+            });
+            return (totalRating / ratingCount).toFixed(2);
+        });
+    }
+
+    //   setAvgRating(avgRating);
+
+
 
     return (
         <>
@@ -100,7 +121,7 @@ function Home() {
                             <img src={image3} alt="" />
                             <div className="text-overlay">
                                 <p className="text-title">MyLibrary</p>
-                                <p>Keep books in the MyLibrary section.<br />Once a book is kept, you can easily come back and read it whenever you like.<br />To gain access to the feature, sign up or log in Now! </p>
+                                <p>Keep books in the MyLibrary section.<br />Once a book is kept, you can easily come back and read it whenever you like.<br />To gain access to the feature, sign up or log in now! </p>
                             </div>
                         </div>
                     </div>
@@ -124,13 +145,29 @@ function Home() {
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (
-                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
-                                            <Link to={`/singleBook/${book._id}`}>
-                                                <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
-                                            </Link>
-                                            <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
-                                                {book.title}
-                                            </p>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`, display: 'flex', flexWrap: 'wrap', margin:'0' }}>
+                                            {/* image */}
+                                            <div style={{width: '100%'}}>
+                                                <Link to={`/singleBook/${book._id}`}>
+                                                    <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                                </Link>
+                                            </div>
+                                            {/* rating */}
+                                            <div className="fullrating" style={{display: 'flex', width: '100%', margin:'0' }}>
+                                                <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                            </div>
+                                            <div className="mobilerating" style={{display: 'none', width: '100%', margin:'0' }}>
+                                                <p>{avgRating[index]} <StarIcon /></p>
+                                            </div>
+                                            {/* <p>rating: {avgRating[index]}</p> */}
+
+                                            {/* title */}
+                                            <div style={{width: '100%'}}>
+                                                <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
+                                                    {book.title}
+                                                </p>
+                                            </div>
+                                            
 
                                         </Grid>
                                     ))}

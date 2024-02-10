@@ -42,7 +42,7 @@ const resolvers = {
         },
 
         getBooks: async (parents, args) => {
-            const bookData = await Book.find().skip(args.skip).limit(5);
+            const bookData = await Book.find().populate({ path: "reviews"}).skip(args.skip).limit(5);
             const bookCount = await Book.count();
 
             return { books: bookData, bookCount: bookCount };
@@ -51,7 +51,7 @@ const resolvers = {
             return Book.findOne({ _id }).populate({ path: "reviews", populate: { path: "userId" } })
         },
       
-      
+    //   this is for the books page/link in nav
         getAllBooks: async (_, { page = 1, itemsPerPage = 50 }) => {
             const totalCount = await Book.countDocuments();
             const totalPages = Math.ceil(totalCount / itemsPerPage);

@@ -163,7 +163,7 @@
 
 .ind-book {
     opacity: 0;
-    animation: fade-in 1s ease-in forwards
+    animation: fade-in 1s ease-in forwards;
 }
 
 .home-book-titles {
@@ -179,6 +179,15 @@
 @media only screen and (max-width: 500px) {
     .home-book-titles {
         font-size: 0.5rem !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .fullrating {
+        display:none;
+    }
+    .mobilerating {
+        display: block;
     }
 }
 
