@@ -16,6 +16,34 @@ const BookFlipper = () => {
 
     const { title, authors, text } = data.getSingleBook;
 
+    function isBookAlreadyAdded(data, bookId) {
+        // Assuming userData contains the user's library information
+        const userLibrary = data?.myLibrary?.keptBooks || [];
+
+        // Check if the bookId is present in the user's library
+        return userLibrary.some((book) => book.bookId === bookId);
+    }
+
+    useEffect(() => {
+        // Check if the book is already added to the user's library
+        const alreadyAdded = isBookAlreadyAdded(data, id);
+        setBookAdded(alreadyAdded);
+
+        // calculates average rating
+        const ratingCount = data?.getSingleBook.reviews.length;
+        let totalRating = 0;
+        data?.getSingleBook.reviews.map((book) => {
+            // console.log(book.rating);
+            totalRating += book.rating
+        })
+
+        avgRating = (totalRating / ratingCount).toFixed(2);
+        setAvgRating(avgRating);
+
+        console.log(avgRating);
+
+    }, [data, id]);
+
 
     // Function to remove introductory sentences
     const cleanText = (originalText) => {
