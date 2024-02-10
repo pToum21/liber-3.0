@@ -29,7 +29,7 @@ export const Footer = () => {
               style={{ height: "100%" }}
             >
               <Grid item xs={12}>
-                <h2 id="liber" style={{ color: "black", fontSize: "2rem" }}>Liber</h2>
+              <span style={{ fontSize: '2rem', fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>
               </Grid>
               <Grid item xs={12}>
                 <p style={{ color: "textSecondary", fontSize: "1.2rem", margin: 0 }}>
