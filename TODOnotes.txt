@@ -1,7 +1,5 @@
 TODO: 
 
-- MAKE MYLIBRARY: this is user profile, so when they are logged in, they can go to that page to see:
-    their MyBookshelf (saved books), and perhaps all their ratings and comments? Add reviews and comment to user model
 
 - adjust ratings system / highest rated book, limit ratings to one? (so user cannot overinflate ratings)
 
@@ -14,11 +12,11 @@ TODO:
 
 - prevent user from adding duplicate to saved books from the spotlight read section
 
-- Link buttons in highest rated book
+
 
 - fix size of nav menu to be full width and height on mobile
 
-- add regex to email and password for login and signup
+
 
 - for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 

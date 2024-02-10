@@ -66,7 +66,7 @@ function SingleBook() {
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
-
+           
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }

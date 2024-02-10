@@ -20,3 +20,14 @@
     z-index: 1000;
 }
 
+@media only screen and (max-width: 620px) {
+    
+    .controls-for-3d {
+        display: none;
+    }
+
+    .sound-button {
+        
+        color: black;
+    }
+}
