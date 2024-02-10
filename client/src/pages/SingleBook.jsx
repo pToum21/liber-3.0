@@ -1,7 +1,12 @@
+// hooks etc from react
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
+// mui
 import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+
+// our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
@@ -91,7 +96,9 @@ function SingleBook() {
                 ))}
             </h4>
             <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br/>
-            <p> Rating: {avgRating}</p>
+            {/* <p> Rating: {avgRating}</p> */}
+            <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                 {bookAdded ? (
                     <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
