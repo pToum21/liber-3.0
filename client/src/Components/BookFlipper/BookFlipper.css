@@ -5,16 +5,13 @@
 .unique-main-class {
     display: flex;
     justify-content: center;
-    /* padding: 20px; */
     margin-bottom: 7rem;
     margin-left: 2rem;
-    /* Add padding as needed */
     box-sizing: border-box;
 }
 
 .unique-book-class {
     --book-height: 65vh;
-    /* Adjust the height as needed */
     --book-ratio: 1.4;
 }
 
@@ -32,13 +29,12 @@
 @media (max-width: 768px) {
     .unique-main-class {
         padding: 10px;
-        /* Adjust padding for smaller screens */
     }
 
     .unique-book-class>div {
         max-width: 90vw;
-        /* Set a maximum width for smaller screens */
     }
+
 }
 
 .unique-book-cover-class {
@@ -69,7 +65,7 @@
 
 .unique-h1-class {
     font-family: "Petemoss", cursive;
-    font-size: 98px;
+    font-size: 4rem;
     font-weight: 300;
     color: #f3f3ec;
 }
@@ -121,6 +117,8 @@
 .unique-h3-class {
     padding: 30px;
 }
+
+
 
 .unique-p-class {
     padding: 0px 30px 10px 30px;
