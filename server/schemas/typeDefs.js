@@ -38,13 +38,14 @@ type Book {
     text: String
     reviews: [Review]
 }
+
+# For books page
 type PaginationInfo {
     totalPages: Int
     totalItems: Int
     currentPage: Int
     itemsPerPage: Int
 }
-
 type PaginatedBooks {
     books: [Book]
     paginationInfo: PaginationInfo
@@ -100,6 +101,7 @@ type Mutation {
     removeBook(bookId: ID): User
     addReview(bookId: ID!, content: String, rating: Int!): Book
     addComment( reviewId: ID!, content: String): Review
+    removeUser(_id: ID): User
 }
 
 `;

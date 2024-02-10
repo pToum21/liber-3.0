@@ -8,8 +8,16 @@ const userSchema = new Schema({
         enum: ['admin', 'user'],
         default: 'user'
     },
-    email: String,
-    username: String,
+    email: {
+        type: String,
+        required: true,
+        unique: true // Ensure uniqueness of email field
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true 
+    },
     password: String,
 
     keptBooks: [{
