@@ -27,6 +27,8 @@ TODO:
 
 - for signup, make it require to have all fields (i was able to sign up with just a freakin' password)
 
+- add login check for everything that needs a login requirement
+
 =============================================
 
 NOTES (can leave notes here detailing what you did):

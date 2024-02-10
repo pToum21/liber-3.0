@@ -38,7 +38,17 @@ type Book {
     text: String
     reviews: [Review]
 }
+type PaginationInfo {
+    totalPages: Int
+    totalItems: Int
+    currentPage: Int
+    itemsPerPage: Int
+}
 
+type PaginatedBooks {
+    books: [Book]
+    paginationInfo: PaginationInfo
+}
 
 type Review {
     _id: ID
@@ -66,6 +76,7 @@ type Query {
     highestRatedBook: Book
     bookDetails(bookId: ID!): Book
     getAllUsers: [User]
+    getAllBooks(page: Int, itemsPerPage: Int): PaginatedBooks
 }
 
 input ImageInput {

@@ -34,7 +34,7 @@ const BookFlipper = () => {
     };
 
     const cleanedText = cleanText(text);
-
+    console.log(authors);
     return (
         <main className="unique-main-class">
             <div className="book unique-book-class">
@@ -44,11 +44,26 @@ const BookFlipper = () => {
                         <h1 className="unique-h1-class book-flipper-title">{title}</h1>
                         <div className="separator unique-separator-class"></div>
                         {/* authors */}
-                        <h2 className="unique-h2-class">by {authors.map(author => {
-                            const nameParts = author.name.split(' ');
-                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
-                        }).join(', ')}
-                        </h2>
+                        {authors.length > 1 ? (
+                            <h2 className="unique-h2-class">by {
+                                authors.map(author => {
+                                    const nameParts = author.name.split(' ');
+                                    return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                                }).join(', ')
+                            }
+                            </h2>
+
+                        ) : (
+                            <h2 className="unique-h2-class">by {
+                                authors.map(author => {
+                                    const nameParts = author.name.split(', ');
+                                    return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                                })
+                            }
+                            </h2>
+
+                        )}
+
                     </div>
                 </div>
                 <div className="book-content unique-book-content-class">
@@ -61,7 +76,7 @@ const BookFlipper = () => {
                     ))}</p>
                 </div>
             </div>
-        </main>
+        </main >
     );
 };
 
