@@ -65,7 +65,7 @@ const Three = () => {
                 <div
                     style={{
                         position: 'absolute',
-                        top: '50%',
+                        top: '55%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         zIndex: '2',
@@ -78,7 +78,7 @@ const Three = () => {
             )}
 
 
-            <div style={{
+            <div className="controls-for-3d" style={{
                 position: 'absolute',
                 top: '5%',
                 left: '5%',
@@ -92,11 +92,11 @@ const Three = () => {
                 <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
                     Library Instructions
                     <Link to={`/`}>
-                    <IconButton style={{ fontSize: '16px' }}>
-                        <HomeIcon style={{ color: 'black' }} />
-                    </IconButton>
+                        <IconButton style={{ fontSize: '16px' }}>
+                            <HomeIcon style={{ color: 'black' }} />
+                        </IconButton>
                     </Link>
-                    
+
                 </h1>
 
                 <p style={{
@@ -116,11 +116,26 @@ const Three = () => {
                     Press <span style={{ color: '#004c00' }}>Right Click</span> to grab and pan around the room.
                 </p>
 
-                <IconButton onClick={toggleAudio} style={{ fontSize: '16px' }}>
+
+
+            </div>
+            <div style={{
+                position: 'absolute',
+                top: '5%',
+                right: '10%',
+                padding: '13px',
+                background: 'rgba(255, 255, 255, 0.7)',
+                borderRadius: '10px',
+                maxWidth: '70rem',
+                maxHeight: '9rem',
+                zIndex: '1',
+            }}>
+                <IconButton className='sound-button' onClick={toggleAudio} style={{ fontSize: '16px' }}>
                     <p style={{ color: 'black' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                 </IconButton>
 
             </div>
+
 
 
             <Canvas
