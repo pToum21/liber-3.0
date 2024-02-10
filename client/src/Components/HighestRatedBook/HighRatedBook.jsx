@@ -7,8 +7,11 @@ import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
 import './spotlightbook.css';
+import { Link, useParams } from 'react-router-dom';
 
 const HighestRatedBook = () => {
+const { id } = useParams()
+
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
     if (loading) {
 
@@ -73,9 +76,14 @@ const HighestRatedBook = () => {
                                     <Button variant="contained" sx={{backgroundColor:'#f3f3ec', color: '#8abbb1'}} onClick={() => console.log('Save button clicked')}>
                                         Keep Book
                                     </Button>
+
+                                    <Link to={`/bookReader/${id}`}>
                                     <Button variant="contained" sx={{backgroundColor:'#f3f3ec', color: '#8abbb1'}} onClick={() => console.log('Read button clicked')}>
                                         Read Now
                                     </Button>
+                                    
+                                    </Link>
+                                    
                                 </div>
                             </div>
                         </Grid>
