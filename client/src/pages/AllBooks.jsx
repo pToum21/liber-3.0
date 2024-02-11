@@ -30,8 +30,10 @@ const AllBooks = () => {
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
                 {data && data.getAllBooks.books.map((book) => (
                     <Box
+                        className="ind-book"
                         key={book._id}
                         sx={{
+                            animationDelay: `${book * 0.3}s`,
                             flex: '1 0 100%',
                             maxWidth: '200px',
                             position: 'relative',
