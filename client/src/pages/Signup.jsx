@@ -190,7 +190,7 @@ export default function SignUp() {
             {/* Display error message if form is invalid */}
             {!formValid && (
               <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
-                Please fill in all required fields and ensure valid formats for username and email.
+                Please fill in all required fields, Username should be alphanumeric a-z,0-9 and email should be an email 
               </Typography>
             )}
             <Grid container spacing={2}>

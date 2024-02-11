@@ -227,7 +227,34 @@ const resolvers = {
 
                 return review;
             } throw AuthenticationError
+        },
+        updateUser: async (parent, args, context) => {
+            if (context.user && context.user.role === 'admin') {
+                try {
+                    const user = await User.findById(args._id);
+        
+                    if (!user) {
+                        throw new Error('User not found');
+                    }
+        
+                    // Toggle between 'admin' and 'user' roles
+                    const newRole = user.role === 'user' ? 'admin' : 'user';
+        
+                    const updatedUser = await User.findByIdAndUpdate(args._id, {
+                        role: newRole,
+                    }, { new: true });
+        
+                    return updatedUser;
+                } catch (error) {
+                    // Handle errors (e.g., user not found, validation error)
+                    console.error(error);
+                    throw new Error('Failed to update user.');
+                }
+            } else {
+                throw new Error('Unauthorized. Admin privileges required.');
+            }
         }
+        
 
     },
 
