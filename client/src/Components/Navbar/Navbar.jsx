@@ -83,7 +83,12 @@ const NavBar = () => {
         }
     };
 
-
+    let role = '';
+    const token = Auth.getToken();
+    if (token) {
+        const authUser = Auth.getProfile();
+        role = authUser.data.role;
+    }
 
     return (
         <>
@@ -107,21 +112,21 @@ const NavBar = () => {
                     </Link>
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
-                            {isLoggedIn ? 
-                            <Button className="navlinks" color="inherit">
-                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
-                                    MyLibrary
-                                </Link>
-                            </Button>: <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
-                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
-                                    MyLibrary
-                                </Link>
-                            </Button>}
+                            {isLoggedIn ?
+                                <Button className="navlinks" color="inherit">
+                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
+                                        MyLibrary
+                                    </Link>
+                                </Button> : <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
+                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+                                        MyLibrary
+                                    </Link>
+                                </Button>}
 
 
 
                             <Button className="navlinks" color="inherit">
-                            <Link style={{ textDecoration: 'none', color: 'black' }} to="/allbooks">
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/allbooks">
                                     Books
                                 </Link>
                             </Button>
@@ -139,6 +144,13 @@ const NavBar = () => {
                                         Login
                                     </Button>
                                 </>
+                            )}
+                            {isLoggedIn && role === 'admin' && (
+                            <Button className="navlinks" color="inherit">
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                    Admin Dashboard
+                                </Link>
+                            </Button>
                             )}
                         </Hidden>
                     </StyledTypography>
@@ -223,15 +235,15 @@ const NavBar = () => {
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
-                            {isLoggedIn ? 
-                                <Link to="/mylibrary" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    MyLibrary &gt;
-                                </Link>: <Link to="/" onClick={handleLoginClick} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    MyLibrary &gt;
-                                </Link>}
+                                {isLoggedIn ?
+                                    <Link to="/mylibrary" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        MyLibrary &gt;
+                                    </Link> : <Link to="/" onClick={handleLoginClick} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        MyLibrary &gt;
+                                    </Link>}
                             </MenuItem>
                             <MenuItem onClick={handleMenuClose}>
-                                <Link to= "/allbooks" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Link to="/allbooks" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     Books &gt;
                                 </Link>
                             </MenuItem>
