@@ -14,6 +14,7 @@ import SearchResults from './pages/SearchResults.jsx';
 // import BookReader from './pages/BookReader.jsx'
 import Three from './Components/Three/Three.jsx';
 import AllBooks from './Components/allBooks/allBooks.jsx';
+import Admin from './pages/Admin.jsx'
 
 
 
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
       {
         path: '/allbooks',
         element: <AllBooks />
+      },
+      {
+        path: '/admin',
+        element: <Admin />
       }
-      
+        
     ]
   }
 ]);
