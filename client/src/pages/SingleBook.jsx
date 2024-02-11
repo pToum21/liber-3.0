@@ -123,11 +123,11 @@ function SingleBook() {
             {/* container holding all content*/}
             <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
                 {/* Grid holds book and comment form */}
-                <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                <Grid container spacing={5} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {/* Grid holds book image and buttons */}
-                    <Grid item style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent:'center', alignItems: 'center' }}>
                         {/* image */}
-                        <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
+                        <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '50%', height: 'auto' }} /><br />
                         {/* rating */}
                         <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
                         {/* buttons */}
@@ -159,14 +159,14 @@ function SingleBook() {
                             </Link>
                         </div>
                     </Grid>
-                    <Grid item>
+                    <Grid sx={{ display: 'flex', flexDirection: 'column', flex: '1' }}>
                         <CommentForm bookId={book._id} />
                     </Grid>
 
                 </Grid>
 
                 {/* container for comment list */}
-                <Grid item>
+                <Grid item >
                     <CommentList reviews={book.reviews} />
                 </Grid>
 

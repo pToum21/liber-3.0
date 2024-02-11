@@ -46,26 +46,6 @@ const CommentForm = ({ bookId }) => {
         refetchQueries: ['getSingleBook']
       });
 
-
-      // const variables = {
-      //   bookId,
-      //   content: commentText,
-      // };
-  
-      // // Only include rating if it's greater than 0
-      // if (parseInt(rating) > 0) {
-      //   variables.rating = parseInt(rating);
-      // } else {
-      //   return variables
-      // }
-  
-      // const { data } = await addReview({
-      //   variables,
-      //   refetchQueries: ['getSingleBook']
-      // });
-  
-
-
       setCommentText('');
       setRating(0);
       console.log(commentText);
@@ -85,10 +65,10 @@ const CommentForm = ({ bookId }) => {
 
   return (
     <>
-      <div style={{ maxWidth: '60%', marginLeft: '10%' }}>
+    <div style={{paddingRight: '1rem'}}>
         <h2>Add Review</h2>
         <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-          <Box display="flex" alignItems="center" marginBottom={2}>
+        
             {error && <p>Error: Please <a href="#" className="no-text-dec" style={{border:'none', backgroundColor:'transparent'}} onClick={handleLoginClick}>log in</a> to add a comment.</p>}
             <TextField
               id="comments"
@@ -103,7 +83,7 @@ const CommentForm = ({ bookId }) => {
               fullWidth
             />
             <Button type="submit" variant="contained" color="primary" sx={{
-              marginLeft: '10px', backgroundColor: '#8abbb1',
+              backgroundColor: '#8abbb1',
               color: '#f3f3ec',
               '&:hover': {
                 backgroundColor: '#6a8e86',
@@ -111,7 +91,7 @@ const CommentForm = ({ bookId }) => {
             }}>
               Post
             </Button>
-          </Box>
+       
           <Box marginBottom={2}>
             <label htmlFor="rating" style={{ marginRight: '3rem', }}>
               Rating:
@@ -126,13 +106,12 @@ const CommentForm = ({ bookId }) => {
           </Box>
         </form>
 
-      </div>
-
       <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
         <div>
           <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
         </div>
       </Modal>
+      </div>
     </>
 
   );
