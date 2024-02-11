@@ -102,6 +102,7 @@ type Mutation {
     addReview(bookId: ID!, content: String, rating: Int!): Book
     addComment( reviewId: ID!, content: String): Review
     removeUser(_id: ID): User
+    updateUser(_id: ID): User
 }
 
 `;

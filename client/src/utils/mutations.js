@@ -127,3 +127,14 @@ mutation RemoveBook($bookId: ID) {
   }
 }
 `;
+
+export const UPDATE_USER = gql`
+mutation updateUser($id: ID) {
+  updateUser(_id: $id) {
+    _id
+    username
+    email
+    role
+  }
+}
+`
