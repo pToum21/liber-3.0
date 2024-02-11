@@ -4,11 +4,9 @@ TODO:
 
 - limit ratings to one? (so user cannot overinflate ratings)
 
--fix the siving of the rating stars on the home page when viewing on mobile
+- fix the siving of the rating stars on the home page when viewing on mobile
 
--remove chrome styling in login and signup fields like i did on search
-
--login button style when adding a comment and not logged in?
+- login button style when adding a comment and not logged in?
 
 =============================================
 
