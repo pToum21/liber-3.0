@@ -18,7 +18,7 @@ export const Footer = () => {
         <Grid container alignItems="center">
           <Grid item xs={12} sm={6}>
             
-            <img src={logo} alt="3d book gif" style={{ width: "20vw", height: "auto" }} />
+            <img src={logo} alt="elegant book logo" style={{ width: "20vw", height: "auto" }} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Grid

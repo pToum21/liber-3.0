@@ -15,7 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-import AllBooks from '../../pages/AllBooks';
+// import AllBooks from '../../pages/AllBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -193,7 +193,8 @@ const NavBar = () => {
                             id="responsive-menu"
                             anchorEl={anchorEl}
                             anchorReference="anchorPosition"
-                            anchorPosition={{ top: 65, right: 16 }}
+                            // put left and bottom to remove warning error in console
+                            anchorPosition={{ top: 65, right: 16, left: 0, bottom: 0 }}
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
                             disablePortal // Add this prop

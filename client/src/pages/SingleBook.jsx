@@ -59,7 +59,7 @@ function SingleBook() {
             totalRating += book.rating
         })
 
-        avgRating = (totalRating / ratingCount).toFixed(2);
+        avgRating = +(totalRating / ratingCount).toFixed(2);
         setAvgRating(avgRating);
 
         console.log(avgRating);
