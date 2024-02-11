@@ -4,6 +4,7 @@ import { QUERY_MY_LIBRARY } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { REMOVE_BOOK } from '../../utils/mutations';
+import Button from '@mui/material/Button';
 
 const SavedBooks = () => {
     const { loading, error, data, refetch } = useQuery(QUERY_MY_LIBRARY);
@@ -89,7 +90,15 @@ const SavedBooks = () => {
                                 </h3>
                             </div>
                         </Link>
-                        <button onClick={() => handleRemove(myBook.bookId)}>remove</button>
+                        <Button onClick={() => handleRemove(myBook.bookId)} sx={{
+                            backgroundColor: '#8abbb1',
+                            color: '#f3f3ec',
+                            '&:hover': {
+                                backgroundColor: '#6a8e86',
+                            },
+                        }}
+                            variant="contained">
+                            remove</Button>
                     </Box>
                 ))}
             </Box>
