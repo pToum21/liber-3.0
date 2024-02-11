@@ -7,13 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_USER } from '../utils/mutations';
+import { UPDATE_USER, REMOVE_USER } from '../utils/mutations';
 import { QUERY_ALL_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import Error from './Error';
 
 export default function Admin() {
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
+  const [removeUser, { data: removedUserData }] = useMutation(REMOVE_USER);
   const { loading, data: userData, refetch } = useQuery(QUERY_ALL_USERS);
   
   const rows = userData?.getAllUsers || [];
@@ -66,11 +67,11 @@ export default function Admin() {
                     </TableCell>
                     <TableCell align="right">{row.username}</TableCell>
                     <TableCell align="right">{row.email}</TableCell>
-                    <TableCell align="right">{row.role}</TableCell>
-                    <TableCell align="right">
+                    <TableCell align="right">Current status: {row.role.charAt(0).toUpperCase() + row.role.slice(1)}<br />
+                    
                       {/* Role update functionality integrated directly */}
                       <label>
-                        Role:
+                        Change:
                         <select
                           value={row.role}
                           onChange={(e) =>
