@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_BOOKS_WITH_PAGINATION } from '../../utils/queries';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,11 @@ const AllBooks = () => {
     const { loading, error, data } = useQuery(GET_ALL_BOOKS_WITH_PAGINATION, {
         variables: { page: currentPage, itemsPerPage: itemsPerPage },
     });
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :( Please try again</p>;
@@ -27,11 +32,11 @@ const AllBooks = () => {
                     <Box
                         key={book._id}
                         sx={{
-                            flex: '1 0 100%', // One book per row by default
+                            flex: '1 0 100%',
                             maxWidth: '200px',
                             position: 'relative',
                             overflow: 'hidden',
-                            // Other existing styles...
+
                         }}
                     >
                         <Link to={`/singleBook/${book._id}`} style={{ textDecoration: 'none', display: 'block', position: 'relative' }}>
