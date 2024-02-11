@@ -110,12 +110,25 @@ function SingleBook() {
                         Book Saved
                     </Button>
                 ) : (
-                    <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained" onClick={handleKeepBook}>
+                    <Button sx={{
+                        backgroundColor: '#8abbb1',
+                        color: '#f3f3ec',
+                        '&:hover': {
+                            backgroundColor: '#6a8e86',
+                        },
+
+                    }} variant="contained" onClick={handleKeepBook}>
                         Keep Book
                     </Button>
                 )}
                 <Link to={`/bookReader/${id}`}>
-                    <Button sx={{ backgroundColor: '#8abbb1' }} variant="contained">Read Now</Button>
+                    <Button sx={{
+                        backgroundColor: '#8abbb1',
+                        color: '#f3f3ec',
+                        '&:hover': {
+                            backgroundColor: '#6a8e86',
+                        },
+                    }} variant="contained">Read Now</Button>
                 </Link>
             </div>
 
