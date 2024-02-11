@@ -9,13 +9,14 @@ import Paper from '@mui/material/Paper';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_USER } from '../utils/mutations';
 import { QUERY_ALL_USERS } from '../utils/queries';
+import { useNavigate } from 'react-router-dom'; 
 
 export default function Admin() {
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
   const { loading, data: userData, refetch } = useQuery(QUERY_ALL_USERS);
 
   const rows = userData?.getAllUsers || [];
-
+// change user role
   const handleRoleChange = async (userId, newRole) => {
     try {
       await updateUser({
@@ -31,6 +32,11 @@ export default function Admin() {
       console.error('Error updating user:', error.message);
     }
   };
+
+  // only allow admin to see this page
+  // const isAdmin = () => {
+  //   const user = getUser();
+  // }
 
   return (
     <div>

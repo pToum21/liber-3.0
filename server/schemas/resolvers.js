@@ -108,8 +108,31 @@ const resolvers = {
             }
 
             throw AuthenticationError;
-        }
+        },
 
+        getOneUser: async (parent, { _id }, context) => {
+            // Ensure user is authenticated
+            if (!context.user) {
+              throw new Error('Authentication required');
+            }
+          
+            // Retrieve user from the database
+            const user = await User.findOne({ _id });
+          
+            if (!user) {
+              throw new Error('User not found');
+            }
+          
+            // Check if the user making the request is the same as the user being fetched
+            if (context.user._id.toString() !== _id.toString()) {
+              throw new Error('Unauthorized access to user information');
+            }
+          
+            // Returns role
+            return {
+              role: user.role 
+            };
+          }
     },
 
     Mutation: {
