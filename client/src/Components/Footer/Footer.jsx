@@ -33,7 +33,7 @@ export const Footer = () => {
               </Grid>
               <Grid item xs={12}>
                 <p style={{ color: "textSecondary", fontSize: "1.2rem", margin: 0 }}>
-                  {`${currentYear} | Ryan | Peyton | Sal | Pasha`}
+                  {`Copyright © ${currentYear} | Ryan | Peyton | Sal | Pasha`}
                 </p>
               </Grid>
             </Grid>

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK, QUERY_MY_LIBRARY } from '../../utils/queries';
-import './spotlightbook.css';
+import './HighRatedBook.css';
 import { Link, useParams } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
 
