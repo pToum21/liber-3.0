@@ -1,6 +1,6 @@
 // hooks etc from react
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_ONE_BOOK } from '../utils/queries';
+import { QUERY_MY_LIBRARY, QUERY_ONE_BOOK } from '../utils/queries';
 import { Link, useParams } from 'react-router-dom';
 // mui
 import Button from '@mui/material/Button';
@@ -30,7 +30,9 @@ function SingleBook() {
     const thisBook = data?.getSingleBook;
 
 
-    const [keepBookMutation] = useMutation(KEEP_BOOK);
+    const [keepBookMutation] = useMutation(KEEP_BOOK, {
+        refetchQueries: [{ query: QUERY_MY_LIBRARY}]
+    });
 
     const [bookAdded, setBookAdded] = useState(false)
 
