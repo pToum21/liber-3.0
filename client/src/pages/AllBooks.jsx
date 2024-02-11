@@ -30,6 +30,16 @@ const AllBooks = () => {
             <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
                 <em>All Books</em>
             </Grid>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
+                <Pagination
+                    count={data.getAllBooks.paginationInfo.totalPages}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    variant="outlined"
+                    color="success"
+                    sx={{ button: { color: '#8abbb1' } }}
+                />
+            </div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
                 {data && data.getAllBooks.books.map((book) => (
                     <Box
