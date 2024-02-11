@@ -144,3 +144,15 @@ query GetAllBooks($page: Int, $itemsPerPage: Int) {
 }
 `;
 
+
+export const GET_ONE_USER = gql`
+query getOneUser($id: ID) {
+  getOneUser(_id: $id) {
+    role
+  }
+}
+`
+
+
+
+

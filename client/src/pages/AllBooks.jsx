@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_BOOKS_WITH_PAGINATION } from '../../utils/queries';
+import { GET_ALL_BOOKS_WITH_PAGINATION } from '../utils/queries'
 import { Link } from 'react-router-dom';
 import { Box, Pagination } from '@mui/material';
 
@@ -18,7 +18,7 @@ const AllBooks = () => {
     }, [currentPage]);
 
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :( Please try again</p>;
+    if (error) return <p>Error : Please try again</p>;
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
