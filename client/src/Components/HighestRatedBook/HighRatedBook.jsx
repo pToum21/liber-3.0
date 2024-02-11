@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { QUERY_HIGHEST_RATED_BOOK } from '../../utils/queries';
+import { QUERY_HIGHEST_RATED_BOOK, QUERY_MY_LIBRARY } from '../../utils/queries';
 import './spotlightbook.css';
 import { Link, useParams } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
@@ -15,7 +15,9 @@ const HighestRatedBook = () => {
     const [bookAdded, setBookAdded] = useState(false);
     const [addedBooks, setAddedBooks] = useState(new Set()); // Keep track of added book IDs
 
-    const [keepBookMutation] = useMutation(KEEP_BOOK);
+    const [keepBookMutation] = useMutation(KEEP_BOOK, {
+        refetchQueries: [{ query: QUERY_MY_LIBRARY}]
+    });
     const highestRatedBook = data?.highestRatedBook;
 
     useEffect(() => {
