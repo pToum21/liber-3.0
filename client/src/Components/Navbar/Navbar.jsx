@@ -12,10 +12,10 @@ import Login from '../Login/Login';
 import { Link } from 'react-router-dom';
 // our files
 import './navbar.css';
+import '../../styles/main.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-import AllBooks from '../../pages/AllBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -158,7 +158,7 @@ const NavBar = () => {
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
 
                     <TextField
-                        className="search-input"
+                        className="input-override"
                         variant="outlined"
                         size="small"
                         placeholder="Search"

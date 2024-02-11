@@ -2,11 +2,12 @@ TODO:
 
 - limit ratings to one? (so user cannot overinflate ratings)
 
+- render error message for when logging in, and email and/or password does not exist.
+
 -fix the siving of the rating stars on the home page when viewing on mobile
 
--remove chrome styling in login and signup fields like i did on search
 
--login button style when adding a comment and not logged in?
+
 
 =============================================
 

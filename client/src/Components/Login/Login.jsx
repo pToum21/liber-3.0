@@ -143,6 +143,7 @@ const Login = ({ open, onClose }) => {
                         </Grid>
                         <ThemeProvider theme={customTheme(outerTheme)}>
                             <TextField
+                                className="input-override"
                                 label='Email'
                                 name='email'
                                 placeholder='Enter Email'
@@ -153,6 +154,7 @@ const Login = ({ open, onClose }) => {
                                 onChange={handleChange}
                             />
                             <TextField
+                                className="input-override"
                                 label='Password'
                                 name='password'
                                 placeholder='Enter password'

@@ -190,7 +190,9 @@ export default function SignUp() {
             {/* Display error message if form is invalid */}
             {!formValid && (
               <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
-                Please fill in all required fields, Username should be alphanumeric a-z,0-9 and email should be an email
+                Please fill in all required fields. <br/>
+                Username takes alphanumeric {'('}a-zA-Z0-9{')'} characters,<br />
+                and email should contain '@' and '.'.
               </Typography>
             )}
             <Grid container spacing={2}>
@@ -198,6 +200,7 @@ export default function SignUp() {
                 <Grid item xs={12} >
 
                   <TextField
+                    className="input-override"
                     autoComplete="given-name"
                     name="username"
                     required
@@ -211,6 +214,7 @@ export default function SignUp() {
 
                 <Grid item xs={12}>
                   <TextField
+                    className="input-override"
                     required
                     fullWidth
                     id="email"
@@ -222,6 +226,7 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
+                    className="input-override"
                     required
                     fullWidth
                     name="password"
@@ -250,7 +255,7 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-          
+
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
