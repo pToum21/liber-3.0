@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import Grid from '@mui/material/Grid';
 // our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
@@ -94,70 +94,76 @@ function SingleBook() {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
-            <em style={{ fontSize: '2rem' }}>{book.title}</em>
-            {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
-            {book.authors.length > 1 ? (
-                <p> by {
-                    book.authors.map(author => {
-                        const nameParts = author.name.split(' ');
-                        return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
-                    }).join(', ')
-                }
-                </p>
+        <>
+        {/* title of single book's page */}
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', color: '#f3f3ec' }}>
+                <em style={{ fontSize: '2rem' }}>{book.title}</em>
+                {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
+                {book.authors.length > 1 ? (
+                    <p style={{marginLeft: '5px', marginTop: '0', marginRight:'0', marginBottom:'0'}}> by {
+                        book.authors.map(author => {
+                            const nameParts = author.name.split(' ');
+                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                        }).join(', ')
+                    }
+                    </p>
 
-            ) : (
-                <p> by {
-                    book.authors.map(author => {
-                        const nameParts = author.name.split(', ');
-                        return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
-                    })
-                }
-                </p>
-
-            )}
-            <br />
-            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
-            {/* <p> Rating: {avgRating}</p> */}
-            <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
-
-            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                {bookAdded ? (
-                    <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
-                        Book Saved
-                    </Button>
                 ) : (
-                    <Button sx={{
-                        backgroundColor: '#8abbb1',
-                        color: '#f3f3ec',
-                        '&:hover': {
-                            backgroundColor: '#6a8e86',
-                        },
+                    <p style={{marginLeft: '5px', marginTop: '0', marginRight:'0', marginBottom:'0'}}> by {
+                        book.authors.map(author => {
+                            const nameParts = author.name.split(', ');
+                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                        })
+                    }
+                    </p>
 
-                    }} variant="contained" onClick={handleKeepBook}>
-                        Keep Book
-                    </Button>
                 )}
-                <Link to={`/bookReader/${id}`}>
-                    <Button sx={{
-                        backgroundColor: '#8abbb1',
-                        color: '#f3f3ec',
-                        '&:hover': {
-                            backgroundColor: '#6a8e86',
-                        },
-                    }} variant="contained">Read Now</Button>
-                </Link>
+            </Grid>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
+
+                <br />
+                <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
+                {/* <p> Rating: {avgRating}</p> */}
+                <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+
+                <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                    {bookAdded ? (
+                        <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
+                            Book Saved
+                        </Button>
+                    ) : (
+                        <Button sx={{
+                            backgroundColor: '#8abbb1',
+                            color: '#f3f3ec',
+                            '&:hover': {
+                                backgroundColor: '#6a8e86',
+                            },
+
+                        }} variant="contained" onClick={handleKeepBook}>
+                            Keep Book
+                        </Button>
+                    )}
+                    <Link to={`/bookReader/${id}`}>
+                        <Button sx={{
+                            backgroundColor: '#8abbb1',
+                            color: '#f3f3ec',
+                            '&:hover': {
+                                backgroundColor: '#6a8e86',
+                            },
+                        }} variant="contained">Read Now</Button>
+                    </Link>
+                </div>
+
+
+                <div>
+
+                    <CommentList reviews={book.reviews} />
+                </div>
+
+
+                <CommentForm bookId={book._id} />
             </div>
-
-
-            <div>
-
-                <CommentList reviews={book.reviews} />
-            </div>
-
-
-            <CommentForm bookId={book._id} />
-        </div>
+        </>
     );
 }
 
