@@ -15,7 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-// import AllBooks from '../../pages/AllBooks';
+import AllBooks from '../../pages/AllBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -146,11 +146,11 @@ const NavBar = () => {
                                 </>
                             )}
                             {isLoggedIn && role === 'admin' && (
-                            <Button className="navlinks" color="inherit">
-                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
-                                    Admin Dashboard
-                                </Link>
-                            </Button>
+                                <Button className="navlinks" color="inherit">
+                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                        Admin
+                                    </Link>
+                                </Button>
                             )}
                         </Hidden>
                     </StyledTypography>
@@ -205,8 +205,7 @@ const NavBar = () => {
                             id="responsive-menu"
                             anchorEl={anchorEl}
                             anchorReference="anchorPosition"
-                            // put left and bottom to remove warning error in console
-                            anchorPosition={{ top: 65, right: 16, left: 0, bottom: 0 }}
+                            anchorPosition={{ top: 65, right: 16 }}
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
                             disablePortal // Add this prop
@@ -232,6 +231,11 @@ const NavBar = () => {
                                         color: '#8abbb1',
                                     },
                                 },
+                                '@media (min-width: 600px)': {
+                                    '& .MuiMenu-paper': {
+                                        marginTop: '3%', // for tablets
+                                    },
+                                },
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
@@ -247,6 +251,24 @@ const NavBar = () => {
                                     Books &gt;
                                 </Link>
                             </MenuItem>
+                            {isLoggedIn && role === 'admin' ?
+                                (
+                                    <MenuItem onClick={handleMenuClose}>
+                                        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/admin">
+                                            Admin &gt;
+                                        </Link>
+                                    </MenuItem>
+                                ) :
+                                (
+
+                                    <MenuItem sx={{display: 'none'}} onClick={handleMenuClose}>
+                                        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/admin">
+                                            Admin &gt;
+                                        </Link>
+                                    </MenuItem>
+                                )
+                            }
+
                             <MenuItem onClick={handleMenuClose}>
                                 {isLoggedIn ? (
                                     <>
@@ -270,7 +292,7 @@ const NavBar = () => {
                         <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
                     </div>
                 </Modal>
-            </Grid>
+            </Grid >
         </>
     );
 };
