@@ -100,7 +100,7 @@ function Home() {
                 <Slider {...settings}>
                     <div className="carousel-slide">
                         <div className="overlay">
-                            <img src={image2} alt="" />
+                            <img src={image2} alt="book magic" />
                             <div className="text-overlay">
                                 <p className="text-title">Plethora of free books, completely free </p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
@@ -110,7 +110,7 @@ function Home() {
                     </div>
                     <div className="carousel-slide">
                         <div className="overlay">
-                            <img src={image1} alt="" />
+                            <img src={image1} alt="book love" />
                             <div className="text-overlay">
                                 <p className="text-title">Interact with your e-reads</p>
                                 <p>Join our fellow readers!<br /> Rate and discuss your favorite books! <br /> Try not to be toxic with your writing though. You're a reader for a reason. </p>
@@ -119,7 +119,7 @@ function Home() {
                     </div>
                     <div className="carousel-slide">
                         <div className="overlay">
-                            <img src={image3} alt="" />
+                            <img src={image3} alt="bookshelf" />
                             <div className="text-overlay">
                                 <p className="text-title">MyLibrary</p>
                                 <p>Keep books in the MyLibrary section.<br />Once a book is kept, you can easily come back and read it whenever you like.<br />To gain access to the feature, sign up or log in now! </p>
@@ -153,16 +153,16 @@ function Home() {
                                                     <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                                 </Link>
                                             </div>
-                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }}>
+                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }} >
                                                 {avgRating[index] !== undefined ? (
-                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly className="fullrating" />
                                                 ) : null}
                                             </div>
-                                            <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }}>
+                                            {/* <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }} size='small'>
                                                 {avgRating[index] !== undefined ? (
                                                     <p>{avgRating[index]} <StarIcon /></p>
                                                 ) : null}
-                                            </div>
+                                            </div> */}
 
                                             {/* title */}
                                             <div style={{ width: '100%' }}>

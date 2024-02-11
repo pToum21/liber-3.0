@@ -1,12 +1,11 @@
 TODO: 
 
-- make admin page button in nav
-
 - limit ratings to one? (so user cannot overinflate ratings)
 
-- fix the siving of the rating stars on the home page when viewing on mobile
+- render error message for when logging in, and email and/or password does not exist.
 
-- login button style when adding a comment and not logged in?
+
+
 
 =============================================
 
@@ -41,8 +40,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/10: styled ratings and fixed logic for ratings in home, made typedef and mutation for admin to delete user, made it so you cannot create dupe users
-    if rating code in commentform, typdefs remove !
+        2/10: need to style: singlebook
 
     from Peyton : 
 
