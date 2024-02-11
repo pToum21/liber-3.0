@@ -45,6 +45,24 @@ export default function Admin() {
   console.log(authUser.data.role);
   const role = authUser.data.role;
 
+  const deleteUser = async (idOfDeleted) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this user?');
+
+    // Check if user confirmed deletion
+    if (confirmDelete) {
+      try {
+        // Delete user if confirmed
+        await removeUser({
+          variables: { id: idOfDeleted }
+        });
+        refetch();
+      } catch (error) {
+        console.error('Error deleting user:', error.message);
+      }
+    }
+  }
+
+
   return (
     <div>
       {
@@ -89,7 +107,9 @@ export default function Admin() {
 
                     {/* delete user functionality */}
                     <TableCell align="right">
-                      <DeleteForeverIcon sx={{color: muipink}} />
+                      <a onClick={() => { deleteUser(row._id) }} href="#">
+                        <DeleteForeverIcon sx={{ color: muipink }} />
+                      </a>
                     </TableCell>
 
                   </TableRow>
