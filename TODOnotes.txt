@@ -2,11 +2,6 @@ TODO:
 
 - limit ratings to one? (so user cannot overinflate ratings)
 
-- render error message for when logging in, and email and/or password does not exist.
-
-
-
-
 =============================================
 
 NOTES (can leave notes here detailing what you did):
