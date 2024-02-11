@@ -69,7 +69,7 @@ function SingleBook() {
             await keepBookMutation({
                 variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data } } },
                 refetchQueries: [{ query: QUERY_MY_LIBRARY }], // Refetch QUERY_MY_LIBRARY after mutation
-              });
+            });
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
@@ -95,12 +95,28 @@ function SingleBook() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
-            <h3>Title: {book.title}</h3>
-            <h4>
-                Authors: {book.authors.map((author, index) => (
-                    <span key={index}>{author.name}</span>
-                ))}
-            </h4>
+            <em style={{ fontSize: '2rem' }}>{book.title}</em>
+            {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
+            {book.authors.length > 1 ? (
+                <p> by {
+                    book.authors.map(author => {
+                        const nameParts = author.name.split(' ');
+                        return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                    }).join(', ')
+                }
+                </p>
+
+            ) : (
+                <p> by {
+                    book.authors.map(author => {
+                        const nameParts = author.name.split(', ');
+                        return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                    })
+                }
+                </p>
+
+            )}
+            <br />
             <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
             {/* <p> Rating: {avgRating}</p> */}
             <Rating name="read-only" value={avgRating} precision={0.5} readOnly />

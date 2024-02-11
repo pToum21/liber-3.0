@@ -43,7 +43,7 @@ const BookFlipper = () => {
                         {/* title */}
                         <h1 className="unique-h1-class book-flipper-title">{title}</h1>
                         <div className="separator unique-separator-class"></div>
-                        {/* authors */}
+                        {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
                         {authors.length > 1 ? (
                             <h2 className="unique-h2-class">by {
                                 authors.map(author => {

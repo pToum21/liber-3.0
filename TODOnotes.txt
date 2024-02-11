@@ -40,7 +40,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/10: need to style: singlebook
+        2/10: need to style: singlebook, mylibrary, error, allbooks, admin
 
     from Peyton : 
 
