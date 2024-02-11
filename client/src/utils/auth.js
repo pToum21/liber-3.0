@@ -12,6 +12,12 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
+  isAdmin() {
+    const profile = this.getProfile();
+    // Check if the user has an "admin" role or any other criteria
+    return profile && profile.roles && profile.roles.includes('admin');
+  }
+
   //   passes token into function
   isTokenExpired(token) {
     try {

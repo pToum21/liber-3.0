@@ -16,6 +16,7 @@ import { CREATE_USER } from '../utils/mutations'
 import { useState } from 'react'
 import Auth from '../utils/auth'
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -198,6 +199,7 @@ export default function SignUp() {
                 <Grid item xs={12} >
 
                   <TextField
+                  className='search-input'
                     autoComplete="given-name"
                     name="username"
                     required
@@ -211,6 +213,7 @@ export default function SignUp() {
 
                 <Grid item xs={12}>
                   <TextField
+                  className='search-input'
                     required
                     fullWidth
                     id="email"
@@ -222,6 +225,7 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
+                  className='search-input'
                     required
                     fullWidth
                     name="password"
