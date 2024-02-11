@@ -34,7 +34,7 @@ function App() {
     <>
       <ApolloProvider client={client}>
         <NavBar />
-        <div style={{ minHeight: '100vh' }} >
+        <div style={{ minHeight: '75vh' }} >
           <Outlet />
         </div>
         <Footer />

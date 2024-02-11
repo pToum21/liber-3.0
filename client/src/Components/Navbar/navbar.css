@@ -38,17 +38,6 @@
     color: #8ebfb5;
 }
 
-.search-input {
-
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px #f3f3ec inset !important;
-        font-family: 'Lato';
-    }
-}
-
 .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
     max-width: 900px !important;
 }

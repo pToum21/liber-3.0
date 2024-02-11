@@ -7,15 +7,15 @@ import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidde
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/system';
-import Login from '../../pages/Login';
+import Login from '../Login/Login';
 // to link to other pages
 import { Link } from 'react-router-dom';
 // our files
 import './navbar.css';
+import '../../styles/main.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-import AllBooks from '../../pages/AllBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
@@ -146,11 +146,11 @@ const NavBar = () => {
                                 </>
                             )}
                             {isLoggedIn && role === 'admin' && (
-                            <Button className="navlinks" color="inherit">
-                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
-                                    Admin Dashboard
-                                </Link>
-                            </Button>
+                                <Button className="navlinks" color="inherit">
+                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                        Admin
+                                    </Link>
+                                </Button>
                             )}
                         </Hidden>
                     </StyledTypography>
@@ -158,7 +158,7 @@ const NavBar = () => {
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
 
                     <TextField
-                        className="search-input"
+                        className="input-override"
                         variant="outlined"
                         size="small"
                         placeholder="Search"
@@ -231,6 +231,11 @@ const NavBar = () => {
                                         color: '#8abbb1',
                                     },
                                 },
+                                '@media (min-width: 600px)': {
+                                    '& .MuiMenu-paper': {
+                                        marginTop: '3%', // for tablets
+                                    },
+                                },
                             }}
                         >
                             <MenuItem onClick={handleMenuClose}>
@@ -246,6 +251,24 @@ const NavBar = () => {
                                     Books &gt;
                                 </Link>
                             </MenuItem>
+                            {isLoggedIn && role === 'admin' ?
+                                (
+                                    <MenuItem onClick={handleMenuClose}>
+                                        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/admin">
+                                            Admin &gt;
+                                        </Link>
+                                    </MenuItem>
+                                ) :
+                                (
+
+                                    <MenuItem sx={{display: 'none'}} onClick={handleMenuClose}>
+                                        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/admin">
+                                            Admin &gt;
+                                        </Link>
+                                    </MenuItem>
+                                )
+                            }
+
                             <MenuItem onClick={handleMenuClose}>
                                 {isLoggedIn ? (
                                     <>
@@ -269,7 +292,7 @@ const NavBar = () => {
                         <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
                     </div>
                 </Modal>
-            </Grid>
+            </Grid >
         </>
     );
 };
