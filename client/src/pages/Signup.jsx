@@ -66,6 +66,13 @@ export default function SignUp() {
       return;
     }
 
+    // 8 characters, one lowercase, one uppercase, and one digit 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(formState.password)) {
+      setFormValid(false);
+      return;
+    }
+
     try {
       const { data } = await createUser({
         variables: { ...formState },
@@ -191,7 +198,7 @@ export default function SignUp() {
             {/* Display error message if form is invalid */}
             {!formValid && (
               <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
-                Please fill in all required fields. <br/>
+                Please fill in all required fields. <br />
                 Username takes alphanumeric {'('}a-zA-Z0-9{')'} characters,<br />
                 and email should contain '@' and '.'.
               </Typography>
