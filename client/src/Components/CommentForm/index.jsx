@@ -88,11 +88,13 @@ const CommentForm = ({ bookId }) => {
               '&:hover': {
                 backgroundColor: '#6a8e86',
               },
+              marginTop: '1rem',
+              marginBottom: '1rem'
             }}>
               Post
             </Button>
        
-          <Box marginBottom={2}>
+          <Box marginBottom={2} sx={{display: 'flex'}}>
             <label htmlFor="rating" style={{ marginRight: '3rem', }}>
               Rating:
             </label>

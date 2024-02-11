@@ -121,11 +121,11 @@ function SingleBook() {
             </Grid>
 
             {/* container holding all content*/}
-            <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+            <Grid container py={3} spacing={3} sx={{ width: '100%', display: 'flex', flexDirection:'column', justifyContent: 'space-evenly', alignItems: 'center', border: '10px double #8abbb1', margin: '0'}}>
                 {/* Grid holds book and comment form */}
-                <Grid container spacing={5} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div className="div-img-cmnt-form" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '10px double #8abbb1', borderRadius: '10px', width: '90%', paddingTop: '2rem', paddingBottom:'2rem'}}>
                     {/* Grid holds book image and buttons */}
-                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent:'center', alignItems: 'center' }}>
+                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent:'center', alignItems: 'center', margin: '0' }}>
                         {/* image */}
                         <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '50%', height: 'auto' }} /><br />
                         {/* rating */}
@@ -163,7 +163,7 @@ function SingleBook() {
                         <CommentForm bookId={book._id} />
                     </Grid>
 
-                </Grid>
+                </div>
 
                 {/* container for comment list */}
                 <Grid item >
