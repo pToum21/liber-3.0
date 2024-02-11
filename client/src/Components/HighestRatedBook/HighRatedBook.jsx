@@ -11,27 +11,41 @@ import { Link, useParams } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
 
 const HighestRatedBook = () => {
-
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
-
-    console.log(data)
-
     const [bookAdded, setBookAdded] = useState(false);
+    const [addedBooks, setAddedBooks] = useState(new Set()); // Keep track of added book IDs
 
     const [keepBookMutation] = useMutation(KEEP_BOOK);
-
     const highestRatedBook = data?.highestRatedBook;
 
-
+    useEffect(() => {
+        // Reset bookAdded state when a new highest rated book is loaded
+        setBookAdded(false);
+    }, [highestRatedBook]);
 
     const handleKeepBook = async () => {
         try {
-            await keepBookMutation({
-                variables: { input: { bookId: highestRatedBook?.id, title: highestRatedBook?.title, image: { data: highestRatedBook?.image.data } } },
-            });
+            // Check if the book has already been added
+            if (!addedBooks.has(highestRatedBook?._id)) {
+                await keepBookMutation({
+                    variables: {
+                        input: {
+                            bookId: highestRatedBook?._id,
+                            title: highestRatedBook?.title,
+                            image: { data: highestRatedBook?.image.data },
+                        },
+                    },
+                });
 
-            // Set bookAdded to true when the book is successfully added
-            setBookAdded(true);
+                // Update the set of added books
+                setAddedBooks(new Set(addedBooks).add(highestRatedBook?._id));
+
+                // Set bookAdded to true when the book is successfully added
+                setBookAdded(true);
+            } else {
+                // Book already added, handle accordingly (show message, disable button, etc.)
+                console.log('Book already added to MyLibrary');
+            }
         } catch (error) {
             console.error('Error adding book to MyLibrary', error);
         }
