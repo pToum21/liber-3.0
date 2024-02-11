@@ -47,7 +47,7 @@ export default function SignUp() {
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
 
     if (!formState.username || !formState.email || !formState.password) {
       setFormValid(false)
@@ -78,7 +78,7 @@ export default function SignUp() {
 
       } else {
         // Other errors
-        console.log(error);       
+        console.log(error);
       }
     }
   };
@@ -190,7 +190,7 @@ export default function SignUp() {
             {/* Display error message if form is invalid */}
             {!formValid && (
               <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
-                Please fill in all required fields, Username should be alphanumeric a-z,0-9 and email should be an email 
+                Please fill in all required fields, Username should be alphanumeric a-z,0-9 and email should be an email
               </Typography>
             )}
             <Grid container spacing={2}>
@@ -239,7 +239,13 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: '#8abbb1' }}
+              sx={{
+                mt: 3, mb: 2, backgroundColor: '#8abbb1',
+                color: '#f3f3ec',
+                '&:hover': {
+                  backgroundColor: '#6a8e86',
+                },
+              }}
             >
               Sign Up
             </Button>
