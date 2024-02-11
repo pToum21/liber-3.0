@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_BOOKS_WITH_PAGINATION } from '../utils/queries'
 import { Link } from 'react-router-dom';
 import { Box, Pagination } from '@mui/material';
+import { Grid } from '@mui/material'
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,14 +27,16 @@ const AllBooks = () => {
 
     return (
         <div>
-            <h2>All Books</h2>
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
+                <em>All Books</em>
+            </Grid>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
                 {data && data.getAllBooks.books.map((book) => (
                     <Box
                         className="ind-book"
                         key={book._id}
                         sx={{
-                            animationDelay: `${book * 0.3}s`,
+
                             flex: '1 0 100%',
                             maxWidth: '200px',
                             position: 'relative',
@@ -43,9 +46,10 @@ const AllBooks = () => {
                     >
                         <Link to={`/singleBook/${book._id}`} style={{ textDecoration: 'none', display: 'block', position: 'relative' }}>
                             <img
+
                                 src={`data:image/jpg;base64,${book.image.data}`}
                                 alt={book.title}
-                                style={{ width: '100%', height: '20rem', borderRadius: '8px' }}
+                                style={{ width: '100%', height: '20rem', borderRadius: '8px', animationDelay: `${book * 0.3}s`, }}
                             />
                             <div
                                 className="titleOverlay"
