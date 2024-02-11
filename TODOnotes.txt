@@ -2,8 +2,6 @@ TODO:
 
 - limit ratings to one? (so user cannot overinflate ratings)
 
--change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
-
 -fix the siving of the rating stars on the home page when viewing on mobile
 
 =============================================
