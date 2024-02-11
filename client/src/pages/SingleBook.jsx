@@ -30,9 +30,7 @@ function SingleBook() {
     const thisBook = data?.getSingleBook;
 
 
-    const [keepBookMutation] = useMutation(KEEP_BOOK, {
-        refetchQueries: [{ query: QUERY_MY_LIBRARY}]
-    });
+    const [keepBookMutation] = useMutation(KEEP_BOOK);
 
     const [bookAdded, setBookAdded] = useState(false)
 
@@ -70,7 +68,8 @@ function SingleBook() {
         try {
             await keepBookMutation({
                 variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data } } },
-            });
+                refetchQueries: [{ query: QUERY_MY_LIBRARY }], // Refetch QUERY_MY_LIBRARY after mutation
+              });
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
