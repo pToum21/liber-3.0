@@ -98,12 +98,32 @@ const HighestRatedBook = () => {
                                 <p style={{ fontSize: '1.3rem', color: '#f3f3ec' }}>{highestRatedBook.title}</p>
                                 <p style={{ marginBottom: '1rem', color: '#f3f3ec' }}>Author: {highestRatedBook.authors.map((author) => author.name).join(', ')}</p>
                                 <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                    <Button sx={{ backgroundColor: bookAdded ? 'grey' : '#8abbb1', color: '#f3f3ec' }} variant="contained" onClick={handleKeepBook} disabled={bookAdded}>
+                                    <Button
+                                        sx={{
+                                            backgroundColor: bookAdded ? 'grey' : '#8abbb1',
+                                            color: '#f3f3ec',
+                                            '&:hover': {
+                                                backgroundColor: bookAdded ? 'grey' : '#6a8e86',
+                                            },
+                                        }}
+                                        variant="contained"
+                                        onClick={handleKeepBook}
+                                        disabled={bookAdded}
+                                    >
                                         {bookAdded ? 'Book Saved' : 'Keep Book'}
                                     </Button>
 
                                     <Link to={`/bookReader/${highestRatedBook._id}`}>
-                                        <Button sx={{ backgroundColor: '#8abbb1', color: '#f3f3ec' }} variant="contained">
+                                        <Button
+                                            sx={{
+                                                backgroundColor: '#8abbb1',
+                                                color: '#f3f3ec',
+                                                '&:hover': {
+                                                    backgroundColor: '#6a8e86', 
+                                                },
+                                            }}
+                                            variant="contained"
+                                        >
                                             Read Now
                                         </Button>
                                     </Link>

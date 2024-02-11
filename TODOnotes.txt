@@ -1,16 +1,8 @@
 TODO: 
 
-- 
 - limit ratings to one? (so user cannot overinflate ratings)
 
-- 
-
-- fix size of nav menu to be full width and height on mobile
-
-- add login check for everything that needs a login requirement
-
--change mui styling from blue; add instrux to error message  for signup fields being empty or wrong
-
+-fix the siving of the rating stars on the home page when viewing on mobile
 
 =============================================
 

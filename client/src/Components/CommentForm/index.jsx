@@ -67,7 +67,7 @@ const CommentForm = ({ bookId }) => {
         <h2>Add Review</h2>
         <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <Box display="flex" alignItems="center" marginBottom={2}>
-          {error && <p>Error: Please <button className="no-text-dec" onClick={handleLoginClick}>log in</button> to add a comment.</p>}
+            {error && <p>Error: Please <button className="no-text-dec" onClick={handleLoginClick}>log in</button> to add a comment.</p>}
             <TextField
               id="comments"
               name="content"
@@ -80,7 +80,13 @@ const CommentForm = ({ bookId }) => {
               required
               fullWidth
             />
-            <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '10px' }}>
+            <Button type="submit" variant="contained" color="primary" sx={{
+              marginLeft: '10px', backgroundColor: '#8abbb1',
+              color: '#f3f3ec',
+              '&:hover': {
+                backgroundColor: '#6a8e86',
+              },
+            }}>
               Post
             </Button>
           </Box>
@@ -97,7 +103,7 @@ const CommentForm = ({ bookId }) => {
             />
           </Box>
         </form>
-      
+
       </div>
 
       <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
