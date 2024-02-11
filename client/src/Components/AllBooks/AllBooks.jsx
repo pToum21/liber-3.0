@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_BOOKS_WITH_PAGINATION } from '../../utils/queries';
 import { Link } from 'react-router-dom';
-import { Box } from '@mui/system';
+import { Box, Pagination } from '@mui/material';
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,14 +15,8 @@ const AllBooks = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :( Please try again</p>;
 
-    const handlePrevPage = () => {
-        if (currentPage > 1) setCurrentPage(currentPage - 1);
-    };
-
-    const handleNextPage = () => {
-        if (currentPage < data.getAllBooks.paginationInfo.totalPages) {
-            setCurrentPage(currentPage + 1);
-        }
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
     };
 
     return (
@@ -37,15 +31,7 @@ const AllBooks = () => {
                             maxWidth: '200px',
                             position: 'relative',
                             overflow: 'hidden',
-                            '&:hover .titleOverlay': {
-                                opacity: 1,
-                            },
-                            '&:hover img': {
-                                filter: 'brightness(0.7)',
-                            },
-                            '@media (min-width: 600px)': {
-                                flex: '1 0 50%', // Two books per row on larger screens
-                            },
+                            // Other existing styles...
                         }}
                     >
                         <Link to={`/singleBook/${book._id}`} style={{ textDecoration: 'none', display: 'block', position: 'relative' }}>
@@ -84,10 +70,15 @@ const AllBooks = () => {
                     </Box>
                 ))}
             </Box>
-            <div>
-                <button onClick={handlePrevPage} disabled={currentPage <= 1}>Previous</button>
-                <span>Page {currentPage} of {data && data.getAllBooks.paginationInfo.totalPages}</span>
-                <button onClick={handleNextPage} disabled={currentPage >= data.getAllBooks.paginationInfo.totalPages}>Next</button>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+                <Pagination
+                    count={data.getAllBooks.paginationInfo.totalPages}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    variant="outlined"
+                    color="success"
+                    sx={{ button: { color: '#8abbb1' } }}
+                />
             </div>
         </div>
     );
