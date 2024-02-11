@@ -43,8 +43,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/10: styled ratings and fixed logic for ratings in home, made typedef and mutation for admin to delete user, made it so you cannot create dupe users
-    if rating code in commentform, typdefs remove !
+        2/10: need to style: singlebook
 
     from Peyton : 
 
