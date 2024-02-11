@@ -95,12 +95,12 @@ function SingleBook() {
 
     return (
         <>
-        {/* title of single book's page */}
+            {/* title header of single book's page */}
             <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', color: '#f3f3ec' }}>
                 <em style={{ fontSize: '2rem' }}>{book.title}</em>
                 {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
                 {book.authors.length > 1 ? (
-                    <p style={{marginLeft: '5px', marginTop: '0', marginRight:'0', marginBottom:'0'}}> by {
+                    <p style={{ marginLeft: '5px', marginTop: '0', marginRight: '0', marginBottom: '0' }}> by {
                         book.authors.map(author => {
                             const nameParts = author.name.split(' ');
                             return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
@@ -109,7 +109,7 @@ function SingleBook() {
                     </p>
 
                 ) : (
-                    <p style={{marginLeft: '5px', marginTop: '0', marginRight:'0', marginBottom:'0'}}> by {
+                    <p style={{ marginLeft: '5px', marginTop: '0', marginRight: '0', marginBottom: '0' }}> by {
                         book.authors.map(author => {
                             const nameParts = author.name.split(', ');
                             return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
@@ -119,50 +119,58 @@ function SingleBook() {
 
                 )}
             </Grid>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
 
-                <br />
-                <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
-                {/* <p> Rating: {avgRating}</p> */}
-                <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+            {/* container holding all content*/}
+            <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                {/* Grid holds book and comment form */}
+                <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                    {/* Grid holds book image and buttons */}
+                    <Grid item style={{ display: 'flex', flexDirection: 'column' }}>
+                        {/* image */}
+                        <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
+                        {/* rating */}
+                        <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+                        {/* buttons */}
+                        <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                            {bookAdded ? (
+                                <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
+                                    Book Saved
+                                </Button>
+                            ) : (
+                                <Button sx={{
+                                    backgroundColor: '#8abbb1',
+                                    color: '#f3f3ec',
+                                    '&:hover': {
+                                        backgroundColor: '#6a8e86',
+                                    },
 
-                <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                    {bookAdded ? (
-                        <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
-                            Book Saved
-                        </Button>
-                    ) : (
-                        <Button sx={{
-                            backgroundColor: '#8abbb1',
-                            color: '#f3f3ec',
-                            '&:hover': {
-                                backgroundColor: '#6a8e86',
-                            },
+                                }} variant="contained" onClick={handleKeepBook}>
+                                    Keep Book
+                                </Button>
+                            )}
+                            <Link to={`/bookReader/${id}`}>
+                                <Button sx={{
+                                    backgroundColor: '#8abbb1',
+                                    color: '#f3f3ec',
+                                    '&:hover': {
+                                        backgroundColor: '#6a8e86',
+                                    },
+                                }} variant="contained">Read Now</Button>
+                            </Link>
+                        </div>
+                    </Grid>
+                    <Grid item>
+                        <CommentForm bookId={book._id} />
+                    </Grid>
 
-                        }} variant="contained" onClick={handleKeepBook}>
-                            Keep Book
-                        </Button>
-                    )}
-                    <Link to={`/bookReader/${id}`}>
-                        <Button sx={{
-                            backgroundColor: '#8abbb1',
-                            color: '#f3f3ec',
-                            '&:hover': {
-                                backgroundColor: '#6a8e86',
-                            },
-                        }} variant="contained">Read Now</Button>
-                    </Link>
-                </div>
+                </Grid>
 
-
-                <div>
-
+                {/* container for comment list */}
+                <Grid item>
                     <CommentList reviews={book.reviews} />
-                </div>
+                </Grid>
 
-
-                <CommentForm bookId={book._id} />
-            </div>
+            </Grid>
         </>
     );
 }
