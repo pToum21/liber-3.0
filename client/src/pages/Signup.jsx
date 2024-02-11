@@ -240,22 +240,17 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{
-                mt: 3, mb: 2, backgroundColor: '#8abbb1',
-                color: '#f3f3ec',
+                mt: 3,
+                mb: 2,
+                bgcolor: '#8abbb1',
                 '&:hover': {
-                  backgroundColor: '#6a8e86',
-                },
+                  backgroundColor: '#8abbb1',
+                }
               }}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2" sx={{ color: '#8abbb1', textDecoration: 'none' }}>
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
+          
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
