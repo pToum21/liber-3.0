@@ -22,7 +22,7 @@ const CommentList = ({ reviews }) => {
               <div key={review._id} className="col-12 mb-3 pb-3">
                 <div className="p-3 bg-dark text-light">
                   <h5 className="card-header">
-                    {review.userId.username} commented{' '}
+                  {review.userId && review.userId.username || 'Anonymous'} commented{' '}
                     <span style={{ fontSize: '0.825rem' }}>
                       on  {new Date(parseInt(review.createdAt)).toLocaleString()}
                     </span>
