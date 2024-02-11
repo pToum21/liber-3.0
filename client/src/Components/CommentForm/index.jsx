@@ -36,6 +36,7 @@ const CommentForm = ({ bookId }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      
       const { data } = await addReview({
         variables: {
           bookId,
@@ -44,6 +45,27 @@ const CommentForm = ({ bookId }) => {
         },
         refetchQueries: ['getSingleBook']
       });
+
+
+      // const variables = {
+      //   bookId,
+      //   content: commentText,
+      // };
+  
+      // // Only include rating if it's greater than 0
+      // if (parseInt(rating) > 0) {
+      //   variables.rating = parseInt(rating);
+      // } else {
+      //   return variables
+      // }
+  
+      // const { data } = await addReview({
+      //   variables,
+      //   refetchQueries: ['getSingleBook']
+      // });
+  
+
+
       setCommentText('');
       setRating(0);
       console.log(commentText);
@@ -67,7 +89,7 @@ const CommentForm = ({ bookId }) => {
         <h2>Add Review</h2>
         <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <Box display="flex" alignItems="center" marginBottom={2}>
-            {error && <p>Error: Please <button className="no-text-dec" onClick={handleLoginClick}>log in</button> to add a comment.</p>}
+            {error && <p>Error: Please <button className="no-text-dec" sx={{border:'none', backgroundColor:'transparent'}} onClick={handleLoginClick}>log in</button> to add a comment.</p>}
             <TextField
               id="comments"
               name="content"
