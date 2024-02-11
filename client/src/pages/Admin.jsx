@@ -69,15 +69,15 @@ export default function Admin() {
       <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
         <em>Admin Dashboard</em>
       </Grid>
-      <div style={{ backgroundColor: '#8abbb1', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+      <div style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
         {
           role === 'admin' ?
-            <TableContainer component={Paper} sx={{ background: '#f3f3ec'}}>
+            <TableContainer component={Paper} sx={{ background: '#f3f3ec', }}>
               <Table sx={{ minWidth: 650, }} aria-label="simple table">
                 <TableHead >
                   <TableRow>
-                    
-                    <TableCell  sx={{paddingLeft: '6rem' }}>Username</TableCell>
+
+                    <TableCell sx={{ paddingLeft: '6rem' }}>Username</TableCell>
                     <TableCell >Email</TableCell>
                     <TableCell >Role</TableCell>
                     <TableCell >Actions</TableCell>
@@ -89,8 +89,8 @@ export default function Admin() {
                       key={row._id}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                     
-                      <TableCell sx={{paddingLeft: '6rem' }}>{row.username}</TableCell>
+
+                      <TableCell sx={{ paddingLeft: '6rem' }}>{row.username}</TableCell>
                       <TableCell >{row.email}</TableCell>
                       <TableCell >Current status: {row.role.charAt(0).toUpperCase() + row.role.slice(1)}<br />
                         {/* Role update functionality integrated directly */}
