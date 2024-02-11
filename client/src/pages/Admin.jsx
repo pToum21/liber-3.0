@@ -13,6 +13,7 @@ import { QUERY_ALL_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import Error from './Error';
 import { pink } from '@mui/material/colors';
+import { Grid } from '@mui/material'
 
 const muipink = pink[300];
 
@@ -64,64 +65,68 @@ export default function Admin() {
 
 
   return (
-    <div>
-      {
-        role === 'admin' ?
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Users</TableCell>
-                  <TableCell align="right">Username</TableCell>
-                  <TableCell align="right">Email</TableCell>
-                  <TableCell align="right">Role</TableCell>
-                  <TableCell align="right">Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow
-                    key={row._id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="right">{row.username}</TableCell>
-                    <TableCell align="right">{row.email}</TableCell>
-                    <TableCell align="right">Current status: {row.role.charAt(0).toUpperCase() + row.role.slice(1)}<br />
-                      {/* Role update functionality integrated directly */}
-                      <label>
-                        Change:
-                        <select
-                          value={row.role}
-                          onChange={(e) =>
-                            handleRoleChange(row._id, e.target.value)
-                          }
-                        >
-                          <option value="admin">Admin</option>
-                          <option value="user">User</option>
-                        </select>
-                      </label>
-                    </TableCell>
+    <>
+      <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
+        <em>Admin Dashboard</em>
+      </Grid>
+      <div style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
+        {
+          role === 'admin' ?
+            <TableContainer component={Paper} sx={{ background: '#f3f3ec', }}>
+              <Table sx={{ minWidth: 650, }} aria-label="simple table">
+                <TableHead >
+                  <TableRow>
 
-                    {/* delete user functionality */}
-                    <TableCell align="right">
-                      <a onClick={() => { deleteUser(row._id) }} href="#">
-                        <DeleteForeverIcon sx={{ color: muipink }} />
-                      </a>
-                    </TableCell>
-
+                    <TableCell sx={{ paddingLeft: '6rem' }}>Username</TableCell>
+                    <TableCell >Email</TableCell>
+                    <TableCell >Role</TableCell>
+                    <TableCell >Actions</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow
+                      key={row._id}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
 
-          :
+                      <TableCell sx={{ paddingLeft: '6rem' }}>{row.username}</TableCell>
+                      <TableCell >{row.email}</TableCell>
+                      <TableCell >Current status: {row.role.charAt(0).toUpperCase() + row.role.slice(1)}<br />
+                        {/* Role update functionality integrated directly */}
+                        <label>
+                          Change:
+                          <select
+                            value={row.role}
+                            onChange={(e) =>
+                              handleRoleChange(row._id, e.target.value)
+                            }
+                          >
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                          </select>
+                        </label>
+                      </TableCell>
 
-          <Error />
-      }
-    </div>
+                      {/* delete user functionality */}
+                      <TableCell >
+                        <a onClick={() => { deleteUser(row._id) }} href="#">
+                          <DeleteForeverIcon sx={{ color: muipink }} />
+                        </a>
+                      </TableCell>
+
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            :
+
+            <Error />
+        }
+      </div>
+    </>
+
   );
 }

@@ -16,7 +16,7 @@ const HighestRatedBook = () => {
     const [addedBooks, setAddedBooks] = useState(new Set()); // Keep track of added book IDs
 
     const [keepBookMutation] = useMutation(KEEP_BOOK, {
-        refetchQueries: [{ query: QUERY_MY_LIBRARY}]
+        refetchQueries: [{ query: QUERY_MY_LIBRARY }]
     });
     const highestRatedBook = data?.highestRatedBook;
 
@@ -135,7 +135,7 @@ const HighestRatedBook = () => {
                                                 backgroundColor: '#8abbb1',
                                                 color: '#f3f3ec',
                                                 '&:hover': {
-                                                    backgroundColor: '#6a8e86', 
+                                                    backgroundColor: '#6a8e86',
                                                 },
                                             }}
                                             variant="contained"

@@ -1,36 +1,52 @@
 import MenuBook from '@mui/icons-material/MenuBook';
-import React from 'react';
-import { Grid, Paper, Avatar, TextField, Button, Typography, Link, FormControlLabel, Checkbox, IconButton, Modal } from '@mui/material';
+import React, { useState } from 'react';
+import {
+    Grid,
+    Paper,
+    Avatar,
+    TextField,
+    Button,
+    Typography,
+    Link,
+    IconButton,
+    Modal,
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
-import { useMutation } from '@apollo/client'
-import { LOGIN } from '../../utils/mutations'
-import { useState } from 'react';
-import Auth from '../../utils/auth'
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Login = ({ open, onClose }) => {
-    const [formState, setFormState] = useState({ email: '', password: '' })
-    const [login, { error, data }] = useMutation(LOGIN);
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [error, setError] = useState(null);
+    const [login, { data }] = useMutation(LOGIN);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormState({
             ...formState,
             [name]: value,
-        })
-    }
+        });
+    };
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState)
+        // Validate email format
+        if (!isValidEmail(formState.email)) {
+            setError('Invalid email address');
+            return;
+        }
         try {
             const { data } = await login({
                 variables: { ...formState },
-            })
-            Auth.login(data.login.token)
+            });
+            Auth.login(data.login.token);
         } catch (error) {
             console.error(error);
+            setError('Invalid credentials');
         }
         setFormState({
             email: '',
@@ -38,14 +54,24 @@ const Login = ({ open, onClose }) => {
         });
     };
 
+    const isValidEmail = (email) => {
+        // Basic email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const clearError = () => {
+        setError(null);
+    };
+
     const paperStyle = {
         padding: 20,
         height: '70vh',
         width: 400,
-        margin: "20px auto",
+        margin: '20px auto',
         position: 'relative',
         overflow: 'auto',
-        backgroundColor: '#f3f3ec'
+        backgroundColor: '#f3f3ec',
     };
     const avatarStyle = { backgroundColor: '#1bbd7e' };
     const btnStyle = { margin: '8px 0', backgroundColor: '#8abbb1' };
@@ -129,36 +155,37 @@ const Login = ({ open, onClose }) => {
                             onClick={onClose}
                             style={{ position: 'absolute', right: '8px', top: '8px', zIndex: 1, color: 'black' }}
                         >
-
-                            <CloseIcon color="action" className='close' sx={{ color: 'black' }} />
+                            <CloseIcon color="action" className="close" sx={{ color: 'black' }} />
                         </IconButton>
-                        <Grid align='center'>
+                        <Grid align="center">
                             <Avatar style={{ backgroundColor: '#8abbb1' }}>
                                 <MenuBook style={{ color: 'black' }} />
                             </Avatar>
                             <Typography variant="h5" sx={{ color: 'darkslategray', margin: '8px 0' }}>
                                 Log In
                             </Typography>
-
                         </Grid>
                         <ThemeProvider theme={customTheme(outerTheme)}>
                             <TextField
                                 className="input-override"
-                                label='Email'
-                                name='email'
-                                placeholder='Enter Email'
+                                label="Email"
+                                name="email"
+                                placeholder="Enter Email"
                                 variant="outlined"
                                 fullWidth
                                 required
                                 style={textFieldStyle}
                                 onChange={handleChange}
+                                error={Boolean(error)}
+                                helperText={error}
+                                onFocus={clearError}
                             />
                             <TextField
                                 className="input-override"
-                                label='Password'
-                                name='password'
-                                placeholder='Enter password'
-                                type='password'
+                                label="Password"
+                                name="password"
+                                placeholder="Enter password"
+                                type="password"
                                 variant="outlined"
                                 fullWidth
                                 required
@@ -166,19 +193,9 @@ const Login = ({ open, onClose }) => {
                                 onChange={handleChange}
                             />
                         </ThemeProvider>
-                        {/* Bring this code back in if you can create the logic of actually making this work */}
-                        {/* <FormControlLabel
-                        control={<Checkbox name="checkedB" />}
-                        label="Remember me"
-                        sx={{ '& .MuiFormControlLabel-label': { color: '#333' } }}
-                    /> */}
-                        <Button type='submit' color='primary' variant="contained" style={btnStyle} fullWidth>
+                        <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth>
                             Log in
                         </Button>
-                        {/* Bring back in if you can create the logic to make it work */}
-                        {/* <Typography>
-                            <Link href="#" sx={{ color: 'darkslategray' }}>Forgot password?</Link>
-                        </Typography> */}
                         <Typography sx={{ color: 'darkslategray' }}>
                             Do you have an account?&nbsp;
                             <Link component={RouterLink} to="/signup" onClick={onClose} sx={{ color: '#8abbb1', textDecoration: 'none' }}>
