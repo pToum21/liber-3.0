@@ -4,8 +4,6 @@ TODO:
 
 - render error message for when logging in, and email and/or password does not exist.
 
--fix the siving of the rating stars on the home page when viewing on mobile
-
 
 
 
