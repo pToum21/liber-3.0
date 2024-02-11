@@ -1,7 +1,5 @@
 TODO: 
 
-- make admin page button in nav
-
 - limit ratings to one? (so user cannot overinflate ratings)
 
 -fix the siving of the rating stars on the home page when viewing on mobile

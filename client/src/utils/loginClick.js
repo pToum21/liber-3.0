@@ -55,7 +55,7 @@ export default useLoginClick;
 // import useLoginClick from '../../utils/loginClick';
 // import { useEffect } from 'react';
 // import { Modal } from '@mui/material';
-// import Login from '../../pages/Login';
+// import Login from '../Components/Login/Login';
 
 // include this modal block of code at end of file 
 {/* <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>

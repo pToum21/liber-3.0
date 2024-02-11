@@ -7,7 +7,7 @@ import { Typography, Button, IconButton, Menu, MenuItem, Modal, TextField, Hidde
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/system';
-import Login from '../../pages/Login';
+import Login from '../Login/Login';
 // to link to other pages
 import { Link } from 'react-router-dom';
 // our files

@@ -7,7 +7,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import pages to be used as children
 import Home from './pages/Home.jsx';
 import MyLibrary from './pages/MyLibrary.jsx';
-import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
 import SearchResults from './pages/SearchResults.jsx';
@@ -34,10 +33,6 @@ const router = createBrowserRouter([
       {
         path: '/myLibrary',
         element: <MyLibrary />
-      },
-      {
-        path: '/login',
-        element: <Login />
       },
       {
         path: '/signup',

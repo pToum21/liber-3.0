@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import useLoginClick from '../../utils/loginClick';
 import { useEffect } from 'react';
 import { Modal } from '@mui/material';
-import Login from '../../pages/Login';
+import Login from '../Login/Login';
 
 
 const CommentForm = ({ bookId }) => {
@@ -89,7 +89,7 @@ const CommentForm = ({ bookId }) => {
         <h2>Add Review</h2>
         <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <Box display="flex" alignItems="center" marginBottom={2}>
-            {error && <p>Error: Please <button className="no-text-dec" sx={{border:'none', backgroundColor:'transparent'}} onClick={handleLoginClick}>log in</button> to add a comment.</p>}
+            {error && <p>Error: Please <a href="#" className="no-text-dec" style={{border:'none', backgroundColor:'transparent'}} onClick={handleLoginClick}>log in</a> to add a comment.</p>}
             <TextField
               id="comments"
               name="content"

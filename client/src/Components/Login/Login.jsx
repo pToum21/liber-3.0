@@ -6,9 +6,9 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import { useMutation } from '@apollo/client'
-import { LOGIN } from '../utils/mutations'
+import { LOGIN } from '../../utils/mutations'
 import { useState } from 'react';
-import Auth from '../utils/auth'
+import Auth from '../../utils/auth'
 
 const Login = ({ open, onClose }) => {
     const [formState, setFormState] = useState({ email: '', password: '' })
