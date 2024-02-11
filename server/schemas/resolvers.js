@@ -108,8 +108,7 @@ const resolvers = {
             }
 
             throw AuthenticationError;
-        }
-
+        },
     },
 
     Mutation: {

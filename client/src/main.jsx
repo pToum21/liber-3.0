@@ -13,7 +13,7 @@ import SingleBook from './pages/SingleBook.jsx';
 import SearchResults from './pages/SearchResults.jsx';
 // import BookReader from './pages/BookReader.jsx'
 import Three from './Components/Three/Three.jsx';
-import AllBooks from './Components/allBooks/allBooks.jsx';
+import AllBooks from './pages/AllBooks.jsx';
 import Admin from './pages/Admin.jsx'
 
 

@@ -15,7 +15,7 @@ import './navbar.css';
 import Auth from '../../utils/auth'
 import { QUERY_SEARCH_ALL_BOOKS } from '../../utils/queries';
 import SearchIcon from '@mui/icons-material/Search';
-import AllBooks from '../allBooks/allBooks';
+import AllBooks from '../../pages/AllBooks';
 
 // Liber brand
 const TitleTypography = styled(Typography)({
