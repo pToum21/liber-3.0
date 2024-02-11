@@ -153,16 +153,16 @@ function Home() {
                                                     <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                                 </Link>
                                             </div>
-                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }}>
+                                            <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }} >
                                                 {avgRating[index] !== undefined ? (
-                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly />
+                                                    <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly className="fullrating" />
                                                 ) : null}
                                             </div>
-                                            <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }}>
+                                            {/* <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }} size='small'>
                                                 {avgRating[index] !== undefined ? (
                                                     <p>{avgRating[index]} <StarIcon /></p>
                                                 ) : null}
-                                            </div>
+                                            </div> */}
 
                                             {/* title */}
                                             <div style={{ width: '100%' }}>
