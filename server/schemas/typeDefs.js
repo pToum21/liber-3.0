@@ -78,7 +78,6 @@ type Query {
     bookDetails(bookId: ID!): Book
     getAllUsers: [User]
     getAllBooks(page: Int, itemsPerPage: Int): PaginatedBooks
-    getOneUser(_id: ID): User
 }
 
 input ImageInput {
