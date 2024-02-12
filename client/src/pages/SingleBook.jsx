@@ -7,22 +7,33 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
+import { Modal } from '@mui/material';
+import Login from '../Components/Login/Login';
 // our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
 import { useState, useEffect } from 'react';
+import useLoginClick from '../utils/loginClick'
 
 
 function SingleBook() {
     const { id } = useParams();
+
+    const {
+        isLoginModalOpen,
+        isLoggedIn,
+        handleLoginClick,
+        handleLoginModalClose
+    } = useLoginClick();
+
 
     const { loading, data } = useQuery(QUERY_ONE_BOOK, {
         variables: { id: id }
     });
 
     if (loading) {
-        console.log(loading)
+        // console.log(loading)
     } else {
         // console.log(data.getSingleBook.image.data);
     }
@@ -60,7 +71,7 @@ function SingleBook() {
         avgRating = +(totalRating / ratingCount).toFixed(2);
         setAvgRating(avgRating);
 
-        console.log(avgRating);
+        // console.log(avgRating);
 
     }, [data, id]);
 
@@ -121,11 +132,11 @@ function SingleBook() {
             </Grid>
 
             {/* container holding all content*/}
-            <Grid className="bottom-home-div" container py={3} spacing={3} sx={{ width: '100%', display: 'flex', flexDirection:'column', justifyContent: 'space-evenly', alignItems: 'center', border: '10px double #8abbb1', margin: '0', backgroundColor: '#ececdc'}}>
+            <Grid className="bottom-home-div" container py={3} spacing={3} sx={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', border: '10px double #8abbb1', margin: '0', backgroundColor: '#ececdc' }}>
                 {/* Grid holds book and comment form */}
-                <div className="div-img-cmnt-form" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap:'wrap', border: '10px double #8abbb1', borderRadius: '10px', width: '90%', paddingTop: '2rem', paddingBottom:'2rem', backgroundColor:'#ededde'}}>
+                <div className="div-img-cmnt-form" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', border: '10px double #8abbb1', borderRadius: '10px', width: '90%', paddingTop: '2rem', paddingBottom: '2rem', backgroundColor: '#ededde' }}>
                     {/* Grid holds book image and buttons */}
-                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent:'center', alignItems: 'center', margin: '0' }}>
+                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent: 'center', alignItems: 'center', margin: '0' }}>
                         {/* image */}
                         <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '50%', height: 'auto' }} /><br />
                         {/* rating */}
@@ -137,16 +148,27 @@ function SingleBook() {
                                     Book Saved
                                 </Button>
                             ) : (
-                                <Button sx={{
-                                    backgroundColor: '#8abbb1',
-                                    color: '#f3f3ec',
-                                    '&:hover': {
-                                        backgroundColor: '#6a8e86',
-                                    },
-
-                                }} variant="contained" onClick={handleKeepBook}>
-                                    Keep Book
-                                </Button>
+                                (isLoggedIn ? (
+                                    <Button sx={{
+                                        backgroundColor: '#8abbb1',
+                                        color: '#f3f3ec',
+                                        '&:hover': {
+                                            backgroundColor: '#6a8e86',
+                                        },
+                                    }} variant="contained" onClick={handleKeepBook}>
+                                        Keep Book
+                                    </Button>
+                                ) : (
+                                    <Button sx={{
+                                        backgroundColor: '#8abbb1',
+                                        color: '#f3f3ec',
+                                        '&:hover': {
+                                            backgroundColor: '#6a8e86',
+                                        },
+                                    }} variant="contained" onClick={handleLoginClick}>
+                                        Keep Book
+                                    </Button>
+                                ))
                             )}
                             <Link to={`/bookReader/${id}`}>
                                 <Button sx={{
@@ -166,12 +188,18 @@ function SingleBook() {
                 </div>
 
                 {/* container for comment list */}
-                <Grid item sx={{ width: '100%', paddingLeft: '5rem !important', paddingRight: '5rem !important'}} >
+                <Grid item sx={{ width: '100%', paddingLeft: '5rem !important', paddingRight: '5rem !important' }} >
                     <CommentList reviews={book.reviews} />
                 </Grid>
 
             </Grid>
-        </> 
+
+            <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                <div>
+                    <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+                </div>
+            </Modal>
+        </>
     );
 }
 

@@ -35,10 +35,10 @@ const AllBooks = () => {
 
     return (
         <div style={{}}>
-            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec',  }}>
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec', }}>
                 <em>Viewing all books:</em>
             </Grid>
-            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem',  }}>
+            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem', }}>
                 <Pagination
                     count={data.getAllBooks.paginationInfo.totalPages}
                     page={currentPage}

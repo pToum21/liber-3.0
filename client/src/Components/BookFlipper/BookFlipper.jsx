@@ -9,7 +9,7 @@ import './BookFlipper.css';
 const BookFlipper = () => {
     const { bookId } = useParams(); // Get the bookId from the URL
     const { loading, error, data } = useQuery(QUERY_ONE_BOOK, {
-        variables: { id: bookId }, // Pass the bookId as a variable to the query
+        variables: { id: bookId },
     });
 
     if (loading) return (
@@ -39,7 +39,7 @@ const BookFlipper = () => {
     };
 
     const cleanedText = cleanText(text);
-    console.log(authors);
+    
     return (
         <main className="unique-main-class">
             <div className="book unique-book-class">

@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_MY_LIBRARY } from '../../utils/queries';
 import { Link } from 'react-router-dom';
-import { Box } from '@mui/system';
 import { REMOVE_BOOK } from '../../utils/mutations';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
