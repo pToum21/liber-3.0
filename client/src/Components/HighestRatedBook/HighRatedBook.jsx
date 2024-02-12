@@ -7,11 +7,23 @@ import { QUERY_HIGHEST_RATED_BOOK, QUERY_MY_LIBRARY } from '../../utils/queries'
 import './HighRatedBook.css';
 import { Link } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
+import { Modal } from '@mui/material';
+import Login from '../Login/Login';
+import useLoginClick from '../../utils/loginClick'
 
 const HighestRatedBook = () => {
     const { loading, error, data } = useQuery(QUERY_HIGHEST_RATED_BOOK);
     const [bookAdded, setBookAdded] = useState(false);
     const [addedBooks, setAddedBooks] = useState(new Set()); // Keep track of added book IDs
+
+
+    const {
+        isLoginModalOpen,
+        isLoggedIn,
+        handleLoginClick,
+        handleLoginModalClose
+    } = useLoginClick();
+
 
     const [keepBookMutation] = useMutation(KEEP_BOOK, {
         refetchQueries: [{ query: QUERY_MY_LIBRARY }]
@@ -112,20 +124,33 @@ const HighestRatedBook = () => {
                                 <p style={{ fontSize: '1.3rem', color: '#f3f3ec' }}>{highestRatedBook.title}</p>
                                 <p style={{ marginBottom: '1rem', color: '#f3f3ec' }}>Author: {highestRatedBook.authors.map((author) => author.name).join(', ')}</p>
                                 <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                    <Button
-                                        sx={{
-                                            backgroundColor: bookAdded ? 'grey' : '#8abbb1',
-                                            color: '#f3f3ec',
-                                            '&:hover': {
-                                                backgroundColor: bookAdded ? 'grey' : '#6a8e86',
-                                            },
-                                        }}
-                                        variant="contained"
-                                        onClick={handleKeepBook}
-                                        disabled={bookAdded}
-                                    >
-                                        {bookAdded ? 'Book Saved' : 'Keep Book'}
-                                    </Button>
+                                    {bookAdded ? (
+                                        <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
+                                            Book Saved
+                                        </Button>
+                                    ) : (
+                                        (isLoggedIn ? (
+                                            <Button sx={{
+                                                backgroundColor: '#8abbb1',
+                                                color: '#f3f3ec',
+                                                '&:hover': {
+                                                    backgroundColor: '#6a8e86',
+                                                },
+                                            }} variant="contained" onClick={handleKeepBook}>
+                                                Keep Book
+                                            </Button>
+                                        ) : (
+                                            <Button sx={{
+                                                backgroundColor: '#8abbb1',
+                                                color: '#f3f3ec',
+                                                '&:hover': {
+                                                    backgroundColor: '#6a8e86',
+                                                },
+                                            }} variant="contained" onClick={handleLoginClick}>
+                                                Keep Book
+                                            </Button>
+                                        ))
+                                    )}
 
                                     <Link to={`/bookReader/${highestRatedBook._id}`}>
                                         <Button
@@ -151,6 +176,12 @@ const HighestRatedBook = () => {
                     <p style={{ fontSize: '2rem', color: '#505050' }}>No books have been rated yet!</p>
                 </Grid>
             )}
+
+            <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                <div>
+                    <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+                </div>
+            </Modal>
         </>
     );
 };

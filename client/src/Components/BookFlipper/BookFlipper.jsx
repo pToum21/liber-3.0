@@ -39,7 +39,7 @@ const BookFlipper = () => {
     };
 
     const cleanedText = cleanText(text);
-    console.log(authors);
+    
     return (
         <main className="unique-main-class">
             <div className="book unique-book-class">

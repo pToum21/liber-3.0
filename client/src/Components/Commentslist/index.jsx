@@ -6,7 +6,7 @@ const CommentList = ({ reviews }) => {
     return <h3>No Comments Yet</h3>;
   }
 
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <>

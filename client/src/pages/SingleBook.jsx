@@ -7,22 +7,33 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
+import { Modal } from '@mui/material';
+import Login from '../Components/Login/Login';
 // our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
 import CommentList from '../Components/Commentslist'
 import { useState, useEffect } from 'react';
+import useLoginClick from '../utils/loginClick'
 
 
 function SingleBook() {
     const { id } = useParams();
+
+    const {
+        isLoginModalOpen,
+        isLoggedIn,
+        handleLoginClick,
+        handleLoginModalClose
+    } = useLoginClick();
+
 
     const { loading, data } = useQuery(QUERY_ONE_BOOK, {
         variables: { id: id }
     });
 
     if (loading) {
-        console.log(loading)
+        // console.log(loading)
     } else {
         // console.log(data.getSingleBook.image.data);
     }
@@ -60,7 +71,7 @@ function SingleBook() {
         avgRating = +(totalRating / ratingCount).toFixed(2);
         setAvgRating(avgRating);
 
-        console.log(avgRating);
+        // console.log(avgRating);
 
     }, [data, id]);
 
@@ -137,16 +148,27 @@ function SingleBook() {
                                     Book Saved
                                 </Button>
                             ) : (
-                                <Button sx={{
-                                    backgroundColor: '#8abbb1',
-                                    color: '#f3f3ec',
-                                    '&:hover': {
-                                        backgroundColor: '#6a8e86',
-                                    },
-
-                                }} variant="contained" onClick={handleKeepBook}>
-                                    Keep Book
-                                </Button>
+                                (isLoggedIn ? (
+                                    <Button sx={{
+                                        backgroundColor: '#8abbb1',
+                                        color: '#f3f3ec',
+                                        '&:hover': {
+                                            backgroundColor: '#6a8e86',
+                                        },
+                                    }} variant="contained" onClick={handleKeepBook}>
+                                        Keep Book
+                                    </Button>
+                                ) : (
+                                    <Button sx={{
+                                        backgroundColor: '#8abbb1',
+                                        color: '#f3f3ec',
+                                        '&:hover': {
+                                            backgroundColor: '#6a8e86',
+                                        },
+                                    }} variant="contained" onClick={handleLoginClick}>
+                                        Keep Book
+                                    </Button>
+                                ))
                             )}
                             <Link to={`/bookReader/${id}`}>
                                 <Button sx={{
@@ -171,6 +193,12 @@ function SingleBook() {
                 </Grid>
 
             </Grid>
+
+            <Modal open={isLoginModalOpen} onClose={handleLoginModalClose}>
+                <div>
+                    <Login open={isLoginModalOpen} onClose={handleLoginModalClose} />
+                </div>
+            </Modal>
         </>
     );
 }
