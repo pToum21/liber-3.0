@@ -16,7 +16,7 @@ const CommentList = ({ reviews }) => {
       >
         Reviews
       </h3>
-      <div style={{display: 'flex', flexWrap: 'wrap',}}>
+      <div style={{maxHeight: '30vh', overflow: 'scroll', backgroundColor:'#eeeee3'}}>
         {reviews &&
           reviews.map((review) => (
             <div key={review._id} className="col-12 mb-3 pb-3" style={{margin: '1rem'}}>
