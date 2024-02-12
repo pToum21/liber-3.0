@@ -82,7 +82,7 @@ const NavBar = () => {
         if (location.pathname !== '/searchresults') {
             navigate('/searchresults');
         } else {
-            window.location.reload(); //maybe figure out refetch instead
+            window.location.reload();
         }
     };
 
@@ -227,12 +227,12 @@ const NavBar = () => {
                                 </>
                             )}
                             {isLoggedIn && role === 'admin' && (
-                                 <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
-                                <Button className="navlinks" color="inherit"  sx={{ height: '100%' }}>
-                                   
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                    <Button className="navlinks" color="inherit" sx={{ height: '100%' }}>
+
                                         Admin
-                                   
-                                </Button>
+
+                                    </Button>
                                 </Link>
                             )}
                         </Hidden>
@@ -255,7 +255,6 @@ const NavBar = () => {
                                 }
                             }}
                             sx={{
-                                // this is not placeholder text, idk what it is
                                 '& .MuiOutlinedInput-root': {
                                     color: 'white',
                                 },
