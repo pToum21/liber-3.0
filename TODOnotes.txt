@@ -1,6 +1,9 @@
 TODO: 
 
 - limit ratings to one? (so user cannot overinflate ratings)
+- make an admin role after deploy, make sure to leave a note when submitting project 3 the sign in details so this way Diarmuid/Meg can access an admin account and test it out
+
+-ask Diarmuid what sensitive API key information is (criteria says to protect that)
 
 - Deploy
 =============================================
