@@ -7,7 +7,7 @@ import { Grid } from '@mui/material'
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 50;
+    const itemsPerPage = 48;
 
     const { loading, error, data } = useQuery(GET_ALL_BOOKS_WITH_PAGINATION, {
         variables: { page: currentPage, itemsPerPage: itemsPerPage },
@@ -28,7 +28,7 @@ const AllBooks = () => {
     return (
         <div>
             <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
-                <em>All Books</em>
+                <em>Viewing all books:</em>
             </Grid>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
                 <Pagination
