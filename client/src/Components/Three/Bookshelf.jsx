@@ -54,6 +54,7 @@ const BookShelf = (props) => {
   );
 };
 
+// export bookshelf 
 export default BookShelf;
 
 // Preload the 3D model
