@@ -13,7 +13,7 @@ import { QUERY_ALL_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import Error from './Error';
 import { pink } from '@mui/material/colors';
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
 
 const muipink = pink[300];
 
