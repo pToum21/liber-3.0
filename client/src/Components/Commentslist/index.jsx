@@ -7,6 +7,7 @@ const CommentList = ({ reviews }) => {
   }
 
   console.log(reviews);
+  
 
   return (
     <>
@@ -22,7 +23,7 @@ const CommentList = ({ reviews }) => {
             <div key={review._id} className="col-12 mb-3 pb-3" style={{margin: '1rem'}}>
               <div className="p-3 bg-dark text-light">
                 <p className="card-header"style={{ fontSize: '1rem' }}>
-                   {new Date(parseInt(review.createdAt)).toLocaleString()}                  
+                   {new Date(parseInt(review.createdAt)).toLocaleDateString()}                  
                 </p>
                 <div style={{ display: 'flex', alignItems:'center' }}>
                   <p>rating:</p>
