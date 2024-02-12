@@ -33,7 +33,7 @@ const CommentForm = ({ bookId }) => {
   } = useLoginClick();
 
   useEffect(() => {
-    console.log("isLoginModalOpen:", isLoginModalOpen);
+    // console.log("isLoginModalOpen:", isLoginModalOpen);
   }, [isLoginModalOpen]);
 
   const handleFormSubmit = async (event) => {
@@ -60,7 +60,7 @@ const CommentForm = ({ bookId }) => {
       setCommentText('');
       setRating(0);
       showRatingError(false);
-      console.log(commentText);
+      // console.log(commentText);
     } catch (error) {
       console.error(error);
     }

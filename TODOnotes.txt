@@ -5,6 +5,7 @@ TODO:
 
 -ask Diarmuid what sensitive API key information is (criteria says to protect that)
 
+- Deploy
 =============================================
 
 NOTES (can leave notes here detailing what you did):
@@ -37,17 +38,6 @@ NOTES (can leave notes here detailing what you did):
 
     ===================================================
 
-    from Ryan: 
-        2/10: need to style:  mylibrary, error, 
-
-    from Peyton : 
-
-
-    from Sal :
-
-
-
-=============================================
 EXTRA CODE:
 
 

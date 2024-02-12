@@ -28,7 +28,7 @@ module.exports = async function fetchData() {
 
 
             // console.log(bookData.authors)
-            
+
             try {
               const newBook = await Book.create({
                 title: title,

@@ -6,8 +6,7 @@ const CommentList = ({ reviews }) => {
     return <h3>No Comments Yet</h3>;
   }
 
-  console.log(reviews);
-  
+  // console.log(reviews);
 
   return (
     <>
@@ -17,15 +16,15 @@ const CommentList = ({ reviews }) => {
       >
         Reviews
       </h3>
-      <div style={{maxHeight: '30vh', overflow: 'scroll', backgroundColor:'#eeeee3'}}>
+      <div style={{ maxHeight: '30vh', overflow: 'scroll', backgroundColor: '#eeeee3' }}>
         {reviews &&
           reviews.map((review) => (
-            <div key={review._id} className="col-12 mb-3 pb-3" style={{margin: '1rem'}}>
+            <div key={review._id} className="col-12 mb-3 pb-3" style={{ margin: '1rem' }}>
               <div className="p-3 bg-dark text-light">
-                <p className="card-header"style={{ fontSize: '1rem' }}>
-                   {new Date(parseInt(review.createdAt)).toLocaleDateString()}                  
+                <p className="card-header" style={{ fontSize: '1rem' }}>
+                  {new Date(parseInt(review.createdAt)).toLocaleString()}
                 </p>
-                <div style={{ display: 'flex', alignItems:'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                   <p>rating:</p>
                   <Rating name="read-only" value={review.rating} precision={0.5} readOnly />
                 </div>
