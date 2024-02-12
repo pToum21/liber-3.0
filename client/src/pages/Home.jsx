@@ -43,7 +43,7 @@ function Home() {
 
     //   puts data into variable (it's an array), can access its properties from there
     const books = data?.getBooks.books || [];
-    console.log(books)
+    // console.log(books)
 
     //   dynamic number of pages of books we have
     const bookCount = data?.getBooks.bookCount || 0;
@@ -72,7 +72,7 @@ function Home() {
     // logic to sift through pages of books
     useEffect(() => {
         const skip = (currentPage - 1) * 5;
-        console.log(skip)
+        // console.log(skip)
         refetch({ skip });
 
 
@@ -142,11 +142,11 @@ function Home() {
 
                             <Grid container className="bottom-home-div">
                                 {/* // parent div holding books */}
-                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', alignItems:'stretch', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
+                                <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
                                     {/* each book will be in its own div */}
                                     {books.map((book, index) => (
-                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s`}}>
+                                        <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
                                             {/* image */}
                                             <div style={{ width: '100%' }}>
                                                 <Link to={`/singleBook/${book._id}`}>
@@ -158,12 +158,6 @@ function Home() {
                                                     <Rating name="read-only" value={avgRating[index]} precision={0.5} readOnly className="fullrating" />
                                                 ) : null}
                                             </div>
-                                            {/* <div className="mobilerating" style={{ display: 'none', width: '100%', margin: '0' }} size='small'>
-                                                {avgRating[index] !== undefined ? (
-                                                    <p>{avgRating[index]} <StarIcon /></p>
-                                                ) : null}
-                                            </div> */}
-
                                             {/* title */}
                                             <div style={{ width: '100%' }}>
                                                 <p className="home-book-titles" style={{ fontSize: '0.8rem', textWrap: 'wrap' }}>
