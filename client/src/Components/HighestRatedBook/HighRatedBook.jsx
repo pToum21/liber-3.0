@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { styled } from '@mui/system';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { QUERY_HIGHEST_RATED_BOOK, QUERY_MY_LIBRARY } from '../../utils/queries';
 import './HighRatedBook.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { KEEP_BOOK } from '../../utils/mutations';
 
 const HighestRatedBook = () => {
