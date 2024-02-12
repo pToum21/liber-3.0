@@ -69,7 +69,7 @@ export default function Admin() {
       <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
         <em>Admin Dashboard</em>
       </Grid>
-      <div style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '3rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
+      <div className="bottom-home-div" style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '3rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
         <p style={{paddingBottom:'1rem'}}>
           The following are the registered users of <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br />
           Select from dropdown to change role.<br />
@@ -83,10 +83,10 @@ export default function Admin() {
                 <TableHead >
                   <TableRow>
 
-                    <TableCell sx={{ paddingLeft: '6rem' }}>Username</TableCell>
-                    <TableCell >Email</TableCell>
-                    <TableCell >Role</TableCell>
-                    <TableCell >Actions</TableCell>
+                    <TableCell sx={{ paddingLeft: '6rem', }}>U S E R N A M E</TableCell>
+                    <TableCell >E M A I L</TableCell>
+                    <TableCell >R O L E</TableCell>
+                    <TableCell >A C T I O N</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

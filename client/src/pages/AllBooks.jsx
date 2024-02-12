@@ -27,10 +27,10 @@ const AllBooks = () => {
 
     return (
         <div>
-            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec' }}>
                 <em>Viewing all books:</em>
             </Grid>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
+            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
                 <Pagination
                     count={data.getAllBooks.paginationInfo.totalPages}
                     page={currentPage}
@@ -41,7 +41,7 @@ const AllBooks = () => {
                 />
             </div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
-                {data && data.getAllBooks.books.map((book) => (
+                {data && data.getAllBooks.books.map((book, index) => (
                     <Box
                         className="ind-book"
                         key={book._id}
@@ -51,6 +51,7 @@ const AllBooks = () => {
                             maxWidth: '200px',
                             position: 'relative',
                             overflow: 'hidden',
+                            animationDelay: `${index * 0.2}s`,
 
                         }}
                     >
@@ -59,7 +60,7 @@ const AllBooks = () => {
 
                                 src={`data:image/jpg;base64,${book.image.data}`}
                                 alt={book.title}
-                                style={{ width: '100%', height: '20rem', borderRadius: '8px', animationDelay: `${book * 0.3}s`, }}
+                                style={{ width: '100%', height: '20rem', borderRadius: '8px',  }}
                             />
                             <div
                                 className="titleOverlay"
