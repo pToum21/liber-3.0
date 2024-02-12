@@ -35,7 +35,7 @@ NOTES (can leave notes here detailing what you did):
     ===================================================
 
     from Ryan: 
-        2/10: need to style: singlebook, mylibrary, error, allbooks, admin
+        2/10: need to style:  mylibrary, error, 
 
     from Peyton : 
 

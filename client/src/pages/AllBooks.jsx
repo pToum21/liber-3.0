@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_BOOKS_WITH_PAGINATION } from '../utils/queries'
 import { Link } from 'react-router-dom';
 import { Box, Pagination } from '@mui/material';
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +19,14 @@ const AllBooks = () => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return
+    (
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="success" />
+        </div>
+    );
+
     if (error) return <p>Error : Please try again</p>;
 
     const handlePageChange = (event, value) => {
@@ -51,7 +59,7 @@ const AllBooks = () => {
                             maxWidth: '200px',
                             position: 'relative',
                             overflow: 'hidden',
-                            animationDelay: `${index * 0.2}s`,
+                            animationDelay: `${index * 0.1}s`,
 
                         }}
                     >
@@ -60,7 +68,7 @@ const AllBooks = () => {
 
                                 src={`data:image/jpg;base64,${book.image.data}`}
                                 alt={book.title}
-                                style={{ width: '100%', height: '20rem', borderRadius: '8px',  }}
+                                style={{ width: '100%', height: '20rem', borderRadius: '8px', }}
                             />
                             <div
                                 className="titleOverlay"
