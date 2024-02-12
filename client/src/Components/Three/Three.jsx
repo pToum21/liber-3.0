@@ -30,7 +30,7 @@ const Three = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [fadeIn, setFadeIn] = useState(false); // State for fade-in effect
-    const audioRef = useRef(new Audio('/3dModels/forestsounds.mp3'));
+    const audioRef = useRef(new Audio('/3dModels/foresetSounds.mp3'));
 
     useEffect(() => {
         const fakeLoadingTimeout = setTimeout(() => {
