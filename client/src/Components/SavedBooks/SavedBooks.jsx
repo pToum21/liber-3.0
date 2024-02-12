@@ -72,13 +72,17 @@ const SavedBooks = () => {
                 <Grid item sx={{ backgroundColor: '#8abbb1', width: '100%', padding: '1rem' }}>
                     <Grid item sx={{ backgroundColor: '#8abbb1', width: '100%', padding: '2rem', display: 'flex', justifyContent: 'space-evenly', border: 'double 10px #f3f3ec', }}>
                         <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>N A M E : {myData.username}</p>
+                            <p>N A M E : &nbsp; {myData.username}</p>
                         </div>
                         <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>E M A I L : {myData.email}</p>
+                            <p>E M A I L : &nbsp; {myData.email}</p>
                         </div>
                         <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>S T A T U S : {myData.role}</p>
+                            <p>S T A T U S : &nbsp; {myData.role}</p>
+                        </div>
+                        <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
+                            <p>B O R N: &nbsp; {new Date(parseInt(myData.createdAt)).toLocaleString()}</p>
+
                         </div>
                     </Grid>
                 </Grid>

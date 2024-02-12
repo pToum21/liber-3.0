@@ -10,6 +10,7 @@ mutation CreateUser($username: String!, $email: String!, $password: String!) {
       username
       email
       role
+      createdAt
     }
   }
 }
