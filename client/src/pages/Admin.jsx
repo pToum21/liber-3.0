@@ -69,10 +69,16 @@ export default function Admin() {
       <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
         <em>Admin Dashboard</em>
       </Grid>
-      <div style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
+      <div style={{ border: 'double 10px #cae4df', backgroundColor: '#8abbb1', paddingTop: '3rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem', }}>
+        <p style={{paddingBottom:'1rem'}}>
+          The following are the registered users of <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br />
+          Select from dropdown to change role.<br />
+          Click trash icon to delete user. *This will be a permanent decision!*
+        </p>
+        {/* extra check to see if admin, otherwise, cant access table */}
         {
           role === 'admin' ?
-            <TableContainer component={Paper} sx={{ background: '#f3f3ec', }}>
+            <TableContainer component={Paper} sx={{ background: '#f3f3ec', maxHeight: '75vh', overflow:'scroll' }}>
               <Table sx={{ minWidth: 650, }} aria-label="simple table">
                 <TableHead >
                   <TableRow>
