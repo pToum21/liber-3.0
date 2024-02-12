@@ -81,7 +81,7 @@ const SavedBooks = () => {
                             <p>S T A T U S : &nbsp; {myData.role}</p>
                         </div>
                         <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>B O R N: &nbsp; {new Date(parseInt(myData.createdAt)).toLocaleString()}</p>
+                            <p>B O R N: &nbsp; {new Date(parseInt(myData.createdAt)).toLocaleDateString()}</p>
 
                         </div>
                     </Grid>
