@@ -8,9 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HomeIcon from '@mui/icons-material/Home';
 import PauseIcon from '@mui/icons-material/Pause';
-import './three.css';
-import { Link } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Link } from 'react-router-dom';
+import './three.css';
 
 function Light({ brightness, color, position }) {
     return (
@@ -38,6 +38,23 @@ const Three = () => {
         }, 500);
 
         return () => clearTimeout(fakeLoadingTimeout);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            
+            if (window.scrollY > 100) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+
+        // Add event listener for scroll events
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     const handleCanvasClick = () => {
@@ -78,7 +95,6 @@ const Three = () => {
                 </div>
             )}
 
-
             <div className="controls-for-3d" style={{
                 position: 'absolute',
                 top: '5%',
@@ -90,19 +106,13 @@ const Three = () => {
                 maxHeight: '9rem',
                 zIndex: '1',
             }}>
-                {/* <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
-                    Library Instructions
-                   
-
-                </h1> */}
                 <p style={{
                     color: 'black',
                     fontFamily: 'Press Start 2P',
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>CLICK HOME</strong>
-
+                    <strong>CLICK HOME</strong>
                     <Link to={`/`}>
                         <IconButton style={{ fontSize: '16px' }}>
                             <HomeIcon style={{ color: 'black' }} />
@@ -116,7 +126,7 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>LEFT CLICK</strong>: read book{/*anywhere to sit at the desk and read your selected Book.*/}
+                    <strong>LEFT CLICK</strong>: read book
                 </p>
                 <p style={{
                     color: 'black',
@@ -124,12 +134,10 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>RIGHT CLICK HOLD</strong>: look around {/*to grab and pan around the room.*/}
+                    <strong>RIGHT CLICK HOLD</strong>: look around
                 </p>
-
-
-
             </div>
+
             <div style={{
                 position: 'absolute',
                 top: '5%',
@@ -144,10 +152,7 @@ const Three = () => {
                 <IconButton className='sound-button' onClick={toggleAudio} style={{ fontSize: '16px' }}>
                     <p style={{ color: 'black' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                 </IconButton>
-
             </div>
-
-
 
             <Canvas
                 style={{ width: '100%', height: '100%', zIndex: '0' }}
