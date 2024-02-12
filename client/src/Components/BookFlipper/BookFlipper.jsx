@@ -9,7 +9,7 @@ import './BookFlipper.css';
 const BookFlipper = () => {
     const { bookId } = useParams(); // Get the bookId from the URL
     const { loading, error, data } = useQuery(QUERY_ONE_BOOK, {
-        variables: { id: bookId }, 
+        variables: { id: bookId },
     });
 
     if (loading) return (
