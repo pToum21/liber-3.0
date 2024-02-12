@@ -16,7 +16,7 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
     password: String,
 
@@ -24,7 +24,10 @@ const userSchema = new Schema({
         type: Schema.Types.Mixed,
         ref: 'Book'
     }]
-});
+},
+    {
+        timestamps: true
+    });
 
 // pre('save') enacts middleware to perform logic before or after a specified action; in this case it wants to run this conditional logic before we save the document to the database.
 // pass in next cb fn to use it at the end, this way this ensure the logic here runs before anything else in the process.

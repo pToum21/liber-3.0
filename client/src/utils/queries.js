@@ -78,6 +78,7 @@ query searchAllBooks($searchTerm: String!) {
 export const QUERY_MY_LIBRARY = gql`
 query MyLibrary {
   myLibrary {
+    createdAt
     username
     role
     email

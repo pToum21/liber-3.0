@@ -8,6 +8,7 @@ type User {
     email: String
     role: String
     keptBooks: [Book]
+    createdAt: String
 }
 
 type Author {

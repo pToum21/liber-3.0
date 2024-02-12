@@ -34,11 +34,11 @@ const AllBooks = () => {
     };
 
     return (
-        <div>
-            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec' }}>
+        <div style={{}}>
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec',  }}>
                 <em>Viewing all books:</em>
             </Grid>
-            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
+            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem',  }}>
                 <Pagination
                     count={data.getAllBooks.paginationInfo.totalPages}
                     page={currentPage}
@@ -48,7 +48,7 @@ const AllBooks = () => {
                     sx={{ button: { color: '#8abbb1' } }}
                 />
             </div>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center', border: 'double 10px #cae4df', padding: '2rem' }}>
                 {data && data.getAllBooks.books.map((book, index) => (
                     <Box
                         className="ind-book"
