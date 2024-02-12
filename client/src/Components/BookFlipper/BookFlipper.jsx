@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { QUERY_ONE_BOOK } from '../../utils/queries';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import './BookFlipper.css';
 
@@ -11,7 +12,11 @@ const BookFlipper = () => {
         variables: { id: bookId }, // Pass the bookId as a variable to the query
     });
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="success" />
+        </div>
+    );
     if (error) return <p>Error: {error.message}</p>;
 
     const { title, authors, text } = data.getSingleBook;
