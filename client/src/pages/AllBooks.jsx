@@ -3,11 +3,12 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_BOOKS_WITH_PAGINATION } from '../utils/queries'
 import { Link } from 'react-router-dom';
 import { Box, Pagination } from '@mui/material';
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 50;
+    const itemsPerPage = 48;
 
     const { loading, error, data } = useQuery(GET_ALL_BOOKS_WITH_PAGINATION, {
         variables: { page: currentPage, itemsPerPage: itemsPerPage },
@@ -18,7 +19,14 @@ const AllBooks = () => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return
+    (
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="success" />
+        </div>
+    );
+
     if (error) return <p>Error : Please try again</p>;
 
     const handlePageChange = (event, value) => {
@@ -27,10 +35,10 @@ const AllBooks = () => {
 
     return (
         <div>
-            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.5rem', color: '#f3f3ec' }}>
-                <em>All Books</em>
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec' }}>
+                <em>Viewing all books:</em>
             </Grid>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
+            <div className="bottom-home-div" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '2rem' }}>
                 <Pagination
                     count={data.getAllBooks.paginationInfo.totalPages}
                     page={currentPage}
@@ -41,7 +49,7 @@ const AllBooks = () => {
                 />
             </div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', alignItems: 'center' }}>
-                {data && data.getAllBooks.books.map((book) => (
+                {data && data.getAllBooks.books.map((book, index) => (
                     <Box
                         className="ind-book"
                         key={book._id}
@@ -51,6 +59,7 @@ const AllBooks = () => {
                             maxWidth: '200px',
                             position: 'relative',
                             overflow: 'hidden',
+                            animationDelay: `${index * 0.1}s`,
 
                         }}
                     >
@@ -59,7 +68,7 @@ const AllBooks = () => {
 
                                 src={`data:image/jpg;base64,${book.image.data}`}
                                 alt={book.title}
-                                style={{ width: '100%', height: '20rem', borderRadius: '8px', animationDelay: `${book * 0.3}s`, }}
+                                style={{ width: '100%', height: '20rem', borderRadius: '8px', }}
                             />
                             <div
                                 className="titleOverlay"

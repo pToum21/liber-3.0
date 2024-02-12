@@ -1,0 +1,16 @@
+.my-book-titles {
+    /* truncating titles */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* Number of lines to show */
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 600px) {
+    .saved-head-text {
+        font-size: 1.2rem !important;
+        border-color: #99ccc2;
+    }
+}

@@ -150,7 +150,7 @@ function Home() {
                                             {/* image */}
                                             <div style={{ width: '100%' }}>
                                                 <Link to={`/singleBook/${book._id}`}>
-                                                    <img style={{ width: '100%', height: '23vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
+                                                    <img style={{ width: '100%', height: '20vw' }} src={`data:image/jpg;base64,${book.image.data}`} />
                                                 </Link>
                                             </div>
                                             <div className="fullrating" style={{ display: 'flex', width: '100%', margin: '0' }} >

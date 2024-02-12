@@ -10,6 +10,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PauseIcon from '@mui/icons-material/Pause';
 import './three.css';
 import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Light({ brightness, color, position }) {
     return (
@@ -56,8 +57,8 @@ const Three = () => {
     return (
         <div className={`${isLoading ? 'loading' : 'loaded'}`} style={{ backgroundColor: 'transparent', position: 'relative', height: '100vh' }}>
             {isLoading && (
-                <div className="loading-overlay">
-                    <p>Loading...</p>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <CircularProgress color="success" />
                 </div>
             )}
 
@@ -94,20 +95,20 @@ const Three = () => {
                    
 
                 </h1> */}
-                 <p style={{
+                <p style={{
                     color: 'black',
                     fontFamily: 'Press Start 2P',
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
                     {/* Press */} <strong>CLICK HOME</strong>
-                
-                <Link to={`/`}>
+
+                    <Link to={`/`}>
                         <IconButton style={{ fontSize: '16px' }}>
                             <HomeIcon style={{ color: 'black' }} />
                         </IconButton>
                     </Link>
-                    </p>
+                </p>
 
                 <p style={{
                     color: 'black',
@@ -115,7 +116,7 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>LEFT CLICK</strong>: read book{/*anywhere to sit at the desk and read your selected Book.*/} 
+                    {/* Press */} <strong>LEFT CLICK</strong>: read book{/*anywhere to sit at the desk and read your selected Book.*/}
                 </p>
                 <p style={{
                     color: 'black',

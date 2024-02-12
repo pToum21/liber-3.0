@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { QUERY_ONE_BOOK } from '../../utils/queries';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import './BookFlipper.css';
 
@@ -11,7 +12,11 @@ const BookFlipper = () => {
         variables: { id: bookId }, // Pass the bookId as a variable to the query
     });
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="success" />
+        </div>
+    );
     if (error) return <p>Error: {error.message}</p>;
 
     const { title, authors, text } = data.getSingleBook;
@@ -43,7 +48,7 @@ const BookFlipper = () => {
                         {/* title */}
                         <h1 className="unique-h1-class book-flipper-title">{title}</h1>
                         <div className="separator unique-separator-class"></div>
-                        {/* authors */}
+                        {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
                         {authors.length > 1 ? (
                             <h2 className="unique-h2-class">by {
                                 authors.map(author => {

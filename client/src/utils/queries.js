@@ -80,6 +80,7 @@ query MyLibrary {
   myLibrary {
     username
     role
+    email
     keptBooks {
       title
       image {

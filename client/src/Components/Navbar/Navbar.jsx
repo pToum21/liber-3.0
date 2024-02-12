@@ -8,6 +8,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/system';
 import Login from '../Login/Login';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+// for outline of textfield
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 // to link to other pages
 import { Link } from 'react-router-dom';
 // our files
@@ -88,7 +91,76 @@ const NavBar = () => {
     if (token) {
         const authUser = Auth.getProfile();
         role = authUser.data.role;
-    }
+    };
+
+    // modify outline of textfield
+    const customTheme = (outerTheme) =>
+        createTheme({
+            palette: {
+                mode: outerTheme.palette.mode,
+            },
+            components: {
+                MuiTextField: {
+                    styleOverrides: {
+                        root: {
+                            '--TextField-brandBorderColor': '#E0E3E7',
+                            '--TextField-brandBorderHoverColor': '#B2BAC2',
+                            '--TextField-brandBorderFocusedColor': '#6F7E8C',
+                            '& label.Mui-focused': {
+                                color: 'var(--TextField-brandBorderFocusedColor)',
+                            },
+                        },
+                    },
+                },
+                MuiOutlinedInput: {
+                    styleOverrides: {
+                        notchedOutline: {
+                            borderColor: 'var(--TextField-brandBorderColor)',
+                        },
+                        root: {
+                            [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+                                borderColor: 'var(--TextField-brandBorderHoverColor)',
+                            },
+                            [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
+                                borderColor: 'var(--TextField-brandBorderFocusedColor)',
+                            },
+                        },
+                    },
+                },
+                MuiFilledInput: {
+                    styleOverrides: {
+                        root: {
+                            '&::before, &::after': {
+                                borderBottom: '2px solid var(--TextField-brandBorderColor)',
+                            },
+                            '&:hover:not(.Mui-disabled, .Mui-error):before': {
+                                borderBottom: '2px solid var(--TextField-brandBorderHoverColor)',
+                            },
+                            '&.Mui-focused:after': {
+                                borderBottom: '2px solid var(--TextField-brandBorderFocusedColor)',
+                            },
+                        },
+                    },
+                },
+                MuiInput: {
+                    styleOverrides: {
+                        root: {
+                            '&::before': {
+                                borderBottom: '2px solid var(--TextField-brandBorderColor)',
+                            },
+                            '&:hover:not(.Mui-disabled, .Mui-error):before': {
+                                borderBottom: '2px solid var(--TextField-brandBorderHoverColor)',
+                            },
+                            '&.Mui-focused:after': {
+                                borderBottom: '2px solid var(--TextField-brandBorderFocusedColor)',
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+    const outerTheme = useTheme();
 
     return (
         <>
@@ -113,23 +185,32 @@ const NavBar = () => {
                     <StyledTypography variant="h6">
                         <Hidden mdDown>
                             {isLoggedIn ?
-                                <Button className="navlinks" color="inherit">
-                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/myLibrary">
+                                    <Button className="navlinks" color="inherit" sx={{ height: '100%' }}>
+
                                         MyLibrary
-                                    </Link>
-                                </Button> : <Button className="navlinks" color="inherit" onClick={handleLoginClick}>
-                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
-                                        MyLibrary
-                                    </Link>
-                                </Button>}
 
-
-
-                            <Button className="navlinks" color="inherit">
-                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/allbooks">
-                                    Books
+                                    </Button>
                                 </Link>
-                            </Button>
+
+                                :
+                                <Link style={{ textDecoration: 'none', color: 'black' }} to="/">
+                                    <Button className="navlinks" color="inherit" onClick={handleLoginClick} sx={{ height: '100%' }}>
+
+                                        MyLibrary
+                                    </Button>
+                                </Link>
+                            }
+
+
+
+                            <Link style={{ textDecoration: 'none', color: 'black' }} to="/allbooks">
+                                <Button className="navlinks" color="inherit" sx={{ height: '100%' }}>
+
+                                    Books
+
+                                </Button>
+                            </Link>
 
                             {/* Conditionally render login/logout buttons */}
                             {isLoggedIn ? (
@@ -146,59 +227,62 @@ const NavBar = () => {
                                 </>
                             )}
                             {isLoggedIn && role === 'admin' && (
-                                <Button className="navlinks" color="inherit">
-                                    <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                 <Link style={{ textDecoration: 'none', color: 'black' }} to="/admin">
+                                <Button className="navlinks" color="inherit"  sx={{ height: '100%' }}>
+                                   
                                         Admin
-                                    </Link>
+                                   
                                 </Button>
+                                </Link>
                             )}
                         </Hidden>
                     </StyledTypography>
                 </Grid>
                 <Grid item id="searchbar" sx={{ display: "flex", alignItems: "center", marginRight: "2rem", justifyContent: "right", }}>
+                    <ThemeProvider theme={customTheme(outerTheme)}>
+                        <TextField
+                            className="input-override"
+                            variant="outlined"
+                            size="small"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={(event) => {
+                                setSearchTerm(event.target.value)
+                            }}
+                            onKeyUp={(event) => {
+                                if (event.key === 'Enter') {
+                                    handleSearch(event); // Call handleSearch when Enter key is pressed
+                                }
+                            }}
+                            sx={{
+                                // this is not placeholder text, idk what it is
+                                '& .MuiOutlinedInput-root': {
+                                    color: 'white',
+                                },
+                                // this is placeholder text and user input text
+                                '& .MuiInputBase-input': {
+                                    color: 'black',
+                                    fontFamily: 'Lato'
+                                },
+                                // outlined input outline
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'black',
+                                },
+                                color: 'black !important', // Set text color to black
+                                fontFamily: 'Lato !important', // Set font family
 
-                    <TextField
-                        className="input-override"
-                        variant="outlined"
-                        size="small"
-                        placeholder="Search"
-                        value={searchTerm}
-                        onChange={(event) => {
-                            setSearchTerm(event.target.value)
-                        }}
-                        onKeyUp={(event) => {
-                            if (event.key === 'Enter') {
-                                handleSearch(event); // Call handleSearch when Enter key is pressed
-                            }
-                        }}
-                        sx={{
-                            // this is not placeholder text, idk what it is
-                            '& .MuiOutlinedInput-root': {
-                                color: 'white',
-                            },
-                            // this is placeholder text and user input text
-                            '& .MuiInputBase-input': {
-                                color: 'black',
-                                fontFamily: 'Lato'
-                            },
-                            // outlined input outline
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'black',
-                            },
-                            color: 'black !important', // Set text color to black
-                            fontFamily: 'Lato !important', // Set font family
-
-                        }}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton edge="end" color="inherit" onClick={handleSearch}>
-                                        <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
+                            }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton edge="end" color="inherit" onClick={handleSearch}>
+                                            <SearchIcon sx={{ color: 'white', backgroundColor: '#8abbb1', borderRadius: '5px', padding: '4px' }} />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </ThemeProvider>
 
                     <Hidden lgUp>
                         <Menu
@@ -261,7 +345,7 @@ const NavBar = () => {
                                 ) :
                                 (
 
-                                    <MenuItem sx={{display: 'none'}} onClick={handleMenuClose}>
+                                    <MenuItem sx={{ display: 'none' }} onClick={handleMenuClose}>
                                         <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/admin">
                                             Admin &gt;
                                         </Link>

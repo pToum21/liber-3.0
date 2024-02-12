@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import Grid from '@mui/material/Grid';
 // our files
 import { KEEP_BOOK } from '../utils/mutations';
 import CommentForm from '../Components/CommentForm';
@@ -69,7 +69,7 @@ function SingleBook() {
             await keepBookMutation({
                 variables: { input: { bookId: id, title: thisBook.title, image: { data: thisBook.image.data } } },
                 refetchQueries: [{ query: QUERY_MY_LIBRARY }], // Refetch QUERY_MY_LIBRARY after mutation
-              });
+            });
 
             // Set bookAdded to true when the book is successfully added
             setBookAdded(true);
@@ -94,54 +94,84 @@ function SingleBook() {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '20px' }}>
-            <h3>Title: {book.title}</h3>
-            <h4>
-                Authors: {book.authors.map((author, index) => (
-                    <span key={index}>{author.name}</span>
-                ))}
-            </h4>
-            <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '100%', height: 'auto' }} /><br />
-            {/* <p> Rating: {avgRating}</p> */}
-            <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+        <>
+            {/* title header of single book's page */}
+            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', color: '#f3f3ec' }}>
+                <em style={{ fontSize: '2rem' }}>{book.title}</em>
+                {/* authors, if more than one, had comma in between names. otherwise, no comma*/}
+                {book.authors.length > 1 ? (
+                    <p style={{ marginLeft: '5px', marginTop: '0', marginRight: '0', marginBottom: '0' }}> by {
+                        book.authors.map(author => {
+                            const nameParts = author.name.split(' ');
+                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                        }).join(', ')
+                    }
+                    </p>
 
-            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                {bookAdded ? (
-                    <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
-                        Book Saved
-                    </Button>
                 ) : (
-                    <Button sx={{
-                        backgroundColor: '#8abbb1',
-                        color: '#f3f3ec',
-                        '&:hover': {
-                            backgroundColor: '#6a8e86',
-                        },
+                    <p style={{ marginLeft: '5px', marginTop: '0', marginRight: '0', marginBottom: '0' }}> by {
+                        book.authors.map(author => {
+                            const nameParts = author.name.split(', ');
+                            return `${nameParts[nameParts.length - 1]} ${nameParts.slice(0, nameParts.length - 1).join(' ')}`;
+                        })
+                    }
+                    </p>
 
-                    }} variant="contained" onClick={handleKeepBook}>
-                        Keep Book
-                    </Button>
                 )}
-                <Link to={`/bookReader/${id}`}>
-                    <Button sx={{
-                        backgroundColor: '#8abbb1',
-                        color: '#f3f3ec',
-                        '&:hover': {
-                            backgroundColor: '#6a8e86',
-                        },
-                    }} variant="contained">Read Now</Button>
-                </Link>
-            </div>
+            </Grid>
 
+            {/* container holding all content*/}
+            <Grid className="bottom-home-div" container py={3} spacing={3} sx={{ width: '100%', display: 'flex', flexDirection:'column', justifyContent: 'space-evenly', alignItems: 'center', border: '10px double #8abbb1', margin: '0', backgroundColor: '#ececdc'}}>
+                {/* Grid holds book and comment form */}
+                <div className="div-img-cmnt-form" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap:'wrap', border: '10px double #8abbb1', borderRadius: '10px', width: '90%', paddingTop: '2rem', paddingBottom:'2rem', backgroundColor:'#ededde'}}>
+                    {/* Grid holds book image and buttons */}
+                    <Grid item sx={{ display: 'flex', flexDirection: 'column', flex: '1', justifyContent:'center', alignItems: 'center', margin: '0' }}>
+                        {/* image */}
+                        <img src={`data:image/jpg;base64,${book.image.data}`} alt={book.title} style={{ maxWidth: '50%', height: 'auto' }} /><br />
+                        {/* rating */}
+                        <Rating name="read-only" value={avgRating} precision={0.5} readOnly />
+                        {/* buttons */}
+                        <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                            {bookAdded ? (
+                                <Button sx={{ backgroundColor: 'grey' }} disabled={true} variant="contained" onClick={handleKeepBook}>
+                                    Book Saved
+                                </Button>
+                            ) : (
+                                <Button sx={{
+                                    backgroundColor: '#8abbb1',
+                                    color: '#f3f3ec',
+                                    '&:hover': {
+                                        backgroundColor: '#6a8e86',
+                                    },
 
-            <div>
+                                }} variant="contained" onClick={handleKeepBook}>
+                                    Keep Book
+                                </Button>
+                            )}
+                            <Link to={`/bookReader/${id}`}>
+                                <Button sx={{
+                                    backgroundColor: '#8abbb1',
+                                    color: '#f3f3ec',
+                                    '&:hover': {
+                                        backgroundColor: '#6a8e86',
+                                    },
+                                }} variant="contained">Read Now</Button>
+                            </Link>
+                        </div>
+                    </Grid>
+                    <Grid sx={{ display: 'flex', flexDirection: 'column', flex: '1', marginLeft: '1rem' }}>
+                        <CommentForm bookId={book._id} />
+                    </Grid>
 
-                <CommentList reviews={book.reviews} />
-            </div>
+                </div>
 
+                {/* container for comment list */}
+                <Grid item sx={{ width: '100%', paddingLeft: '5rem !important', paddingRight: '5rem !important'}} >
+                    <CommentList reviews={book.reviews} />
+                </Grid>
 
-            <CommentForm bookId={book._id} />
-        </div>
+            </Grid>
+        </> 
     );
 }
 
