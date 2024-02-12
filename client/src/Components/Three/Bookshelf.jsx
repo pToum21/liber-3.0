@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 
+
+// the glb file for the grass covered to jsx
+
 const BookShelf = (props) => {
   const group = useRef();
   const camera = useThree((state) => state.camera);
