@@ -19,16 +19,16 @@ const CommentList = ({ reviews }) => {
       <div className='comment-scroll' style={{ maxHeight: '30vh', overflowY: 'scroll', backgroundColor: '#eeeee3' }}>
         {reviews &&
           reviews.map((review) => (
-            <div key={review._id} className="col-12 mb-3 pb-3" style={{ margin: '1rem' }}>
+            <div key={review._id} className="col-12 mb-3 pb-3" style={{ margin: '1rem', borderBottom: '1px dotted #1a1a1a', marginBottom: '5px'}}>
               <div className="p-3 bg-dark text-light">
-                <p className="card-header" style={{ fontSize: '1rem' }}>
+                <p className="card-header" style={{ fontSize: '1rem', marginBottom: '5px' }}>
                   {new Date(parseInt(review.createdAt)).toLocaleString()}
                 </p>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
                   <p>rating:</p>
                   <Rating name="read-only" value={review.rating} precision={0.5} readOnly />
                 </div>
-                <p className="card-body" style={{ fontSize: '1.2rem' }}><span style={{ fontWeight: 'bolder', }}>{review.userId && review.userId.username || 'Anonymous'}</span> said, <em>{review.content}</em></p>
+                <p className="card-body" style={{ fontSize: '1.2rem', marginBottom: '5px', }}><span style={{ fontWeight: 'bolder', }}>{review.userId && review.userId.username || 'Anonymous'}</span> said, <span style={{color: '#8abbb1'}}>{review.content}</span></p>
               </div>
             </div>
           ))}
