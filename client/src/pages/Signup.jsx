@@ -202,7 +202,8 @@ export default function SignUp() {
               <Typography variant="body2" color="error" align="center" sx={{ mb: 2 }}>
                 Please fill in all required fields. <br />
                 Username takes alphanumeric {'('}a-zA-Z0-9{')'} characters,<br />
-                and email should contain '@' and '.'.
+                and email should contain '@' and '.'.<br />
+                Password Requires{'('}Uppercase, number, special character, and must be 8 characters long{')'} 
               </Typography>
             )}
             <Grid container spacing={2}>

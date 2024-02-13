@@ -33,6 +33,9 @@ const Three = () => {
     const audioRef = useRef(new Audio('/3dModels/foresetSounds.mp3'));
 
     useEffect(() => {
+        // Scroll to the top of the page when the component mounts
+        window.scrollTo(0, 0);
+
         const fakeLoadingTimeout = setTimeout(() => {
             setIsLoading(false);
         }, 500);
@@ -78,7 +81,6 @@ const Three = () => {
                 </div>
             )}
 
-
             <div className="controls-for-3d" style={{
                 position: 'absolute',
                 top: '5%',
@@ -90,19 +92,13 @@ const Three = () => {
                 maxHeight: '9rem',
                 zIndex: '1',
             }}>
-                {/* <h1 style={{ color: 'black', fontFamily: 'Press Start 2P', fontSize: '24px', marginBottom: '10px' }}>
-                    Library Instructions
-                   
-
-                </h1> */}
                 <p style={{
                     color: 'black',
                     fontFamily: 'Press Start 2P',
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>CLICK HOME</strong>
-
+                    <strong>CLICK HOME</strong>
                     <Link to={`/`}>
                         <IconButton style={{ fontSize: '16px' }}>
                             <HomeIcon style={{ color: 'black' }} />
@@ -116,7 +112,7 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>LEFT CLICK</strong>: read book{/*anywhere to sit at the desk and read your selected Book.*/}
+                    <strong>LEFT CLICK</strong>: read book
                 </p>
                 <p style={{
                     color: 'black',
@@ -124,12 +120,10 @@ const Three = () => {
                     fontSize: '1rem',
                     lineHeight: '1.5'
                 }}>
-                    {/* Press */} <strong>RIGHT CLICK HOLD</strong>: look around {/*to grab and pan around the room.*/}
+                    <strong>RIGHT CLICK HOLD</strong>: look around
                 </p>
-
-
-
             </div>
+
             <div style={{
                 position: 'absolute',
                 top: '5%',
@@ -144,10 +138,7 @@ const Three = () => {
                 <IconButton className='sound-button' onClick={toggleAudio} style={{ fontSize: '16px' }}>
                     <p style={{ color: 'black' }}>Hear the Sounds of The Forest</p> {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                 </IconButton>
-
             </div>
-
-
 
             <Canvas
                 style={{ width: '100%', height: '100%', zIndex: '0' }}
