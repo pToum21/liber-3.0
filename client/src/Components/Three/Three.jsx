@@ -145,7 +145,7 @@ const Three = () => {
                 onClick={handleCanvasClick}
             >
                 <Skybox />
-                <Light brightness={40} color={'yellow'} position={[100, 200, 300]} />
+                <Light brightness={45} color={'white'} position={[50, 200, 300]} />
                 <Experience />
                 <OrbitControls />
             </Canvas>
