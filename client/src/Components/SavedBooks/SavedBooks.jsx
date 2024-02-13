@@ -48,7 +48,7 @@ const SavedBooks = () => {
     return (
         <Grid container>
             {/* header greeting */}
-            <Grid item className="slide-from-left" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec' }}>
+            <Grid item className="slide-from-left header-banner" mb={3} p={3} sx={{ width: '100%', fontSize: '1.8rem', color: '#f3f3ec', display:'flex', alignItems: 'center' }}>
                 <em className="saved-head-text">Welcome to your MyLibrary, {myData.username.charAt(0).toUpperCase() + myData.username.slice(1)}... </em>
             </Grid>
             {/* account container */}

@@ -294,7 +294,7 @@ const NavBar = () => {
                             disablePortal // Add this prop
                             sx={{
                                 '& .MuiMenu-paper': {
-                                    marginTop: '10%',
+                                    marginTop: '11%',
                                     width: '100vw',
                                     height: '100vh',
                                     transformOrigin: 'top center',
