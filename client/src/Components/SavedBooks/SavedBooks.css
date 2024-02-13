@@ -16,4 +16,12 @@
     .header-banner {
         padding: 1rem !important;
     }
+    .css-po5hiy-MuiGrid-root {
+        flex-direction: column !important;
+    }
+    .acc-info {
+        flex-wrap: wrap;
+        width: 100%;
+        font-size: 0.8rem !important;
+    }
 }

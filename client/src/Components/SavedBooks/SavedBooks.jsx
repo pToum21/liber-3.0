@@ -69,18 +69,18 @@ const SavedBooks = () => {
                 </Grid>
                 {/* account info */}
                 <Grid item sx={{ backgroundColor: '#8abbb1', width: '100%', padding: '1rem' }}>
-                    <Grid item sx={{ backgroundColor: '#8abbb1', width: '100%', padding: '2rem', display: 'flex', justifyContent: 'space-evenly', border: 'double 10px #f3f3ec', }}>
-                        <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>N A M E : &nbsp; {myData.username}</p>
+                    <Grid item className="acc-hold"  sx={{ backgroundColor: '#8abbb1', width: '100%', padding: '2rem', display: 'flex', justifyContent: 'space-evenly', border: 'double 10px #f3f3ec', }}>
+                        <div className="acc-info" style={{ backgroundColor: '#99ccc2',  borderRadius: '5px', width: '100%', }}>
+                            <p style={{paddingLeft: '1rem', paddingRight: '1rem'}}>N A M E : &nbsp; {myData.username}</p>
                         </div>
-                        <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>E M A I L : &nbsp; {myData.email}</p>
+                        <div className="acc-info" style={{ backgroundColor: '#99ccc2',  borderRadius: '5px', width: '100%', }}>
+                            <p style={{paddingLeft: '1rem', paddingRight: '1rem'}}>E M A I L : &nbsp; {myData.email}</p>
                         </div>
-                        <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>S T A T U S : &nbsp; {myData.role}</p>
+                        <div className="acc-info" style={{ backgroundColor: '#99ccc2',  borderRadius: '5px', width: '100%', }}>
+                            <p style={{paddingLeft: '1rem', paddingRight: '1rem'}}>S T A T U S : &nbsp; {myData.role}</p>
                         </div>
-                        <div style={{ backgroundColor: '#99ccc2', padding: '0.8rem', borderRadius: '5px' }}>
-                            <p>B O R N: &nbsp; {new Date(parseInt(myData.createdAt)).toLocaleDateString()}</p>
+                        <div className="acc-info" style={{ backgroundColor: '#99ccc2', borderRadius: '5px', width: '100%', }}>
+                            <p style={{paddingLeft: '1rem', paddingRight: '1rem'}}>B O R N: &nbsp; {new Date(parseInt(myData.createdAt)).toLocaleDateString()}</p>
 
                         </div>
                     </Grid>
