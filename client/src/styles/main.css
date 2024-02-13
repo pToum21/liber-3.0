@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb {
 
 
 .book-content::-webkit-scrollbar {
-    width: .9rem;
+    width: 1rem;
 }
 
 .book-content::-webkit-scrollbar-track {
