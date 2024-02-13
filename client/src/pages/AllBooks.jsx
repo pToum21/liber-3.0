@@ -19,13 +19,13 @@ const AllBooks = () => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
-    if (loading) return
-    (
-
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <CircularProgress color="success" />
-        </div>
-    );
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress color="success" />
+            </div>
+        )
+    };
 
     if (error) return <p>Error : Please try again</p>;
 

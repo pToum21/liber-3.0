@@ -10,10 +10,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-import { useMutation } from '@apollo/client'
-import { CREATE_USER } from '../utils/mutations'
-import { useState } from 'react'
-import Auth from '../utils/auth'
+import { useMutation } from '@apollo/client';
+import { CREATE_USER } from '../utils/mutations';
+import { useState } from 'react';
+import Auth from '../utils/auth';
+
+
+
 
 
 function Copyright(props) {
@@ -78,16 +81,16 @@ export default function SignUp() {
       })
       Auth.login(data.createUser.token)
     } catch (error) {
-      if (error.code === 11000) {
-        // Duplicate key error
+      // if (error.code === 11000) {
+      //   // Duplicate key error
 
-        setError('Email or username already exists');
+      //   setError('Email or username already exists');
 
-      } else {
-        // Other errors
+      // } else {
+      //   // Other errors
         console.log(error);
       }
-    }
+    // }
   };
 
   const theme = createTheme({
