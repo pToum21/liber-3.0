@@ -102,7 +102,7 @@ function Home() {
                         <div className="overlay">
                             <img src={image2} alt="book magic" />
                             <div className="text-overlay">
-                                <p className="text-title">Plethora of free books, completely free </p>
+                                <p className="text-title">Plethora of free books</p>
                                 {/* whiteSpace property prevent text of Liber from wrapping on small screens */}
                                 <p>Welcome to <span style={{ fontFamily: 'Coventry Garden', whiteSpace: 'nowrap' }}>{'{'} L i b e r {'}'}</span>.<br /> Our extended collection of over 1,000 free, classic novels and reads<br /> are digitized and waiting to be discovered.</p>
                             </div>
