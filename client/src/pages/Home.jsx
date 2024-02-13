@@ -42,7 +42,7 @@ function Home() {
     // console.log(data);
 
     //   puts data into variable (it's an array), can access its properties from there
-    const books = data?.getBooks.books || [];
+    // const books = data?.getBooks.books || [];
     // console.log(books)
 
     //   dynamic number of pages of books we have
@@ -76,8 +76,8 @@ function Home() {
         refetch({ skip });
 
 
-        if (!loading && books.length > 0) {
-            const avgRating = books.map(book => {
+        if (!loading && data.getBooks.books.length > 0) {
+            const avgRating = data.getBooks.books.map(book => {
                 let totalRating = 0;
                 const ratingCount = book.reviews.length;
                 book.reviews.forEach(review => {
@@ -90,7 +90,7 @@ function Home() {
         }
 
 
-    }, [currentPage, loading, refetch, books]);
+    }, [currentPage, loading, refetch, data]);
 
 
     return (
@@ -145,7 +145,7 @@ function Home() {
                                 <Grid className="books-container" container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', justifyContent: 'center', padding: '5vw', border: 'double 10px #cae4df', marginLeft: '5rem', marginRight: '5rem', marginBottom: '2rem' }}>
 
                                     {/* each book will be in its own div */}
-                                    {books.map((book, index) => (
+                                    {data && data.getBooks.books.map((book, index) => (
                                         <Grid className="ind-book" item key={book._id} xs={2.3} sx={{ animationDelay: `${index * 0.3}s` }}>
                                             {/* image */}
                                             <div style={{ width: '100%' }}>
