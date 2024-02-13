@@ -29,7 +29,6 @@ module.exports = async function fetchData() {
 
             // console.log(bookData.authors)
             title = title.replaceAll('$b', '');
-            console.log('hello');
 
             try {
               const newBook = await Book.findOneAndUpdate({bookId:bookId},{
@@ -74,7 +73,7 @@ module.exports = async function fetchData() {
     }
   }
   // Run the fetch cycle initially
-  runGutFetchLoop();
+  // runGutFetchLoop();
 
   // Set up an interval to run the fetch cycle every 8 hours (in milliseconds)
   const intervalInMilliseconds = 8 * 60 * 60 * 1000;
