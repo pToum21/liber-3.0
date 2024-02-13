@@ -83,10 +83,10 @@ export default function Admin() {
                 <TableHead >
                   <TableRow>
 
-                    <TableCell sx={{ paddingLeft: '6rem', }}>U S E R N A M E</TableCell>
+                    <TableCell className="action" sx={{ paddingLeft: '6rem', }}>U S E R N A M E</TableCell>
                     <TableCell >E M A I L</TableCell>
                     <TableCell >R O L E</TableCell>
-                    <TableCell >A C T I O N</TableCell>
+                    <TableCell className="action" >A C T I O N</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

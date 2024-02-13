@@ -9,10 +9,9 @@
 }
 
 .single-book-title {
-   font-style: italic;
-   width: 70%;
-   text-wrap: wrap;
-   padding-right:10rem;
+    font-style: italic;
+    width: 70%;
+    text-wrap: wrap;
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,4 +37,9 @@
     .single-book-title {
         font-size: 0.9rem !important;
     }
+}
+
+.action {
+    white-space: nowrap;
+
 }
