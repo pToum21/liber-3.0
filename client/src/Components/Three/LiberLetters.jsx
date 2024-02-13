@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { MeshBasicMaterial, PlaneGeometry, TextureLoader } from 'three';
+import { Text } from '@react-three/drei';
 
 import diarmuidTexture from '../../../public/3dModels/diarmuid.png';
 
@@ -66,10 +67,26 @@ const Letters = (props) => {
 
       {/* Display the image using a plane geometry */}
       {hoveredMeshes.length === 5 && (
-        <mesh position={[.2, 2.6, 2]} rotation={[0, .2, 0]} scale={[.5, .5, .5]}>
-          <planeGeometry args={[5, 5]} />
-          <meshBasicMaterial map={texture} transparent />
-        </mesh>
+        <>
+          <mesh position={[.2, 2.6, 2]} rotation={[0, .2, 0]} scale={[.5, .5, .5]}>
+            <planeGeometry args={[5, 5]} />
+            <meshBasicMaterial map={texture} transparent />
+          </mesh>
+
+          {/* Display text above the image */}
+          <Text
+            position={[.4, 3.9, 3]} // Adjust the position as needed
+            rotation={[0, .2, 0]} // Adjust the rotation as needed
+            color="#8abbb1"
+            fontSize={0.4}
+            maxWidth={4}
+            lineHeight={1.3}
+            letterSpacing={0.01}
+            textAlign="center"
+          >
+            Thank You For Everything Diarmuid You are the Goat
+          </Text>
+        </>
       )}
     </group>
   );
