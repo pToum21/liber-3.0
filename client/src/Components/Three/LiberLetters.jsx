@@ -75,8 +75,8 @@ const Letters = (props) => {
 
           {/* Display text above the image */}
           <Text
-            position={[.4, 3.9, 3]} // Adjust the position as needed
-            rotation={[0, .2, 0]} // Adjust the rotation as needed
+            position={[.4, 3.9, 3]}
+            rotation={[0, .2, 0]} 
             color="#8abbb1"
             fontSize={0.4}
             maxWidth={4}
