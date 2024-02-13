@@ -8,20 +8,34 @@
     -webkit-box-orient: vertical;
 }
 
+.single-book-title {
+   font-style: italic;
+   width: 70%;
+   text-wrap: wrap;
+   padding-right:10rem;
+}
+
 @media only screen and (max-width: 600px) {
     .saved-head-text {
         font-size: 0.8rem !important;
         border-color: #99ccc2;
     }
+
     .header-banner {
         padding: 1rem !important;
     }
+
     .css-po5hiy-MuiGrid-root {
         flex-direction: column !important;
     }
+
     .acc-info {
         flex-wrap: wrap;
         width: 100%;
         font-size: 0.8rem !important;
+    }
+
+    .single-book-title {
+        font-size: 0.9rem !important;
     }
 }
