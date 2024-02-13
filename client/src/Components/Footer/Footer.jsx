@@ -14,8 +14,8 @@ export const Footer = () => {
         paddingBottom: "1rem",
       }}
     >
-      <Container maxWidth="lg">
-        <Grid  alignItems="center" style={{display: 'flex', justifyContent: 'space-between'}}>
+      
+        <Grid  alignItems="center" style={{display: 'flex', justifyContent: 'space-evenly'}}>
           <Grid item xs={12} sm={6} >
 
             <img src={logo} alt="elegant book logo" style={{ width: "20vw", height: "auto" }} />
@@ -46,7 +46,7 @@ export const Footer = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+      
     </Box>
   );
 };
