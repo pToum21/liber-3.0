@@ -53,7 +53,7 @@ const resolvers = {
         },
 
         //   this is for the books page/link in nav
-        getAllBooks: async (_, { page = 1, itemsPerPage = 24 }) => {
+        getAllBooks: async (_, { page = 1, itemsPerPage = 12 }) => {
             const totalCount = await Book.countDocuments();
             const totalPages = Math.ceil(totalCount / itemsPerPage);
             const books = await Book.find()
