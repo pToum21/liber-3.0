@@ -43,7 +43,7 @@ const resolvers = {
         },
 
         getBooks: async (parents, args) => {
-            const bookData = await Book.find().populate({ path: "reviews" }).skip(args.skip).limit(5);
+            const bookData = await Book.find().populate({ path: "reviews" }).skip(args.skip).limit(5).select('-text');
             const bookCount = await Book.count();
 
             return { books: bookData, bookCount: bookCount };
@@ -89,7 +89,7 @@ const resolvers = {
                     },
                     { $sort: { highestRating: -1 } },
                     { $limit: 1 },
-                ]);
+                ]).select('-text');
 
                 if (result.length > 0) {
                     return result[0];
