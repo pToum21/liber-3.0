@@ -84,7 +84,7 @@ const Letters = (props) => {
             letterSpacing={0.01}
             textAlign="center"
           >
-            Thank You For Everything Diarmuid You are the Goat
+            Thank You For Everything Diarmuid and Meg You Guys are Goats
           </Text>
         </>
       )}
