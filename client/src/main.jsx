@@ -10,7 +10,7 @@ import MyLibrary from './pages/MyLibrary.jsx';
 import Signup from './pages/Signup.jsx';
 import SingleBook from './pages/SingleBook.jsx';
 import SearchResults from './pages/SearchResults.jsx';
-
+import Surprise from './pages/Surprise.jsx';
 
 // import BookReader from './pages/BookReader.jsx'
 import Three from './Components/Three/Three.jsx';
@@ -60,6 +60,10 @@ const router = createBrowserRouter([
         path: '/admin',
         element: <Admin />
       },
+      {
+        path: '/surprise',
+        element: <Surprise />
+      }
    
     ]
   }

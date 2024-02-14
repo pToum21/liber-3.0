@@ -212,6 +212,14 @@ const NavBar = () => {
                                 </Button>
                             </Link>
 
+                            <Link style={{ textDecoration: 'none', color: 'black' }} to="/surprise">
+                                <Button className="navlinks" color="inherit" sx={{ height: '100%' }}>
+
+                                    Meet
+
+                                </Button>
+                            </Link>
+
                             {/* Conditionally render login/logout buttons */}
                             {isLoggedIn ? (
                                 <>
@@ -334,6 +342,13 @@ const NavBar = () => {
                                     Books &gt;
                                 </Link>
                             </MenuItem>
+
+                            <MenuItem onClick={handleMenuClose}>
+                                <Link to="/surprise" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    Meet &gt;
+                                </Link>
+                            </MenuItem>
+                            
                             {isLoggedIn && role === 'admin' ?
                                 (
                                     <MenuItem onClick={handleMenuClose}>
