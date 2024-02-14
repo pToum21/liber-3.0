@@ -49,7 +49,6 @@ From home, the user can navigate to use many features. Firstly, they are greeted
 
 To take advantage of some of the following features, users must log in. If on mobile, they can navigate through our mobile nav menu in order to log in.
 
-![nav menu](./client/src/assets/readmeimages/navmenu.png)
 ![login](./client/src/assets/readmeimages/login.png)
 
 Upon viewing a single book, the user can comment on a book, rate a book, view other comments, keep book, or go ahead and instantly use our interactive e-reader.
