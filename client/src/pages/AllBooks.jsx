@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const AllBooks = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 24;
+    const itemsPerPage = 12;
 
     const { loading, error, data } = useQuery(GET_ALL_BOOKS_WITH_PAGINATION, {
         variables: { page: currentPage, itemsPerPage: itemsPerPage },
