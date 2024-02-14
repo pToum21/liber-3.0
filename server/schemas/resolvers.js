@@ -56,7 +56,7 @@ const resolvers = {
         getAllBooks: async (_, { page = 1, itemsPerPage = 12 }) => {
             const totalCount = await Book.countDocuments();
             const totalPages = Math.ceil(totalCount / itemsPerPage);
-            const books = await Book.find()
+            const books = await Book.find().select('-text')
                 .skip((page - 1) * itemsPerPage)
                 .limit(itemsPerPage);
 
