@@ -2,7 +2,7 @@ import { OrbitControls } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
 import { useState, useEffect } from 'react';
 import BookShelf from './Bookshelf';
-import GrassPlain from './Grassplain';
+// import GrassPlain from './Grassplain';
 import Letters from './LiberLetters';
 
 const Experience = () => {
@@ -26,7 +26,7 @@ const Experience = () => {
             <ambientLight />
             {showLetters && <Letters />}
             <BookShelf />
-            <GrassPlain />
+            {/* <GrassPlain /> */}
         </>
     );
 };
