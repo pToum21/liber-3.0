@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import { MeshBasicMaterial, PlaneGeometry, TextureLoader } from 'three';
 import { Text } from '@react-three/drei';
 
-import diarmuidTexture from '../../../public/3dModels/diarmuid.png';
+import diarmuidTexture from '/3dModels/diarmuid.png';
 
 const Letters = (props) => {
   const { nodes, materials } = useGLTF('/3dModels/liberLetters.glb');
@@ -84,7 +84,7 @@ const Letters = (props) => {
             letterSpacing={0.01}
             textAlign="center"
           >
-            Thank You For Everything Diarmuid You are the Goat
+            Thank You For Everything Diarmuid and Meg You Guys are Goats
           </Text>
         </>
       )}
