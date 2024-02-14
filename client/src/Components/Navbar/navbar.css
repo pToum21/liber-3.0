@@ -40,10 +40,6 @@
 
 .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
     max-width: 900px !important;
-}
-
-
-#responsive-menu {
-    min-width: 100vw;
-    min-height: 100vh;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
 }
