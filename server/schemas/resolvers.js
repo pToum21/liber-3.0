@@ -37,7 +37,7 @@ const resolvers = {
                     // Search for each word in the author field
                     ...regexPatterns.map(pattern => ({ 'authors.name': { $regex: pattern } }))
                 ]
-            });
+            }).select('-text');
 
             return searchData;
         },
