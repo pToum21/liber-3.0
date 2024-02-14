@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei';
 import { MeshBasicMaterial, PlaneGeometry, TextureLoader } from 'three';
 import { Text } from '@react-three/drei';
 
-import diarmuidTexture from '../../../public/3dModels/diarmuid.png';
+import diarmuidTexture from '/3dModels/diarmuid.png';
 
 const Letters = (props) => {
   const { nodes, materials } = useGLTF('/3dModels/liberLetters.glb');
