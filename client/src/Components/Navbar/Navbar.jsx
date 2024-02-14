@@ -326,6 +326,7 @@ const NavBar = () => {
                                     '& .MuiMenu-paper': {
                                         marginTop: '3%', // for tablets
                                     },
+                                    
                                 },
                             }}
                         >
