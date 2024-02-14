@@ -1,5 +1,6 @@
 const { model, Schema } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Order = require('./Order');
 
 
 const userSchema = new Schema({
@@ -23,7 +24,7 @@ const userSchema = new Schema({
     keptBooks: [{
         type: Schema.Types.Mixed,
         ref: 'Book'
-    }]
+    }],
 },
     {
         timestamps: true
