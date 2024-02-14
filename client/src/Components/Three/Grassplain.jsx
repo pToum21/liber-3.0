@@ -5,25 +5,25 @@ Command: npx gltfjsx@6.2.16 public/3dModels/grassplain.glb
 
 // the glb file for the grass covered to jsx
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+// import React, { useRef } from 'react'
+// import { useGLTF } from '@react-three/drei'
 
-const GrassPlain = (props) => {
-  const { nodes, materials } = useGLTF('/3dModels/grassplain.glb')
+// const GrassPlain = (props) => {
+//   const { nodes, materials } = useGLTF('/3dModels/grassplain.glb')
 
-  const scale = 325;
-  const position = [-40, -100, -50];
+//   const scale = 325;
+//   const position = [-40, -100, -50];
 
-  return (
-    <group {...props} dispose={null} scale={[scale, scale, scale]} position={position}>
-      <mesh geometry={nodes.Grass_Patch_1.geometry} material={materials.SM_Env_GrassPatch_01_PolygonPirates_Material_01_A} />
+//   return (
+//     <group {...props} dispose={null} scale={[scale, scale, scale]} position={position}>
+//       <mesh geometry={nodes.Grass_Patch_1.geometry} material={materials.SM_Env_GrassPatch_01_PolygonPirates_Material_01_A} />
 
-      <mesh geometry={nodes.Purple_Flower_Patch.geometry} material={materials.Material_47} position={[0.886, -0.004, 0.78]} scale={0.03} />
-      <mesh geometry={nodes.Purple_Flower_Patch001.geometry} material={materials['Material_47.001']} position={[-0.696, -0.066, 0.615]} rotation={[0.064, -0.162, 0.344]} scale={0.042} />
-    </group>
-  )
-}
+//       <mesh geometry={nodes.Purple_Flower_Patch.geometry} material={materials.Material_47} position={[0.886, -0.004, 0.78]} scale={0.03} />
+//       <mesh geometry={nodes.Purple_Flower_Patch001.geometry} material={materials['Material_47.001']} position={[-0.696, -0.066, 0.615]} rotation={[0.064, -0.162, 0.344]} scale={0.042} />
+//     </group>
+//   )
+// }
 
-export default GrassPlain
+// export default GrassPlain
 
-useGLTF.preload('/3dModels/grassplain.glb')
+// useGLTF.preload('/3dModels/grassplain.glb')
