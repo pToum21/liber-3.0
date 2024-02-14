@@ -71,7 +71,7 @@ module.exports = async function fetchData() {
     }
   }
   // Run the fetch cycle initially
-  // runGutFetchLoop();
+  runGutFetchLoop();
 
   // Set up an interval to run the fetch cycle every week (in milliseconds)
   const intervalInMilliseconds = 168 * 60 * 60 * 1000;
