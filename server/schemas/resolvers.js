@@ -89,7 +89,7 @@ const resolvers = {
                     },
                     { $sort: { highestRating: -1 } },
                     { $limit: 1 },
-                ]).select('-text');
+                ]);
 
                 if (result.length > 0) {
                     return result[0];
