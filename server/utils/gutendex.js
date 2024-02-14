@@ -66,7 +66,7 @@ module.exports = async function fetchData() {
 
   function runGutFetchLoop() {
     // Fetch data from page 1 to page 50
-    for (let page = 1; page <= 25; page++) {
+    for (let page = 1; page <= 16; page++) {
       fetchData(page);
     }
   }
@@ -74,6 +74,6 @@ module.exports = async function fetchData() {
   runGutFetchLoop();
 
   // Set up an interval to run the fetch cycle every week (in milliseconds)
-  const intervalInMilliseconds = 168 * 60 * 60 * 1000;
-  setInterval(runGutFetchLoop, intervalInMilliseconds);
+  // const intervalInMilliseconds = 168 * 60 * 60 * 1000;
+  // setInterval(runGutFetchLoop, intervalInMilliseconds);
 }
