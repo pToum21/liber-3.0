@@ -7,6 +7,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 // css
 import './styles/main.css';
+import ChatBot from './Components/ChatBot';
 
 
 const httpLink = createHttpLink({
@@ -33,6 +34,7 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
+        <ChatBot />
         <NavBar />
         <div style={{ minHeight: '75vh' }} >
           <Outlet />
