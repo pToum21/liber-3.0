@@ -12,7 +12,7 @@ We learned to really use Threejs, we really learned and got the flow of graphql 
 
 But alas, throughout the ups and downs, we hope you enjoy the one word in Latin that means both "free" and "book": [Liber](https://liber-d603fbac9e96.herokuapp.com/).
 
-[Please enjoy the deployed Liber!](https://liber-d603fbac9e96.herokuapp.com/)
+[Please enjoy the deployed Liber!](https://liber-3-25f01cbf7764.herokuapp.com/)
 ![Liber home](./client/src/assets/readmeimages/home.png)
 
 
@@ -102,6 +102,5 @@ Please enjoy our work at our respective GitHubs!
 - @[pToum21](https://github.com/pToum21)
 - @[SalGonzalez151](https://github.com/SalGonzalez151)
 - @[pashag123](https://github.com/pashag123)
-- @[mintyry](https://github.com/mintyry)
 
 For any additional inquiries, please message any one of us.
