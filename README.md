@@ -12,6 +12,8 @@ We learned to really use Threejs, we really learned and got the flow of graphql 
 
 But alas, throughout the ups and downs, we hope you enjoy the one word in Latin that means both "free" and "book": [Liber](https://liber-d603fbac9e96.herokuapp.com/).
 
+NEW UPDATES: LIBER 3 NOW HAS CHATBOT INTEGRATION. IF YOU ARE LOOKING FOR A SPECIFIC BOOK OR HAVE ANY QUESTIONS FEEL FREE TO ASK LIBER AGENT ON THE BOTTOM RIGHT OF YOUR SCREEN.
+
 [Please enjoy the deployed Liber!](https://liber-3-25f01cbf7764.herokuapp.com/)
 ![Liber home](./client/src/assets/readmeimages/home.png)
 
