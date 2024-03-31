@@ -84,18 +84,6 @@ In order to contribute, one must fork their repository and create a pull request
 In order to test, please run `N/A`.
 
 
-<a id="Credits"></a>
- ## Credits 🤝
-Thanks to D. Murphy & M. Meyers for mentoring us to this point!
-
-  image carousel image 3: 
-  [https://www.etsy.com/listing/1029661051/bookshelfs-mural-reading-room-wallpaper](https://www.etsy.com/listing/1029661051/bookshelfs-mural-reading-room-wallpaper)
-
-  footer logo:
-  [https://www.freepik.com/premium-ai-image/create-elegant-line-art-icon-book_83117203.htm](https://www.freepik.com/premium-ai-image/create-elegant-line-art-icon-book_83117203.htm)
-
-
-
 
 <a id="Questions"></a>
 ## Questions 📭
